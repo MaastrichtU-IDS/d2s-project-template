@@ -1,0 +1,384 @@
+BASE <http://rdf.ebi.ac.uk/chembl/>
+PREFIX : <http://rdf.ebi.ac.uk/chembl/>
+PREFIX ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX cito: <http://purl.org/spar/cito/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dctypes: <http://purl.org/dc/dcmitype/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX freq: <http://purl.org/cld/freq/>
+PREFIX idot: <http://identifiers.org/idot/>
+PREFIX lexvo: <http://lexvo.org/ontology#>
+PREFIX pav: <http://purl.org/pav/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schemaorg: <http://schema.org/>
+PREFIX sd: <http://www.w3.org/ns/sparql-service-description#>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX void-ext: <http://ldf.fi/void-ext#>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX dqv: <http://www.w3.org/ns/dqv#>
+PREFIX hcls: <http://www.w3.org/hcls#>
+PREFIX d2sdata: <https://w3id.org/data2services/data/>
+
+
+# Complete example at https://www.w3.org/TR/hcls-dataset/#appendix_1
+
+INSERT {
+    GRAPH <?_outputGraph/metadata> {
+
+        ?dctPublisher a dct:Agent ;
+            foaf:name ?dctPublisherName ;
+            foaf:page ?dctPublisherPage ;
+        .
+
+        ?dctCreator a dct:Agent ;
+            foaf:name ?dctCreatorName
+        .
+
+        ?dctPublisherRdf a dct:Agent ;
+            foaf:name ?dctPublisherNameRdf ;
+            foaf:page ?dctPublisherPageRdf ;
+        .
+
+        ?dctCreatorRdf a dct:Agent ;
+            foaf:name ?dctCreatorNameRdf
+        .
+
+        ### Version Level (Complete)
+        ?versionUri
+            rdf:type dctypes:Dataset ; # MUST
+
+            ### General informations
+            dct:title ?dctTitleVersion ;
+            dct:alternative ?dctAlternative ;
+            dct:description ?dctDescription ;
+
+
+            dct:created ?dctCreated;
+            dct:creator ?dctCreator ;
+            dct:publisher ?dctPublisher ;
+
+            ### Additional dates and actors
+            pav:createdOn ?pavCreatedOn ;
+            pav:authoredOn ?pavAuthoredOn;
+            pav:curatedOn ?pavCuratedOn ;
+            dct:contributor ?dctContributor ;
+            pav:createdBy ?pavCreatedBy ;
+            pav:authoredBy ?pavAuthoredBy ;
+            pav:curatedBy ?pavCuratedBy ;
+            dct:issued ?dctIssued ;
+
+            foaf:page ?foafPage ;
+            schemaorg:logo ?schemaorgLogo ;
+
+            dct:license ?dctLicense ;
+            dct:rights ?dctRights ;
+
+            dct:language ?dctLanguage ;
+            dcat:theme ?dcatTheme ; #chemical
+            dcat:keyword ?dcatKeyword ;
+            void:vocabulary ?voidVocabulary ;
+            dct:conformsTo ?dctConformsTo ;
+            dct:references ?dctReferences ;
+
+            rdfs:seeAlso ?rdfsSeeAlso ;
+            cito:citesAsAuthority ?citoCitesAsAuthority ;
+            dct:hasPart ?dctHasPart ;
+
+            ### Identifiers
+            idot:preferredPrefix ?idotPreferredPrefix ;
+            idot:alternatePrefix ?idotAlternatePrefix ;
+
+            ### Provenance and Change
+            pav:version ?pavVersion ;
+            dct:isVersionOf ?summaryUri ;
+            pav:previousVersion ?pavPreviousVersion ;
+            dct:source ?dctSource ;
+            #pav:retrievedFrom ?dctSource ;
+            #prov:wasDerivedFrom ?dctSource ;
+
+            #Availability/Distributions
+            dcat:distribution ?distributionRdfUri, ?distributionSourceUri ;
+            dcat:accessURL ?dcatAccessURL ;
+            dcat:landingPage ?dcatLandingPage 
+        .
+
+
+        ### Distribution (non-RDF) description (Complete)
+        ?distributionSourceUri
+            a dctypes:Dataset, dcat:Distribution ;
+            ### General informations
+            dct:title ?sourceDistributionTitle ;
+            dct:alternative ?dctAlternative ;
+            dct:description ?dctDescription ;
+
+            dct:created ?dctCreated ;
+            dct:creator ?dctCreator ;
+            dct:publisher ?dctPublisher ;
+
+            ### Additional dates and actors
+            pav:createdOn ?pavCreatedOn ;
+            pav:authoredOn ?pavAuthoredOn ;
+            pav:curatedOn ?pavCuratedOn ;
+            dct:contributor ?dctContributor ;
+            pav:createdBy ?pavCreatedBy ;
+            pav:authoredBy ?pavAuthoredBy ;
+            pav:curatedBy ?pavCuratedBy ;
+            dct:issued ?dctIssued ;
+
+            foaf:page ?foafPage ;
+            schemaorg:logo ?schemaorgLogo ;
+
+            dct:license ?dctLicense ;
+            dct:rights ?dctRights ;
+
+            dct:language ?dctLanguage ;
+            dcat:theme ?dcatTheme ; #chemical
+            dcat:keyword ?dcatKeyword ;
+
+            dct:conformsTo ?dctConformsTo ;
+            dct:references ?dctReferences ;
+
+            rdfs:seeAlso ?rdfsSeeAlso ;
+            cito:citesAsAuthority ?citoCitesAsAuthority ;
+            dct:hasPart ?dctHasPart ;
+
+            ### Identifiers
+            idot:preferredPrefix ?idotPreferredPrefix ;
+            idot:alternatePrefix ?idotAlternatePrefix ;
+            idot:identifierPattern ?idotIdentifierPatternSource ;
+            idot:accessPattern ?idotAccessPatternSource ;
+            idot:exampleIdentifier ?idotExampleIdentifier ;
+
+            ### Provenance and Change
+            pav:version ?pavVersion ;
+            pav:previousVersion ?pavPreviousVersion ;
+            dct:source ?dctSource ;
+            #pav:retrievedFrom ?dctSource ;
+            #prov:wasDerivedFrom ?dctSource ;
+            pav:createdWith ?pavCreatedWith ;
+
+            #Availability/Distributions
+            dct:format ?dctFormatSource ;
+            dcat:accessURL ?dcatAccessURLSource ;
+            dcat:landingPage ?dcatLandingPageSource ;
+            dcat:downloadURL ?dcatDownloadURLSource ;
+            dcat:byteSize ?dcatByteSize
+        .
+
+        ### RDF Distribution description (Complete)
+        ?distributionRdfUri
+            a dctypes:Dataset, dcat:Distribution, void:Dataset ;
+            ### General informations
+            dct:title ?rdfDistributionTitle ;
+            dct:alternative ?dctAlternative ;
+            dct:description ?dctDescription ;
+
+            dct:created ?dctCreatedRdf ;
+            dct:creator ?dctCreatorRdf ;
+            dct:publisher ?dctPublisherRdf ;
+
+            ### Additional dates and actors
+            pav:createdOn ?pavCreatedOnRdf ;
+            pav:authoredOn ?pavAuthoredOnRdf;
+            pav:curatedOn ?pavCuratedOnRdf ;
+            dct:contributor ?dctContributorRdf ;
+            pav:createdBy ?pavCreatedByRdf ;
+            pav:authoredBy ?pavAuthoredByRdf ;
+            pav:curatedBy ?pavCuratedByRdf ;
+            dct:issued ?dctIssuedRdf ;
+
+            foaf:page ?foafPage ;
+            schemaorg:logo ?schemaorgLogo ;
+
+            dct:license ?dctLicense ;
+            dct:rights ?dctRights ;
+
+            dct:language ?dctLanguage ;
+            dcat:theme ?dcatTheme ; #chemical
+            dcat:keyword ?dcatKeyword ;
+
+            dct:conformsTo ?dctConformsTo ;
+            dct:references ?dctReferences ;
+
+            rdfs:seeAlso ?rdfsSeeAlso ;
+            cito:citesAsAuthority ?citoCitesAsAuthority ;
+            void:subset ?voidSubset ;
+
+            ### Identifiers
+            idot:preferredPrefix ?idotPreferredPrefix ;
+            idot:alternatePrefix ?idotAlternatePrefix ;
+            idot:identifierPattern ?idotIdentifierPatternRdf ;
+            idot:accessPattern ?idotAccessPatternRdf ;
+            idot:exampleIdentifier ?idotExampleIdentifier ;
+            void:exampleResource ?voidExampleResourceRdf ;
+
+            ### Provenance and Change
+            sio:has-data-item ?sioHasDataItem ;
+            pav:version ?pavVersionRdf ;
+            pav:previousVersion ?pavPreviousVersionRdf ;
+            dct:source ?dctSource ;
+            #pav:retrievedFrom ?dctSource ;
+            #prov:wasDerivedFrom ?dctSource ;
+            pav:createdWith ?pavCreatedWithRdf ;
+
+            #Availability/Distributions
+            dct:format ?dctFormatRdf ;
+            dcat:accessURL ?dcatAccessURL ;
+            dcat:landingPage ?dcatLandingPageRdf ;
+            dcat:downloadURL ?dcatDownloadURLRdf ;
+            void:dataDump ?voidDataDump
+        .
+
+    }
+}
+WHERE 
+{
+    BIND(<https://w3id.org/data2services/dataset/string/> AS ?summaryUri) # user input. Careful, for drugbank ido uses it as void:uriSpace for a dcat:CatalogRecord
+    BIND("10.5"^^xsd:string AS ?pavVersion) # Increment it from the latest version? Or user input
+    BIND("1.0"^^xsd:string AS ?pavVersionRdf) # Increment it from the latest version? Or user input
+
+    # Define the graph (A landing page, feed, SPARQL endpoint or other type of resource that gives access to the distribution of the dataset)
+    BIND(iri("https://w3id.org/data2services/graph/biolink/string") AS ?dcatAccessURL) # May. uri
+
+    OPTIONAL {
+      ?summaryUri dct:title ?dctTitle ;
+        dct:description ?dctDescription ;
+        dct:license ?dctLicense ;
+        dct:publisher ?dctPublisher ;
+        idot:preferredPrefix ?idotPreferredPrefix ;
+        idot:alternatePrefix ?idotAlternatePrefix .
+    }
+
+    # Needs to be at the beginning
+    BIND(iri(concat(str(?summaryUri), "version#", str(?pavVersion))) AS ?versionUri)
+    #getsum: BIND(iri("http://test/") AS ?versionUri)
+    BIND(iri(concat(str(?summaryUri), "distribution/source#", str(?pavVersion))) AS ?distributionSourceUri)
+    BIND(iri(concat(str(?summaryUri), "distribution/rdf#", str(?pavVersionRdf))) AS ?distributionRdfUri)
+
+
+    ##### User input
+
+    ##############
+    #### MUST ####
+    ##############
+
+
+    # Use https://orcid.org/ for researchers when possible or generate a new agent URI (like here)
+    #BIND("DrugBank" AS ?dctPublisherName) # Optional if external URI, to store publisher name in our graph if the URI already resolves
+    #BIND(<https://www.drugbank.ca/> AS ?dctPublisherPage) # Optional, to store publisher info in our graph if the URI already resolves
+    #BIND(iri(concat("https://w3id.org/data2services/agent/", md5(?dctPublisherName))) AS ?dctPublisher) # Get from summary. But let the possibility to redefine it for a dataset
+
+    BIND("HUGO Gene Nomenclature Committee at the European Bioinformatics Institute" AS ?dctCreatorName) # Optional if external URI, to store creator name in our graph if the URI already resolves
+    BIND(iri(concat("https://w3id.org/data2services/agent/", md5(?dctCreatorName))) AS ?dctCreator)
+
+    #BIND(iri("http://creativecommons.org/licenses/by-sa/3.0/") AS ?dctLicense) # Get from summary. But let the possibility to redefine it for a dataset
+
+
+    ## Source Distribution 
+    BIND(concat(?versionTitle, " Database Distribution") AS ?sourceDistributionTitle)
+    BIND("text/tab-separated-values" AS ?dctFormatSource)
+
+    ## RDF Distribution
+    BIND(concat(?versionTitle, " RDF Distribution") AS ?rdfDistributionTitle)
+    BIND(concat("Converted to BioLink RDF using data2services framework. ", ?description) AS ?rdfDistributionDescription)
+    VALUES (?dctFormatRdf) { ( <http://www.w3.org/ns/formats/Turtle> ) ( "application/n-quads" ) ( "application/rdf+xml" ) ( "application/n3" ) ( "application/ld+json" ) ( "text/turtle" ) }
+    BIND("Institute of Data Science at Maastricht University" AS ?dctPublisherNameRdf) # Optional if external URI, to store publisher name in our graph if the URI already resolves
+    BIND(<https://www.maastrichtuniversity.nl/research/institute-data-science> AS ?dctPublisherPageRdf) # Optional, to store publisher info in our graph if the URI already resolves
+    BIND(iri(concat("https://w3id.org/data2services/agent/", md5(?dctPublisherNameRdf))) AS ?dctPublisherRdf)
+
+    BIND("Institute of Data Science at Maastricht University" AS ?dctCreatorNameRdf) # Optional if external URI, to store creator name in our graph if the URI already resolves
+    BIND(iri(concat("https://w3id.org/data2services/agent/", md5(?dctCreatorNameRdf))) AS ?dctCreatorRdf)
+
+
+    ##############
+    ### SHOULD ###
+    ##############
+
+    #BIND("2013-08"^^xsd:gYearMonth AS ?dctCreated)
+    BIND("2017-05-14"^^xsd:date AS ?dctIssued) # Same for version and source distribution
+    #BIND(iri("http://www.ebi.ac.uk/chembl/") AS ?foafPage)
+    #BIND(iri("http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif") AS ?schemaorgLogo)
+    BIND(<http://lexvo.org/id/iso639-3/eng> AS ?dctLanguage)
+    #BIND(<http://identifiers.org/drugbank/version#0> AS ?pavPreviousVersion)
+    #BIND(:pubchem-bioassay-09-01-2014 AS ?dctSource)
+
+    ## Source distribution
+    BIND(<https://stringdb-static.org/download/protein.actions.v10.5/9606.protein.actions.v10.5.txt.gz> AS ?dcatDownloadURLSource) # user input
+    #BIND("1"^^xsd:string AS ?pavVersionSource) # user input
+    #BIND(<http://identifiers.org/drugbank/version#0> AS ?pavPreviousVersion)
+    #BIND(<http://example.com/madeUp/editor> AS ?pavCreatedWith )
+    #BIND(<ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/chembl_17_mysql.tar.gz> AS ?dcatDownloadURLSource )
+    #BIND("861443887"^^xsd:decimal AS ?dcatByteSize )
+
+    ## RDF distribution
+    BIND(now() AS ?dctIssuedRdf)
+    BIND(<http://w3id.org/biolink/vocab/> AS ?voidVocabulary)
+    #BIND(<http://identifiers.org/drugbank/version#0> AS ?pavPreviousVersionRdf)
+    BIND(<http://graphdb.dumontierlab.com/> AS ?dcatLandingPageRdf) 
+    BIND(<https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/string> AS ?pavCreatedWithRdf )
+    BIND(<http://graphdb.dumontierlab.com/graphs> AS ?dcatDownloadURLRdf)
+    BIND(<http://graphdb.dumontierlab.com/graphs> AS ?voidDataDump )
+
+
+    #############
+    #### MAY ####
+    #############
+
+    BIND(<http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/> AS ?dctConformsTo)  # constant. uri
+    BIND("ENSP00000000233"^^xsd:string AS ?idotExampleIdentifier)
+    
+    #BIND("Alternative label for dataset" AS ?dctAlternative)
+    #BIND("The data in ChEMBL is covered by the Creative Commons By Attribution." AS ?dctRights)
+    #BIND(<ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/chembl_17_release_notes.txt> AS ?dcatLandingPage) 
+
+    # Additional dates and actors. Same for version and RDF distribution
+    #BIND("2013-08"^^xsd:gYearMonth AS ?pavCreatedOn)
+    #BIND("2013-08"^^xsd:gYearMonth AS ?pavAuthoredOn)
+    #BIND("2013-08"^^xsd:gYearMonth AS ?pavCuratedOn)
+    #BIND(iri("http://orcid.org/0000-0002-8011-0300") AS ?dctContributor)
+    #BIND(iri("http://orcid.org/0000-0002-8011-0300") AS ?pavCreatedBy)
+    #BIND(iri("http://orcid.org/0000-0002-8011-0300") AS ?pavIssuedBy)
+    #BIND(iri("http://orcid.org/0000-0002-8011-0300") AS ?pavAuthoredBy)
+    #BIND(iri("http://orcid.org/0000-0002-8011-0300") AS ?pavCuratedBy)
+
+    ## Source
+    #BIND(<ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/> AS ?dcatAccessURLSource) 
+    #BIND(<ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/chembl_17_release_notes.txt> AS ?dcatLandingPageSource) 
+
+    #BIND(ncit:C48807 AS ?dcatTheme)  # uri. Example is chemical
+    #VALUES (?dcatKeyword) { ( "assay" ) ( "chemical" ) } # array
+    #BIND(iri("http://dx.doi.org/10.1093/bioinformatics/btt765") AS ?dctReferences)  # uri
+    #BIND(iri("http://en.wikipedia.org/wiki/ChEMBL") AS ?rdfsSeeAlso)  # uri
+    #BIND(iri("http://nar.oxfordjournals.org/content/40/D1/D1100") AS ?citoCitesAsAuthority)  # uri
+    #VALUES (?dctHasPart) { ( :chembl17_rdf_molecule_dataset ) ( :chembl17_rdf_target_dataset ) } # uri array of distributions
+
+    #BIND("CHEMBL\\d+"^^xsd:string AS ?idotIdentifierPatternSource)
+    #VALUES (?idotAccessPatternSource) { ( "http://bio2rdf.org/chembl ) ( "http://identifiers.org/chembl.compound/" ) } # array
+
+    ## RDF distribution
+    BIND(<http://identifiers.org/ensembl:ENSP00000280155> AS ?voidExampleResourceRdf) # TODO: automate
+    BIND(<http://identifiers.org/ensembl:ENSP00000280155> AS ?sioHasDataItem)
+    #VALUES (?voidSubset) { ( :chembl17_rdf_molecule_dataset ) ( :chembl17_rdf_target_dataset ) } # uri array of distributions
+    #BIND("CHEMBL\\d+"^^xsd:string AS ?idotIdentifierPatternRdf)
+    #VALUES (?idotAccessPatternRdf) { ( "http://bio2rdf.org/chembl ) ( "http://identifiers.org/chembl.compound/" ) } # array
+
+    # Additional dates and actors
+    #BIND("2013-08"^^xsd:gYearMonth AS ?pavCreatedOnRdf)
+    #BIND("2013-08"^^xsd:gYearMonth AS ?pavAuthoredOnRdf)
+    #BIND("2013-08"^^xsd:gYearMonth AS ?pavCuratedOnRdf)
+    #BIND(iri("http://orcid.org/0000-0002-8011-0300") AS ?dctContributorRdf)
+    #BIND(iri("http://orcid.org/0000-0002-8011-0300") AS ?pavCreatedByRdf)
+    #BIND(iri("http://orcid.org/0000-0002-8011-0300") AS ?pavIssuedByRdf)
+    #BIND(iri("http://orcid.org/0000-0002-8011-0300") AS ?pavAuthoredByRdf)
+    #BIND(iri("http://orcid.org/0000-0002-8011-0300") AS ?pavCuratedByRdf)
+
+    # TODO: Automate those
+
+}
+

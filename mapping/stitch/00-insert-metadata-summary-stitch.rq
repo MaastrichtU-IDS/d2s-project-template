@@ -1,0 +1,117 @@
+#BASE <http://rdf.ebi.ac.uk/chembl/>
+#PREFIX : <http://rdf.ebi.ac.uk/chembl/>
+PREFIX ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX cito: <http://purl.org/spar/cito/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dctypes: <http://purl.org/dc/dcmitype/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX freq: <http://purl.org/cld/freq/>
+PREFIX idot: <http://identifiers.org/idot/>
+PREFIX lexvo: <http://lexvo.org/ontology#>
+PREFIX pav: <http://purl.org/pav/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schemaorg: <http://schema.org/>
+PREFIX sd: <http://www.w3.org/ns/sparql-service-description#>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX void-ext: <http://ldf.fi/void-ext#>
+
+
+PREFIX bl: <http://bioentity.io/vocab/>
+PREFIX dqv: <http://www.w3.org/ns/dqv#>
+PREFIX hcls: <http://www.w3.org/hcls#>
+PREFIX d2sdata: <https://w3id.org/data2services/data/>
+
+
+# Complete example at https://www.w3.org/TR/hcls-dataset/#appendix_1
+
+INSERT {
+    GRAPH <?_outputGraph/metadata>
+    {
+        ### Summary Level (Complete)
+        ?summaryUri
+            rdf:type dctypes:Dataset ; # MUST
+
+            ### General informations
+            dct:title ?dctTitle ;
+            dct:alternative ?dctAlternative ;
+            dct:description ?dctDescription ;
+            dct:publisher ?dctPublisher ;
+
+            foaf:page ?foafPage ;
+            schemaorg:logo ?schemaorgLogo ;
+
+            dct:license ?dctLicense ;
+            dct:rights ?dctRights ;
+
+            dcat:theme ?dcatTheme ; #chemical
+            dcat:keyword ?dcatKeyword ;
+
+            rdfs:seeAlso ?rdfsSeeAlso ;
+            cito:citesAsAuthority ?citoCitesAsAuthority ;
+            dct:hasPart ?dctHasPart ;
+
+            ### Identifiers
+            idot:preferredPrefix ?idotPreferredPrefix ;
+            idot:alternatePrefix ?idotAlternatePrefix ;
+
+            ### Provenance and Change
+            #pav:hasCurrentVersion ?pavHasCurrentVersion ;
+            dct:accrualPeriodicity ?dctAccrualPeriodicity ;
+
+            ### Availability/Distributions
+            dcat:accessURL ?dcatAccessURL ; # May. Use this to define the graph (A landing page, feed, SPARQL endpoint or other type of resource that gives access to the distribution of the dataset)
+            void:sparqlEndpoint ?sparqlEndpoint # Should. Only in summary
+        .
+
+        ?dctPublisher a dct:Agent ;
+            foaf:name ?dctPublisherName ;
+            foaf:page ?dctPublisherPage ;
+        .
+    }
+}
+WHERE 
+{
+    ##### User input
+
+    ### MUST
+    BIND(<https://w3id.org/data2services/dataset/string/> AS ?summaryUri)  # user input
+    # Careful, ido uses it as void:uriSpace for a dcat:CatalogRecord
+    
+    BIND("STRING database"@en AS ?dctTitle) # user input
+    BIND("Protein-Protein Interaction Networks. STRING is a database of known and predicted protein-protein interactions. The interactions include direct (physical) and indirect (functional) associations; they stem from computational prediction, from knowledge transfer between organisms, and from interactions aggregated from other (primary) databases."@en AS ?dctDescription) # user input
+
+    # Use https://orcid.org/ for researchers when possible or generate a new agent URI (like here)
+    BIND("EMBL European Molecular Biology Laboratory" AS ?dctPublisherName) # Optional, to store publisher name in our graph if the URI already resolves
+    BIND(<https://www.embl.de/> AS ?dctPublisherPage) # Optional, to store publisher info in our graph if the URI already resolves
+    BIND(iri(concat("https://w3id.org/data2services/agent/", md5(?dctPublisherName))) AS ?dctPublisher)
+
+    BIND("string" AS ?idotPreferredPrefix) # Usually a May but required for data2services since it used as source ID to generate the graph URI.
+
+    BIND(<http://graphdb.dumontierlab.com/repositories/bio2vec> AS ?voidSparqlEndpoint) # Usually a Should but required for data2services.
+
+
+    ### SHOULD
+    BIND(<https://string-db.org/cgi/input.pl> AS ?foafPage)
+    #BIND(iri("http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif") AS ?schemaorgLogo)
+    #BIND(freq:quarterly AS ?dctAccrualPeriodicity) # Use freq: <http://purl.org/cld/freq/>
+
+
+    ### MAY
+    #BIND("Alternative label for dataset" AS ?dctAlternative)
+    #BIND(iri("http://creativecommons.org/licenses/by-sa/3.0/") AS ?dctLicense) # See https://www.genenames.org/about/
+    #BIND("The data in ChEMBL is covered by the Creative Commons By Attribution." AS ?dctRights)
+    #BIND(ncit:C48807 AS ?dcatTheme)  # uri. Example is chemical
+    #VALUES (?dcatKeyword) { ( "assay" ) ( "chemical" ) } # array
+    #BIND(iri("http://en.wikipedia.org/wiki/ChEMBL") AS ?rdfsSeeAlso)  # uri
+    #BIND(iri("http://nar.oxfordjournals.org/content/40/D1/D1100") AS ?citoCitesAsAuthority)  # uri
+    #VALUES (?dctHasPart) { ( :chembl17_rdf_molecule_dataset ) ( :chembl17_rdf_target_dataset ) } # uri array of distributions
+    #BIND("chembldb" AS ?idotAlternatePrefix) # string
+
+    #BIND(iri("https://w3id.org/data2services/dataset/drugbank/version#1") AS ?pavHasCurrentVersion)  # We will automatically generate it, atm only using isVersionOf in the version item
+}

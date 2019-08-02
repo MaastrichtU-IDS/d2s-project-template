@@ -1,0 +1,1 @@
+Contains all the file generated to perform the conversion to the BioLink model
