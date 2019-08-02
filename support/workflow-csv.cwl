@@ -22,8 +22,8 @@ inputs:
   rq_file_name: string
   r2rml_config_content: string
 
-  loaded_config_file: string
-  loaded_rq_file: string
+  param_config_file: string
+  param_rq_file: string
 
   upload_method: string
   triplestore_url: string
@@ -83,7 +83,7 @@ steps:
       rq_file_name: rq_file_name
       r2rml_trig_file: step1/trig_file_output
       r2rml_config_file: step2/r2rml_config_file_output
-      loaded_config_file: loaded_config_file
+      param_config_file: param_config_file
     out: [rq_file_output]
 
 
@@ -93,7 +93,7 @@ steps:
       working_directory: working_directory
       dataset: dataset
       rq_file: step3/rq_file_output
-      loaded_rq_file: loaded_rq_file
+      param_rq_file: param_rq_file
       upload_method: upload_method
       triplestore_url: triplestore_url
       triplestore_repository: triplestore_repository

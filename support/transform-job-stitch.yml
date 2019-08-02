@@ -11,8 +11,8 @@ tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/stitch"
 rq_file_name: rdf_output.nq
 r2rml_config_content: valueFrom
 
-loaded_config_file: valueFrom
-loaded_rq_file: valueFrom
+param_config_file: valueFrom
+param_rq_file: valueFrom
 
 upload_method: HTTP
 triplestore_url: http://graphdb:7200

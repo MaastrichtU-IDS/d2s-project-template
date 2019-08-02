@@ -23,7 +23,7 @@ inputs:
     type: File
   r2rml_trig_file:
     type: File
-  loaded_config_file:
+  param_config_file:
     type: string
     inputBinding:
       position: 1

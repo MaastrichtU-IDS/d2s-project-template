@@ -23,7 +23,7 @@ inputs:
       prefix: -m
   rq_file:
     type: File
-  loaded_rq_file:
+  param_rq_file:
     type: string
     inputBinding:
       position: 2
