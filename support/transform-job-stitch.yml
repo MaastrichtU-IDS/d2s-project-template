@@ -24,7 +24,5 @@ sparql_username: import_user
 sparql_password: PASSWORD
 output_graph_uri: outputGraph:https://w3id.org/data2services/graph/biolink/stitch
 
-
-# Let everything as valueFrom
 r2rml_trig_file: valueFrom
 input_data: valueFrom
