@@ -8,106 +8,106 @@ label: Data2Services CWL workflow, Vincent Emonet <vincent.emonet@gmail.com>
 
 inputs: 
   
-  abs_path: string 
+  working_directory: string 
   dataset: string
 
-  step1_jdbc: string
-  step1_trig_file: string
-  step1_trig: string
-  step1_data: string
-  step1_baseuri: string
-  step1_graph: string
+  input_data_jdbc: string
+  r2rml_trig_file_name: string
+  r2rml_trig_file: string
 
-  step2_jdbc: string
-  step2_rq_file: string
-  step2_text: string
+  input_data: string
+  base_uri: string
+  tmp_graph_uri: string
 
-  step3_config: string
+  rq_file_name: string
+  r2rml_config_content: string
 
-  step4_rq: string
-  step4_method: string
-  step4_url: string
-  step4_repo: string
+  loaded_config_file: string
+  loaded_rq_file: string
 
-  step6_sparql: string
-  step6_endpoint: string
-  step6_username: string
-  step6_password: string
-  step6_output_graph: string
+  upload_method: string
+  triplestore_url: string
+  triplestore_repository: string
+
+  sparql_queries_path: string
+  sparql_endpoint: string
+  sparql_username: string
+  sparql_password: string
+  output_graph_uri: string
 
 outputs:
   
-  trig_output_file:
+  trig_file_output:
     type: File
-    outputSource: step1/trig_output_file
-  config_output_file:
+    outputSource: step1/trig_file_output
+  r2rml_config_file_output:
     type: File
-    outputSource: step2/config_output_file
-  rq_output_file:
+    outputSource: step2/r2rml_config_file_output
+  rq_file_output:
     type: File
-    outputSource: step3/rq_output_file
-  graphdb_output_file:
+    outputSource: step3/rq_file_output
+  graphdb_file_output:
     type: File
-    outputSource: step4/graphdb_output_file
+    outputSource: step4/graphdb_file_output
 
 steps:
 
   step1:
-    run: cwl-steps/step1-autor2rml.cwl
+    run: cwl-steps/autor2rml.cwl
     in:
-      abs_path: abs_path
+      working_directory: working_directory
       dataset: dataset
-      jdbc: step1_jdbc
-      trig_file: step1_trig_file
-      trig: step1_trig
-      data: step1_data
-      baseuri: step1_baseuri
-      graph: step1_graph
-    out: [trig_output_file]
+      input_data_jdbc: input_data_jdbc
+      r2rml_trig_file_name: r2rml_trig_file_name
+      r2rml_trig_file: r2rml_trig_file
+      input_data: input_data
+      base_uri: base_uri
+      tmp_graph_uri: tmp_graph_uri
+    out: [trig_file_output]
 
   step2:
-    run: workflow/step2-config.cwl
+    run: cwl-steps/generate-r2rml-config.cwl
     in:
       dataset: dataset
-      jdbc: step2_jdbc
-      trig_file: step1/trig_output_file
-      rq_file: step2_rq_file
-      text: step2_text
-    out: [config_output_file]
+      input_data_jdbc: input_data_jdbc
+      r2rml_trig_file: step1/trig_file_output
+      rq_file_name: rq_file_name
+      r2rml_config_content: r2rml_config_content
+    out: [r2rml_config_file_output]
 
   step3:
-    run: workflow/step3-r2rml.cwl
+    run: cwl-steps/run-r2rml.cwl
     in:
-      abs_path: abs_path
+      working_directory: working_directory
       dataset: dataset
-      rq_file: step2_rq_file
-      trig_file: step1/trig_output_file
-      config_file: step2/config_output_file
-      config: step3_config
-    out: [rq_output_file]
+      rq_file_name: rq_file_name
+      r2rml_trig_file: step1/trig_file_output
+      r2rml_config_file: step2/r2rml_config_file_output
+      loaded_config_file: loaded_config_file
+    out: [rq_file_output]
 
 
   step4:
-    run: workflow/step4-upload.cwl
+    run: cwl-steps/rdf-upload.cwl
     in:
-      abs_path: abs_path
+      working_directory: working_directory
       dataset: dataset
-      rq_file: step3/rq_output_file
-      rq: step4_rq
-      method: step4_method
-      url: step4_url
-      repo: step4_repo
-    out: [graphdb_output_file]
+      rq_file: step3/rq_file_output
+      loaded_rq_file: loaded_rq_file
+      upload_method: upload_method
+      triplestore_url: triplestore_url
+      triplestore_repository: triplestore_repository
+    out: [graphdb_file_output]
 
   step6:
-    run: workflow/step6-mapping.cwl
+    run: cwl-steps/execute-sparql-mapping.cwl
     in:
-      abs_path: abs_path
+      working_directory: working_directory
       dataset: dataset
-      sparql: step6_sparql
-      endpoint: step6_endpoint
-      username: step6_username
-      password: step6_password
-      output_graph: step6_output_graph
-      graphdb_file: step4/graphdb_output_file
+      sparql_queries_path: sparql_queries_path
+      sparql_endpoint: sparql_endpoint
+      sparql_username: sparql_username
+      sparql_password: sparql_password
+      output_graph_uri: output_graph_uri
+      graphdb_file: step4/graphdb_file_output
     out: [eow]

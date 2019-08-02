@@ -7,44 +7,44 @@ label: Data2Services CWL workflow, Ammar Ammar <ammar257ammar@gmail.com>
 
 baseCommand: [docker, run]
 
-arguments: [ "--rm", "--link","drill:drill", "-v" , "$(inputs.abs_path):/data", "-v", "$(runtime.outdir):/tmp", "autor2rml", "-r"]
+arguments: [ "--rm", "--link","drill:drill", "-v" , "$(inputs.working_directory):/data", "-v", "$(runtime.outdir):/tmp", "autor2rml", "-r"]
 
 requirements:
   EnvVarRequirement:
     envDef:
-      HOME: $(inputs.abs_path)
+      HOME: $(inputs.working_directory)
 
 inputs:
   
-  abs_path:
+  working_directory:
     type: string
   dataset:
     type: string
-  jdbc:
+  input_data_jdbc:
     type: string
     inputBinding:
       position: 1
       prefix: -j
-  trig_file:
+  r2rml_trig_file_name:
     type: string
-  trig:
+  r2rml_trig_file:
     type: string
     inputBinding:
       position: 2
       prefix: -o
-      valueFrom: /tmp/$(inputs.trig_file)
-  data:
+      valueFrom: /tmp/$(inputs.r2rml_trig_file_name)
+  input_data:
     type: string
     inputBinding:
       position: 3
       prefix: -d
       valueFrom: /data/input/$(inputs.dataset)
-  baseuri:
+  base_uri:
     type: string
     inputBinding:
       position: 4
       prefix: -b
-  graph:
+  tmp_graph_uri:
     type: string
     inputBinding:
       position: 5
@@ -52,8 +52,8 @@ inputs:
 
 outputs:
   
-  trig_output_file:
+  trig_file_output:
     type: File
     outputBinding:
-      glob: $(inputs.trig_file)
+      glob: $(inputs.r2rml_trig_file_name)
 
