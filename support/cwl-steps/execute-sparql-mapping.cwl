@@ -41,9 +41,11 @@ inputs:
     type: string
     inputBinding:
       position: 5
-      prefix: -var
+      prefix: --var-outputGraph
   graphdb_file:
     type: File
+
+stdout: execute-sparql-mapping.txt
 
 outputs:
   eow:

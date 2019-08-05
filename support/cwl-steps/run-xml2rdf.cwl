@@ -27,13 +27,13 @@ inputs:
     inputBinding:
       position: 1
       prefix: -i
-      valueFrom: /data/input/$(inputs.dataset)/drugbank_extract.xml
+      valueFrom: /data/input/$(inputs.dataset)/*.xml
   output_data:
     type: string
     inputBinding:
       position: 2
       prefix: -o
-      valueFrom: /data/output/$(inputs.dataset)/$(inputs.rq_file_name)
+      valueFrom: $(inputs.working_directory)/output/$(inputs.dataset)/$(inputs.rq_file_name)
   tmp_graph_uri:
     type: string
     inputBinding:
