@@ -37,11 +37,21 @@ inputs:
     inputBinding:
       position: 4
       prefix: -pw
-  output_graph_uri:
+  input_graph_uri:
     type: string
     inputBinding:
       position: 5
+      prefix: --var-inputGraph
+  output_graph_uri:
+    type: string
+    inputBinding:
+      position: 6
       prefix: --var-outputGraph
+  sparql_service_url:
+    type: string
+    inputBinding:
+      position: 7
+      prefix: --var-serviceUrl
   graphdb_file:
     type: File
 

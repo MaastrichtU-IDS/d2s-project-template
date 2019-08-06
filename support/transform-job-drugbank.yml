@@ -3,8 +3,7 @@ dataset: drugbank
 
 # xml2rdf params
 tmp_graph_uri: "https://w3id.org/data2services/graph/xml2rdf/drugbank"
-rq_file_name: rdf_output.nq
-r2rml_config_content: valueFrom
+nquads_file_name: rdf_output.nq
 
 # RdfUpload params
 upload_method: HTTP

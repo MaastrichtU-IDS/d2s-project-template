@@ -1,0 +1,52 @@
+PREFIX d2smodel: <https://w3id.org/data2services/model/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
+INSERT
+{
+  GRAPH <?_outputGraph> {  
+
+    # https://biolink.github.io/biolink-model/docs/GeneToGeneHomologyAssociation.html
+   ?groupUri a bl:GeneGrouping ; # Or bl:GeneFamily
+            bl:id ?GroupName ;
+            bl:name ?GroupName ;
+            bl:description ?description ;
+            bl:category ?COGFunctionalCategory ;
+            bl:has_participant ?ProteinIDs ; # TODO: not good
+            bl:in_taxon ?TaxonomicLevel .
+            #SpeciesCount
+            #ProteinCount: has_count? node_property? NO: quantifier qualifier
+            #ProteinIDs to split properly
+            # Also use? https://biolink.github.io/biolink-model/docs/interacting_molecules_category.html  
+ }
+}
+WHERE {
+  SERVICE <?_serviceUrl>  {
+    GRAPH <?_inputGraph> {
+
+      ?s d2smodel:Groupname ?GroupName .
+
+      BIND ( iri(concat("https://w3id.org/data2services/data/eggnog/group/", ?GroupName)) AS ?groupUri )
+
+      OPTIONAL {
+        ?s d2smodel:Consensusfunctionaldescription ?description .
+      } OPTIONAL {
+        ?s d2smodel:Taxonomiclevel ?TaxonomicLevel . # TODO: generate URI 
+      } OPTIONAL {
+        ?s d2smodel:Proteincount ?ProteinCount .
+      } OPTIONAL {
+        ?s d2smodel:Speciescount ?SpeciesCount .
+      } OPTIONAL {
+        ?s d2smodel:Cogfunctionalcategory ?COGFunctionalCategory .
+      } OPTIONAL {
+        ?s d2smodel:Proteinids ?ProteinIDs . # Should be splitted before
+      }
+
+      # Avoid taking the first row with columns labels
+      FILTER( ?TaxonomicLevel != "TaxonomicLevel")
+    }
+  }
+}

@@ -31,7 +31,9 @@ inputs:
   sparql_endpoint: string
   sparql_username: string
   sparql_password: string
+  input_graph_uri: string
   output_graph_uri: string
+  sparql_service_url: string
 
 outputs:
   
@@ -47,6 +49,9 @@ outputs:
   rdf_upload_logs:
     type: File
     outputSource: step4/rdf_upload_logs
+  execute_split_logs:
+    type: File
+    outputSource: step5/execute_split_logs
   execute_sparql_logs:
     type: File
     outputSource: step6/execute_sparql_logs
@@ -89,7 +94,7 @@ steps:
     in:
       working_directory: working_directory
       dataset: dataset
-      rq_file: step3/nquads_file_output
+      nquads_file: step3/nquads_file_output
       upload_method: upload_method
       triplestore_url: triplestore_url
       triplestore_repository: triplestore_repository
@@ -120,6 +125,8 @@ steps:
       sparql_endpoint: sparql_endpoint
       sparql_username: sparql_username
       sparql_password: sparql_password
+      input_graph_uri: input_graph_uri
+      sparql_service_url: sparql_service_url
       output_graph_uri: output_graph_uri
       graphdb_file: step5/execute_split_logs
     out: [execute_sparql_logs]

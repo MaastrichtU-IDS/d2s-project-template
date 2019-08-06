@@ -6,21 +6,23 @@ input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
 r2rml_trig_file_name: mapping.trig
 base_uri: "https://w3id.org/data2services/"
 tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/eggnog"
-rq_file_name: rdf_output.nq
+nquads_file_name: rdf_output.nq
 
 # RdfUpload params
 upload_method: HTTP
 triplestore_url: http://graphdb:7200
-triplestore_repository: bio2vec-test
+triplestore_repository: test
 
 # Split params
 split_property: https://w3id.org/data2services/model/Proteinids
-split_class: https://w3id.org/data2services/data/emonet/ncats/eggnog/NOG.members.tsv
+split_class: https://w3id.org/data2services/data/input/eggnog/NOG.members.extract101.tsv
 split_delimiter: ","
 
 # Execute SPARQL conversion queries
 sparql_queries_path: /data/mapping/eggnog
-sparql_endpoint: http://graphdb:7200/repositories/bio2vec/statements
+sparql_endpoint: http://graphdb:7200/repositories/test/statements
 sparql_username: emonet
 sparql_password: PASSWORD
+input_graph_uri: https://w3id.org/data2services/graph/autor2rml/eggnog
 output_graph_uri: https://w3id.org/data2services/graph/biolink/eggnog
+sparql_service_url: "http://localhost:7200/repositories/test"

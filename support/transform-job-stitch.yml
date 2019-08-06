@@ -15,8 +15,7 @@ input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
 r2rml_trig_file_name: mapping.trig
 base_uri: "https://w3id.org/data2services/"
 tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/stitch"
-rq_file_name: rdf_output.nq
-r2rml_config_content: valueFrom
+nquads_file_name: rdf_output.nq
 
 # RdfUpload params
 upload_method: HTTP
