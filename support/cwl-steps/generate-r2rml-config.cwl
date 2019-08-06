@@ -20,8 +20,6 @@ inputs:
     type: string
   r2rml_trig_file:
     type: File
-  nquads_file_name:
-    type: string
 
 outputs:
   

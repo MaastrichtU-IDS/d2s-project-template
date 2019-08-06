@@ -2,20 +2,19 @@ working_directory: /home/vemonet/kraken/data2services-transform-biolink
 
 dataset: stitch
 
-download_files: [
+download_files: '[
   {
     baseUrl: "http://stitch.embl.de/download/",
     files: ["chemical_chemical.links.v5.0.tsv.gz", 
       "protein_chemical.links.detailed.v5.0/9606.protein_chemical.links.detailed.v5.0.tsv.gz"],
     splitColumns: ["Proteinids", "Drugids"],
     regexHtml: ".*(http.*\.ttl\.gz).*"
-}]
+}]'
 
 # R2RML params
 input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
 tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/stitch"
-base_uri: "https://w3id.org/data2services/"
-tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/stitch"
+tmp_base_uri: "https://w3id.org/data2services/"
 
 # RdfUpload params
 upload_method: HTTP
