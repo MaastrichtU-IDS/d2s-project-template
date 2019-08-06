@@ -56,7 +56,7 @@ steps:
     in:
       working_directory: working_directory
       dataset: dataset
-      rq_file: step1/nquads_file_output
+      nquads_file: step1/nquads_file_output
       upload_method: upload_method
       triplestore_url: triplestore_url
       triplestore_repository: triplestore_repository
