@@ -16,6 +16,7 @@ triplestore_repository: test
 split_property: https://w3id.org/data2services/model/Proteinids
 split_class: https://w3id.org/data2services/data/input/eggnog/NOG.members.extract101.tsv
 split_delimiter: ","
+split_quote: '"'
 
 # Execute SPARQL conversion queries
 sparql_endpoint: http://graphdb:7200/repositories/test/statements

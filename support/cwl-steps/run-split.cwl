@@ -53,6 +53,11 @@ inputs:
     inputBinding:
       position: 7
       prefix: --split-delimiter
+  split_quote:
+    type: string
+    inputBinding:
+      position: 8
+      prefix: --split-quote
   graphdb_file:
     type: File
 

@@ -23,6 +23,7 @@ inputs:
   split_property: string
   split_class: string
   split_delimiter: string
+  split_quote: string
 
   sparql_queries_path: string
   sparql_endpoint: string
@@ -104,6 +105,7 @@ steps:
       sparql_username: sparql_username
       sparql_password: sparql_password
       split_delimiter: split_delimiter
+      split_quote: split_quote
       split_class: split_class
       split_property: split_property
       graphdb_file: step4/rdf_upload_logs
