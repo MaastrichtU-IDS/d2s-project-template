@@ -28,13 +28,16 @@ inputs:
       prefix: -j
   r2rml_trig_file_name:
     type: string
+    default: mapping.trig
   base_uri:
     type: string
+    default: https://w3id.org/data2services/
     inputBinding:
       position: 2
       prefix: -b
   tmp_graph_uri:
     type: string
+    default: https://w3id.org/data2services/graph/autor2rml
     inputBinding:
       position: 3
       prefix: -g
