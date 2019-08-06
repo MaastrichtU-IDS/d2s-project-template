@@ -12,7 +12,7 @@ inputs:
   dataset: string
 
   tmp_graph_uri: string
-  rq_file_name: string
+  nquads_file_name: string
 
   upload_method: string
   triplestore_url: string
@@ -29,12 +29,15 @@ outputs:
   xml2rdf_file_output:
     type: File
     outputSource: step1/xml2rdf_file_output
-  rq_file_output:
+  nquads_file_output:
     type: File
-    outputSource: step1/rq_file_output
-  graphdb_file_output:
+    outputSource: step1/nquads_file_output
+  rdf_upload_logs:
     type: File
-    outputSource: step2/graphdb_file_output
+    outputSource: step2/rdf_upload_logs
+  execute_sparql_logs:
+    type: File
+    outputSource: step3/execute_sparql_logs
 
 steps:
 
@@ -43,20 +46,20 @@ steps:
     in:
       working_directory: working_directory
       dataset: dataset
-      rq_file_name: rq_file_name
+      nquads_file_name: nquads_file_name
       tmp_graph_uri: tmp_graph_uri
-    out: [xml2rdf_file_output,rq_file_output]
+    out: [xml2rdf_file_output,nquads_file_output]
 
   step2:
     run: cwl-steps/rdf-upload.cwl
     in:
       working_directory: working_directory
       dataset: dataset
-      rq_file: step1/rq_file_output
+      rq_file: step1/nquads_file_output
       upload_method: upload_method
       triplestore_url: triplestore_url
       triplestore_repository: triplestore_repository
-    out: [graphdb_file_output]
+    out: [rdf_upload_logs]
 
   step3:
     run: cwl-steps/execute-sparql-mapping.cwl
@@ -68,5 +71,5 @@ steps:
       sparql_username: sparql_username
       sparql_password: sparql_password
       output_graph_uri: output_graph_uri
-      graphdb_file: step2/graphdb_file_output
-    out: [eow]
+      graphdb_file: step2/rdf_upload_logs
+    out: [execute_sparql_logs]

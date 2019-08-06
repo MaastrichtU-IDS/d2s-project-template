@@ -10,7 +10,7 @@ baseCommand: echo
 requirements:
   - class: ShellCommandRequirement
 
-arguments: ["connectionURL = $(inputs.input_data_jdbc)\nmappingFile = /tmp/$(inputs.r2rml_trig_file.basename)\noutputFile = /tmp/$(inputs.rq_file_name)\nformat = NQUADS", ">", "config.properties"]
+arguments: ["connectionURL = $(inputs.input_data_jdbc)\nmappingFile = /tmp/$(inputs.r2rml_trig_file.basename)\noutputFile = /tmp/$(inputs.nquads_file_name)\nformat = NQUADS", ">", "config.properties"]
 
 inputs:
   
@@ -20,7 +20,7 @@ inputs:
     type: string
   r2rml_trig_file:
     type: File
-  rq_file_name:
+  nquads_file_name:
     type: string
 
 outputs:

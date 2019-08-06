@@ -56,8 +56,8 @@ inputs:
   graphdb_file:
     type: File
 
-stdout: execute-split.txt
+stdout: execute-split-logs.txt
 
 outputs:
-  eow:
+  execute_split_logs:
     type: stdout

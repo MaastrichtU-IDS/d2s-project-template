@@ -17,7 +17,7 @@ inputs:
   base_uri: string
   tmp_graph_uri: string
 
-  rq_file_name: string
+  nquads_file_name: string
   r2rml_config_content: string
 
   upload_method: string
@@ -38,12 +38,12 @@ outputs:
   r2rml_config_file_output:
     type: File
     outputSource: step2/r2rml_config_file_output
-  rq_file_output:
+  nquads_file_output:
     type: File
-    outputSource: step3/rq_file_output
-  graphdb_file_output:
+    outputSource: step3/nquads_file_output
+  rdf_upload_logs:
     type: File
-    outputSource: step4/graphdb_file_output
+    outputSource: step4/rdf_upload_logs
   execute_sparql_logs:
     type: File
     outputSource: step6/execute_sparql_logs
@@ -67,7 +67,7 @@ steps:
       dataset: dataset
       input_data_jdbc: input_data_jdbc
       r2rml_trig_file: step1/r2rml_trig_file_output
-      rq_file_name: rq_file_name
+      nquads_file_name: nquads_file_name
       r2rml_config_content: r2rml_config_content
     out: [r2rml_config_file_output]
 
@@ -76,22 +76,21 @@ steps:
     in:
       working_directory: working_directory
       dataset: dataset
-      rq_file_name: rq_file_name
+      nquads_file_name: nquads_file_name
       r2rml_trig_file: step1/r2rml_trig_file_output
       r2rml_config_file: step2/r2rml_config_file_output
-    out: [rq_file_output]
-
+    out: [nquads_file_output]
 
   step4:
     run: cwl-steps/rdf-upload.cwl
     in:
       working_directory: working_directory
       dataset: dataset
-      rq_file: step3/rq_file_output
+      nquads_file: step3/nquads_file_output
       upload_method: upload_method
       triplestore_url: triplestore_url
       triplestore_repository: triplestore_repository
-    out: [graphdb_file_output]
+    out: [rdf_upload_logs]
 
   step6:
     run: cwl-steps/execute-sparql-mapping.cwl
@@ -103,5 +102,5 @@ steps:
       sparql_username: sparql_username
       sparql_password: sparql_password
       output_graph_uri: output_graph_uri
-      graphdb_file: step4/graphdb_file_output
+      graphdb_file: step4/rdf_upload_logs
     out: [execute_sparql_logs]

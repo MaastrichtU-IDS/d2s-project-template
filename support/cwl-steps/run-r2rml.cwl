@@ -17,7 +17,7 @@ inputs:
     type: string
   dataset:
     type: string
-  rq_file_name:
+  nquads_file_name:
     type: string
   r2rml_config_file:
     type: File
@@ -26,7 +26,7 @@ inputs:
 
 outputs:
   
-  rq_file_output:
+  nquads_file_output:
     type: File
     outputBinding:
-      glob: $(inputs.rq_file_name)
+      glob: $(inputs.nquads_file_name)
