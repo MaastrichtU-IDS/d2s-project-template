@@ -1,6 +1,6 @@
 # data2services-transform-biolink
 
-Start services first
+Services must be running before running the CWL workflows
 
 ```shell
 # Apache Drill with shared volume with this repository
@@ -15,21 +15,22 @@ docker run -d --rm --name graphdb -p 7200:7200 \
   graphdb
 ```
 
-### AutoR2RML
+## AutoR2RML
 
 ```shell
 cwl-runner support/workflow-csv.cwl support/transform-job-stitch.yml
 
+# With defined output directory
 cwl-runner --outdir /home/vemonet/kraken/data2services-transform-biolink/output/stitch support/workflow-csv.cwl support/transform-job-stitch.yml
 ```
 
-### AutoR2RML Split
+## AutoR2RML Split
 
 ```shell
 cwl-runner --outdir /home/vemonet/kraken/data2services-transform-biolink/output/eggnog support/workflow-csv-split.cwl support/transform-job-eggnog.yml
 ```
 
-### XML
+## XML
 
 ```shell
 cwl-runner --outdir /home/vemonet/kraken/data2services-transform-biolink/output/drugbank support/workflow-xml.cwl support/transform-job-drugbank.yml
