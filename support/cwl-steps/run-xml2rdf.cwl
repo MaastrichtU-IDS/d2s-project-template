@@ -3,7 +3,7 @@
 cwlVersion: v1.0
 class: CommandLineTool
 
-label: Data2Services CWL workflow, Ammar Ammar <ammar257ammar@gmail.com> 
+label: Data2Services tool run xml2rdf to generate RDF, Vincent Emonet <vincent.emonet@gmail.com> 
 
 baseCommand: [docker, run]
 

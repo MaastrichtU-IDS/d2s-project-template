@@ -3,7 +3,7 @@
 cwlVersion: v1.0
 class: CommandLineTool
 
-label: Data2Services CWL workflow, Ammar Ammar <ammar257ammar@gmail.com> 
+label: Data2Services tool execute SPARQL queries, Ammar Ammar <ammar257ammar@gmail.com> 
 
 
 baseCommand: [docker, run]

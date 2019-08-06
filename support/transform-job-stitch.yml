@@ -1,19 +1,20 @@
 working_directory: /home/vemonet/kraken/data2services-transform-biolink
 dataset: stitch
 
+# R2RML params
 input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
 r2rml_trig_file_name: mapping.trig
-
 base_uri: "https://w3id.org/data2services/"
 tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/stitch"
-
 rq_file_name: rdf_output.nq
 r2rml_config_content: valueFrom
 
+# RdfUpload params
 upload_method: HTTP
 triplestore_url: http://graphdb:7200
 triplestore_repository: test
 
+# Execute SPARQL conversion queries
 sparql_queries_path: /data/mapping/stitch
 sparql_endpoint: http://graphdb:7200/repositories/test/statements
 sparql_username: import_user

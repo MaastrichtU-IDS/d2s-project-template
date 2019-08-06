@@ -3,7 +3,7 @@
 cwlVersion: v1.0
 class: CommandLineTool
 
-label: Data2Services CWL workflow, Ammar Ammar <ammar257ammar@gmail.com>
+label: Data2Services tool generate R2RML config file, Ammar Ammar <ammar257ammar@gmail.com>
 
 baseCommand: echo
 

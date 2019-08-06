@@ -3,7 +3,7 @@
 cwlVersion: v1.0
 class: Workflow
 
-label: Data2Services CWL workflow, Vincent Emonet <vincent.emonet@gmail.com> 
+label: Data2Services CWL workflow to convert XML files, Vincent Emonet <vincent.emonet@gmail.com> 
 
 
 inputs: 
