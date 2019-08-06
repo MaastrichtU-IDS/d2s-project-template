@@ -8,7 +8,7 @@ label: Data2Services CWL workflow, Ammar Ammar <ammar257ammar@gmail.com>
 
 baseCommand: [docker, run]
 
-arguments: ["--rm","--link","graphdb:graphdb", "-v" , "$(inputs.working_directory):/data","-v", "$(runtime.outdir):/tmp", "-v", "$(inputs.rq_file.path):/tmp/$(inputs.rq_file.basename)", "rdf-upload"]
+arguments: ["--rm","--link","graphdb:graphdb", "-v" , "$(inputs.working_directory):/data","-v", "$(runtime.outdir):/tmp", "-v", "$(inputs.rq_file.path):/tmp/$(inputs.rq_file.basename)", "rdf-upload", "-if", "/tmp/$(inputs.rq_file.basename)"]
 
 inputs:
   
@@ -23,21 +23,15 @@ inputs:
       prefix: -m
   rq_file:
     type: File
-  param_rq_file:
-    type: string
-    inputBinding:
-      position: 2
-      prefix: -if
-      valueFrom: /tmp/$(inputs.rq_file.basename)
   triplestore_url:
     type: string
     inputBinding:
-      position: 3
+      position: 2
       prefix: -url
   triplestore_repository:
     type: string
     inputBinding:
-      position: 4
+      position: 3
       prefix: -rep
 
 stdout: rdf-upload.txt

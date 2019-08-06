@@ -7,7 +7,7 @@ label: Data2Services CWL workflow, Ammar Ammar <ammar257ammar@gmail.com>
 
 baseCommand: [docker, run]
 
-arguments: [ "--rm", "--link","drill:drill", "-v" , "$(inputs.working_directory):/data", "-v", "$(runtime.outdir):/tmp", "autor2rml", "-r"]
+arguments: [ "--rm", "--link","drill:drill", "-v" , "$(inputs.working_directory):/data", "-v", "$(runtime.outdir):/tmp", "autor2rml", "-r", "-o", "/tmp/$(inputs.r2rml_trig_file_name)", "-d", "/data/input/$(inputs.dataset)"]
 
 requirements:
   EnvVarRequirement:
@@ -27,27 +27,15 @@ inputs:
       prefix: -j
   r2rml_trig_file_name:
     type: string
-  r2rml_trig_file:
-    type: string
-    inputBinding:
-      position: 2
-      prefix: -o
-      valueFrom: /tmp/$(inputs.r2rml_trig_file_name)
-  input_data:
-    type: string
-    inputBinding:
-      position: 3
-      prefix: -d
-      valueFrom: /data/input/$(inputs.dataset)
   base_uri:
     type: string
     inputBinding:
-      position: 4
+      position: 2
       prefix: -b
   tmp_graph_uri:
     type: string
     inputBinding:
-      position: 5
+      position: 3
       prefix: -g
 
 outputs:

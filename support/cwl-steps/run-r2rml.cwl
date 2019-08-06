@@ -9,7 +9,7 @@ label: Data2Services CWL workflow, Ammar Ammar <ammar257ammar@gmail.com>
 baseCommand: [docker, run]
 
 arguments: ["--rm","--link","drill:drill", "-v" , "$(inputs.working_directory):/data", "-v", "$(runtime.outdir):/tmp", 
-"-v", "$(inputs.r2rml_config_file.path):/tmp/$(inputs.r2rml_config_file.basename)", "-v", "$(inputs.r2rml_trig_file.path):/tmp/$(inputs.r2rml_trig_file.basename)", "r2rml"]
+"-v", "$(inputs.r2rml_config_file.path):/tmp/$(inputs.r2rml_config_file.basename)", "-v", "$(inputs.r2rml_trig_file.path):/tmp/$(inputs.r2rml_trig_file.basename)", "r2rml", "/tmp/$(inputs.r2rml_config_file.basename)"]
 
 inputs:
   
@@ -22,12 +22,7 @@ inputs:
   r2rml_config_file:
     type: File
   r2rml_trig_file:
-    type: File
-  param_config_file:
-    type: string
-    inputBinding:
-      position: 1
-      valueFrom: /tmp/$(inputs.r2rml_config_file.basename) 
+    type: File 
 
 outputs:
   

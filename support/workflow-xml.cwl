@@ -16,7 +16,6 @@ inputs:
   tmp_graph_uri: string
 
   rq_file_name: string
-  param_rq_file: string
 
   upload_method: string
   triplestore_url: string
@@ -57,7 +56,6 @@ steps:
       working_directory: working_directory
       dataset: dataset
       rq_file: step1/rq_file_output
-      param_rq_file: param_rq_file
       upload_method: upload_method
       triplestore_url: triplestore_url
       triplestore_repository: triplestore_repository

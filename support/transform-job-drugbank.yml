@@ -3,12 +3,8 @@ dataset: drugbank
 
 tmp_graph_uri: "https://w3id.org/data2services/graph/xml2rdf/drugbank"
 
-
 rq_file_name: rdf_output.nq
 r2rml_config_content: valueFrom
-
-param_config_file: valueFrom
-param_rq_file: valueFrom
 
 upload_method: HTTP
 triplestore_url: http://graphdb:7200
@@ -19,7 +15,3 @@ sparql_endpoint: http://graphdb:7200/repositories/test/statements
 sparql_username: import_user
 sparql_password: PASSWORD
 output_graph_uri: outputGraph:https://w3id.org/data2services/graph/biolink/drugbank
-
-r2rml_trig_file: valueFrom
-input_data: valueFrom
-output_data: valueFrom
