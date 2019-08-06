@@ -18,7 +18,6 @@ inputs:
   tmp_graph_uri: string
 
   rq_file_name: string
-  r2rml_config_content: string
 
   upload_method: string
   triplestore_url: string
@@ -69,7 +68,6 @@ steps:
       input_data_jdbc: input_data_jdbc
       r2rml_trig_file: step1/trig_file_output
       rq_file_name: rq_file_name
-      r2rml_config_content: r2rml_config_content
     out: [r2rml_config_file_output]
 
   step3:

@@ -7,7 +7,6 @@ r2rml_trig_file_name: mapping.trig
 base_uri: "https://w3id.org/data2services/"
 tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/eggnog"
 rq_file_name: rdf_output.nq
-r2rml_config_content: valueFrom
 
 # RdfUpload params
 upload_method: HTTP
@@ -17,7 +16,7 @@ triplestore_repository: bio2vec-test
 # Split params
 split_property: https://w3id.org/data2services/model/Proteinids
 split_class: https://w3id.org/data2services/data/emonet/ncats/eggnog/NOG.members.tsv
-split_delimiter: ,
+split_delimiter: ","
 
 # Execute SPARQL conversion queries
 sparql_queries_path: /data/mapping/eggnog

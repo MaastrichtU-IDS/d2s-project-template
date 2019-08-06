@@ -22,6 +22,7 @@ inputs:
     type: string
   input_data_jdbc:
     type: string
+    default: jdbc:drill:drillbit=drill:31010
     inputBinding:
       position: 1
       prefix: -j
