@@ -28,8 +28,8 @@ INSERT
  }
 }
 WHERE {
-  SERVICE <http://localhost:7200/repositories/test>  {
-    GRAPH <https://w3id.org/data2services/graph/autor2rml/stitch> {
+  SERVICE <?_serviceUrl>  {
+    GRAPH <?_inputGraph> {
       # Transform https://stringdb-static.org/download/protein.actions.v10.5/9606.protein.actions.v10.5.txt.gz
 
       # CIDs is a stereo-specific compound, and the suffix is the PubChem compound id.

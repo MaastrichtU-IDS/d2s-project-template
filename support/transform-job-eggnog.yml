@@ -23,6 +23,5 @@ sparql_queries_path: /data/mapping/eggnog
 sparql_endpoint: http://graphdb:7200/repositories/test/statements
 sparql_username: emonet
 sparql_password: PASSWORD
-input_graph_uri: https://w3id.org/data2services/graph/autor2rml/eggnog
 output_graph_uri: https://w3id.org/data2services/graph/biolink/eggnog
 sparql_service_url: "http://localhost:7200/repositories/test"
