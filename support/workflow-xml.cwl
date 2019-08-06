@@ -11,10 +11,7 @@ inputs:
   working_directory: string 
   dataset: string
 
-  input_data: string
-  output_data: string
   tmp_graph_uri: string
-
   rq_file_name: string
 
   upload_method: string
