@@ -7,7 +7,7 @@ label: Data2Services tool run xml2rdf to generate RDF, Vincent Emonet <vincent.e
 
 baseCommand: [docker, run]
 
-arguments: [ "--rm", "-v" , "$(inputs.working_directory):/data", "-v", "$(runtime.outdir):/tmp", "xml2rdf", "-i", "/data/input/$(inputs.dataset)/*.xml", "-o", "/tmp/$(inputs.nquads_file_name)"]
+arguments: [ "--rm", "-v" , "$(inputs.working_directory):/data", "-v", "$(runtime.outdir):/tmp", "xml2rdf", "-i", "/data/input/$(inputs.dataset)/*.xml", "-o", "/tmp/rdf_output.nq"]
 
 requirements:
   EnvVarRequirement:
@@ -19,8 +19,6 @@ inputs:
   working_directory:
     type: string
   dataset:
-    type: string
-  nquads_file_name:
     type: string
   tmp_graph_uri:
     type: string
@@ -36,4 +34,4 @@ outputs:
   nquads_file_output:
     type: File
     outputBinding:
-      glob: $(inputs.nquads_file_name)
+      glob: rdf_output.nq

@@ -12,7 +12,6 @@ inputs:
   dataset: string
 
   tmp_graph_uri: string
-  nquads_file_name: string
 
   upload_method: string
   triplestore_url: string
@@ -47,7 +46,6 @@ steps:
     in:
       working_directory: working_directory
       dataset: dataset
-      nquads_file_name: nquads_file_name
       tmp_graph_uri: tmp_graph_uri
     out: [xml2rdf_file_output,nquads_file_output]
 

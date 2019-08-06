@@ -1,12 +1,11 @@
 working_directory: /home/vemonet/kraken/data2services-transform-biolink
+
 dataset: eggnog
 
 # R2RML params
 input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
-r2rml_trig_file_name: mapping.trig
-base_uri: "https://w3id.org/data2services/"
+tmp_base_uri: "https://w3id.org/data2services/"
 tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/eggnog"
-nquads_file_name: rdf_output.nq
 
 # RdfUpload params
 upload_method: HTTP
@@ -19,9 +18,9 @@ split_class: https://w3id.org/data2services/data/input/eggnog/NOG.members.extrac
 split_delimiter: ","
 
 # Execute SPARQL conversion queries
-sparql_queries_path: /data/mapping/eggnog
 sparql_endpoint: http://graphdb:7200/repositories/test/statements
 sparql_username: emonet
 sparql_password: PASSWORD
 output_graph_uri: https://w3id.org/data2services/graph/biolink/eggnog
 sparql_service_url: "http://localhost:7200/repositories/test"
+sparql_queries_path: /data/mapping/eggnog

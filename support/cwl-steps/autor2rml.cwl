@@ -7,7 +7,7 @@ label: Data2Services tool run AutoR2RML to generate mappings, Ammar Ammar <ammar
 
 baseCommand: [docker, run]
 
-arguments: [ "--rm", "--link","drill:drill", "-v" , "$(inputs.working_directory):/data", "-v", "$(runtime.outdir):/tmp", "autor2rml", "-r", "-o", "/tmp/$(inputs.r2rml_trig_file_name)", "-d", "/data/input/$(inputs.dataset)"]
+arguments: [ "--rm", "--link","drill:drill", "-v" , "$(inputs.working_directory):/data", "-v", "$(runtime.outdir):/tmp", "autor2rml", "-r", "-o", "/tmp/mapping.trig", "-d", "/data/input/$(inputs.dataset)"]
 
 requirements:
   EnvVarRequirement:
@@ -26,10 +26,7 @@ inputs:
     inputBinding:
       position: 1
       prefix: -j
-  r2rml_trig_file_name:
-    type: string
-    default: mapping.trig
-  base_uri:
+  tmp_base_uri:
     type: string
     default: https://w3id.org/data2services/
     inputBinding:
@@ -47,5 +44,5 @@ outputs:
   r2rml_trig_file_output:
     type: File
     outputBinding:
-      glob: $(inputs.r2rml_trig_file_name)
+      glob: mapping.trig
 

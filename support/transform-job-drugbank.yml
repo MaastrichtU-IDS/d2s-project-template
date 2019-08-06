@@ -1,9 +1,9 @@
 working_directory: /home/vemonet/kraken/data2services-transform-biolink
+
 dataset: drugbank
 
 # xml2rdf params
 tmp_graph_uri: "https://w3id.org/data2services/graph/xml2rdf/drugbank"
-nquads_file_name: rdf_output.nq
 
 # RdfUpload params
 upload_method: HTTP
@@ -11,9 +11,9 @@ triplestore_url: http://graphdb:7200
 triplestore_repository: test
 
 # Execute SPARQL conversion queries
-sparql_queries_path: /data/mapping/drugbank
 sparql_endpoint: http://graphdb:7200/repositories/test/statements
 sparql_username: import_user
 sparql_password: PASSWORD
 output_graph_uri: https://w3id.org/data2services/graph/biolink/drugbank
 sparql_service_url: "http://localhost:7200/repositories/test"
+sparql_queries_path: /data/mapping/drugbank

@@ -12,13 +12,9 @@ inputs:
   dataset: string
 
   input_data_jdbc: string
-  r2rml_trig_file_name: string
 
-  base_uri: string
+  tmp_base_uri: string
   tmp_graph_uri: string
-
-  nquads_file_name: string
-  r2rml_config_content: string
 
   upload_method: string
   triplestore_url: string
@@ -57,8 +53,7 @@ steps:
       working_directory: working_directory
       dataset: dataset
       input_data_jdbc: input_data_jdbc
-      r2rml_trig_file_name: r2rml_trig_file_name
-      base_uri: base_uri
+      tmp_base_uri: tmp_base_uri
       tmp_graph_uri: tmp_graph_uri
     out: [r2rml_trig_file_output]
 
@@ -68,8 +63,6 @@ steps:
       dataset: dataset
       input_data_jdbc: input_data_jdbc
       r2rml_trig_file: step1/r2rml_trig_file_output
-      nquads_file_name: nquads_file_name
-      r2rml_config_content: r2rml_config_content
     out: [r2rml_config_file_output]
 
   step3:
@@ -77,7 +70,6 @@ steps:
     in:
       working_directory: working_directory
       dataset: dataset
-      nquads_file_name: nquads_file_name
       r2rml_trig_file: step1/r2rml_trig_file_output
       r2rml_config_file: step2/r2rml_config_file_output
     out: [nquads_file_output]
