@@ -7,7 +7,7 @@ label: Data2Services CWL workflow, Ammar Ammar <ammar257ammar@gmail.com>
 
 baseCommand: [docker, run]
 
-arguments: [ "--rm", "-v" , "$(inputs.working_directory):/data", "-v", "$(runtime.outdir):/tmp", "xml2rdf", "-o", "/tmp/$(inputs.rq_file_name)"]
+arguments: [ "--rm", "-v" , "$(inputs.working_directory):/data", "-v", "$(runtime.outdir):/tmp", "xml2rdf", "-i", "/data/input/$(inputs.dataset)/*.xml", "-o", "/tmp/$(inputs.rq_file_name)"]
 
 requirements:
   EnvVarRequirement:
@@ -22,12 +22,6 @@ inputs:
     type: string
   rq_file_name:
     type: string
-  input_data:
-    type: string
-    inputBinding:
-      position: 1
-      prefix: -i
-      valueFrom: /data/input/$(inputs.dataset)/*.xml
   tmp_graph_uri:
     type: string
     inputBinding:

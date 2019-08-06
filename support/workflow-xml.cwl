@@ -47,9 +47,7 @@ steps:
     in:
       working_directory: working_directory
       dataset: dataset
-      input_data: input_data
       rq_file_name: rq_file_name
-      output_data: output_data
       tmp_graph_uri: tmp_graph_uri
     out: [xml2rdf_file_output,rq_file_output]
 
