@@ -45,8 +45,8 @@ inputs:
   graphdb_file:
     type: File
 
-stdout: execute-sparql-mapping.txt
+stdout: execute-sparql-logs.txt
 
 outputs:
-  eow:
+  execute_sparql_logs:
     type: stdout

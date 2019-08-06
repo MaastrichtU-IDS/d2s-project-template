@@ -44,7 +44,7 @@ inputs:
 
 outputs:
   
-  trig_file_output:
+  r2rml_trig_file_output:
     type: File
     outputBinding:
       glob: $(inputs.r2rml_trig_file_name)
