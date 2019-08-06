@@ -1,0 +1,84 @@
+PREFIX x2rm: <http://ids.unimaas.nl/xml2rdf/model#>
+PREFIX x2rd: <http://ids.unimaas.nl/xml2rdf/data/>
+PREFIX d2s: <https://w3id.org/data2services/vocab/>
+PREFIX ido: <http://identifiers.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+
+INSERT { 
+    GRAPH <?_outputGraph>
+    {
+
+        ### Represent Drug drug interaction. https://biolink.github.io/biolink-model/docs/ChemicalToThingAssociation.html
+        # Or should we use https://biolink.github.io/biolink-model/docs/affects.html
+        ?drugInteractionAssociationUri a bl:ChemicalToThingAssociation ;
+            bl:relation bl:affects_activity_of ;
+            bl:subject ?drugUri ;
+            bl:object ?drugInteractionUri ;
+            bl:description ?drugInteractionDescription .
+
+        # Direct link
+        #?drugUri bl:affects_activity_of ?drugInteractionUri .
+
+
+        ?drugInteractionUri a bl:Drug ;
+            bl:name ?drugInteractionName .
+
+        # TODO: interacts_with should point to a URI
+        #?drugUri bl:interacts_with ?foodInteraction .
+        #?drugUri bl:interacts_with ?foodInteractionUri .
+        #?foodInteractionUri a bl:Association ;
+        #    bl:description ?foodInteraction .
+
+    }
+
+} WHERE {
+    SERVICE <?_serviceUrl>  {
+        GRAPH  <?_inputGraph> { 
+        
+            ?drugObj a x2rm:drugbank.drug ;
+                # Get drug primary ID
+                x2rm:hasChild [
+                    a x2rm:drugbank.drug.drugbank-id ;
+                        x2rm:hasAttribute [ a x2rm:drugbank.drug.drugbank-id.-primary ] ;
+                        x2rm:hasValue ?drugId
+                ] ;
+                # Get drug-drug interactions
+                x2rm:hasChild [
+                    a x2rm:drugbank.drug.drug-interactions ;
+                    x2rm:hasChild [
+                        a x2rm:drugbank.drug.drug-interactions.drug-interaction ;
+                        x2rm:hasChild [
+                            a x2rm:drugbank.drug.drug-interactions.drug-interaction.drugbank-id ;
+                            x2rm:hasValue ?drugInteractionId
+                        ] ;
+                        x2rm:hasChild [
+                            a x2rm:drugbank.drug.drug-interactions.drug-interaction.name ;
+                            x2rm:hasValue ?drugInteractionName
+                        ] ;
+                        x2rm:hasChild [
+                            a x2rm:drugbank.drug.drug-interactions.drug-interaction.description ;
+                            x2rm:hasValue ?drugInteractionDescription
+                        ]
+                    ]
+                ] ;
+                # Get food interactions
+                x2rm:hasChild [
+                    a x2rm:drugbank.drug.food-interactions ;
+                    x2rm:hasChild [
+                        a x2rm:drugbank.drug.food-interactions.food-interaction ;
+                        x2rm:hasValue ?foodInteraction
+                    ]
+                ] .
+
+            BIND ( iri(concat("http://identifiers.org/drugbank:", ?drugId)) AS ?drugUri )
+            BIND ( iri(concat("http://identifiers.org/drugbank:", ?drugInteractionId)) AS ?drugInteractionUri )
+            BIND ( iri(concat("https://w3id.org/data2services/data/association/drug-interaction/", md5(concat(?drugId, ?drugInteractionId)))) AS ?drugInteractionAssociationUri )
+        }
+    }
+}

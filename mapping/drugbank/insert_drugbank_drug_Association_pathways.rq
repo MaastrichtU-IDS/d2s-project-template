@@ -1,0 +1,57 @@
+PREFIX x2rm: <http://ids.unimaas.nl/xml2rdf/model#>
+PREFIX x2rd: <http://ids.unimaas.nl/xml2rdf/data/>
+PREFIX d2s: <https://w3id.org/data2services/vocab/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+INSERT 
+{ 
+    GRAPH <?_outputGraph> {   
+        # Pathways (use blank node)
+        ?drugPathwayAssociationUri a bl:ChemicalToPathwayAssociation ;
+             bl:relation bl:affects_activity_of ;
+             bl:subject ?drugUri ;
+             bl:object ?drugPathwayUri .
+
+         # Direct link
+         #?drugUri bl:affects_activity_of ?drugPathwayUri .
+
+
+        ?drugPathwayUri a bl:Pathway ;
+            bl:id ?drugPathwaySmpdbId ;
+            bl:name ?drugPathwayName .
+
+
+        # TODO: add enzymes? And drugs?
+    }
+}
+WHERE {
+    SERVICE <?_serviceUrl>  {
+        GRAPH <?_inputGraph> {
+
+            ?drugObj a x2rm:drugbank.drug ;
+                # Get drug primary ID
+                x2rm:hasChild [
+                    a x2rm:drugbank.drug.drugbank-id ;
+                    x2rm:hasAttribute [ a x2rm:drugbank.drug.drugbank-id.-primary ] ;
+                    x2rm:hasValue ?drugId
+                ] ;
+                # Get PATHWAYS
+                x2rm:hasChild [ a x2rm:drugbank.drug.pathways; 
+                    x2rm:hasChild [ 
+                        a x2rm:drugbank.drug.pathways.pathway;
+                        x2rm:hasChild [ 
+                            a x2rm:drugbank.drug.pathways.pathway.smpdb-id; 
+                            x2rm:hasValue ?drugPathwaySmpdbId 
+                        ] ;
+                        x2rm:hasChild [ 
+                            a x2rm:drugbank.drug.pathways.pathway.name; 
+                            x2rm:hasValue ?drugPathwayName 
+                        ] 
+                    ]
+                ] .
+
+            BIND ( iri(concat("http://identifiers.org/drugbank:", ?drugId)) AS ?drugUri )
+            BIND ( iri(concat("http://identifiers.org/smpdb/", ?drugPathwaySmpdbId) ) AS ?drugPathwayUri )
+            BIND ( iri(concat("https://w3id.org/data2services/data/association/pathway/", md5(concat(?drugId, ?drugPathwaySmpdbId)))) AS ?drugPathwayAssociationUri )
+        }
+    }
+}
