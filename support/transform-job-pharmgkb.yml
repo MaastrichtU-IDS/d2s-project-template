@@ -1,0 +1,27 @@
+working_directory: /home/vemonet/kraken/data2services-transform-biolink
+
+dataset: pharmgkb
+
+# R2RML params
+input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
+tmp_base_uri: "https://w3id.org/data2services/"
+tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/pharmgkb"
+
+# RdfUpload params
+upload_method: HTTP
+triplestore_url: http://graphdb:7200
+triplestore_repository: test
+
+# Split params
+split_property: https://w3id.org/data2services/model/Pmids
+split_class: https://w3id.org/data2services/data/input/pharmgkb/relationships_extract101.tsv
+split_delimiter: ";"
+split_quote: "'"
+
+# Execute SPARQL conversion queries
+sparql_endpoint: http://graphdb:7200/repositories/test/statements
+sparql_username: emonet
+sparql_password: PASSWORD
+output_graph_uri: https://w3id.org/data2services/graph/biolink/pharmgkb
+sparql_service_url: "http://localhost:7200/repositories/test"
+sparql_queries_path: /data/mapping/pharmgkb
