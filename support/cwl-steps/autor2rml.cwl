@@ -38,6 +38,11 @@ inputs:
     inputBinding:
       position: 3
       prefix: -g
+  autor2rml_column_header:
+    type: string?
+    inputBinding:
+      position: 4
+      prefix: -c
 
 outputs:
   

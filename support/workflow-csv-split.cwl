@@ -13,6 +13,7 @@ inputs:
 
   input_data_jdbc: string
 
+  autor2rml_column_header: string?
   tmp_base_uri: string
   tmp_graph_uri: string
 
@@ -60,6 +61,7 @@ steps:
       working_directory: working_directory
       dataset: dataset
       input_data_jdbc: input_data_jdbc
+      autor2rml_column_header: autor2rml_column_header
       tmp_base_uri: tmp_base_uri
       tmp_graph_uri: tmp_graph_uri
     out: [r2rml_trig_file_output]
