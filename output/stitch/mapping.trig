@@ -5,11 +5,10 @@
 <#Mapping1>
 rr:logicalTable [ rr:sqlQuery """
   select row_number() over (partition by filename) as autor2rml_rownum
-    , NULLIF(trim(columns[0]), '') as `Id`
-    , NULLIF(trim(columns[1]), '') as `Name`
-    , NULLIF(trim(columns[2]), '') as `Col3`
-    , NULLIF(trim(columns[3]), '') as `Col5`
-  from dfs.root.`/data/input/stitch/chemical_chemical.links.v5.0.extract2000.tsv`;
+    , NULLIF(trim(columns[0]), '') as `Chemical1`
+    , NULLIF(trim(columns[1]), '') as `Chemical2`
+    , NULLIF(trim(columns[2]), '') as `Textmining`
+  from dfs.root.`/data/input/stitch/chemical_chemical.links.v5.0.extract2000.tsv` OFFSET 1;
 """];
 rr:subjectMap [
   rr:termType rr:IRI;
@@ -18,23 +17,18 @@ rr:subjectMap [
   rr:graph <https://w3id.org/data2services/graph/autor2rml/stitch>;
 ];
 rr:predicateObjectMap [
-  rr:predicate <https://w3id.org/data2services/model/Id>;
-  rr:objectMap [ rr:column "Id" ];
+  rr:predicate <https://w3id.org/data2services/model/Chemical1>;
+  rr:objectMap [ rr:column "Chemical1" ];
   rr:graph <https://w3id.org/data2services/graph/autor2rml/stitch>;
 ];
 rr:predicateObjectMap [
-  rr:predicate <https://w3id.org/data2services/model/Name>;
-  rr:objectMap [ rr:column "Name" ];
+  rr:predicate <https://w3id.org/data2services/model/Chemical2>;
+  rr:objectMap [ rr:column "Chemical2" ];
   rr:graph <https://w3id.org/data2services/graph/autor2rml/stitch>;
 ];
 rr:predicateObjectMap [
-  rr:predicate <https://w3id.org/data2services/model/Col3>;
-  rr:objectMap [ rr:column "Col3" ];
-  rr:graph <https://w3id.org/data2services/graph/autor2rml/stitch>;
-];
-rr:predicateObjectMap [
-  rr:predicate <https://w3id.org/data2services/model/Col5>;
-  rr:objectMap [ rr:column "Col5" ];
+  rr:predicate <https://w3id.org/data2services/model/Textmining>;
+  rr:objectMap [ rr:column "Textmining" ];
   rr:graph <https://w3id.org/data2services/graph/autor2rml/stitch>;
 ];
 .
