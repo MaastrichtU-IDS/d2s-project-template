@@ -14,14 +14,14 @@ inputs:
   tmp_graph_uri: string
 
   upload_method: string
-  triplestore_url: string
-  triplestore_repository: string
+  sparql_triplestore_url: string
+  sparql_triplestore_repository: string
 
   sparql_queries_path: string
   sparql_endpoint: string
   sparql_username: string
   sparql_password: string
-  output_graph_uri: string
+  sparql_output_graph_uri: string
   sparql_service_url: string
 
 outputs:
@@ -56,8 +56,8 @@ steps:
       dataset: dataset
       nquads_file: step1/nquads_file_output
       upload_method: upload_method
-      triplestore_url: triplestore_url
-      triplestore_repository: triplestore_repository
+      sparql_triplestore_url: sparql_triplestore_url
+      sparql_triplestore_repository: sparql_triplestore_repository
     out: [rdf_upload_logs]
 
   step3:
@@ -69,8 +69,8 @@ steps:
       sparql_endpoint: sparql_endpoint
       sparql_username: sparql_username
       sparql_password: sparql_password
-      input_graph_uri: tmp_graph_uri
-      output_graph_uri: output_graph_uri
+      sparql_input_graph_uri: tmp_graph_uri
+      sparql_output_graph_uri: sparql_output_graph_uri
       sparql_service_url: sparql_service_url
       graphdb_file: step2/rdf_upload_logs
     out: [execute_sparql_logs]

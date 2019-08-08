@@ -37,12 +37,12 @@ inputs:
     inputBinding:
       position: 4
       prefix: -pw
-  input_graph_uri:
+  sparql_input_graph_uri:
     type: string
     inputBinding:
       position: 5
       prefix: --var-inputGraph
-  output_graph_uri:
+  sparql_output_graph_uri:
     type: string
     inputBinding:
       position: 6

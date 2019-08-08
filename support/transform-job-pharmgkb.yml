@@ -9,8 +9,8 @@ tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/pharmgkb"
 
 # RdfUpload params
 upload_method: HTTP
-triplestore_url: http://graphdb:7200
-triplestore_repository: test
+sparql_triplestore_url: http://graphdb:7200
+sparql_triplestore_repository: test
 
 # Split params
 split_property: https://w3id.org/data2services/model/Pmids
@@ -19,9 +19,8 @@ split_delimiter: ";"
 split_quote: "'"
 
 # Execute SPARQL conversion queries
-sparql_endpoint: http://graphdb:7200/repositories/test/statements
 sparql_username: emonet
 sparql_password: PASSWORD
-output_graph_uri: https://w3id.org/data2services/graph/biolink/pharmgkb
+sparql_output_graph_uri: https://w3id.org/data2services/graph/biolink/pharmgkb
 sparql_service_url: "http://localhost:7200/repositories/test"
 sparql_queries_path: /data/mapping/pharmgkb

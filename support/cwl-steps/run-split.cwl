@@ -18,7 +18,7 @@ inputs:
     type: string
   dataset:
     type: string
-  sparql_endpoint:
+  sparql_triplestore_url:
     type: string
     inputBinding:
       position: 1

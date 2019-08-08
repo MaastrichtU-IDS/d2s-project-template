@@ -23,12 +23,12 @@ inputs:
       prefix: -m
   nquads_file:
     type: File
-  triplestore_url:
+  sparql_triplestore_url:
     type: string
     inputBinding:
       position: 2
       prefix: -url
-  triplestore_repository:
+  sparql_triplestore_repository:
     type: string
     inputBinding:
       position: 3
