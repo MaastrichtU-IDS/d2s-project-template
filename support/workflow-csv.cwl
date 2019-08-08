@@ -81,8 +81,8 @@ steps:
       dataset: dataset
       nquads_file: step3/nquads_file_output
       upload_method: upload_method
-      sparql_triplestore_url: triplestore_url
-      sparql_triplestore_repository: triplestore_repository
+      sparql_triplestore_url: sparql_triplestore_url
+      sparql_triplestore_repository: sparql_triplestore_repository
     out: [rdf_upload_logs]
 
   step6:
@@ -91,7 +91,8 @@ steps:
       working_directory: working_directory
       dataset: dataset
       sparql_queries_path: sparql_queries_path
-      sparql_endpoint: sparql_endpoint
+      sparql_triplestore_url: sparql_triplestore_url
+      sparql_triplestore_repository: sparql_triplestore_repository
       sparql_username: sparql_username
       sparql_password: sparql_password
       sparql_input_graph_uri: tmp_graph_uri

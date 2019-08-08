@@ -22,35 +22,40 @@ inputs:
     inputBinding:
       position: 1
       prefix: -f
-  sparql_endpoint:
+  sparql_triplestore_url:
     type: string
     inputBinding:
       position: 2
       prefix: -ep
-  sparql_username:
+  sparql_triplestore_repository:
     type: string
     inputBinding:
       position: 3
+      prefix: -rep
+  sparql_username:
+    type: string
+    inputBinding:
+      position: 4
       prefix: -un
   sparql_password:
     type: string
     inputBinding:
-      position: 4
+      position: 5
       prefix: -pw
   sparql_input_graph_uri:
     type: string
     inputBinding:
-      position: 5
+      position: 6
       prefix: --var-inputGraph
   sparql_output_graph_uri:
     type: string
     inputBinding:
-      position: 6
+      position: 7
       prefix: --var-outputGraph
   sparql_service_url:
     type: string
     inputBinding:
-      position: 7
+      position: 8
       prefix: --var-serviceUrl
   graphdb_file:
     type: File

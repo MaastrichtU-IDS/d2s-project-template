@@ -23,7 +23,7 @@ inputs:
     inputBinding:
       position: 1
       prefix: -ep
-  sparql_repository:
+  sparql_triplestore_repository:
     type: string
     inputBinding:
       position: 2
