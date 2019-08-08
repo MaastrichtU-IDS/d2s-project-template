@@ -16,23 +16,17 @@ inputs:
     type: string
   dataset:
     type: string
-  upload_method:
-    type: string?
-    default: HTTP
-    inputBinding:
-      position: 1
-      prefix: -m
   nquads_file:
     type: File
   sparql_triplestore_url:
     type: string
     inputBinding:
-      position: 2
+      position: 1
       prefix: -url
   sparql_triplestore_repository:
     type: string
     inputBinding:
-      position: 3
+      position: 2
       prefix: -rep
 
 stdout: rdf-upload.txt

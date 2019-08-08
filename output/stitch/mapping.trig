@@ -14,22 +14,22 @@ rr:subjectMap [
   rr:termType rr:IRI;
   rr:template "https://w3id.org/data2services/data/input/stitch/chemical_chemical.links.v5.0.extract2000.tsv/{autor2rml_rownum}";
   rr:class <https://w3id.org/data2services/data/input/stitch/chemical_chemical.links.v5.0.extract2000.tsv>;
-  rr:graph <https://w3id.org/data2services/graph/autor2rml>;
+  rr:graph <https://w3id.org/data2services/graph/autor2rml/stitch>;
 ];
 rr:predicateObjectMap [
   rr:predicate <https://w3id.org/data2services/model/Chemical1>;
   rr:objectMap [ rr:column "Chemical1" ];
-  rr:graph <https://w3id.org/data2services/graph/autor2rml>;
+  rr:graph <https://w3id.org/data2services/graph/autor2rml/stitch>;
 ];
 rr:predicateObjectMap [
   rr:predicate <https://w3id.org/data2services/model/Chemical2>;
   rr:objectMap [ rr:column "Chemical2" ];
-  rr:graph <https://w3id.org/data2services/graph/autor2rml>;
+  rr:graph <https://w3id.org/data2services/graph/autor2rml/stitch>;
 ];
 rr:predicateObjectMap [
   rr:predicate <https://w3id.org/data2services/model/Textmining>;
   rr:objectMap [ rr:column "Textmining" ];
-  rr:graph <https://w3id.org/data2services/graph/autor2rml>;
+  rr:graph <https://w3id.org/data2services/graph/autor2rml/stitch>;
 ];
 .
 

@@ -10,7 +10,6 @@ sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/pharmgkb"
 
 
 # RdfUpload params
-#upload_method: HTTP
 sparql_triplestore_url: http://graphdb:7200
 sparql_triplestore_repository: test
 

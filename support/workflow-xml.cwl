@@ -13,7 +13,6 @@ inputs:
 
   sparql_tmp_graph_uri: string?
 
-  upload_method: string
   sparql_triplestore_url: string
   sparql_triplestore_repository: string
 
@@ -55,7 +54,6 @@ steps:
       working_directory: working_directory
       dataset: dataset
       nquads_file: step1/nquads_file_output
-      upload_method: upload_method
       sparql_triplestore_url: sparql_triplestore_url
       sparql_triplestore_repository: sparql_triplestore_repository
     out: [rdf_upload_logs]
