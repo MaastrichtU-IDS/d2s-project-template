@@ -31,7 +31,7 @@ inputs:
     inputBinding:
       position: 2
       prefix: -b
-  tmp_graph_uri:
+  sparql_tmp_graph_uri:
     type: string?
     default: https://w3id.org/data2services/graph/autor2rml
     inputBinding:

@@ -4,7 +4,7 @@ dataset: eggnog
 
 # R2RML params
 input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
-tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/eggnog"
+sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/eggnog"
 
 # RdfUpload params
 sparql_triplestore_url: http://graphdb:7200

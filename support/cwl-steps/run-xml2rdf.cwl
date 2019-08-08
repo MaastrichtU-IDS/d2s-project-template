@@ -20,7 +20,7 @@ inputs:
     type: string
   dataset:
     type: string
-  tmp_graph_uri:
+  sparql_tmp_graph_uri:
     type: string?
     default: https://w3id.org/data2services/graph/xml2rdf
     inputBinding:

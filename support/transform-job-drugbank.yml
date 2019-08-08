@@ -3,7 +3,7 @@ working_directory: /home/vemonet/kraken/data2services-transform-biolink
 dataset: drugbank
 
 # xml2rdf params
-tmp_graph_uri: "https://w3id.org/data2services/graph/xml2rdf/drugbank"
+sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/xml2rdf/drugbank"
 
 # RdfUpload params
 sparql_triplestore_url: http://graphdb:7200

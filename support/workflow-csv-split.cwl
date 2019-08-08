@@ -15,7 +15,7 @@ inputs:
 
   autor2rml_column_header: string?
   tmp_base_uri: string?
-  tmp_graph_uri: string?
+  sparql_tmp_graph_uri: string?
 
   upload_method: string?
   sparql_triplestore_url: string
@@ -63,7 +63,7 @@ steps:
       input_data_jdbc: input_data_jdbc
       autor2rml_column_header: autor2rml_column_header
       tmp_base_uri: tmp_base_uri
-      tmp_graph_uri: tmp_graph_uri
+      sparql_tmp_graph_uri: sparql_tmp_graph_uri
     out: [r2rml_trig_file_output]
 
   step2:
@@ -122,7 +122,7 @@ steps:
       sparql_triplestore_repository: sparql_triplestore_repository
       sparql_username: sparql_username
       sparql_password: sparql_password
-      sparql_input_graph_uri: tmp_graph_uri
+      sparql_input_graph_uri: sparql_tmp_graph_uri
       sparql_service_url: sparql_service_url
       sparql_output_graph_uri: sparql_output_graph_uri
       graphdb_file: step5/execute_split_logs
