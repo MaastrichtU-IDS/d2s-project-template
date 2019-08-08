@@ -17,7 +17,8 @@ inputs:
   dataset:
     type: string
   upload_method:
-    type: string
+    type: string?
+    default: HTTP
     inputBinding:
       position: 1
       prefix: -m

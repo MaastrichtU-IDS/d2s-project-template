@@ -6,7 +6,6 @@ dataset: drugbank
 tmp_graph_uri: "https://w3id.org/data2services/graph/xml2rdf/drugbank"
 
 # RdfUpload params
-upload_method: HTTP
 sparql_triplestore_url: http://graphdb:7200
 sparql_triplestore_repository: test
 

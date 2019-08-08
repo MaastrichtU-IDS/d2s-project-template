@@ -14,21 +14,21 @@ inputs:
   input_data_jdbc: string
 
   autor2rml_column_header: string?
-  tmp_base_uri: string
-  tmp_graph_uri: string
+  tmp_base_uri: string?
+  tmp_graph_uri: string?
 
-  upload_method: string
+  upload_method: string?
   sparql_triplestore_url: string
   sparql_triplestore_repository: string
 
   split_property: string
   split_class: string
   split_delimiter: string
-  split_quote: string
+  split_quote: string?
 
   sparql_queries_path: string
-  sparql_username: string
-  sparql_password: string
+  sparql_username: string?
+  sparql_password: string?
   sparql_output_graph_uri: string
   sparql_service_url: string
 

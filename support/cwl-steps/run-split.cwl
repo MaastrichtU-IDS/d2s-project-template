@@ -29,12 +29,12 @@ inputs:
       position: 2
       prefix: -rep
   sparql_username:
-    type: string
+    type: string?
     inputBinding:
       position: 3
       prefix: -un
   sparql_password:
-    type: string
+    type: string?
     inputBinding:
       position: 4
       prefix: -pw
@@ -54,7 +54,7 @@ inputs:
       position: 7
       prefix: --split-delimiter
   split_quote:
-    type: string
+    type: string?
     inputBinding:
       position: 8
       prefix: --split-quote

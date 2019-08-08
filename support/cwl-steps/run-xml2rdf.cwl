@@ -21,7 +21,8 @@ inputs:
   dataset:
     type: string
   tmp_graph_uri:
-    type: string
+    type: string?
+    default: https://w3id.org/data2services/graph/xml2rdf
     inputBinding:
       position: 3
       prefix: -g

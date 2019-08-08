@@ -33,17 +33,17 @@ inputs:
       position: 3
       prefix: -rep
   sparql_username:
-    type: string
+    type: string?
     inputBinding:
       position: 4
       prefix: -un
   sparql_password:
-    type: string
+    type: string?
     inputBinding:
       position: 5
       prefix: -pw
   sparql_input_graph_uri:
-    type: string
+    type: string?
     inputBinding:
       position: 6
       prefix: --var-inputGraph

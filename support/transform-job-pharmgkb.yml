@@ -4,11 +4,9 @@ dataset: pharmgkb
 
 # R2RML params
 input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
-tmp_base_uri: "https://w3id.org/data2services/"
 tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/pharmgkb"
 
 # RdfUpload params
-upload_method: HTTP
 sparql_triplestore_url: http://graphdb:7200
 sparql_triplestore_repository: test
 
@@ -16,7 +14,7 @@ sparql_triplestore_repository: test
 split_property: https://w3id.org/data2services/model/Pmids
 split_class: https://w3id.org/data2services/data/input/pharmgkb/relationships_extract101.tsv
 split_delimiter: ";"
-split_quote: "'"
+split_quote: '"'
 
 # Execute SPARQL conversion queries
 sparql_username: emonet

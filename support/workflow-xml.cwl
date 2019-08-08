@@ -11,7 +11,7 @@ inputs:
   working_directory: string 
   dataset: string
 
-  tmp_graph_uri: string
+  tmp_graph_uri: string?
 
   upload_method: string
   sparql_triplestore_url: string

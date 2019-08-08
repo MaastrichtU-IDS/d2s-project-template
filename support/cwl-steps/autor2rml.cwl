@@ -22,18 +22,17 @@ inputs:
     type: string
   input_data_jdbc:
     type: string
-    default: jdbc:drill:drillbit=drill:31010
     inputBinding:
       position: 1
       prefix: -j
   tmp_base_uri:
-    type: string
+    type: string?
     default: https://w3id.org/data2services/
     inputBinding:
       position: 2
       prefix: -b
   tmp_graph_uri:
-    type: string
+    type: string?
     default: https://w3id.org/data2services/graph/autor2rml
     inputBinding:
       position: 3
