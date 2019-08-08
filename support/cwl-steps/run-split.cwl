@@ -27,7 +27,7 @@ inputs:
     type: string
     inputBinding:
       position: 2
-      prefix: -uep
+      prefix: -rep
   sparql_username:
     type: string
     inputBinding:
