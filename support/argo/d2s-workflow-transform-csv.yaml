@@ -1,0 +1,58 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: d2s-workflow-transform-csv-
+spec:
+  entrypoint: execute-workflow
+
+  volumeClaimTemplates:                 # define volume, same syntax as k8s Pod spec
+  - metadata:
+      name: workdir                     # name of volume claim
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi                  # Gi => 1024 * 1024 * 1024
+
+  templates:
+  - name: execute-workflow
+    steps:
+    - - name: run-download
+        template: d2s-download
+        arguments:
+          parameters:
+          - name: datasetToProcess
+            value: pharmgkb
+    - - name: run-autor2rml
+        template: autor2rml
+        arguments:
+          parameters:
+          - name: jdbcUrl
+            value: jdbc:drill:drillbit=drill:31010  # how to link to Apache Drill service?
+          - name: graphUri
+            value: https://w3id.org/data2services/graph/autor2rml/pharmgkb
+
+
+  - name: d2s-download
+    inputs:
+      parameters:
+      - name: datasetToProcess
+    container:
+      image: vemonet/data2services-download
+      args: [ "--download-datasets", "{{inputs.parameters.datasetToProcess}}" ]
+      volumeMounts:
+      - name: workdir
+        mountPath: /data
+
+  - name: autor2rml
+    inputs:
+      parameters:
+      - name: jdbcUrl
+      - name: graphUri
+    container:
+      image: vemonet/autor2rml
+      args: ["-ep", "http://graphdb.dumontierlab.com", "-rep", "{{inputs.parameters.repository}}", 
+    "-op", "update", "-un", "import_user", "-pw", "test", "-f", "{{inputs.parameters.executeFile}}"]
+      volumeMounts:
+      - name: workdir
+        mountPath: /data
