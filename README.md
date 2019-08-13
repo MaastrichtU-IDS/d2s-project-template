@@ -1,9 +1,17 @@
 # data2services-transform-biolink
 
-Services must be running before running the CWL workflows
+The [Common Workflow Language](https://www.commonwl.org/) is used to describe workflows to transform heterogeneous structured data (CSV, TSV, RDB, XML, JSON) to the [BioLink](https://biolink.github.io/biolink-model/docs/) RDF data model. The user defines [SPARQL queries](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/mapping/pharmgkb/insert-pharmgkb.rq) to transform the generic RDF generated depending on the input data structure (AutoR2RML, xml2rdf) to the target BioLink model.
+
+* Install [cwltool](https://github.com/common-workflow-language/cwltool#install) to get cwl-runner.
+
+* Those workflows use Data2Service modules, install the one you need from [data2services-pipeline](https://github.com/MaastrichtU-IDS/data2services-pipeline) using [Docker](https://docs.docker.com/install/).
+
+## Start services
+
+[Apache Drill](https://github.com/amalic/apache-drill) and [GraphDB](https://github.com/MaastrichtU-IDS/graphdb/) services must be running before executing CWL workflows.
 
 ```shell
-# Apache Drill with shared volume with this repository. Here in /data
+# Apache Drill with shared volume with this repository. Here in located in /data
 docker run -dit --rm -p 8047:8047 -p 31010:31010 --name drill \ 
   -v /data/data2services-transform-biolink/:/data:ro \
   apache-drill
@@ -15,7 +23,7 @@ docker run -d --rm --name graphdb -p 7200:7200 \
   graphdb
 ```
 
-## AutoR2RML
+## CSV AutoR2RML
 
 ```shell
 cwl-runner support/workflow-csv.cwl support/transform-job-stitch.yml
@@ -24,7 +32,7 @@ cwl-runner support/workflow-csv.cwl support/transform-job-stitch.yml
 cwl-runner --outdir output/stitch support/workflow-csv.cwl support/transform-job-stitch.yml
 ```
 
-## AutoR2RML Split
+## CSV AutoR2RML Split
 
 ```shell
 cwl-runner --outdir output/eggnog support/workflow-csv-split.cwl support/transform-job-eggnog.yml
