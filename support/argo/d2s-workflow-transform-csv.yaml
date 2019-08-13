@@ -58,6 +58,10 @@ spec:
     daemon: true                        # start influxdb as a daemon
     container:
       image: vemonet/apache-drill
+      volumeMounts:
+        - name: workdir
+          mountPath: /data
+          # Add readonly for apache-drill
       #restartPolicy: Always             # restart container if it fails
       readinessProbe:                   # wait for readinessProbe to succeed
         httpGet:
