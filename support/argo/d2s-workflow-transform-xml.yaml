@@ -22,9 +22,7 @@ spec:
     - name: datasetToProcess
       value: drugbank
     - name: downloadUsername
-      value: download_username
-    - name: downloadPassword
-      value: password_username
+      value: my_download_username
     - name: graphUri
       value: https://w3id.org/data2services/graph/xml2rdf
     - name: sparqlEndpoint
@@ -33,8 +31,6 @@ spec:
       value: test
     - name: sparqlUsername
       value: import_user
-    - name: sparqlPassword
-      value: test
 
   templates:
   - name: execute-workflow
@@ -52,7 +48,13 @@ spec:
       image: vemonet/data2services-download:latest
       args: [ "--download-datasets", "{{workflow.parameters.datasetToProcess}}", 
       "--username", "{{workflow.parameters.downloadUsername}}", 
-      "--password", "{{workflow.parameters.downloadPassword}}" ]
+      "--password", "$DOWNLOADPASSWORD" ]
+      env:
+      - name: DOWNLOADPASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: d2s-download-password
+            key: password
       volumeMounts:
       - name: workdir
         mountPath: /data
@@ -71,7 +73,13 @@ spec:
       args: ["-url", "{{workflow.parameters.sparqlEndpoint}}", 
       "-rep", "{{workflow.parameters.sparqlRepository}}", 
       "-if", "/data/rdf_output.nq", 
-      "-un", "{{workflow.parameters.sparqlUsername}}", "-pw", "{{workflow.parameters.sparqlPassword}}"]
+      "-un", "{{workflow.parameters.sparqlUsername}}", "-pw", "$SPARQLPASSWORD"]
+      env:
+      - name: SPARQLPASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: d2s-sparql-password
+            key: password
       volumeMounts:
       - name: workdir
         mountPath: /data
