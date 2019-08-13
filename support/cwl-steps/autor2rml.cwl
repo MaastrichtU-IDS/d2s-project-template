@@ -7,7 +7,7 @@ label: Data2Services tool run AutoR2RML to generate mappings, Ammar Ammar <ammar
 
 baseCommand: [docker, run]
 
-arguments: [ "--rm", "--link","drill:drill", "-v" , "$(inputs.working_directory):/data", "-v", "$(runtime.outdir):/tmp", "autor2rml", "-r", "-o", "/tmp/mapping.trig", "-d", "/data/input/$(inputs.dataset)"]
+arguments: [ "--rm", "--link","drill:drill", "-v" , "$(inputs.working_directory):/data", "-v", "$(runtime.outdir):/tmp", "vemonet/autor2rml", "-r", "-o", "/tmp/mapping.trig", "-d", "/data/input/$(inputs.dataset)"]
 
 requirements:
   EnvVarRequirement:
