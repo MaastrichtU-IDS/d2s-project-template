@@ -22,11 +22,11 @@ spec:
     - name: datasetToProcess
       value: drugbank
     - name: downloadUsername
-      value: vincent.emonet@maastrichtuniversity.nl
+      value: download_username
     - name: downloadPassword
-      value: maasitest12
+      value: password_username
     - name: graphUri
-      value: https://w3id.org/data2services/graph/xml2rdf/drugbank
+      value: https://w3id.org/data2services/graph/xml2rdf
     - name: sparqlEndpoint
       value: http://node000002.cluster.ids.unimaas.nl/
     - name: sparqlRepository

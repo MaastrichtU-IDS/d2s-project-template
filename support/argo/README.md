@@ -31,6 +31,9 @@ Get the command with the token from the `Copy Login Command` button in the user 
 
 ```shell
 argo submit --watch d2s-sparql-workflow.yaml
+
+# Define params in a separate YAML file (no _ in params name)
+argo submit d2s-workflow-transform-xml.yaml -f workflow-params-drugbank.yml
 ```
 
 
