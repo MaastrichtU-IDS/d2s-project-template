@@ -13,28 +13,30 @@ The [Common Workflow Language](https://www.commonwl.org/) is used to describe wo
 ```shell
 # Apache Drill with shared volume with this repository. Here in located in /data
 docker run -dit --rm -v /data/data2services-transform-biolink:/data:ro -p 8047:8047 -p 31010:31010 --name drill apache-drill
-  
+
 # GraphDB shared on /data
 docker run -d --rm --name graphdb -p 7200:7200 -v /data/graphdb:/opt/graphdb/home -v /data/graphdb-import:/root/graphdb-import graphdb
 ```
 
-## CSV AutoR2RML
+## Run with CWL
+
+### CSV AutoR2RML
 
 ```shell
-cwl-runner support/workflow-csv.cwl support/transform-job-stitch.yml
+cwl-runner support/cwl/workflow-csv.cwl support/cwl/transform-job-stitch.yml
 
 # With defined output directory
-cwl-runner --outdir output/stitch support/workflow-csv.cwl support/transform-job-stitch.yml
+cwl-runner --outdir output/stitch support/cwl/workflow-csv.cwl support/cwl/transform-job-stitch.yml
 ```
 
-## CSV AutoR2RML Split
+### CSV AutoR2RML Split
 
 ```shell
-cwl-runner --outdir output/eggnog support/workflow-csv-split.cwl support/transform-job-eggnog.yml
+cwl-runner --outdir output/eggnog support/cwl/workflow-csv-split.cwl support/cwl/transform-job-eggnog.yml
 ```
 
-## XML
+### XML
 
 ```shell
-cwl-runner --outdir output/drugbank support/workflow-xml.cwl support/transform-job-drugbank.yml
+cwl-runner --outdir output/drugbank support/cwl/workflow-xml.cwl support/cwl/transform-job-drugbank.yml
 ```

@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  labels:
+    purpose: execute-sparql-operations
+  name: d2s-sparql-operations-job
+  namespace: data2services-test
+spec:
+  parallelism: 1
+  completions: 1
+  template:
+    metadata:
+      name: sparql-job
+    spec:
+      containers:
+      - name: d2s-sparql-operations
+        image: vemonet/data2services-sparql-operations
+        env:
+        - name: triplestore_url
+          value: "http://graphdb.dumontierlab.com"
+        - name: triplestore_repository
+          value: "public"
+        - name: sparql_username
+          value: "import_user"
+        - name: sparql_password
+          value: "test"
+        - name: input_file
+          value: "https://raw.githubusercontent.com/MaastrichtU-IDS/data2services-sparql-operations/master/src/main/resources/example-insert.rq"
+        args: ["-ep", "$(triplestore_url)", "-rep", "$(triplestore_repository)", "-op", "update", "-un", "$(sparql_username)", "-pw", "$(sparql_password)", "-f", "$(input_file)"]
+      restartPolicy: OnFailure

@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: d2s-sparql-operations-workflow-
+spec:
+  entrypoint: execute-all-sparql
+
+  templates:
+  - name: d2s-sparql-operations
+    inputs:
+      parameters:
+      - name: repository
+      - name: executeFile
+    container:
+      image: vemonet/data2services-sparql-operations
+      args: ["-ep", "http://graphdb.dumontierlab.com", "-rep", "{{inputs.parameters.repository}}", 
+    "-op", "update", "-un", "import_user", "-pw", "test", "-f", "{{inputs.parameters.executeFile}}"]
+
+  - name: execute-all-sparql
+    steps:
+    - - name: execute1
+        template: d2s-sparql-operations
+        arguments:
+          parameters:
+          - name: executeFile
+            value: https://raw.githubusercontent.com/MaastrichtU-IDS/data2services-sparql-operations/master/src/main/resources/example-insert.rq
+          - name: repository
+            value: public
+    - - name: execute2
+        template: d2s-sparql-operations
+        arguments:
+          parameters:
+          - name: executeFile
+            value: https://raw.githubusercontent.com/MaastrichtU-IDS/data2services-sparql-operations/master/src/main/resources/example-insert.rq
+          - name: repository
+            value: test
