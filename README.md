@@ -12,15 +12,10 @@ The [Common Workflow Language](https://www.commonwl.org/) is used to describe wo
 
 ```shell
 # Apache Drill with shared volume with this repository. Here in located in /data
-docker run -dit --rm -p 8047:8047 -p 31010:31010 --name drill \ 
-  -v /data/data2services-transform-biolink/:/data:ro \
-  apache-drill
+docker run -dit --rm -v /data/data2services-transform-biolink:/data:ro -p 8047:8047 -p 31010:31010 --name drill apache-drill
   
 # GraphDB shared on /data
-docker run -d --rm --name graphdb -p 7200:7200 \
-  -v /data/graphdb:/opt/graphdb/home \
-  -v /data/graphdb-import:/root/graphdb-import \
-  graphdb
+docker run -d --rm --name graphdb -p 7200:7200 -v /data/graphdb:/opt/graphdb/home -v /data/graphdb-import:/root/graphdb-import graphdb
 ```
 
 ## CSV AutoR2RML

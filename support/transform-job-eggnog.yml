@@ -1,4 +1,4 @@
-working_directory: /home/vemonet/kraken/data2services-transform-biolink
+working_directory: /data/data2services-transform-biolink
 
 dataset: eggnog
 
