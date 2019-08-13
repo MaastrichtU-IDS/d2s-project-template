@@ -17,78 +17,61 @@ spec:
         requests:
           storage: 100Gi                  # Gi => 1024 * 1024 * 1024
 
+  arguments:
+    parameters:
+    - name: datasetToProcess
+      value: drugbank
+    - name: downloadUsername
+      value: vincent.emonet@maastrichtuniversity.nl
+    - name: downloadPassword
+      value: maasitest12
+    - name: graphUri
+      value: https://w3id.org/data2services/graph/xml2rdf/drugbank
+    - name: sparqlEndpoint
+      value: http://node000002.cluster.ids.unimaas.nl/
+    - name: sparqlRepository
+      value: test
+    - name: sparqlUsername
+      value: import_user
+    - name: sparqlPassword
+      value: test
+
   templates:
   - name: execute-workflow
     steps:
     - - name: run-download
         template: d2s-download
-        arguments:
-          parameters:
-          - name: datasetToProcess
-            value: drugbank
-          - name: downloadUsername
-            value: vincent.emonet@maastrichtuniversity.nl
-          - name: downloadPassword
-            value: maasitest12
     - - name: run-xml2rdf
         template: xml2rdf
-        arguments:
-          parameters:
-          - name: graphUri
-            value: https://w3id.org/data2services/graph/xml2rdf/drugbank
     - - name: run-rdf-upload
         template: rdf-upload
-        arguments:
-          parameters:
-          - name: sparqlEndpoint
-            value: http://node000002.cluster.ids.unimaas.nl/
-          - name: sparqlRepository
-            value: test
-          - name: sparqlUsername
-            value: import_user
-          - name: sparqlPassword
-            value: test
 
 
   - name: d2s-download
-    inputs:
-      parameters:
-      - name: datasetToProcess
-      - name: downloadUsername
-      - name: downloadPassword
     container:
       image: vemonet/data2services-download:latest
-      args: [ "--download-datasets", "{{inputs.parameters.datasetToProcess}}", 
-      "--username", "{{inputs.parameters.downloadUsername}}", 
-      "--password", "{{inputs.parameters.downloadPassword}}" ]
+      args: [ "--download-datasets", "{{workflow.parameters.datasetToProcess}}", 
+      "--username", "{{workflow.parameters.downloadUsername}}", 
+      "--password", "{{workflow.parameters.downloadPassword}}" ]
       volumeMounts:
       - name: workdir
         mountPath: /data
 
   - name: xml2rdf
-    inputs:
-      parameters:
-      - name: graphUri
     container:
       image: vemonet/xml2rdf:latest
-      args: [ "-i", "/data/drugbank/drugbank/*.xml", "-o", "/data/rdf_output.nq", "-g", "{{inputs.parameters.graphUri}}" ]
+      args: [ "-i", "/data/{{workflow.parameters.datasetToProcess}}/*.xml", "-o", "/data/rdf_output.nq", "-g", "{{workflow.parameters.graphUri}}" ]
       volumeMounts:
       - name: workdir
         mountPath: /data
 
   - name: rdf-upload
-    inputs:
-      parameters:
-      - name: sparqlEndpoint
-      - name: sparqlRepository
-      - name: sparqlUsername
-      - name: sparqlPassword
     container:
       image: vemonet/rdf-upload:latest
-      args: ["-url", "{{inputs.parameters.sparqlEndpoint}}", 
-      "-rep", "{{inputs.parameters.sparqlRepository}}", 
+      args: ["-url", "{{workflow.parameters.sparqlEndpoint}}", 
+      "-rep", "{{workflow.parameters.sparqlRepository}}", 
       "-if", "/data/rdf_output.nq", 
-      "-un", "{{inputs.parameters.sparqlUsername}}", "-pw", "{{inputs.parameters.sparqlPassword}}"]
+      "-un", "{{workflow.parameters.sparqlUsername}}", "-pw", "{{workflow.parameters.sparqlPassword}}"]
       volumeMounts:
       - name: workdir
         mountPath: /data
