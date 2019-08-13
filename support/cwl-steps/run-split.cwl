@@ -4,13 +4,14 @@ cwlVersion: v1.0
 class: CommandLineTool
 
 
-label: Data2Services tool split RDF statements, Ammar Ammar <vincent.emonet@gmail.com> 
+label: Data2Services tool split RDF statements, Vincent Emonet <vincent.emonet@gmail.com> 
 
 
 baseCommand: [docker, run]
 
-arguments: ["--rm","--link","graphdb:graphdb", "-v" , "$(inputs.working_directory):/data","-v", "$(runtime.outdir):/tmp", "-v", "$(inputs.graphdb_file.path):/tmp/$(inputs.graphdb_file.basename)", 
-"vemonet/data2services-sparql-operations", "-op", "split", "--split-delete"]
+arguments: [ "--rm", "--link","graphdb:graphdb", "-v" , "$(inputs.working_directory):/data", "-v", "$(runtime.outdir):/tmp", 
+"-v", "$(inputs.graphdb_file.path):/tmp/$(inputs.graphdb_file.basename)", 
+"vemonet/data2services-sparql-operations", "-op", "split", "--split-delete" ]
 
 inputs:
 

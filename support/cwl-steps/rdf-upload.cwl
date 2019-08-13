@@ -3,12 +3,14 @@
 cwlVersion: v1.0
 class: CommandLineTool
 
-label: Data2Services tool Upload RDF, Ammar Ammar <ammar257ammar@gmail.com> 
+label: Data2Services tool to Upload RDF to a SPARQL endpoint, Ammar Ammar <ammar257ammar@gmail.com> 
 
 
 baseCommand: [docker, run]
 
-arguments: ["--rm","--link","graphdb:graphdb", "-v" , "$(inputs.working_directory):/data","-v", "$(runtime.outdir):/tmp", "-v", "$(inputs.nquads_file.path):/tmp/$(inputs.nquads_file.basename)", "vemonet/rdf-upload", "-if", "/tmp/$(inputs.nquads_file.basename)"]
+arguments: [ "--rm", "--link","graphdb:graphdb", "-v" , "$(inputs.working_directory):/data", "-v", "$(runtime.outdir):/tmp", 
+"-v", "$(inputs.nquads_file.path):/tmp/$(inputs.nquads_file.basename)", 
+"vemonet/rdf-upload", "-if", "/tmp/$(inputs.nquads_file.basename)"]
 
 inputs:
   

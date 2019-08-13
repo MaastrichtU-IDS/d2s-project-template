@@ -3,14 +3,15 @@
 cwlVersion: v1.0
 class: CommandLineTool
 
-label: Data2Services tool generate R2RML config file, Ammar Ammar <ammar257ammar@gmail.com>
+label: Data2Services tool to generate R2RML config file, Ammar Ammar <ammar257ammar@gmail.com>
 
 baseCommand: echo
 
 requirements:
   - class: ShellCommandRequirement
 
-arguments: ["connectionURL = $(inputs.input_data_jdbc)\nmappingFile = /tmp/$(inputs.r2rml_trig_file.basename)\noutputFile = /tmp/rdf_output.nq\nformat = NQUADS", ">", "config.properties"]
+arguments: [ "connectionURL = $(inputs.input_data_jdbc)\nmappingFile = /tmp/$(inputs.r2rml_trig_file.basename)\noutputFile = /tmp/rdf_output.nq\nformat = NQUADS", 
+">", "config.properties" ]
 
 inputs:
   

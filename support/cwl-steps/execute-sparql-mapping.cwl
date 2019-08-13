@@ -3,13 +3,14 @@
 cwlVersion: v1.0
 class: CommandLineTool
 
-label: Data2Services tool execute SPARQL queries, Ammar Ammar <ammar257ammar@gmail.com> 
+label: Data2Services tool to execute SPARQL queries, Ammar Ammar <ammar257ammar@gmail.com> 
 
 
 baseCommand: [docker, run]
 
-arguments: ["--rm","--link","graphdb:graphdb", "-v" , "$(inputs.working_directory):/data","-v", "$(runtime.outdir):/tmp", "-v", "$(inputs.graphdb_file.path):/tmp/$(inputs.graphdb_file.basename)", 
-"vemonet/data2services-sparql-operations"]
+arguments: [ "--rm", "--link","graphdb:graphdb", "-v" , "$(inputs.working_directory):/data", "-v", "$(runtime.outdir):/tmp", 
+"-v", "$(inputs.graphdb_file.path):/tmp/$(inputs.graphdb_file.basename)", 
+"vemonet/data2services-sparql-operations" ]
 
 inputs:
 

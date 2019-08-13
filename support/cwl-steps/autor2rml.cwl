@@ -3,11 +3,12 @@
 cwlVersion: v1.0
 class: CommandLineTool
 
-label: Data2Services tool run AutoR2RML to generate mappings, Ammar Ammar <ammar257ammar@gmail.com> 
+label: Data2Services tool to run AutoR2RML to generate R2RML mappings, Ammar Ammar <ammar257ammar@gmail.com> 
 
 baseCommand: [docker, run]
 
-arguments: [ "--rm", "--link","drill:drill", "-v" , "$(inputs.working_directory):/data", "-v", "$(runtime.outdir):/tmp", "vemonet/autor2rml", "-r", "-o", "/tmp/mapping.trig", "-d", "/data/input/$(inputs.dataset)"]
+arguments: [ "--rm", "--link","drill:drill", "-v" , "$(inputs.working_directory):/data", "-v", "$(runtime.outdir):/tmp", 
+"vemonet/autor2rml", "-r", "-o", "/tmp/mapping.trig", "-d", "/data/input/$(inputs.dataset)"]
 
 requirements:
   EnvVarRequirement:
