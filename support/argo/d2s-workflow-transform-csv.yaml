@@ -14,45 +14,65 @@ spec:
         requests:
           storage: 1Gi                  # Gi => 1024 * 1024 * 1024
 
+
+  arguments:
+    parameters:
+    - name: datasetToProcess
+      value: pharmgkb
+    - name: downloadUsername
+      value: my_download_username
+    - name: graphUri
+      value: https://w3id.org/data2services/graph/autor2rml
+    - name: sparqlEndpoint
+      value: http://node000002.cluster.ids.unimaas.nl/
+    - name: sparqlRepository
+      value: test
+    - name: sparqlUsername
+      value: import_user
+
+
   templates:
   - name: execute-workflow
     steps:
-    - - name: run-download
-        template: d2s-download
-        arguments:
-          parameters:
-          - name: datasetToProcess
-            value: pharmgkb
+   # - - name: run-download
+   #     template: d2s-download
+    - - name: drill
+        template: apache-drill
     - - name: run-autor2rml
         template: autor2rml
         arguments:
           parameters:
           - name: jdbcUrl
-            value: jdbc:drill:drillbit=drill:31010  # how to link to Apache Drill service?
-          - name: graphUri
-            value: https://w3id.org/data2services/graph/autor2rml/pharmgkb
+            value: jdbc:drill:drillbit={{steps.drill.ip}}:31010
 
 
   - name: d2s-download
-    inputs:
-      parameters:
-      - name: datasetToProcess
     container:
       image: vemonet/data2services-download
-      args: [ "--download-datasets", "{{inputs.parameters.datasetToProcess}}" ]
+      args: [ "--download-datasets", "{{workflow.parameters.datasetToProcess}}" ]
       volumeMounts:
       - name: workdir
         mountPath: /data
+
+  - name: apache-drill
+    daemon: true                        # start influxdb as a daemon
+    container:
+      image: vemonet/apache-drill
+      #restartPolicy: Always             # restart container if it fails
+      readinessProbe:                   # wait for readinessProbe to succeed
+        httpGet:
+          path: /ping
+          port: 31010
 
   - name: autor2rml
     inputs:
       parameters:
       - name: jdbcUrl
-      - name: graphUri
     container:
       image: vemonet/autor2rml
-      args: ["-ep", "http://graphdb.dumontierlab.com", "-rep", "{{inputs.parameters.repository}}", 
-    "-op", "update", "-un", "import_user", "-pw", "test", "-f", "{{inputs.parameters.executeFile}}"]
+      args: ["-j", "{{inputs.parameters.jdbcUrl}}", 
+      "-o", "/data/mapping.trig", "-d", "/data",
+      "-b", "https://w3id.org/data2services/", "-g", "{{workflow.parameters.graphUri}}"]
       volumeMounts:
       - name: workdir
         mountPath: /data
