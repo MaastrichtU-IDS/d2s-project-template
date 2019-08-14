@@ -168,6 +168,7 @@ INSERT {
             dcat:accessURL ?dcatAccessURLSource ;
             dcat:landingPage ?dcatLandingPageSource ;
             dcat:downloadURL ?dcatDownloadURLSource ;
+            dcat:downloadURL ?dcatDownloadURLSource2 ;
             dcat:byteSize ?dcatByteSize
         .
 
@@ -239,12 +240,12 @@ INSERT {
 }
 WHERE 
 {
-    BIND(<https://w3id.org/data2services/dataset/string/> AS ?summaryUri) # user input. Careful, for drugbank ido uses it as void:uriSpace for a dcat:CatalogRecord
-    BIND("10.5"^^xsd:string AS ?pavVersion) # Increment it from the latest version? Or user input
+    BIND(<https://w3id.org/data2services/dataset/stitch/> AS ?summaryUri) # user input. Careful, for drugbank ido uses it as void:uriSpace for a dcat:CatalogRecord
+    BIND("5.0"^^xsd:string AS ?pavVersion) # Increment it from the latest version? Or user input
     BIND("1.0"^^xsd:string AS ?pavVersionRdf) # Increment it from the latest version? Or user input
 
     # Define the graph (A landing page, feed, SPARQL endpoint or other type of resource that gives access to the distribution of the dataset)
-    BIND(iri("https://w3id.org/data2services/graph/biolink/string") AS ?dcatAccessURL) # May. uri
+    BIND(iri("https://w3id.org/data2services/graph/biolink/stitch") AS ?dcatAccessURL) # May. uri
 
     OPTIONAL {
       ?summaryUri dct:title ?dctTitle ;
@@ -309,7 +310,8 @@ WHERE
     #BIND(:pubchem-bioassay-09-01-2014 AS ?dctSource)
 
     ## Source distribution
-    BIND(<https://stringdb-static.org/download/protein.actions.v10.5/9606.protein.actions.v10.5.txt.gz> AS ?dcatDownloadURLSource) # user input
+    BIND(<http://stitch.embl.de/download/chemical_chemical.links.detailed.v5.0.tsv.gz> AS ?dcatDownloadURLSource) # user input
+    BIND(<http://stitch.embl.de/download/protein_chemical.links.detailed.v5.0/9606.protein_chemical.links.detailed.v5.0.tsv.gz> AS ?dcatDownloadURLSource2) # user input
     #BIND("1"^^xsd:string AS ?pavVersionSource) # user input
     #BIND(<http://identifiers.org/drugbank/version#0> AS ?pavPreviousVersion)
     #BIND(<http://example.com/madeUp/editor> AS ?pavCreatedWith )
@@ -318,10 +320,10 @@ WHERE
 
     ## RDF distribution
     BIND(now() AS ?dctIssuedRdf)
-    BIND(<http://w3id.org/biolink/vocab/> AS ?voidVocabulary)
+    BIND(<https://w3id.org/biolink/vocab/> AS ?voidVocabulary)
     #BIND(<http://identifiers.org/drugbank/version#0> AS ?pavPreviousVersionRdf)
     BIND(<http://graphdb.dumontierlab.com/> AS ?dcatLandingPageRdf) 
-    BIND(<https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/string> AS ?pavCreatedWithRdf )
+    BIND(<https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/stitch> AS ?pavCreatedWithRdf )
     BIND(<http://graphdb.dumontierlab.com/graphs> AS ?dcatDownloadURLRdf)
     BIND(<http://graphdb.dumontierlab.com/graphs> AS ?voidDataDump )
 
