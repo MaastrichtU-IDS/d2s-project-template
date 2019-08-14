@@ -8,11 +8,14 @@ spec:
   volumeClaimTemplates:                 # define volume, same syntax as k8s Pod spec
   - metadata:
       name: workdir                     # name of volume claim
+      annotations:
+        volume.beta.kubernetes.io/storage-class: maprfs-ephemeral
+        volume.beta.kubernetes.io/storage-provisioner: mapr.com/maprfs
     spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
         requests:
-          storage: 1Gi                  # Gi => 1024 * 1024 * 1024
+          storage: 10Gi                  # Gi => 1024 * 1024 * 1024
 
 
   arguments:
@@ -60,8 +63,7 @@ spec:
       image: vemonet/apache-drill
       volumeMounts:
         - name: workdir
-          mountPath: /data
-          # TODO: apache-drill volume should be readonly
+          mountPath: /data # readonly?
       readinessProbe:  # wait for readinessProbe to succeed
         httpGet:
           path: /
