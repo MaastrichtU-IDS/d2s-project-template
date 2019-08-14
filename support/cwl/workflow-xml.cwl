@@ -86,7 +86,5 @@ steps:
       sparql_username: sparql_username
       sparql_password: sparql_password
       sparql_input_graph_uri: sparql_output_graph_uri
-      sparql_output_graph_uri: sparql_output_graph_uri # TO REMOVE
-      sparql_service_url: sparql_service_url # TO REMOVE
       graphdb_file: step3/execute_sparql_query_logs
     out: [execute_sparql_query_logs]

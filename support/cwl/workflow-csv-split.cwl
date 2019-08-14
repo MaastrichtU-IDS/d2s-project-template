@@ -48,9 +48,12 @@ outputs:
   execute_split_logs:
     type: File
     outputSource: step5/execute_split_logs
-  execute_sparql_logs:
+  execute_sparql_transform_logs:
     type: File
-    outputSource: step6/execute_sparql_logs
+    outputSource: step6/execute_sparql_query_logs
+  execute_sparql_hcls_logs:
+    type: File
+    outputSource: step7/execute_sparql_query_logs
 
 steps:
 
@@ -124,4 +127,19 @@ steps:
       sparql_service_url: sparql_service_url
       sparql_output_graph_uri: sparql_output_graph_uri
       graphdb_file: step5/execute_split_logs
-    out: [execute_sparql_logs]
+    out: [execute_sparql_query_logs]
+
+  step7:
+    run: cwl-steps/execute-sparql-mapping.cwl
+    in: # No sparql_queries_path, HCLS stats is the default
+      working_directory: working_directory
+      dataset: dataset
+      sparql_triplestore_url: sparql_triplestore_url
+      sparql_triplestore_repository: sparql_triplestore_repository
+      sparql_username: sparql_username
+      sparql_password: sparql_password
+      sparql_input_graph_uri: sparql_output_graph_uri
+      sparql_output_graph_uri: sparql_output_graph_uri # TO REMOVE
+      sparql_service_url: sparql_service_url # TO REMOVE
+      graphdb_file: step6/execute_sparql_query_logs
+    out: [execute_sparql_query_logs]

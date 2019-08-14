@@ -40,9 +40,12 @@ outputs:
   rdf_upload_logs:
     type: File
     outputSource: step4/rdf_upload_logs
-  execute_sparql_logs:
+  execute_sparql_transform_logs:
     type: File
-    outputSource: step6/execute_sparql_logs
+    outputSource: step6/execute_sparql_query_logs
+  execute_sparql_hcls_logs:
+    type: File
+    outputSource: step7/execute_sparql_query_logs
 
 steps:
 
@@ -98,4 +101,19 @@ steps:
       sparql_output_graph_uri: sparql_output_graph_uri
       sparql_service_url: sparql_service_url
       graphdb_file: step4/rdf_upload_logs
-    out: [execute_sparql_logs]
+    out: [execute_sparql_query_logs]
+
+  step7:
+    run: cwl-steps/execute-sparql-mapping.cwl
+    in: # No sparql_queries_path, HCLS stats is the default
+      working_directory: working_directory
+      dataset: dataset
+      sparql_triplestore_url: sparql_triplestore_url
+      sparql_triplestore_repository: sparql_triplestore_repository
+      sparql_username: sparql_username
+      sparql_password: sparql_password
+      sparql_input_graph_uri: sparql_output_graph_uri
+      sparql_output_graph_uri: sparql_output_graph_uri # TO REMOVE
+      sparql_service_url: sparql_service_url # TO REMOVE
+      graphdb_file: step6/execute_sparql_query_logs
+    out: [execute_sparql_query_logs]

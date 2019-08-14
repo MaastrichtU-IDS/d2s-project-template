@@ -50,12 +50,13 @@ inputs:
       position: 6
       prefix: --var-inputGraph
   sparql_output_graph_uri:
-    type: string
+    type: string?
     inputBinding:
       position: 7
       prefix: --var-outputGraph
   sparql_service_url:
-    type: string
+    type: string?
+    default: http://localhost:7200/repositories/test
     inputBinding:
       position: 8
       prefix: --var-serviceUrl
