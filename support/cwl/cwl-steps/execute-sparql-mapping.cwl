@@ -20,6 +20,7 @@ inputs:
     type: string
   sparql_queries_path:
     type: string
+    default: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/compute-hcls-stats
     inputBinding:
       position: 1
       prefix: -f
@@ -61,8 +62,8 @@ inputs:
   graphdb_file:
     type: File
 
-stdout: execute-sparql-logs.txt
+stdout: execute-sparql-query-logs.txt
 
 outputs:
-  execute_sparql_logs:
+  execute_sparql_query_logs:
     type: stdout

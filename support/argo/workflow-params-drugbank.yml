@@ -6,7 +6,7 @@ downloadPassword: maasitest12
 graphUri: https://w3id.org/data2services/graph/xml2rdf/drugbank
 
 # RdfUpload params
-sparqlEndpoint: http://node000002.cluster.ids.unimaas.nl/
+sparqlEndpoint: http://137.120.31.102/
 sparqlRepository: test
 sparqlUsername: import_user
 sparqlPassword: test
