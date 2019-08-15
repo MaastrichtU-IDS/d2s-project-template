@@ -20,7 +20,6 @@ inputs:
     type: string
   sparql_queries_path:
     type: string
-    default: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/compute-hcls-stats
     inputBinding:
       position: 1
       prefix: -f

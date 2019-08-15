@@ -11,6 +11,10 @@ inputs:
   working_directory: string 
   dataset: string
 
+  sparql_compute_hcls_path:
+    type: string
+    default: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/compute-hcls-stats
+
   sparql_tmp_graph_uri: string?
 
   sparql_triplestore_url: string
@@ -99,8 +103,9 @@ steps:
 
   step5-compute-hcls-stats:
     run: cwl-steps/execute-sparql-mapping.cwl
-    in: # No sparql_queries_path, HCLS stats is the default
+    in:
       working_directory: working_directory
+      sparql_queries_path: sparql_compute_hcls_path
       dataset: dataset
       sparql_triplestore_url: sparql_triplestore_url
       sparql_triplestore_repository: sparql_triplestore_repository
