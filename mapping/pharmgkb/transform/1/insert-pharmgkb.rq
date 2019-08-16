@@ -15,6 +15,7 @@ INSERT
       bl:transcript_to_gene_relationship_subject ?RefseqAccessionUri ;
       bl:transcript_to_gene_relationship_object ?hgncUri ;
       bl:relation bl:expresses .
+    # TODO: add evidence
 
 
 
@@ -69,7 +70,6 @@ WHERE {
          #LabelAnnotation,Pathway,VariantAnnotation
          #Literature,MultilinkAnnotation,Pathway,VariantAnnotation
 
-
        } OPTIONAL { 
          ?s d2smodel:PK ?PK . # "PK" or nothing
        
@@ -79,9 +79,6 @@ WHERE {
        } OPTIONAL { 
          ?s d2smodel:PMIDs ?PMIDs . # List of 15707415;22094953;23974086
        }
-
-  # Avoid taking the first row with columns labels
-  FILTER( ?Entity1_id != "Entity1_id") 
-}
-}
+    }
+  }
 }
