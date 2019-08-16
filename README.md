@@ -74,9 +74,9 @@ sparql_password: PASSWORD
 sparql_output_graph_uri: https://w3id.org/data2services/graph/biolink/drugbank
 sparql_service_url: "http://localhost:7200/repositories/test"
 
-sparql_transform_queries_path: /data/mapping/drugbank
+sparql_transform_queries_path: /data/mapping/drugbank/transform/1
 # Could be https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/drugbank/
-sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/drugbank/5.0
+sparql_insert_metadata_path: /data/mapping/drugbank/metadata/5.0
 ```
 
 ### Convert CSV/TSV with [AutoR2RML](https://github.com/amalic/autor2rml)
@@ -105,8 +105,8 @@ sparql_password: PASSWORD
 sparql_output_graph_uri: https://w3id.org/data2services/graph/biolink/stitch
 sparql_service_url: "http://localhost:7200/repositories/test"
 
-sparql_transform_queries_path: /data/mapping/stitch
-sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/stitch/1.0
+sparql_transform_queries_path: /data/mapping/stitch/transform/1
+sparql_insert_metadata_path: /data/mapping/stitch/metadata/5.0
 ```
 
 ### Convert CSV/TSV with [AutoR2RML](https://github.com/amalic/autor2rml) and split a property
@@ -141,8 +141,8 @@ sparql_password: PASSWORD
 sparql_output_graph_uri: https://w3id.org/data2services/graph/biolink/eggnog
 sparql_service_url: "http://localhost:7200/repositories/test"
 
-sparql_transform_queries_path: /data/mapping/eggnog
-sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/eggnog/1.0
+sparql_transform_queries_path: /data/mapping/eggnog/transform/1
+sparql_insert_metadata_path: /data/mapping/eggnog/metadata/4.5
 ```
 
 ### Run in the background
