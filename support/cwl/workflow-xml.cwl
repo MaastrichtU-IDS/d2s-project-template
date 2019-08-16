@@ -30,6 +30,9 @@ inputs:
 
 outputs:
   
+  download_dataset_logs:
+    type: File
+    outputSource: step1-d2s-download/download_dataset_logs
   xml2rdf_file_output:
     type: File
     outputSource: step1-xml2rdf/xml2rdf_file_output
@@ -51,12 +54,22 @@ outputs:
 
 steps:
 
+  step1-d2s-download:
+    run: cwl-steps/d2s-download.cwl
+    in:
+      working_directory: working_directory
+      dataset: dataset
+      #download_username: download_username
+      #download_password: download_password
+    out: [download_dataset_logs]
+
   step1-xml2rdf:
     run: cwl-steps/run-xml2rdf.cwl
     in:
       working_directory: working_directory
       dataset: dataset
       sparql_tmp_graph_uri: sparql_tmp_graph_uri
+      #previous_step_results: step1-d2s-download/download_dataset_logs
     out: [xml2rdf_file_output,nquads_file_output]
 
   step2-rdf-upload:
