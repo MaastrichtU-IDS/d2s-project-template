@@ -27,13 +27,13 @@ inputs:
       position: 1
       prefix: -j
   tmp_base_uri:
-    type: string
+    type: string?
     default: https://w3id.org/data2services/
     inputBinding:
       position: 2
       prefix: -b
   sparql_tmp_graph_uri:
-    type: string
+    type: string?
     default: https://w3id.org/data2services/graph/autor2rml
     inputBinding:
       position: 3
