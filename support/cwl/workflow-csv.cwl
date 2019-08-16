@@ -11,6 +11,9 @@ inputs:
   working_directory: string 
   dataset: string
 
+  download_username: string?
+  download_password: string?
+
   input_data_jdbc: string
 
   autor2rml_column_header: string?
@@ -20,36 +23,56 @@ inputs:
   sparql_triplestore_url: string
   sparql_triplestore_repository: string
 
-  sparql_queries_path: string
   sparql_username: string?
   sparql_password: string?
   sparql_output_graph_uri: string
   sparql_service_url: string
 
+  sparql_transform_queries_path: string
+  sparql_insert_metadata_path: string
+  sparql_compute_hcls_path:
+    type: string
+    default: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/compute-hcls-stats
+
 outputs:
   
+  download_dataset_logs:
+    type: File
+    outputSource: step1-d2s-download/download_dataset_logs
   r2rml_trig_file_output:
     type: File
-    outputSource: step1/r2rml_trig_file_output
+    outputSource: step2-autor2rml/r2rml_trig_file_output
   r2rml_config_file_output:
     type: File
-    outputSource: step2/r2rml_config_file_output
+    outputSource: step3-generate-r2rml-config/r2rml_config_file_output
   nquads_file_output:
     type: File
-    outputSource: step3/nquads_file_output
+    outputSource: step4-r2rml/nquads_file_output
   rdf_upload_logs:
     type: File
-    outputSource: step4/rdf_upload_logs
+    outputSource: step5-rdf-upload/rdf_upload_logs
+  execute_sparql_metadata_logs:
+    type: File
+    outputSource: step6-insert-metadata/execute_sparql_query_logs
   execute_sparql_transform_logs:
     type: File
-    outputSource: step6/execute_sparql_query_logs
+    outputSource: step8-execute-transform-queries/execute_sparql_query_logs
   execute_sparql_hcls_logs:
     type: File
-    outputSource: step7/execute_sparql_query_logs
+    outputSource: step9-compute-hcls-stats/execute_sparql_query_logs
 
 steps:
 
-  step1:
+  step1-d2s-download:
+    run: cwl-steps/d2s-download.cwl
+    in:
+      working_directory: working_directory
+      dataset: dataset
+      download_username: download_username
+      download_password: download_password
+    out: [download_dataset_logs]
+
+  step2-autor2rml:
     run: cwl-steps/autor2rml.cwl
     in:
       working_directory: working_directory
@@ -58,41 +81,42 @@ steps:
       autor2rml_column_header: autor2rml_column_header
       tmp_base_uri: tmp_base_uri
       sparql_tmp_graph_uri: sparql_tmp_graph_uri
+      previous_step_results: step1-d2s-download/download_dataset_logs
     out: [r2rml_trig_file_output]
 
-  step2:
+  step3-generate-r2rml-config:
     run: cwl-steps/generate-r2rml-config.cwl
     in:
       dataset: dataset
       input_data_jdbc: input_data_jdbc
-      r2rml_trig_file: step1/r2rml_trig_file_output
+      r2rml_trig_file: step2-autor2rml/r2rml_trig_file_output
     out: [r2rml_config_file_output]
 
-  step3:
+  step4-r2rml:
     run: cwl-steps/run-r2rml.cwl
     in:
       working_directory: working_directory
       dataset: dataset
-      r2rml_trig_file: step1/r2rml_trig_file_output
-      r2rml_config_file: step2/r2rml_config_file_output
+      r2rml_trig_file: step2-autor2rml/r2rml_trig_file_output
+      r2rml_config_file: step3-generate-r2rml-config/r2rml_config_file_output
     out: [nquads_file_output]
 
-  step4:
+  step5-rdf-upload:
     run: cwl-steps/rdf-upload.cwl
     in:
       working_directory: working_directory
       dataset: dataset
-      nquads_file: step3/nquads_file_output
+      nquads_file: step4-r2rml/nquads_file_output
       sparql_triplestore_url: sparql_triplestore_url
       sparql_triplestore_repository: sparql_triplestore_repository
     out: [rdf_upload_logs]
 
-  step6:
+  step6-insert-metadata:
     run: cwl-steps/execute-sparql-mapping.cwl
     in:
       working_directory: working_directory
       dataset: dataset
-      sparql_queries_path: sparql_queries_path
+      sparql_queries_path: sparql_insert_metadata_path
       sparql_triplestore_url: sparql_triplestore_url
       sparql_triplestore_repository: sparql_triplestore_repository
       sparql_username: sparql_username
@@ -100,14 +124,31 @@ steps:
       sparql_input_graph_uri: sparql_tmp_graph_uri
       sparql_output_graph_uri: sparql_output_graph_uri
       sparql_service_url: sparql_service_url
-      graphdb_file: step4/rdf_upload_logs
+      graphdb_file: step5-rdf-upload/rdf_upload_logs
     out: [execute_sparql_query_logs]
 
-  step7:
+  step8-execute-transform-queries:
+    run: cwl-steps/execute-sparql-mapping.cwl
+    in:
+      working_directory: working_directory
+      dataset: dataset
+      sparql_queries_path: sparql_transform_queries_path
+      sparql_triplestore_url: sparql_triplestore_url
+      sparql_triplestore_repository: sparql_triplestore_repository
+      sparql_username: sparql_username
+      sparql_password: sparql_password
+      sparql_input_graph_uri: sparql_tmp_graph_uri
+      sparql_output_graph_uri: sparql_output_graph_uri
+      sparql_service_url: sparql_service_url
+      graphdb_file: step5-rdf-upload/rdf_upload_logs
+    out: [execute_sparql_query_logs]
+
+  step9-compute-hcls-stats:
     run: cwl-steps/execute-sparql-mapping.cwl
     in: # No sparql_queries_path, HCLS stats is the default
       working_directory: working_directory
       dataset: dataset
+      sparql_queries_path: sparql_compute_hcls_path
       sparql_triplestore_url: sparql_triplestore_url
       sparql_triplestore_repository: sparql_triplestore_repository
       sparql_username: sparql_username
@@ -115,5 +156,5 @@ steps:
       sparql_input_graph_uri: sparql_output_graph_uri
       sparql_output_graph_uri: sparql_output_graph_uri # TO REMOVE
       sparql_service_url: sparql_service_url # TO REMOVE
-      graphdb_file: step6/execute_sparql_query_logs
+      graphdb_file: step8-execute-transform-queries/execute_sparql_query_logs
     out: [execute_sparql_query_logs]

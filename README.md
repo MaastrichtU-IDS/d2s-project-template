@@ -41,6 +41,9 @@ docker run -d --rm --name graphdb -p 7200:7200 -v /data/graphdb:/opt/graphdb/hom
     * e.g. `support/cwl/config/config-transform-xml-drugbank.yml`
 
 * 3 types of workflows can be run depending on the input data:
+  * [Convert XML to RDF](https://github.com/MaastrichtU-IDS/data2services-transform-biolink#convert-xml-with-xml2rdf)
+  * [Convert CSV to RDF](https://github.com/MaastrichtU-IDS/data2services-transform-biolink#convert-csvtsv-with-autor2rml)
+  * [Convert CSV to RDF and split a property]()
 
 ### Convert XML with [xml2rdf](https://github.com/MaastrichtU-IDS/xml2rdf)
 
@@ -48,7 +51,33 @@ docker run -d --rm --name graphdb -p 7200:7200 -v /data/graphdb:/opt/graphdb/hom
 cwl-runner --outdir output/drugbank support/cwl/workflow-xml.cwl support/cwl/config/config-transform-xml-drugbank.yml
 ```
 
-* See [config file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/cwl/config/config-transform-xml-drugbank.yml).
+See [config file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/cwl/config/config-transform-xml-drugbank.yml):
+
+```yaml
+working_directory: /data/data2services-transform-biolink
+dataset: drugbank-sample
+
+# d2s-download params
+download_username: vincent.emonet@maastrichtuniversity.nl
+download_password: PASSWORD
+
+# xml2rdf params
+sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/xml2rdf/drugbank"
+
+# RdfUpload params
+sparql_triplestore_url: http://graphdb:7200
+sparql_triplestore_repository: test
+
+# Execute SPARQL conversion queries
+sparql_username: import_user
+sparql_password: PASSWORD
+sparql_output_graph_uri: https://w3id.org/data2services/graph/biolink/drugbank
+sparql_service_url: "http://localhost:7200/repositories/test"
+
+sparql_transform_queries_path: /data/mapping/drugbank
+# Could be https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/drugbank/
+sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/drugbank/5.0
+```
 
 ### Convert CSV/TSV with [AutoR2RML](https://github.com/amalic/autor2rml)
 
@@ -56,7 +85,29 @@ cwl-runner --outdir output/drugbank support/cwl/workflow-xml.cwl support/cwl/con
 cwl-runner --outdir output/stitch support/cwl/workflow-csv.cwl support/config/config-transform-csv-stitch.yml
 ```
 
-* See [config file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/cwl/config/config-transform-csv-stitch.yml).
+See [config file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/cwl/config/config-transform-csv-stitch.yml):
+
+```yaml
+working_directory: /data/data2services-transform-biolink
+dataset: stitch
+
+# R2RML params
+input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
+sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/stitch"
+
+# RdfUpload params
+sparql_triplestore_url: http://graphdb:7200
+sparql_triplestore_repository: test
+
+# Execute SPARQL conversion queries
+sparql_username: import_user
+sparql_password: PASSWORD
+sparql_output_graph_uri: https://w3id.org/data2services/graph/biolink/stitch
+sparql_service_url: "http://localhost:7200/repositories/test"
+
+sparql_transform_queries_path: /data/mapping/stitch
+sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/stitch/1.0
+```
 
 ### Convert CSV/TSV with [AutoR2RML](https://github.com/amalic/autor2rml) and split a property
 
@@ -64,7 +115,35 @@ cwl-runner --outdir output/stitch support/cwl/workflow-csv.cwl support/config/co
 cwl-runner --outdir output/eggnog support/cwl/workflow-csv-split.cwl support/cwl/config/config-transform-split-eggnog.yml
 ```
 
-* See [config file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/cwl/config/config-transform-split-eggnog.yml).
+See [config file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/cwl/config/config-transform-split-eggnog.yml):
+
+```yaml
+working_directory: /data/data2services-transform-biolink
+dataset: eggnog
+
+# R2RML params
+input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
+sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/eggnog"
+
+# RdfUpload params
+sparql_triplestore_url: http://graphdb:7200
+sparql_triplestore_repository: test
+
+# Split params
+split_property: https://w3id.org/data2services/model/Proteinids
+split_class: https://w3id.org/data2services/data/input/eggnog/NOG.members.extract101.tsv
+split_delimiter: ","
+split_quote: '"'
+
+# Execute SPARQL conversion queries
+sparql_username: emonet
+sparql_password: PASSWORD
+sparql_output_graph_uri: https://w3id.org/data2services/graph/biolink/eggnog
+sparql_service_url: "http://localhost:7200/repositories/test"
+
+sparql_transform_queries_path: /data/mapping/eggnog
+sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/eggnog/1.0
+```
 
 ---
 

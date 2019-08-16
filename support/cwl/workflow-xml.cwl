@@ -14,22 +14,21 @@ inputs:
   download_username: string?
   download_password: string?
 
-  sparql_compute_hcls_path:
-    type: string
-    default: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/compute-hcls-stats
-
   sparql_tmp_graph_uri: string?
 
   sparql_triplestore_url: string
   sparql_triplestore_repository: string
 
-  sparql_insert_metadata_path: string
-  sparql_transform_queries_path: string
-
   sparql_username: string
   sparql_password: string
   sparql_output_graph_uri: string
   sparql_service_url: string
+
+  sparql_insert_metadata_path: string
+  sparql_transform_queries_path: string
+  sparql_compute_hcls_path:
+    type: string
+    default: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/compute-hcls-stats
 
 outputs:
   
@@ -72,7 +71,7 @@ steps:
       working_directory: working_directory
       dataset: dataset
       sparql_tmp_graph_uri: sparql_tmp_graph_uri
-      #previous_step_results: step1-d2s-download/download_dataset_logs
+      #previous_step_results: step1-d2s-download/download_dataset_logs # TO REMOVE?
     out: [xml2rdf_file_output,nquads_file_output]
 
   step3-rdf-upload:
@@ -121,8 +120,8 @@ steps:
     run: cwl-steps/execute-sparql-mapping.cwl
     in:
       working_directory: working_directory
-      sparql_queries_path: sparql_compute_hcls_path
       dataset: dataset
+      sparql_queries_path: sparql_compute_hcls_path
       sparql_triplestore_url: sparql_triplestore_url
       sparql_triplestore_repository: sparql_triplestore_repository
       sparql_username: sparql_username
