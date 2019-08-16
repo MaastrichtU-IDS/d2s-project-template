@@ -145,6 +145,16 @@ sparql_transform_queries_path: /data/mapping/eggnog
 sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/eggnog/1.0
 ```
 
+### Run in the background
+
+Will write all terminal output to `nohup.out`.
+
+```shell
+nohup cwl-runner --outdir output/drugbank support/cwl/workflow-xml.cwl support/cwl/config/config-transform-xml-drugbank.yml &
+```
+
+
+
 ---
 
 # Argo workflows
