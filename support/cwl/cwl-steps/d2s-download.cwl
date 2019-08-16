@@ -9,7 +9,7 @@ label: Data2Services tool to download files to process based on Shell scripts, V
 baseCommand: [docker, run]
 
 arguments: [ "--rm", "-v" , "$(inputs.working_directory)/input:/data", "-v", "$(runtime.outdir):/tmp", 
-"vemonet/data2services-download", "--clean", "--download-datasets", "$(inputs.dataset)"]
+"vemonet/data2services-download", "--download-datasets", "$(inputs.dataset)"]
 
 inputs:
   
