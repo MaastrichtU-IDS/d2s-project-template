@@ -97,7 +97,7 @@ steps:
       sparql_input_graph_uri: sparql_tmp_graph_uri
       sparql_output_graph_uri: sparql_output_graph_uri
       sparql_service_url: sparql_service_url
-      graphdb_file: step3-rdf-upload/rdf_upload_logs
+      previous_step_results: step3-rdf-upload/rdf_upload_logs
     out: [execute_sparql_query_logs]
 
   step5-execute-transform-queries:
@@ -113,7 +113,7 @@ steps:
       sparql_input_graph_uri: sparql_tmp_graph_uri
       sparql_output_graph_uri: sparql_output_graph_uri
       sparql_service_url: sparql_service_url
-      graphdb_file: step4-insert-metadata/execute_sparql_query_logs
+      previous_step_results: step4-insert-metadata/execute_sparql_query_logs
     out: [execute_sparql_query_logs]
 
   step6-compute-hcls-stats:
@@ -127,5 +127,5 @@ steps:
       sparql_username: sparql_username
       sparql_password: sparql_password
       sparql_input_graph_uri: sparql_output_graph_uri
-      graphdb_file: step5-execute-transform-queries/execute_sparql_query_logs
+      previous_step_results: step5-execute-transform-queries/execute_sparql_query_logs
     out: [execute_sparql_query_logs]

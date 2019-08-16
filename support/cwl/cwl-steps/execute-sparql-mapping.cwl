@@ -9,7 +9,6 @@ label: Data2Services tool to execute SPARQL queries, Ammar Ammar <ammar257ammar@
 baseCommand: [docker, run]
 
 arguments: [ "--rm", "--link","graphdb:graphdb", "-v" , "$(inputs.working_directory):/data", "-v", "$(runtime.outdir):/tmp", 
-"-v", "$(inputs.graphdb_file.path):/tmp/$(inputs.graphdb_file.basename)", 
 "vemonet/data2services-sparql-operations" ]
 
 inputs:
@@ -59,8 +58,6 @@ inputs:
     inputBinding:
       position: 8
       prefix: --var-serviceUrl
-  graphdb_file:
-    type: File
 
 stdout: execute-sparql-query-logs.txt
 

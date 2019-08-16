@@ -133,7 +133,7 @@ steps:
       sparql_input_graph_uri: sparql_tmp_graph_uri
       sparql_output_graph_uri: sparql_output_graph_uri
       sparql_service_url: sparql_service_url
-      graphdb_file: step5-rdf-upload/rdf_upload_logs
+      previous_step_results: step5-rdf-upload/rdf_upload_logs
     out: [execute_sparql_query_logs]
 
   step7-split-property:
@@ -149,7 +149,7 @@ steps:
       split_quote: split_quote
       split_class: split_class
       split_property: split_property
-      graphdb_file: step5-rdf-upload/rdf_upload_logs
+      previous_step_results: step5-rdf-upload/rdf_upload_logs
     out: [execute_split_logs]
 
   step8-execute-transform-queries:
@@ -165,7 +165,7 @@ steps:
       sparql_input_graph_uri: sparql_tmp_graph_uri
       sparql_service_url: sparql_service_url
       sparql_output_graph_uri: sparql_output_graph_uri
-      graphdb_file: step7-split-property/execute_split_logs
+      previous_step_results: step7-split-property/execute_split_logs
     out: [execute_sparql_query_logs]
 
   step9-compute-hcls-stats:
@@ -181,5 +181,5 @@ steps:
       sparql_input_graph_uri: sparql_output_graph_uri
       sparql_output_graph_uri: sparql_output_graph_uri # TO REMOVE
       sparql_service_url: sparql_service_url # TO REMOVE
-      graphdb_file: step8-execute-transform-queries/execute_sparql_query_logs
+      previous_step_results: step8-execute-transform-queries/execute_sparql_query_logs
     out: [execute_sparql_query_logs]
