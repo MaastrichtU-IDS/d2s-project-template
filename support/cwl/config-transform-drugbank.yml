@@ -3,6 +3,10 @@ working_directory: /data/data2services-transform-biolink
 #dataset: drugbank
 dataset: drugbank-sample
 
+# d2s-download params
+download_username: vincent.emonet@maastrichtuniversity.nl
+download_password: nothing
+
 # xml2rdf params
 sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/xml2rdf/drugbank"
 

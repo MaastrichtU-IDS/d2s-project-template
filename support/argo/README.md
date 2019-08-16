@@ -1,6 +1,8 @@
-# MapR OpenShift documentation
+# Run workflows with [Argo](https://github.com/argoproj/argo/)
 
-https://app.dsri.unimaas.nl:8443/
+* Access [OpenShift](https://app.dsri.unimaas.nl:8443/)
+
+* Access [Argo UI](http://argo-ui-argo.app.dsri.unimaas.nl/workflows)
 
 ## Install oc client
 

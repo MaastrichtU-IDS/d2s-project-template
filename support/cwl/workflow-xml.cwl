@@ -11,6 +11,9 @@ inputs:
   working_directory: string 
   dataset: string
 
+  download_username: string?
+  download_password: string?
+
   sparql_compute_hcls_path:
     type: string
     default: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/compute-hcls-stats
@@ -59,8 +62,8 @@ steps:
     in:
       working_directory: working_directory
       dataset: dataset
-      #download_username: download_username
-      #download_password: download_password
+      download_username: download_username
+      download_password: download_password
     out: [download_dataset_logs]
 
   step1-xml2rdf:
