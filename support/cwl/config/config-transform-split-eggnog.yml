@@ -22,6 +22,6 @@ sparql_password: PASSWORD
 sparql_output_graph_uri: https://w3id.org/data2services/graph/biolink/eggnog
 sparql_service_url: "http://localhost:7200/repositories/test"
 
-sparql_transform_queries_path: /data/mapping/eggnog
+sparql_transform_queries_path: /data/mapping/eggnog/transform/1
 #sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/eggnog/1.0
-sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/drugbank/5.0
+sparql_insert_metadata_path: /data/mapping/eggnog/metadata/4.5
