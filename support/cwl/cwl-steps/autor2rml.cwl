@@ -26,7 +26,7 @@ inputs:
     inputBinding:
       position: 1
       prefix: -j
-  tmp_base_uri:
+  sparql_base_uri:
     type: string?
     default: https://w3id.org/data2services/
     inputBinding:

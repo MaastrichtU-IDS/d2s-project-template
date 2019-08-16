@@ -17,7 +17,7 @@ inputs:
   input_data_jdbc: string
 
   autor2rml_column_header: string?
-  tmp_base_uri: string?
+  sparql_base_uri: string?
   sparql_tmp_graph_uri: string?
 
   sparql_triplestore_url: string
@@ -87,7 +87,7 @@ steps:
       dataset: dataset
       input_data_jdbc: input_data_jdbc
       autor2rml_column_header: autor2rml_column_header
-      tmp_base_uri: tmp_base_uri
+      sparql_base_uri: sparql_base_uri
       sparql_tmp_graph_uri: sparql_tmp_graph_uri
       previous_step_results: step1-d2s-download/download_dataset_logs
     out: [r2rml_trig_file_output]
