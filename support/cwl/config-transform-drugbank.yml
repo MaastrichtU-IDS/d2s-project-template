@@ -5,7 +5,7 @@ dataset: drugbank-sample
 
 # d2s-download params
 download_username: vincent.emonet@maastrichtuniversity.nl
-download_password: nothing
+download_password: PASSWORD
 
 # xml2rdf params
 sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/xml2rdf/drugbank"
