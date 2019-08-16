@@ -29,31 +29,31 @@ docker run -d --rm --name graphdb -p 7200:7200 -v /data/graphdb:/opt/graphdb/hom
 
 * Go to `data2services-transform-biolink` root folder (the root of the cloned repository), e.g. `/data/data2services-transform-biolink` to run the CWL workflows.
 
-* You will need to provide 3 parameters
-  * `--outdir`: the output directory for downloaded files (except for downloaded files that go directly to `/input`). Usually `output/$dataset_name`
-  * The `.cwl` workflow file, e.g. `support/cwl/workflow-xml.cwl`
-  * The `.yml` configuration file with all parameters required to run the workflow, e.g. `support/cwl/config-transform-drugbank.yml`
+* You will need to put the SPARQL mappings in `/mappings/$dataset_name` and provide 3 parameters:
+  * `--outdir`: the [output directory](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/output/stitch) for downloaded files (except for downloaded files that go directly to `/input`). Usually `output/$dataset_name`.
+  * The `.cwl` [workflow file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/cwl/workflow-xml.cwl), e.g. `support/cwl/workflow-xml.cwl`
+  * The `.yml` [configuration file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/cwl/config/config-transform-xml-drugbank.yml) with all parameters required to run the workflow, e.g. `support/cwl/config/config-transform-xml-drugbank.yml`
 
 * 3 types of workflows can be run depending on the input data
 
 ### Convert XML with [xml2rdf](https://github.com/MaastrichtU-IDS/xml2rdf)
 
 ```shell
-cwl-runner --outdir output/drugbank support/cwl/workflow-xml.cwl support/cwl/config-transform-drugbank.yml
+cwl-runner --outdir output/drugbank support/cwl/workflow-xml.cwl support/cwl/config/config-transform-xml-drugbank.yml
 ```
 
 ### Convert CSV/TSV with [AutoR2RML](https://github.com/amalic/autor2rml)
 
 ```shell
-cwl-runner support/cwl/workflow-csv.cwl support/cwl/config-transform-stitch.yml
+cwl-runner support/cwl/workflow-csv.cwl support/cwl/config/config-transform-stitch.yml
 
 # With defined output directory
-cwl-runner --outdir output/stitch support/cwl/workflow-csv.cwl support/cconfig-transformjob-stitch.yml
+cwl-runner --outdir output/stitch support/cwl/workflow-csv.cwl support/config/config-transform-csv-stitch.yml
 ```
 
 ### Convert CSV/TSV with [AutoR2RML](https://github.com/amalic/autor2rml) and split a statement
 
 ```shell
-cwl-runner --outdir output/eggnog support/cwl/workflow-csv-split.cwl support/cwl/config-transform-eggnog.yml
+cwl-runner --outdir output/eggnog support/cwl/workflow-csv-split.cwl support/cwl/config/config-transform-split-eggnog.yml
 ```
 
