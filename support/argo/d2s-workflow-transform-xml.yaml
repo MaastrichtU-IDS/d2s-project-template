@@ -23,7 +23,7 @@ spec:
       value: drugbank
     - name: downloadUsername
       value: my_download_username
-    - name: graphUri
+    - name: tmpGraphUri
       value: https://w3id.org/data2services/graph/xml2rdf
     - name: sparqlEndpoint
       value: http://node000002.cluster.ids.unimaas.nl/
@@ -31,6 +31,14 @@ spec:
       value: test
     - name: sparqlUsername
       value: import_user
+    - name: sparqlQueryMetadata
+      value: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/drugbank/5.0
+    - name: sparqlQueryTransform
+      value: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/drugbank
+    - name: sparqlBiolinkGraphUri
+      value: https://w3id.org/data2services/graph/biolink
+    - name: sparqlGenericRdfServiceUrl
+      value: http://localhost:7200/repositories/test
 
   templates:
   - name: execute-workflow
@@ -41,6 +49,42 @@ spec:
         template: xml2rdf
     - - name: run-rdf-upload
         template: rdf-upload
+    - - name: sparql-insert-metadata
+        template: d2s-sparql-operations
+        arguments:
+          parameters:
+          - name: sparqlQueriesPath
+            value: "{{workflow.parameters.sparqlQueryMetadata}}"
+          - name: sparqlInputGraph
+            value: "{{workflow.parameters.tmpGraphUri}}"
+          - name: sparqlOutputGraph
+            value: "{{workflow.parameters.sparqlBiolinkGraphUri}}"
+          - name: sparqlServiceUrl
+            value: "{{workflow.parameters.sparqlGenericRdfServiceUrl}}"
+    - - name: sparql-transform-queries
+        template: d2s-sparql-operations
+        arguments:
+          parameters:
+          - name: sparqlQueriesPath
+            value: "{{workflow.parameters.sparqlQueryTransform}}"
+          - name: sparqlInputGraph
+            value: "{{workflow.parameters.tmpGraphUri}}"
+          - name: sparqlOutputGraph
+            value: "{{workflow.parameters.sparqlBiolinkGraphUri}}"
+          - name: sparqlServiceUrl
+            value: "{{workflow.parameters.sparqlGenericRdfServiceUrl}}"
+    - - name: sparql-compute-hcls-stats
+        template: d2s-sparql-operations
+        arguments:
+          parameters:
+          - name: sparqlQueriesPath
+            value: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/compute-hcls-stats
+          - name: sparqlInputGraph
+            value: "{{workflow.parameters.sparqlBiolinkGraphUri}}"
+          - name: sparqlOutputGraph
+            value: "{{workflow.parameters.sparqlBiolinkGraphUri}}"
+          - name: sparqlServiceUrl
+            value: "{{workflow.parameters.sparqlGenericRdfServiceUrl}}"
 
 
   - name: d2s-download
@@ -48,7 +92,7 @@ spec:
       image: vemonet/data2services-download:latest
       args: [ "--download-datasets", "{{workflow.parameters.datasetToProcess}}", 
       "--username", "{{workflow.parameters.downloadUsername}}", 
-      "--password", "$DOWNLOADPASSWORD" ]
+      "--password", "$DOWNLOADPASSWORD" ] # TODO: this should not be a env var
       env:
       - name: DOWNLOADPASSWORD
         valueFrom:
@@ -62,7 +106,7 @@ spec:
   - name: xml2rdf
     container:
       image: vemonet/xml2rdf:latest
-      args: [ "-i", "/data/{{workflow.parameters.datasetToProcess}}/*.xml", "-o", "/data/rdf_output.nq", "-g", "{{workflow.parameters.graphUri}}" ]
+      args: [ "-i", "/data/{{workflow.parameters.datasetToProcess}}/*.xml", "-o", "/data/rdf_output.nq", "-g", "{{workflow.parameters.tmpGraphUri}}" ]
       volumeMounts:
       - name: workdir
         mountPath: /data
@@ -73,7 +117,7 @@ spec:
       args: ["-url", "{{workflow.parameters.sparqlEndpoint}}", 
       "-rep", "{{workflow.parameters.sparqlRepository}}", 
       "-if", "/data/rdf_output.nq", 
-      "-un", "{{workflow.parameters.sparqlUsername}}", "-pw", "$SPARQLPASSWORD"]
+      "-un", "{{workflow.parameters.sparqlUsername}}", "-pw", "test"]
       env:
       - name: SPARQLPASSWORD
         valueFrom:
@@ -83,3 +127,24 @@ spec:
       volumeMounts:
       - name: workdir
         mountPath: /data
+
+  - name: d2s-sparql-operations
+    inputs:
+      parameters:
+      - name: sparqlQueriesPath
+      - name: sparqlInputGraph
+      - name: sparqlOutputGraph
+      - name: sparqlServiceUrl
+    container:
+      image: vemonet/data2services-sparql-operations:latest
+      args: ["-ep", "{{workflow.parameters.sparqlEndpoint}}", "-rep", "{{workflow.parameters.sparqlRepository}}", 
+    "-op", "update", "-un", "{{workflow.parameters.sparqlUsername}}", "-pw", "$SPARQLPASSWORD", "-f", "{{inputs.parameters.sparqlQueriesPath}}",
+    "--var-inputGraph", "{{inputs.parameters.sparqlInputGraph}}",
+    "--var-outputGraph", "{{inputs.parameters.sparqlOutputGraph}}", 
+    "--var-serviceUrl", "{{inputs.parameters.sparqlServiceUrl}}", ]
+      env:
+      - name: SPARQLPASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: d2s-sparql-password
+            key: password

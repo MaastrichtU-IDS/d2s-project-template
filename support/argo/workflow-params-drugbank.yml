@@ -1,12 +1,17 @@
 datasetToProcess: drugbank-sample
 downloadUsername: vincent.emonet@maastrichtuniversity.nl
-downloadPassword: maasitest12
 
 # xml2rdf params
-graphUri: https://w3id.org/data2services/graph/xml2rdf/drugbank
+tmpGraphUri: https://w3id.org/data2services/graph/xml2rdf/drugbank-sample
 
 # RdfUpload params
-sparqlEndpoint: http://137.120.31.102/
+sparqlEndpoint: http://node000002.cluster.ids.unimaas.nl/
 sparqlRepository: test
 sparqlUsername: import_user
-sparqlPassword: test
+
+# SPARQL queries params
+sparqlQueryMetadata: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/drugbank/5.0
+sparqlQueryTransform: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/drugbank
+
+sparqlBiolinkGraphUri: https://w3id.org/data2services/graph/biolink/drugbank-sample
+sparqlGenericRdfServiceUrl: http://localhost:7200/repositories/test
