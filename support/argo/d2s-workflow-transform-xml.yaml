@@ -118,6 +118,7 @@ spec:
       "-rep", "{{workflow.parameters.sparqlRepository}}", 
       "-if", "/data/rdf_output.nq", 
       "-un", "{{workflow.parameters.sparqlUsername}}", "-pw", "test"]
+      #"-un", "{{workflow.parameters.sparqlUsername}}", "-pw", "$SPARQLPASSWORD"]  # TODO: secret not working
       env:
       - name: SPARQLPASSWORD
         valueFrom:
@@ -138,7 +139,10 @@ spec:
     container:
       image: vemonet/data2services-sparql-operations:latest
       args: ["-ep", "{{workflow.parameters.sparqlEndpoint}}", "-rep", "{{workflow.parameters.sparqlRepository}}", 
-    "-op", "update", "-un", "{{workflow.parameters.sparqlUsername}}", "-pw", "$SPARQLPASSWORD", "-f", "{{inputs.parameters.sparqlQueriesPath}}",
+    "-op", "update", "-f", "{{inputs.parameters.sparqlQueriesPath}}",
+    "-un", "{{workflow.parameters.sparqlUsername}}", 
+    "-pw", "test",
+    #"-pw", "$SPARQLPASSWORD",  # TODO: secret not working
     "--var-inputGraph", "{{inputs.parameters.sparqlInputGraph}}",
     "--var-outputGraph", "{{inputs.parameters.sparqlOutputGraph}}", 
     "--var-serviceUrl", "{{inputs.parameters.sparqlServiceUrl}}", ]

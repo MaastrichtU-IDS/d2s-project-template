@@ -6,6 +6,7 @@ tmpGraphUri: https://w3id.org/data2services/graph/xml2rdf/drugbank-sample
 
 # RdfUpload params
 sparqlEndpoint: http://node000002.cluster.ids.unimaas.nl/
+#sparqlEndpoint: http://graphdb.dumontierlab.com/
 sparqlRepository: test
 sparqlUsername: import_user
 
