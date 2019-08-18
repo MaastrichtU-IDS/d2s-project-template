@@ -20,8 +20,8 @@ INSERT {
         # Get GO TERM
         ?goTermAssociationUri a bl:GeneToGoTermAssociation ;
             bl:relation bl:category ;
-            bl:gene_to_go_term_association_object ?transporterUri ;
-            bl:gene_to_go_term_association_subject ?goTermUri .
+            bl:gene_to_go_term_association_subject ?transporterUri ;
+            bl:gene_to_go_term_association_object ?goTermUri .
 
         # Direct link
         #?transporterUri bl:category ?goTermUri .
