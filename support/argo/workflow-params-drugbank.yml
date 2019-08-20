@@ -11,8 +11,8 @@ sparqlRepository: test
 sparqlUsername: import_user
 
 # SPARQL queries params
-sparqlQueryMetadata: https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/sparql/insert-biolink/drugbank/5.0
-sparqlQueryTransform: https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/sparql/insert-biolink/drugbank/1
+sparqlQueryMetadata: https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/mapping/drugbank/metadata/1
+sparqlQueryTransform: https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/mapping/drugbank/transform/1
 
 sparqlBiolinkGraphUri: https://w3id.org/data2services/graph/biolink/drugbank-sample
 sparqlGenericRdfServiceUrl: http://localhost:7200/repositories/test
