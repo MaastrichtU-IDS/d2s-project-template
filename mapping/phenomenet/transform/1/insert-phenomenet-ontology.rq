@@ -1,0 +1,94 @@
+PREFIX d2smodel: <http://data2services/model/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
+PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
+INSERT
+{
+  GRAPH <?_outputGraph> { 
+
+    ?entityOriginalUri a ?entityType ;
+      bl:id ?phenotypeId ;
+      bl:name ?phenotypeLabel ;
+      bl:description ?phenotypeDescription ;
+      bl:description ?phenotypeOboDefinition ;
+      bl:synonym ?phenotypeExactSynonym ;
+      bl:same_as ?phenotypeEquivalentClass ;
+      bl:category ?entitySubClassOf . # not using bl:subclass_of, it is for OntologyClass
+ }
+}
+WHERE {
+  SERVICE <?_serviceUrl>  {
+    GRAPH <?_inputGraph> { # bio2vec-test
+      # What to do with PMID?
+      #http://graphdb.dumontierlab.com/resource?uri=http:%2F%2Fdata2services%2Fdata%2Fbio2vec%2Fphenomenet%2Fphenotype_annotation_hpoteam.tsv%2F87104
+
+      ?entityOriginalUri a owl:Class ;
+        rdfs:label ?phenotypeLabel .
+
+      FILTER( ! strstarts(?phenotypeOboNamespace, "zebrafish_") )
+
+      # Get the Class type:
+      # spatial, quality, biological_process, zebrafish_anatomy, cellular_component, molecular_function, uberon, cell, 
+      # MPheno.ontology, cl, human_phenotype, uberon/phenoscape-anatomy, none, zebrafish_stages, zebrafish_anatomical_ontology
+      OPTIONAL { ?entityOriginalUri oboInOwl:hasOBONamespace ?phenotypeOboNamespace . }
+
+      VALUES (?filterOboNamespace ?entityType) {
+          ( "MPheno.ontology" bl:Phenotype ) # identifiers.org + id (obo)
+          ( "human_phenotype" bl:Phenotype ) # identifiers.org + id (obo)
+          ( "zebrafish_anatomy" bl:Phenotype ) # Seems to be anatomy. Not sure it is phenotype (http://purl.obolibrary.org/obo/ZFA_0001486) no identifiers.org
+          ( "zebrafish_anatomical_ontology" bl:Phenotype ) # Only 2 ZFA entities^
+          ( "zebrafish_stages" bl:Phenotype ) # Seems to be anatomy (http://purl.obolibrary.org/obo/ZFS_0001486) no identifiers.org
+          ( "biological_process" bl:BiologicalProcess )
+          ( "cellular_component" bl:CellularComponent )
+          ( "molecular_function" bl:MolecularActivity ) # Or bl:GeneOntologyClass?
+          # GO: identifiers.org + id 
+          ( "uberon" bl:AnatomicalEntity ) # Anatomy (http://graphdb.dumontierlab.com/resource?uri=http:%2F%2Fpurl.obolibrary.org%2Fobo%2FUBERON_0001255)
+          ( "uberon/phenoscape-anatomy" bl:AnatomicalEntity ) # UBERON Anatomy
+          ( "none" bl:AnatomicalEntity ) # UBERON Anatomy http://identifiers.org/ + id (UBERON:0001255)
+          ( "cell" bl:Cell )
+          ( "cl" bl:Cell ) # no id http://purl.obolibrary.org/obo/CL_0000150. Should be http://identifiers.org/CL:0000150
+          #(UNDEF bl:MolecularEntity )
+      }
+      FILTER (sameTerm(LCASE(?phenotypeOboNamespace), ?filterOboNamespace))
+
+      OPTIONAL { ?entityOriginalUri oboInOwl:id ?phenotypeId . }
+
+      #OPTIONAL { ?entityOriginalUri oboInOwl:hasOBONamespace ?phenotypeOboNamespace . }
+
+      OPTIONAL { ?entityOriginalUri owl:equivalentClass ?phenotypeEquivalentClass .
+                 FILTER (!isBlank(?phenotypeEquivalentClass)) 
+      }
+
+      OPTIONAL { ?entityOriginalUri oboInOwl:hasExactSynonym ?phenotypeExactSynonym . }
+
+      OPTIONAL { ?entityOriginalUri oboInOwl:hasDbXref ?phenotypeDbXref }
+      OPTIONAL { ?entityOriginalUri rdfs:comment ?phenotypeDescription . }
+
+      OPTIONAL { ?entityOriginalUri <http://purl.obolibrary.org/obo/IAO_0000115> ?phenotypeOboDefinition . }
+
+      # Tried to use identifiers.org + id for most classes. Use another service for that?
+      #BIND( if( ?entityType = bl:Cell , # Use identifiers.org for Cell
+      #        iri(replace(?entityOriginalUri, "http://purl.obolibrary.org/obo/CL_", "http://identifiers.org/CL:")),
+      #        iri(concat("http://identifiers.org/", ?phenotypeId) )) # ?entityOriginalUri
+      #   AS ?phenotypeUri )
+
+      OPTIONAL { 
+        ?entityOriginalUri rdfs:subClassOf ?entitySubClassOf .
+        FILTER (!isBlank(?entitySubClassOf)) 
+
+        # Tried to use identifiers.org IDs also
+        #?entityOriginalUri rdfs:subClassOf ?phenotypeBufferSubClassOf .
+        #?phenotypeBufferSubClassOf oboInOwl:id ?subClassOfId . 
+        # Use identifiers.org + id for most classes
+        #BIND( if( ?entityType = bl:Cell , # Use identifiers.org for Cell
+        #        iri(replace(?phenotypeBufferSubClassOf, "http://purl.obolibrary.org/obo/CL_", "http://identifiers.org/CL:")),
+        #                iri(concat("http://identifiers.org/", ?subClassOfId))) # ?entityOriginalUri
+        #              AS ?phenotypeSubClassOf ) 
+      }
+    }
+  }
+}

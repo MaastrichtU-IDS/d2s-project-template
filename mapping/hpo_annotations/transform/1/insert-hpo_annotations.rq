@@ -1,0 +1,50 @@
+PREFIX d2smodel: <http://data2services/model/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
+INSERT
+{
+  GRAPH <?_outputGraph> { 
+
+    ?omimUri a bl:Disease ;
+      bl:id ?omimId ;
+      bl:has_phenotype ?hpoUri .
+      # Check if Phenotype to Disease association entity
+
+    ?hpoUri a bl:Phenotype ;
+      bl:id ?hpoId . 
+
+ }
+}
+WHERE {
+  SERVICE <?_serviceUrl>  {
+    GRAPH <?_inputGraph> {
+      # What to do with PMID?
+      #http://graphdb.dumontierlab.com/resource?uri=http:%2F%2Fdata2services%2Fdata%2Fbio2vec%2Fphenomenet%2Fphenotype_annotation_hpoteam.tsv%2F87104
+
+      # Don't distinct between phenotype_annotation_hpoteam.tsv and phenotype_annotation.tsv
+      ?s d2smodel:Db "OMIM" ;
+        d2smodel:Db_reference ?omimId ;
+        d2smodel:Hpo_id ?hpoId .
+
+      BIND ( iri(concat("http://identifiers.org/", ?omimId)) AS ?omimUri )
+      BIND ( iri(concat("http://purl.obolibrary.org/obo/", replace(?hpoId, ":", "_"))) AS ?hpoUri )
+      #BIND ( iri(concat("http://identifiers.org/", ?hpoId)) AS ?hpoUri )
+
+      OPTIONAL {
+        ?s d2smodel:Evidence_code ?Evidence_code .
+      } OPTIONAL {
+        ?s d2smodel:Modifier ?Modifier .
+      } OPTIONAL {
+        ?s d2smodel:Date_created ?Date_created .
+      }
+
+      # Avoid taking the first row with columns labels
+      FILTER( ?omimId != "DB_Reference")
+      FILTER( strstarts(?omimId, "OMIM:") ) # Only get OMIM (avoid PMID)
+    }
+  }
+}
