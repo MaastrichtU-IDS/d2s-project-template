@@ -26,4 +26,4 @@ sparql_output_graph_uri: https://w3id.org/data2services/graph/biolink/stitch
 sparql_service_url: "http://localhost:7200/repositories/test"
 
 sparql_transform_queries_path: /data/mapping/stitch/transform/1
-sparql_insert_metadata_path: /data/mapping/stitch/metadata/5.0
+sparql_insert_metadata_path: /data/mapping/stitch/metadata/1

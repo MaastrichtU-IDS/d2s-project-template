@@ -25,4 +25,4 @@ sparql_output_graph_uri: https://w3id.org/data2services/graph/biolink/pharmgkb
 sparql_service_url: "http://localhost:7200/repositories/test"
 
 sparql_transform_queries_path: /data/mapping/pharmgkb/transform/1
-sparql_insert_metadata_path: /data/mapping/pharmgkb/metadata/1.0
+sparql_insert_metadata_path: /data/mapping/pharmgkb/metadata/1

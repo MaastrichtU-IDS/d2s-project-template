@@ -24,4 +24,4 @@ sparql_service_url: "http://localhost:7200/repositories/test"
 
 sparql_transform_queries_path: /data/mapping/eggnog/transform/1
 #sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/eggnog/1.0
-sparql_insert_metadata_path: /data/mapping/eggnog/metadata/4.5
+sparql_insert_metadata_path: /data/mapping/eggnog/metadata/1
