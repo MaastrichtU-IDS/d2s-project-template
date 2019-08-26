@@ -3,8 +3,15 @@
 The [Common Workflow Language](https://www.commonwl.org/) is used to describe workflows to transform heterogeneous structured data (CSV, TSV, RDB, XML, JSON) to the [BioLink](https://biolink.github.io/biolink-model/docs/) RDF data model. The user defines [SPARQL queries](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/mapping/pharmgkb/insert-pharmgkb.rq) to transform the generic RDF generated depending on the input data structure (AutoR2RML, xml2rdf) to the target BioLink model.
 
 * Install [Docker](https://docs.docker.com/install/) to run the modules.
+
 * Install [cwltool](https://github.com/common-workflow-language/cwltool#install) to get cwl-runner to run workflows of Docker modules.
+
+```shell
+apt-get install cwltool
+```
+
 * Those workflows use Data2Services modules, see the [data2services-pipeline](https://github.com/MaastrichtU-IDS/data2services-pipeline) project.
+* It is recommended to build the Docker images before running workflows, as the `docker pull` might crash when done through `cwl-runner`.
 
 ---
 
@@ -52,7 +59,7 @@ docker run -d --rm --name graphdb -p 7200:7200 -v /data/graphdb:/opt/graphdb/hom
 ### Convert XML with [xml2rdf](https://github.com/MaastrichtU-IDS/xml2rdf)
 
 ```shell
-cwl-runner --outdir output/drugbank support/cwl/workflow-xml.cwl support/cwl/config/config-transform-xml-drugbank.yml
+cwl-runner --outdir output/drugbank data2services-cwl-workflows/workflows/workflow-xml.cwl support/config/config-transform-xml-drugbank.yml
 ```
 
 See [config file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/cwl/config/config-transform-xml-drugbank.yml):
@@ -76,17 +83,17 @@ sparql_triplestore_repository: test
 sparql_username: import_user
 sparql_password: PASSWORD
 sparql_output_graph_uri: https://w3id.org/data2services/graph/biolink/drugbank
-sparql_service_url: "http://localhost:7200/repositories/test"
+sparql_service_url: "repository:test"
 
 sparql_transform_queries_path: /data/mapping/drugbank/transform/1
-# Could be https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/drugbank/
-sparql_insert_metadata_path: /data/mapping/drugbank/metadata/5.0
+# Could be https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/mapping/drugbank/transform/1
+sparql_insert_metadata_path: /data/mapping/drugbank/metadata/1
 ```
 
 ### Convert CSV/TSV with [AutoR2RML](https://github.com/amalic/autor2rml)
 
 ```shell
-cwl-runner --outdir output/stitch support/cwl/workflow-csv.cwl support/config/config-transform-csv-stitch.yml
+cwl-runner --outdir output/stitch data2services-cwl-workflows/workflows/workflow-csv.cwl support/config/config-transform-csv-stitch.yml
 ```
 
 See [config file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/cwl/config/config-transform-csv-stitch.yml):
@@ -107,16 +114,16 @@ sparql_triplestore_repository: test
 sparql_username: import_user
 sparql_password: PASSWORD
 sparql_output_graph_uri: https://w3id.org/data2services/graph/biolink/stitch
-sparql_service_url: "http://localhost:7200/repositories/test"
+sparql_service_url: "repository:test"
 
 sparql_transform_queries_path: /data/mapping/stitch/transform/1
-sparql_insert_metadata_path: /data/mapping/stitch/metadata/5.0
+sparql_insert_metadata_path: /data/mapping/stitch/metadata/1
 ```
 
 ### Convert CSV/TSV with [AutoR2RML](https://github.com/amalic/autor2rml) and split a property
 
 ```shell
-cwl-runner --outdir output/eggnog support/cwl/workflow-csv-split.cwl support/cwl/config/config-transform-split-eggnog.yml
+cwl-runner --outdir output/eggnog data2services-cwl-workflows/workflows/workflow-csv-split.cwl support/config/config-transform-split-eggnog.yml
 ```
 
 See [config file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/cwl/config/config-transform-split-eggnog.yml):
@@ -143,24 +150,18 @@ split_quote: '"'
 sparql_username: emonet
 sparql_password: PASSWORD
 sparql_output_graph_uri: https://w3id.org/data2services/graph/biolink/eggnog
-sparql_service_url: "http://localhost:7200/repositories/test"
+sparql_service_url: "repository:test"
 
 sparql_transform_queries_path: /data/mapping/eggnog/transform/1
-sparql_insert_metadata_path: /data/mapping/eggnog/metadata/4.5
+sparql_insert_metadata_path: /data/mapping/eggnog/metadata/1
 ```
 
 ### Run in the background
 
-Will write all terminal output to `nohup.out`.
+And write all terminal output to `nohup.out`.
 
 ```shell
-nohup cwl-runner --outdir output/drugbank support/cwl/workflow-xml.cwl support/cwl/config/config-transform-xml-drugbank.yml &
+nohup cwl-runner --outdir output/drugbank data2services-cwl-workflows/workflows/workflow-xml.cwl support/config/config-transform-xml-drugbank.yml &
 ```
 
 
-
----
-
-# Argo workflows
-
-See [Argo README](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/support/argo) to run workflows with Argo.
