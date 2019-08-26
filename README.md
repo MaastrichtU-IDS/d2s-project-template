@@ -52,9 +52,9 @@ docker run -d --rm --name graphdb -p 7200:7200 -v /data/graphdb:/opt/graphdb/hom
   * `--outdir`: the [output directory](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/output/stitch) for files outputted by the workflow (except for the downloaded source files that goes automatically to `/input`). 
     * e.g. `output/$dataset_name`.
   * The `.cwl` [workflow file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/cwl/workflow-xml.cwl)
-    * e.g. `support/cwl/workflow-xml.cwl`
+    * e.g. `data2services-cwl-workflows/workflows/workflow-xml.cwl`
   * The `.yml` [configuration file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/cwl/config/config-transform-xml-drugbank.yml) with all parameters required to run the workflow
-    * e.g. `support/cwl/config/config-transform-xml-drugbank.yml`
+    * e.g. `support/config/config-transform-xml-drugbank.yml`
 
 * 3 types of workflows can be run depending on the input data:
   * [Convert XML to RDF](https://github.com/MaastrichtU-IDS/data2services-transform-biolink#convert-xml-with-xml2rdf)
@@ -170,3 +170,9 @@ nohup cwl-runner --outdir output/drugbank data2services-cwl-workflows/workflows/
 ```
 
 
+
+---
+
+# Argo workflows
+
+See [data2services-argo-workflows](https://github.com/MaastrichtU-IDS/data2services-argo-workflows) to run workflows with Argo.
