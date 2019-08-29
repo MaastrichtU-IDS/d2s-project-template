@@ -161,6 +161,16 @@ sparql_transform_queries_path: /data/mapping/eggnog/transform/1
 sparql_insert_metadata_path: /data/mapping/eggnog/metadata/1
 ```
 
+### Generate mappings for AutoR2RML
+
+When you don't have set the mappings for R2RML: generates the generic RDF and template SPARQL mapping files, and load the generic RDF.
+
+```shell
+cwl-runner --outdir output/hpo_annotations data2services-cwl-workflows/workflows/workflow-csv-generate_mapping.cwl support/config/config-transform-csv-hpo_annotations.yml
+```
+
+Same [config file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/cwl/config/config-transform-csv-stitch.yml) as the regular CSV workflow.
+
 ### Run in the background
 
 And write all terminal output to `nohup.out`.

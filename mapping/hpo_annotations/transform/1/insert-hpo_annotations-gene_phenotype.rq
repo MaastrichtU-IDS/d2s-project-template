@@ -9,6 +9,8 @@ INSERT
 {
   GRAPH <?_outputGraph> { 
 
+    # For file phenotype_annotation_hpoteam.tsv and phenotype_annotation.tsv (phenotype - disease annotations)
+
     ?omimUri a bl:Disease ;
       bl:id ?omimId ;
       bl:has_phenotype ?hpoUri .

@@ -1,0 +1,50 @@
+PREFIX d2s: <https://w3id.org/data2services/model/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX biolink: <https://w3id.org/biolink/vocab/>
+PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
+INSERT {
+  GRAPH <?_outputGraph> {  
+    # Attribute the retrieved data to your model properties
+    ?geneUri a biolink:Gene ;
+      biolink:id ?Entrezgeneid ;
+      biolink:systematic_synonym ?Entrezgenesymbol .
+
+    ?hpoUri a biolink:PhenotypicFeature ;
+      biolink:name ?Hpotermname ;
+      biolink:id ?Hpotermid .
+
+    ?genePhenotypeAssoUri a biolink:GeneToPhenotypicFeatureAssociation ;
+      # TODO: Difference between association type and relation?
+      # For example for gene to phenotypic feature, is this correct?
+      biolink:id ?genePhenotypeAssoUri ;
+      biolink:subject ?geneUri ;
+      biolink:object ?hpoUri ;
+      biolink:relation biolink:gene_associated_with_condition ;
+      biolink:association_type biolink:gene_associated_with_condition .
+
+);
+} WHERE {
+  SERVICE <?_serviceUrl>  {
+    GRAPH <?_inputGraph> {
+
+      ?row d2s:Entrezgeneid ?Entrezgeneid ;
+        a <https://w3id.org/data2services/data/input/hpo_annotations/genes_to_phenotype.tsv> .
+
+      # Generate URI from ID
+      BIND ( iri(concat("https://identifiers.org/ncbigene:", ?Entrezgeneid)) AS ?geneUri )
+      # Also https://www.ncbi.nlm.nih.gov/gene/
+
+      OPTIONAL { ?row d2s:Entrezgenesymbol ?Entrezgenesymbol . }
+      OPTIONAL { ?row d2s:Hpotermname ?Hpotermname . }
+      ?row d2s:Hpotermid ?Hpotermid .
+      BIND( iri(concat("https://identifiers.org/", lcase(?Hpotermid))) AS ?hpoUri )
+      
+      # generate association URI
+      BIND( iri(concat("https://w3id.org/data2services/association/genes_to_phenotype/", md5(concat(?Entrezgeneid, ?Hpotermid)))) 
+        AS ?genePhenotypeAssoUri )
+    }
+  }
+}

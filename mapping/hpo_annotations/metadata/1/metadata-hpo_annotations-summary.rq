@@ -1,37 +1,23 @@
-PREFIX rr: <http://www.w3.org/ns/r2rml#> 
-PREFIX dc: <http://purl.org/dc/elements/1.1/> 
-PREFIX dbo: <http://dbpedia.org/ontology/> 
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
-PREFIX owl: <http://www.w3.org/2002/07/owl#> 
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
-PREFIX rml: <http://semweb.mmlab.be/ns/rml#> 
-PREFIX ql: <http://semweb.mmlab.be/ns/ql#> 
-PREFIX d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> 
-PREFIX pharmgkb_vocabulary: <http://bio2rdf.org/pharmgkb_vocabulary:> 
-
-PREFIX ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX cito: <http://purl.org/spar/cito/>
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dctypes: <http://purl.org/dc/dcmitype/>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-PREFIX freq: <http://purl.org/cld/freq/>
-PREFIX idot: <http://identifiers.org/idot/>
-PREFIX lexvo: <http://lexvo.org/ontology#>
-PREFIX pav: <http://purl.org/pav/>
-PREFIX prov: <http://www.w3.org/ns/prov#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX schemaorg: <http://schema.org/>
-PREFIX sd: <http://www.w3.org/ns/sparql-service-description#>
-PREFIX sio: <http://semanticscience.org/resource/>
-PREFIX void: <http://rdfs.org/ns/void#>
-PREFIX void-ext: <http://ldf.fi/void-ext#>
-
-PREFIX bl: <http://bioentity.io/vocab/>
-PREFIX dqv: <http://www.w3.org/ns/dqv#>
-PREFIX hcls: <http://www.w3.org/hcls#>
-PREFIX d2sdata: <http://data2services/data/>
+  PREFIX ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+  PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+  PREFIX cito: <http://purl.org/spar/cito/>
+  PREFIX dcat: <http://www.w3.org/ns/dcat#>
+  PREFIX dctypes: <http://purl.org/dc/dcmitype/>
+  PREFIX dct: <http://purl.org/dc/terms/>
+  PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+  PREFIX freq: <http://purl.org/cld/freq/>
+  PREFIX idot: <http://identifiers.org/idot/>
+  PREFIX lexvo: <http://lexvo.org/ontology#>
+  PREFIX pav: <http://purl.org/pav/>
+  PREFIX prov: <http://www.w3.org/ns/prov#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX schemaorg: <http://schema.org/>
+  PREFIX sd: <http://www.w3.org/ns/sparql-service-description#>
+  PREFIX sio: <http://semanticscience.org/resource/>
+  PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+  PREFIX void: <http://rdfs.org/ns/void/>
+  PREFIX void-ext: <http://ldf.fi/void-ext#>
 
 
 INSERT {
@@ -45,153 +31,50 @@ INSERT {
 
     # Summary
     <https://w3id.org/data2services/dataset/hpo_annotations>
-      rdf:type dctypes:Dataset; #
-      dct:title "HPO annotations" ; #
-      dct:description "This monthly job generates the data that is based on HPO-obo-file and the annotation-file. The generated data includes files that map genes to HPO-terms (and vice versa) and a SQL-dump of the MYSQL-database version of the HPO and its annotations.";
+      rdf:type dctypes:Dataset;
+      dct:title "HPO annotations" ;
+      idot:preferredPrefix "hpo_annotations" ;
+      dct:description "This monthly job generates the data that is based on HPO-obo-file and the annotation-file. The generated data includes files that map genes to HPO-terms (and vice versa) and a SQL-dump of the MYSQL-database version of the HPO and its annotations."@en;
       dct:publisher <https://w3id.org/data2services/agent/hpo> ;
+      
       dct:license <https://hpo.jax.org/app/license> ;
+      #Human readable licenses terms
+      dct:rights """All of the following license restrictions apply to all files provided by the HPO project:
+      1. The HPO vocabularies, annotation files, tools and documentation are freely available.
+      2. The HPO is copyrighted to protect the integrity of the vocabularies, which means that changes to the HPO vocabularies need to be done by HPO developers. However, anyone can download the HPO and use the ontologies or other HPO files under three conditions:
+        - That the Human Phenotype Ontology Consortium is acknowledged and cited properly.
+        - That any HPO Consortium file(s) displayed publicly include the date(s) and/or version number(s) of the relevant HPO file(s).
+        - That neither the content of the HPO file(s) nor the logical relationships embedded within the HPO file(s) be altered in any way. (Content additions and modifications have to be suggested using our issue tracker.) 
+      3. We suggest that you follow standard scientific citation practice if you use the HPO in publications.
+      4. Users of the HPO should add the following statement to their online presence. This service/product uses the Human Phenotype Ontology (version information). Find out more at http://www.human-phenotype-ontology.org We request that the HPO logo be included as well. """@en ;
 
       foaf:page <https://hpo.jax.org/app/> ;
-      
       schemaorg:logo <https://hpo.jax.org/app/assets/hpo-logo-white.png> ;
+      dct:accrualPeriodicity freq:monthly ; # frequency of update
 
+      # dcat:accessURL to specify a directory containing the file(s) of interest
+      dcat:accessURL <http://compbio.charite.de/jenkins/job/hpo.annotations.monthly/> ; 
+      
+      #void:sparqlEndpoint "http://graphdb.dumontierlab.com/repositories/ncats-red-kg" ;
+      void:sparqlEndpoint "http://graphdb.dumontierlab.com/repositories/bio2vec" ;
       
 
-      # <http://compbio.charite.de/jenkins/job/hpo.annotations.monthly/> ;
+      ## MAY
+      # dcat:theme <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48807> ;
+      # dcat:keyword "genes" , "phenotypes" ;
+      # dct:references <IRI> ; # Supporting material as web pages and documents (use cito for publications)
+      # cito:citesAsAuthority <IRI> ; # publications about the dataset
+      # rdfs:seeAlso <http://compbio.charite.de/jenkins/job/hpo.annotations.monthly/> ;
 
-    ## MAY
-    # dct:rights "Human readable license terms" ;
-    # dct:alternative "Alternative label for dataset" ;
-    # dcat:theme <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48807> ;
-    # dcat:keyword "genes" , "phenotypes" ;
-
-
-        # Old one
-        ?summaryUri
-            rdf:type dctypes:Dataset ; # MUST
-
-            ### General informations
-          #  dct:title ?dctTitle ;
-          #  dct:alternative ?dctAlternative ;
-          #  dct:description ?dctDescription ;
-          #  dct:publisher ?dctPublisher ;
-
-            #foaf:page ?foafPage ;
-       #     schemaorg:logo ?schemaorgLogo ;
-
-         #   dct:license ?dctLicense ;
-          #  dct:rights ?dctRights ;
-
-         #   dcat:theme ?dcatTheme ; #chemical
-            dcat:keyword ?dcatKeyword ;
-
-            rdfs:seeAlso ?rdfsSeeAlso ;
-            cito:citesAsAuthority ?citoCitesAsAuthority ;
-            dct:hasPart ?dctHasPart ;
-
-            ### Identifiers
-            idot:preferredPrefix ?idotPreferredPrefix ;
-            idot:alternatePrefix ?idotAlternatePrefix ;
-
-            ### Provenance and Change
-            #pav:hasCurrentVersion ?pavHasCurrentVersion ;
-            dct:accrualPeriodicity ?dctAccrualPeriodicity ;
-
-            ### Availability/Distributions
-            dcat:accessURL ?dcatAccessURL ; # May. Use this to define the graph (A landing page, feed, SPARQL endpoint or other type of resource that gives access to the distribution of the dataset)
-            void:sparqlEndpoint ?sparqlEndpoint # Should. Only in summary
-        .
-
-        ?dctPublisher a dct:Agent ;
-            foaf:name ?dctPublisherName ;
-            foaf:page ?dctPublisherPage ;
-        .
+      # dct:hasPart <IRI> ; # if the dataset has multiple different parts (e.g. one for Drugs, one for Phenotypes)
+      # dct:alternative "Alternative label for dataset" ;
+      # idot:alternatePrefix "alternative_prefix";
 
 
-    BIND("phenomenet" AS ?idotPreferredPrefix) # Usually a May but required for data2services since it used as source ID to generate the graph URI.
-
-    BIND(<http://graphdb.dumontierlab.com/repositories/bio2vec> AS ?voidSparqlEndpoint) # Usually a Should but required for data2services.
-
-
-    ### SHOULD
-    BIND(<http://aber-owl.net/ontology/PhenomeNET> AS ?foafPage)
-    #BIND(iri("http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif") AS ?schemaorgLogo)
-    #BIND(freq:quarterly AS ?dctAccrualPeriodicity) # Use freq: <http://purl.org/cld/freq/>
-
-
-    ### MAY
-    #BIND("Alternative label for dataset" AS ?dctAlternative)
-    #BIND(iri("http://creativecommons.org/licenses/by-sa/3.0/") AS ?dctLicense) # See https://www.genenames.org/about/
-    #BIND("The data in ChEMBL is covered by the Creative Commons By Attribution." AS ?dctRights)
-    #BIND(ncit:C48807 AS ?dcatTheme)  # uri. Example is chemical
-    #VALUES (?dcatKeyword) { ( "assay" ) ( "chemical" ) } # array
-    #BIND(iri("http://en.wikipedia.org/wiki/ChEMBL") AS ?rdfsSeeAlso)  # uri
-    #BIND(iri("http://nar.oxfordjournals.org/content/40/D1/D1100") AS ?citoCitesAsAuthority)  # uri
-    #VALUES (?dctHasPart) { ( :chembl17_rdf_molecule_dataset ) ( :chembl17_rdf_target_dataset ) } # uri array of distributions
-    #BIND("chembldb" AS ?idotAlternatePrefix) # string
-
-    #BIND(iri("https://w3id.org/data2services/dataset/drugbank/version#1") AS ?pavHasCurrentVersion)  # We will automatically generate it, atm only using isVersionOf in the version item
-
-
-    ###### AMMAR
-    # According to HCLS it should be URI to the RDF and source distributions.
-    dcat:distribution <http://bio2rdf.org/sparql> ;
-    dcat:distribution <http:/bio2rdf.org/pharmgkb_resource:version/5/rdf/data>;
-    dcat:accessURL <https://bio2rdf.org/pharmgkb/version/5/index.html> ; 
-    dct:language <http://lexvo.org/id/iso639-3/eng>;
-    
-    dct:creator <https://github.com/MaastrichtU-IDS/data2services-pipeline> ;
-    dct:issued  ?now;
-  .
-  
-    # TODO: Remove this
-	 ### RDF Distribution description (Complete)
-     # <http:/bio2rdf.org/pharmgkb_resource:version/5/rdf/data>
-     # Version URI is <http:/bio2rdf.org/pharmgkb_resource:version/5>
-        <?_outputGraph>
-            a dcat:Distribution, void:Dataset ;
-            pav:version "156"^^xsd:string ; 
-            dct:title "N-Quads distribution of HPO annotations monthly build #156" ;
-            dct:description "N-Quads distribution of HPO annotations monthly build #156 produced by Data2Services on NOW()" ; 
-            dct:license <http://creativecommons.org/licenses/by/3.0/> ; # TODO: What should be data2services BioLink RDF license?
-            dct:conformsTo <http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/> ;
-			dct:source <http://bio2rdf.org/pharmgkb/source> ;
-            dct:language <http://lexvo.org/id/iso639-3/eng> ; 
-            void:vocabulary <http://bio2rdf.org/pharmgkb_vocabulary:> ; 
-
-            dct:publisher <http://bio2rdf.org/> ; 
-            dct:created '''NOW()''' ; 
-            dct:creator <http://bio2rdf.org/bio2rdf_resource:data2services> ; 
-
-            void:exampleResource <http://bio2rdf.org/pharmgkb:PA12345> ;
-
-			dcat:mediaType "application/n-quads";
-            dcat:accessURL <http://bio2rdf.org/pharmgkb/version/5/index.html> ;
-            dcat:downloadURL <http://bio2rdf.org/pharmgkb/version/5/data/pharmgkb.nq.tgz> ; 
-            void:dataDump <http://bio2rdf.org/pharmgkb/version/5/data/pharmgkb.nq.tgz> ;
-		.
-		        
-        ### Distribution (non-RDF) description (Complete)
-        <http://bio2rdf.org/pharmgkb/source>
-            a dcat:Distribution ;
-            dct:title "PharmGKB Database Distribution" ; # Must
-            dct:description "The PharmGKB is a pharmacogenomics knowledge resource that encompasses clinical information including clinical guidelines and drug labels, potentially clinically actionable gene-drug associations and genotype-phenotype relationships." ; 
-       
-            dct:license <https://hpo.jax.org/app/license> ;
-            dct:conformsTo <http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/>;
-
-            dct:publisher <http://www.pharmgkb.org> ;
-            dct:creator <https://www.pharmgkb.org>; 
-			pav:retrievedOn "datetime";
-			
-            dct:language <http://lexvo.org/id/iso639-3/eng>; 
-
-            dct:format "text/tab-separated-values", "application/zip" ; 
-            dcat:downloadURL <https://api.pharmgkb.org/v1/download/file/data> ;  
-        .
-
-       
-    }
+      ## Needs to be updated at new submission
+      #pav:hasCurrentVersion <https://w3id.org/data2services/dataset/hpo_annotations/version/1> ;
+    .
+  }
 } WHERE {
     BIND(NOW() AS ?now)
 }
