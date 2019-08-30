@@ -1,3 +1,6 @@
 [submodule "data2services-cwl-workflows"]
 	path = data2services-cwl-workflows
 	url = git@github.com:MaastrichtU-IDS/data2services-cwl-workflows.git
+[submodule "data2services-argo-workflows"]
+	path = data2services-argo-workflows
+	url = git@github.com:MaastrichtU-IDS/data2services-argo-workflows.git
