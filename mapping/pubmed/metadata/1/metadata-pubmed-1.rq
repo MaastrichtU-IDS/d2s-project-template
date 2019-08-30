@@ -71,22 +71,21 @@ INSERT {
 
       # TODO: What should be data2services BioLink RDF license?
       dct:license <http://creativecommons.org/licenses/by/3.0/> ;
+      void:exampleResource <https://identifiers.org/pubmed:16333295> ;
 
-      # Note: in HCLS example they use the original dataset IRI
+
+      # Which publisher for BioLink Dataset?
+      dct:publisher <https://github.com/MaastrichtU-IDS/data2services-pipeline> ; 
+      dct:creator <https://github.com/MaastrichtU-IDS/data2services-pipeline> ; 
+
+            # Note: in HCLS example they use the original dataset IRI
       dct:source ?distributionSourceUri ;
       dct:language ?dctLanguage ;
       void:vocabulary <https://w3id.org/biolink/vocab/> ;
 
-      # Which publisher for BioLink Dataset? IDS, Data2services?
-      dct:publisher <https://github.com/MaastrichtU-IDS/data2services-pipeline> ; 
-      dct:creator <https://github.com/MaastrichtU-IDS/data2services-pipeline> ; 
-
-      void:exampleResource <https://identifiers.org/mim:615668> ,
-        <https://identifiers.org/hp:0000252> ;
-
       dcat:accessURL <http://graphdb.dumontierlab.com/graphs> ;
-      dcat:downloadURL <http://graphdb.dumontierlab.com/repositories/bio2vec/statements> ;
-      void:dataDump <http://graphdb.dumontierlab.com/repositories/bio2vec/statements> ;
+      dcat:downloadURL <http://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements> ;
+      void:dataDump <http://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements> ;
       dcat:mediaType "application/n-quads";
 
       dct:title ?rdfDctTitle ;
@@ -107,9 +106,9 @@ INSERT {
     ### Source distribution (non-RDF) description (Complete)
     ?distributionSourceUri
       a dcat:Distribution ;
-      dct:format "text/tab-separated-values" ;
+      dct:format "application/xml" ;
       dcat:downloadURL
-        <http://compbio.charite.de/jenkins/job/hpo.annotations.monthly/lastSuccessfulBuild/artifact/annotation/ALL_SOURCES_ALL_FREQUENCIES_genes_to_phenotype.txt> ;
+        <ftp://ftp.ncbi.nlm.nih.gov/pubmed/baseline/> ;
 
       # TODO: should we put issues?
       
@@ -136,15 +135,15 @@ INSERT {
   
     }
 } WHERE {
-  BIND("156"^^xsd:string AS ?pavVersion)
+  BIND("19"^^xsd:string AS ?pavVersion)
 
-  BIND(<https://w3id.org/data2services/dataset/hpo_annotations> AS ?summaryUri)
+  BIND(<https://w3id.org/data2services/dataset/pubmed> AS ?summaryUri)
   BIND(<http://lexvo.org/id/iso639-3/eng> AS ?dctLanguage)
 
   # Extract RDF version from URI. Only works if using #1
   BIND(strafter(str("?_outputGraph"), "#")  AS ?rdfPavVersion)
-  BIND(concat("N-Quads distribution of HPO annotations monthly build #", ?rdfPavVersion) AS ?rdfDctTitle)
-  BIND(concat("N-Quads distribution of HPO annotations monthly build #", ?rdfPavVersion, " produced by Data2Services on NOW()") AS ?rdfDctDescription)
+  BIND(concat("N-Quads distribution of PubMed build #", ?rdfPavVersion) AS ?rdfDctTitle)
+  BIND(concat("N-Quads distribution of PubMed build #", ?rdfPavVersion, " produced by Data2Services on NOW()") AS ?rdfDctDescription)
 
   BIND(NOW() AS ?now)
   # Get generic informations from summary
