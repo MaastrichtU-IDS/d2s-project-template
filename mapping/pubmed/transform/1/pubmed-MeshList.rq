@@ -1,0 +1,92 @@
+PREFIX x2rm: <http://ids.unimaas.nl/xml2rdf/model#>
+PREFIX x2rd: <http://ids.unimaas.nl/xml2rdf/data/>
+PREFIX d2s: <https://w3id.org/data2services/vocab/>
+PREFIX ido: <http://identifiers.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+INSERT {
+  GRAPH <?_outputGraph> {
+    ?pubmedUri a bl:Publication ;
+      # bl:category bl:Publication ;
+      bl:id ?PubmedArticleSet_PubmedArticle_MedlineCitation_MeshHeadingList_MeshHeading_QualifierName ;
+      bl:name ?PubmedArticleSet_PubmedArticle_MedlineCitation_MeshHeadingList_MeshHeading_DescriptorName ;
+      ?descriptorUri
+      ?descriptorMeshId
+      ?descriptorMajorTopic
+
+      ?qualifierUri
+      ?qualifierMeshId
+      ?qualifierMajorTopic
+  }
+} WHERE {
+  SERVICE <?_serviceUrl>  {
+    GRAPH <?_inputGraph> {
+
+      # Get article PMID
+      ?medlineCitationObj a x2rm:PubmedArticleSet.PubmedArticle.MedlineCitation .
+
+        # Get drug primary ID        
+	    ?medlineCitationObj x2rm:hasChild [
+        a x2rm:PubmedArticleSet.PubmedArticle.MedlineCitation.PMID ;
+        x2rm:hasValue ?pmid
+        # x2rm:hasAttribute [ a x2rm:PubmedArticleSet.PubmedArticle.MedlineCitation.PMID.-version; x2rm:hasValue "1" ] ;
+      ];
+      BIND ( iri(concat("https://identifiers.org/pubmed:", ?pmid)) AS ?pubmedUri )
+
+      OPTIONAL{
+        ?medlineCitationObj x2rm:hasChild ?MeshHeadingList .
+        ?MeshHeadingList a x2rm:PubmedArticleSet.PubmedArticle.MedlineCitation.MeshHeadingList .
+
+        OPTIONAL{
+          ?MeshHeadingList x2rm:hasChild ?MeshHeading .
+          ?MeshHeading a x2rm:PubmedArticleSet.PubmedArticle.MedlineCitation.MeshHeadingList.MeshHeading ; 
+          
+          OPTIONAL{
+            # 1 descriptor, 0 or more qualifiers
+            ?MeshHeading x2rm:hasChild ?descriptorObj .
+            ?descriptorObj a x2rm:PubmedArticleSet.PubmedArticle.MedlineCitation.MeshHeadingList.MeshHeading.DescriptorName ;
+              x2rm:hasValue ?descritorName ;
+              
+              # Get descriptor MeSH ID
+              x2rm:hasAttribute [
+                a x2rm:PubmedArticleSet.PubmedArticle.MedlineCitation.MeshHeadingList.MeshHeading.DescriptorName.-UI ;
+                x2rm:hasValue ?descriptorMeshId ;
+                ] ;
+              
+              # Get if descriptor major topic
+              x2rm:hasAttribute [
+                a x2rm:PubmedArticleSet.PubmedArticle.MedlineCitation.MeshHeadingList.MeshHeading.DescriptorName.-MajorTopicYN ;
+                x2rm:hasValue ?descriptorMajorTopic ;
+              ].
+              BIND ( iri(concat("https://identifiers.org/mesh:", ?descriptorMeshId)) AS ?descriptorUri )
+
+          } OPTIONAL {
+            # Get MeSH qualitifer
+            ?MeshHeading x2rm:hasChild ?qualifierObj .
+            ?qualifierObj a x2rm:PubmedArticleSet.PubmedArticle.MedlineCitation.MeshHeadingList.MeshHeading.QualifierName ;
+              x2rm:hasValue ?qualifierName ;
+              
+              # Get qualifier MeSH ID
+              x2rm:hasAttribute [
+                a x2rm:PubmedArticleSet.PubmedArticle.MedlineCitation.MeshHeadingList.MeshHeading.QualifierName.-UI ;
+                x2rm:hasValue ?qualifierMeshId ;
+                ] ;
+              
+              # Get if qualifier major topic
+              x2rm:hasAttribute [
+                a x2rm:PubmedArticleSet.PubmedArticle.MedlineCitation.MeshHeadingList.MeshHeading.QualifierName.-MajorTopicYN ;
+                x2rm:hasValue ?qualifierMajorTopic ;
+              ].
+              BIND ( iri(concat("https://id.nlm.nih.gov/mesh/", ?qualifierMeshId)) AS ?qualifierUri )
+              # Q not resolved by identifiers.org
+          }
+        }
+      }
+    }
+  }
+}
