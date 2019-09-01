@@ -1,0 +1,95 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+# ["chemical1","chemical2","textmining"]
+# ["CIDm00024759","CIDs00024759","0"]
+# ["CIDs91758695","CIDs00107694","230"]
+<#Mapping1>
+rr:logicalTable [ rr:sqlQuery """
+  select row_number() over (partition by filename) as autor2rml_rownum
+    , NULLIF(trim(columns[0]), '') as `Chemical1`
+    , NULLIF(trim(columns[1]), '') as `Chemical2`
+    , NULLIF(trim(columns[2]), '') as `Textmining`
+  from dfs.root.`/data/input/stitch-sample/chemical_chemical.links.v5.0.tsv` OFFSET 1;
+"""];
+rr:subjectMap [
+  rr:termType rr:IRI;
+  rr:template "https://w3id.org/data2services/data/input/stitch-sample/chemical_chemical.links.v5.0.tsv/{autor2rml_rownum}";
+  rr:class <https://w3id.org/data2services/data/input/stitch-sample/chemical_chemical.links.v5.0.tsv>;
+  rr:graph <https://w3id.org/data2services/graph/autor2rml/stitch>;
+];
+rr:predicateObjectMap [
+  rr:predicate <https://w3id.org/data2services/model/Chemical1>;
+  rr:objectMap [ rr:column "Chemical1" ];
+  rr:graph <https://w3id.org/data2services/graph/autor2rml/stitch>;
+];
+rr:predicateObjectMap [
+  rr:predicate <https://w3id.org/data2services/model/Chemical2>;
+  rr:objectMap [ rr:column "Chemical2" ];
+  rr:graph <https://w3id.org/data2services/graph/autor2rml/stitch>;
+];
+rr:predicateObjectMap [
+  rr:predicate <https://w3id.org/data2services/model/Textmining>;
+  rr:objectMap [ rr:column "Textmining" ];
+  rr:graph <https://w3id.org/data2services/graph/autor2rml/stitch>;
+];
+.
+
+
+# ["chemical","protein","experimental","prediction","database","textmining","combined_score"]
+# ["CIDm91758680","9606.ENSP00000257254","0","0","0","278","279"]
+# ["CIDm91758680","9606.ENSP00000302120","0","0","0","154","154"]
+<#Mapping2>
+rr:logicalTable [ rr:sqlQuery """
+  select row_number() over (partition by filename) as autor2rml_rownum
+    , NULLIF(trim(columns[0]), '') as `Chemical`
+    , NULLIF(trim(columns[1]), '') as `Protein`
+    , NULLIF(trim(columns[2]), '') as `Experimental`
+    , NULLIF(trim(columns[3]), '') as `Prediction`
+    , NULLIF(trim(columns[4]), '') as `Database`
+    , NULLIF(trim(columns[5]), '') as `Textmining`
+    , NULLIF(trim(columns[6]), '') as `Combined_score`
+  from dfs.root.`/data/input/stitch-sample/9606.protein_chemical.links.detailed.v5.0.tsv` OFFSET 1;
+"""];
+rr:subjectMap [
+  rr:termType rr:IRI;
+  rr:template "https://w3id.org/data2services/data/input/stitch-sample/9606.protein_chemical.links.detailed.v5.0.tsv/{autor2rml_rownum}";
+  rr:class <https://w3id.org/data2services/data/input/stitch-sample/9606.protein_chemical.links.detailed.v5.0.tsv>;
+  rr:graph <https://w3id.org/data2services/graph/autor2rml/stitch>;
+];
+rr:predicateObjectMap [
+  rr:predicate <https://w3id.org/data2services/model/Chemical>;
+  rr:objectMap [ rr:column "Chemical" ];
+  rr:graph <https://w3id.org/data2services/graph/autor2rml/stitch>;
+];
+rr:predicateObjectMap [
+  rr:predicate <https://w3id.org/data2services/model/Protein>;
+  rr:objectMap [ rr:column "Protein" ];
+  rr:graph <https://w3id.org/data2services/graph/autor2rml/stitch>;
+];
+rr:predicateObjectMap [
+  rr:predicate <https://w3id.org/data2services/model/Experimental>;
+  rr:objectMap [ rr:column "Experimental" ];
+  rr:graph <https://w3id.org/data2services/graph/autor2rml/stitch>;
+];
+rr:predicateObjectMap [
+  rr:predicate <https://w3id.org/data2services/model/Prediction>;
+  rr:objectMap [ rr:column "Prediction" ];
+  rr:graph <https://w3id.org/data2services/graph/autor2rml/stitch>;
+];
+rr:predicateObjectMap [
+  rr:predicate <https://w3id.org/data2services/model/Database>;
+  rr:objectMap [ rr:column "Database" ];
+  rr:graph <https://w3id.org/data2services/graph/autor2rml/stitch>;
+];
+rr:predicateObjectMap [
+  rr:predicate <https://w3id.org/data2services/model/Textmining>;
+  rr:objectMap [ rr:column "Textmining" ];
+  rr:graph <https://w3id.org/data2services/graph/autor2rml/stitch>;
+];
+rr:predicateObjectMap [
+  rr:predicate <https://w3id.org/data2services/model/Combined_score>;
+  rr:objectMap [ rr:column "Combined_score" ];
+  rr:graph <https://w3id.org/data2services/graph/autor2rml/stitch>;
+];
+.
+
+

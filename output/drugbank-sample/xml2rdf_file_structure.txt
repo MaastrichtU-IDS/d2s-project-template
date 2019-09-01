@@ -1,0 +1,228 @@
+# RootNode{name: "XML Document", count: 1 , valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: ""}
+| # XmlNode{name: "drugbank", count: 1 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank", parent.name: "XML Document"}
+| | * XmlAttribute{name: "schemaLocation", count: 1 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/@schemaLocation", parent.name: "drugbank"}
+| | * XmlAttribute{name: "exported-on", count: 1 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/@exported-on", parent.name: "drugbank"}
+| | * XmlAttribute{name: "version", count: 1 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/@version", parent.name: "drugbank"}
+| | # XmlNode{name: "drug", count: 5 (500%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug", parent.name: "drugbank"}
+| | | * XmlAttribute{name: "created", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/@created", parent.name: "drug"}
+| | | * XmlAttribute{name: "type", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/@type", parent.name: "drug"}
+| | | * XmlAttribute{name: "updated", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/@updated", parent.name: "drug"}
+| | | # XmlNode{name: "toxicity", count: 5 (100%), valueCount: 3 (60%), minLength: 102, maxLength: 703, xPath: "/drugbank/drug/toxicity", parent.name: "drug"}
+| | | # XmlNode{name: "snp-adverse-drug-reactions", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/snp-adverse-drug-reactions", parent.name: "drug"}
+| | | # XmlNode{name: "general-references", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/general-references", parent.name: "drug"}
+| | | | # XmlNode{name: "links", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/general-references/links", parent.name: "general-references"}
+| | | | | # XmlNode{name: "link", count: 1 (20%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/general-references/links/link", parent.name: "links"}
+| | | | | | # XmlNode{name: "title", count: 1 (100%), valueCount: 1 (100%), minLength: 12, maxLength: 12, xPath: "/drugbank/drug/general-references/links/link/title", parent.name: "link"}
+| | | | | | # XmlNode{name: "url", count: 1 (100%), valueCount: 1 (100%), minLength: 54, maxLength: 54, xPath: "/drugbank/drug/general-references/links/link/url", parent.name: "link"}
+| | | | # XmlNode{name: "articles", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/general-references/articles", parent.name: "general-references"}
+| | | | | # XmlNode{name: "article", count: 14 (280%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/general-references/articles/article", parent.name: "articles"}
+| | | | | | # XmlNode{name: "pubmed-id", count: 14 (100%), valueCount: 14 (100%), minLength: 7, maxLength: 8, xPath: "/drugbank/drug/general-references/articles/article/pubmed-id", parent.name: "article"}
+| | | | | | # XmlNode{name: "citation", count: 14 (100%), valueCount: 14 (100%), minLength: 100, maxLength: 508, xPath: "/drugbank/drug/general-references/articles/article/citation", parent.name: "article"}
+| | | | # XmlNode{name: "textbooks", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/general-references/textbooks", parent.name: "general-references"}
+| | | # XmlNode{name: "pharmacodynamics", count: 5 (100%), valueCount: 5 (100%), minLength: 321, maxLength: 684, xPath: "/drugbank/drug/pharmacodynamics", parent.name: "drug"}
+| | | # XmlNode{name: "msds", count: 3 (60%), valueCount: 3 (100%), minLength: 65, maxLength: 65, xPath: "/drugbank/drug/msds", parent.name: "drug"}
+| | | # XmlNode{name: "cas-number", count: 5 (100%), valueCount: 5 (100%), minLength: 10, maxLength: 11, xPath: "/drugbank/drug/cas-number", parent.name: "drug"}
+| | | # XmlNode{name: "mixtures", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/mixtures", parent.name: "drug"}
+| | | | # XmlNode{name: "mixture", count: 14 (280%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/mixtures/mixture", parent.name: "mixtures"}
+| | | | | # XmlNode{name: "name", count: 14 (100%), valueCount: 14 (100%), minLength: 7, maxLength: 31, xPath: "/drugbank/drug/mixtures/mixture/name", parent.name: "mixture"}
+| | | | | # XmlNode{name: "ingredients", count: 14 (100%), valueCount: 14 (100%), minLength: 9, maxLength: 18, xPath: "/drugbank/drug/mixtures/mixture/ingredients", parent.name: "mixture"}
+| | | # XmlNode{name: "external-links", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/external-links", parent.name: "drug"}
+| | | | # XmlNode{name: "external-link", count: 8 (160%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/external-links/external-link", parent.name: "external-links"}
+| | | | | # XmlNode{name: "resource", count: 8 (100%), valueCount: 8 (100%), minLength: 6, maxLength: 9, xPath: "/drugbank/drug/external-links/external-link/resource", parent.name: "external-link"}
+| | | | | # XmlNode{name: "url", count: 8 (100%), valueCount: 8 (100%), minLength: 39, maxLength: 49, xPath: "/drugbank/drug/external-links/external-link/url", parent.name: "external-link"}
+| | | # XmlNode{name: "pdb-entries", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/pdb-entries", parent.name: "drug"}
+| | | # XmlNode{name: "food-interactions", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/food-interactions", parent.name: "drug"}
+| | | | # XmlNode{name: "food-interaction", count: 1 (20%), valueCount: 1 (100%), minLength: 14, maxLength: 14, xPath: "/drugbank/drug/food-interactions/food-interaction", parent.name: "food-interactions"}
+| | | # XmlNode{name: "state", count: 5 (100%), valueCount: 5 (100%), minLength: 6, maxLength: 6, xPath: "/drugbank/drug/state", parent.name: "drug"}
+| | | # XmlNode{name: "synthesis-reference", count: 5 (100%), valueCount: 1 (20%), minLength: 469, maxLength: 469, xPath: "/drugbank/drug/synthesis-reference", parent.name: "drug"}
+| | | # XmlNode{name: "mechanism-of-action", count: 5 (100%), valueCount: 5 (100%), minLength: 141, maxLength: 597, xPath: "/drugbank/drug/mechanism-of-action", parent.name: "drug"}
+| | | # XmlNode{name: "absorption", count: 5 (100%), valueCount: 2 (40%), minLength: 44, maxLength: 527, xPath: "/drugbank/drug/absorption", parent.name: "drug"}
+| | | # XmlNode{name: "synonyms", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/synonyms", parent.name: "drug"}
+| | | | # XmlNode{name: "synonym", count: 14 (280%), valueCount: 14 (100%), minLength: 6, maxLength: 173, xPath: "/drugbank/drug/synonyms/synonym", parent.name: "synonyms"}
+| | | | | * XmlAttribute{name: "coder", count: 14 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/synonyms/synonym/@coder", parent.name: "synonym"}
+| | | | | * XmlAttribute{name: "language", count: 14 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/synonyms/synonym/@language", parent.name: "synonym"}
+| | | # XmlNode{name: "pathways", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/pathways", parent.name: "drug"}
+| | | | # XmlNode{name: "pathway", count: 2 (40%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/pathways/pathway", parent.name: "pathways"}
+| | | | | # XmlNode{name: "drugs", count: 2 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/pathways/pathway/drugs", parent.name: "pathway"}
+| | | | | | # XmlNode{name: "drug", count: 4 (200%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/pathways/pathway/drugs/drug", parent.name: "drugs"}
+| | | | | | | # XmlNode{name: "name", count: 4 (100%), valueCount: 4 (100%), minLength: 7, maxLength: 13, xPath: "/drugbank/drug/pathways/pathway/drugs/drug/name", parent.name: "drug"}
+| | | | | | | # XmlNode{name: "drugbank-id", count: 4 (100%), valueCount: 4 (100%), minLength: 7, maxLength: 7, xPath: "/drugbank/drug/pathways/pathway/drugs/drug/drugbank-id", parent.name: "drug"}
+| | | | | # XmlNode{name: "name", count: 2 (100%), valueCount: 2 (100%), minLength: 24, maxLength: 24, xPath: "/drugbank/drug/pathways/pathway/name", parent.name: "pathway"}
+| | | | | # XmlNode{name: "enzymes", count: 2 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/pathways/pathway/enzymes", parent.name: "pathway"}
+| | | | | | # XmlNode{name: "uniprot-id", count: 21 (1050%), valueCount: 21 (100%), minLength: 6, maxLength: 6, xPath: "/drugbank/drug/pathways/pathway/enzymes/uniprot-id", parent.name: "enzymes"}
+| | | | | # XmlNode{name: "category", count: 2 (100%), valueCount: 2 (100%), minLength: 11, maxLength: 11, xPath: "/drugbank/drug/pathways/pathway/category", parent.name: "pathway"}
+| | | | | # XmlNode{name: "smpdb-id", count: 2 (100%), valueCount: 2 (100%), minLength: 8, maxLength: 8, xPath: "/drugbank/drug/pathways/pathway/smpdb-id", parent.name: "pathway"}
+| | | # XmlNode{name: "snp-effects", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/snp-effects", parent.name: "drug"}
+| | | | # XmlNode{name: "effect", count: 2 (40%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/snp-effects/effect", parent.name: "snp-effects"}
+| | | | | # XmlNode{name: "pubmed-id", count: 2 (100%), valueCount: 2 (100%), minLength: 8, maxLength: 8, xPath: "/drugbank/drug/snp-effects/effect/pubmed-id", parent.name: "effect"}
+| | | | | # XmlNode{name: "protein-name", count: 2 (100%), valueCount: 2 (100%), minLength: 57, maxLength: 58, xPath: "/drugbank/drug/snp-effects/effect/protein-name", parent.name: "effect"}
+| | | | | # XmlNode{name: "uniprot-id", count: 2 (100%), valueCount: 2 (100%), minLength: 6, maxLength: 6, xPath: "/drugbank/drug/snp-effects/effect/uniprot-id", parent.name: "effect"}
+| | | | | # XmlNode{name: "allele", count: 2 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/snp-effects/effect/allele", parent.name: "effect"}
+| | | | | # XmlNode{name: "description", count: 2 (100%), valueCount: 2 (100%), minLength: 122, maxLength: 126, xPath: "/drugbank/drug/snp-effects/effect/description", parent.name: "effect"}
+| | | | | # XmlNode{name: "rs-id", count: 2 (100%), valueCount: 2 (100%), minLength: 8, maxLength: 9, xPath: "/drugbank/drug/snp-effects/effect/rs-id", parent.name: "effect"}
+| | | | | # XmlNode{name: "gene-symbol", count: 2 (100%), valueCount: 2 (100%), minLength: 6, maxLength: 6, xPath: "/drugbank/drug/snp-effects/effect/gene-symbol", parent.name: "effect"}
+| | | | | # XmlNode{name: "defining-change", count: 2 (100%), valueCount: 2 (100%), minLength: 5, maxLength: 9, xPath: "/drugbank/drug/snp-effects/effect/defining-change", parent.name: "effect"}
+| | | # XmlNode{name: "carriers", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/carriers", parent.name: "drug"}
+| | | # XmlNode{name: "classification", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/classification", parent.name: "drug"}
+| | | | # XmlNode{name: "direct-parent", count: 5 (100%), valueCount: 5 (100%), minLength: 8, maxLength: 8, xPath: "/drugbank/drug/classification/direct-parent", parent.name: "classification"}
+| | | | # XmlNode{name: "superclass", count: 5 (100%), valueCount: 5 (100%), minLength: 13, maxLength: 13, xPath: "/drugbank/drug/classification/superclass", parent.name: "classification"}
+| | | | # XmlNode{name: "subclass", count: 5 (100%), valueCount: 5 (100%), minLength: 36, maxLength: 36, xPath: "/drugbank/drug/classification/subclass", parent.name: "classification"}
+| | | | # XmlNode{name: "description", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/classification/description", parent.name: "classification"}
+| | | | # XmlNode{name: "kingdom", count: 5 (100%), valueCount: 5 (100%), minLength: 17, maxLength: 17, xPath: "/drugbank/drug/classification/kingdom", parent.name: "classification"}
+| | | | # XmlNode{name: "class", count: 5 (100%), valueCount: 5 (100%), minLength: 32, maxLength: 32, xPath: "/drugbank/drug/classification/class", parent.name: "classification"}
+| | | # XmlNode{name: "half-life", count: 5 (100%), valueCount: 4 (80%), minLength: 9, maxLength: 119, xPath: "/drugbank/drug/half-life", parent.name: "drug"}
+| | | # XmlNode{name: "volume-of-distribution", count: 5 (100%), valueCount: 3 (60%), minLength: 83, maxLength: 239, xPath: "/drugbank/drug/volume-of-distribution", parent.name: "drug"}
+| | | # XmlNode{name: "route-of-elimination", count: 5 (100%), valueCount: 1 (20%), minLength: 155, maxLength: 250, xPath: "/drugbank/drug/route-of-elimination", parent.name: "drug"}
+| | | # XmlNode{name: "name", count: 5 (100%), valueCount: 5 (100%), minLength: 9, maxLength: 18, xPath: "/drugbank/drug/name", parent.name: "drug"}
+| | | # XmlNode{name: "metabolism", count: 5 (100%), valueCount: 2 (40%), minLength: 122, maxLength: 295, xPath: "/drugbank/drug/metabolism", parent.name: "drug"}
+| | | # XmlNode{name: "indication", count: 5 (100%), valueCount: 5 (100%), minLength: 53, maxLength: 384, xPath: "/drugbank/drug/indication", parent.name: "drug"}
+| | | # XmlNode{name: "affected-organisms", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/affected-organisms", parent.name: "drug"}
+| | | | # XmlNode{name: "affected-organism", count: 5 (100%), valueCount: 5 (100%), minLength: 24, maxLength: 24, xPath: "/drugbank/drug/affected-organisms/affected-organism", parent.name: "affected-organisms"}
+| | | # XmlNode{name: "experimental-properties", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/experimental-properties", parent.name: "drug"}
+| | | | # XmlNode{name: "property", count: 24 (480%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/experimental-properties/property", parent.name: "experimental-properties"}
+| | | | | # XmlNode{name: "kind", count: 24 (100%), valueCount: 24 (100%), minLength: 13, maxLength: 17, xPath: "/drugbank/drug/experimental-properties/property/kind", parent.name: "property"}
+| | | | | # XmlNode{name: "source", count: 24 (100%), valueCount: 4 (16.7%), minLength: 47, maxLength: 58, xPath: "/drugbank/drug/experimental-properties/property/source", parent.name: "property"}
+| | | | | # XmlNode{name: "value", count: 24 (100%), valueCount: 24 (100%), minLength: 4, maxLength: 39, xPath: "/drugbank/drug/experimental-properties/property/value", parent.name: "property"}
+| | | # XmlNode{name: "external-identifiers", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/external-identifiers", parent.name: "drug"}
+| | | | # XmlNode{name: "external-identifier", count: 36 (720%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/external-identifiers/external-identifier", parent.name: "external-identifiers"}
+| | | | | # XmlNode{name: "identifier", count: 36 (100%), valueCount: 36 (100%), minLength: 3, maxLength: 13, xPath: "/drugbank/drug/external-identifiers/external-identifier/identifier", parent.name: "external-identifier"}
+| | | | | # XmlNode{name: "resource", count: 36 (100%), valueCount: 36 (100%), minLength: 6, maxLength: 28, xPath: "/drugbank/drug/external-identifiers/external-identifier/resource", parent.name: "external-identifier"}
+| | | # XmlNode{name: "transporters", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/transporters", parent.name: "drug"}
+| | | # XmlNode{name: "dosages", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/dosages", parent.name: "drug"}
+| | | | # XmlNode{name: "dosage", count: 10 (200%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/dosages/dosage", parent.name: "dosages"}
+| | | | | # XmlNode{name: "route", count: 10 (100%), valueCount: 10 (100%), minLength: 11, maxLength: 27, xPath: "/drugbank/drug/dosages/dosage/route", parent.name: "dosage"}
+| | | | | # XmlNode{name: "form", count: 10 (100%), valueCount: 10 (100%), minLength: 6, maxLength: 32, xPath: "/drugbank/drug/dosages/dosage/form", parent.name: "dosage"}
+| | | | | # XmlNode{name: "strength", count: 10 (100%), valueCount: 10 (100%), minLength: 4, maxLength: 13, xPath: "/drugbank/drug/dosages/dosage/strength", parent.name: "dosage"}
+| | | # XmlNode{name: "description", count: 5 (100%), valueCount: 5 (100%), minLength: 94, maxLength: 718, xPath: "/drugbank/drug/description", parent.name: "drug"}
+| | | # XmlNode{name: "enzymes", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/enzymes", parent.name: "drug"}
+| | | # XmlNode{name: "sequences", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/sequences", parent.name: "drug"}
+| | | | # XmlNode{name: "sequence", count: 6 (120%), valueCount: 6 (100%), minLength: 48, maxLength: 479, xPath: "/drugbank/drug/sequences/sequence", parent.name: "sequences"}
+| | | | | * XmlAttribute{name: "format", count: 6 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/sequences/sequence/@format", parent.name: "sequence"}
+| | | # XmlNode{name: "targets", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets", parent.name: "drug"}
+| | | | # XmlNode{name: "target", count: 17 (340%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets/target", parent.name: "targets"}
+| | | | | * XmlAttribute{name: "position", count: 14 (82.4%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets/target/@position", parent.name: "target"}
+| | | | | # XmlNode{name: "polypeptide", count: 16 (94.1%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets/target/polypeptide", parent.name: "target"}
+| | | | | | * XmlAttribute{name: "id", count: 16 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets/target/polypeptide/@id", parent.name: "polypeptide"}
+| | | | | | * XmlAttribute{name: "source", count: 16 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets/target/polypeptide/@source", parent.name: "polypeptide"}
+| | | | | | # XmlNode{name: "external-identifiers", count: 16 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets/target/polypeptide/external-identifiers", parent.name: "polypeptide"}
+| | | | | | | # XmlNode{name: "external-identifier", count: 102 (637.5%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets/target/polypeptide/external-identifiers/external-identifier", parent.name: "external-identifiers"}
+| | | | | | | | # XmlNode{name: "identifier", count: 102 (100%), valueCount: 102 (100%), minLength: 2, maxLength: 11, xPath: "/drugbank/drug/targets/target/polypeptide/external-identifiers/external-identifier/identifier", parent.name: "external-identifier"}
+| | | | | | | | # XmlNode{name: "resource", count: 102 (100%), valueCount: 102 (100%), minLength: 6, maxLength: 39, xPath: "/drugbank/drug/targets/target/polypeptide/external-identifiers/external-identifier/resource", parent.name: "external-identifier"}
+| | | | | | # XmlNode{name: "theoretical-pi", count: 16 (100%), valueCount: 16 (100%), minLength: 3, maxLength: 4, xPath: "/drugbank/drug/targets/target/polypeptide/theoretical-pi", parent.name: "polypeptide"}
+| | | | | | # XmlNode{name: "organism", count: 16 (100%), valueCount: 16 (100%), minLength: 5, maxLength: 5, xPath: "/drugbank/drug/targets/target/polypeptide/organism", parent.name: "polypeptide"}
+| | | | | | | * XmlAttribute{name: "ncbi-taxonomy-id", count: 16 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets/target/polypeptide/organism/@ncbi-taxonomy-id", parent.name: "organism"}
+| | | | | | # XmlNode{name: "molecular-weight", count: 16 (100%), valueCount: 16 (100%), minLength: 8, maxLength: 10, xPath: "/drugbank/drug/targets/target/polypeptide/molecular-weight", parent.name: "polypeptide"}
+| | | | | | # XmlNode{name: "synonyms", count: 16 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets/target/polypeptide/synonyms", parent.name: "polypeptide"}
+| | | | | | | # XmlNode{name: "synonym", count: 87 (543.8%), valueCount: 87 (100%), minLength: 4, maxLength: 47, xPath: "/drugbank/drug/targets/target/polypeptide/synonyms/synonym", parent.name: "synonyms"}
+| | | | | | # XmlNode{name: "general-function", count: 16 (100%), valueCount: 9 (56.2%), minLength: 23, maxLength: 41, xPath: "/drugbank/drug/targets/target/polypeptide/general-function", parent.name: "polypeptide"}
+| | | | | | # XmlNode{name: "pfams", count: 16 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets/target/polypeptide/pfams", parent.name: "polypeptide"}
+| | | | | | | # XmlNode{name: "pfam", count: 33 (206.2%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets/target/polypeptide/pfams/pfam", parent.name: "pfams"}
+| | | | | | | | # XmlNode{name: "identifier", count: 33 (100%), valueCount: 33 (100%), minLength: 7, maxLength: 7, xPath: "/drugbank/drug/targets/target/polypeptide/pfams/pfam/identifier", parent.name: "pfam"}
+| | | | | | | | # XmlNode{name: "name", count: 33 (100%), valueCount: 33 (100%), minLength: 2, maxLength: 14, xPath: "/drugbank/drug/targets/target/polypeptide/pfams/pfam/name", parent.name: "pfam"}
+| | | | | | # XmlNode{name: "gene-name", count: 16 (100%), valueCount: 16 (100%), minLength: 2, maxLength: 6, xPath: "/drugbank/drug/targets/target/polypeptide/gene-name", parent.name: "polypeptide"}
+| | | | | | # XmlNode{name: "amino-acid-sequence", count: 16 (100%), valueCount: 16 (100%), minLength: 304, maxLength: 1280, xPath: "/drugbank/drug/targets/target/polypeptide/amino-acid-sequence", parent.name: "polypeptide"}
+| | | | | | | * XmlAttribute{name: "format", count: 16 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets/target/polypeptide/amino-acid-sequence/@format", parent.name: "amino-acid-sequence"}
+| | | | | | # XmlNode{name: "specific-function", count: 16 (100%), valueCount: 16 (100%), minLength: 122, maxLength: 1054, xPath: "/drugbank/drug/targets/target/polypeptide/specific-function", parent.name: "polypeptide"}
+| | | | | | # XmlNode{name: "name", count: 16 (100%), valueCount: 16 (100%), minLength: 11, maxLength: 58, xPath: "/drugbank/drug/targets/target/polypeptide/name", parent.name: "polypeptide"}
+| | | | | | # XmlNode{name: "transmembrane-regions", count: 16 (100%), valueCount: 9 (56.2%), minLength: 7, maxLength: 55, xPath: "/drugbank/drug/targets/target/polypeptide/transmembrane-regions", parent.name: "polypeptide"}
+| | | | | | # XmlNode{name: "locus", count: 16 (100%), valueCount: 14 (87.5%), minLength: 4, maxLength: 12, xPath: "/drugbank/drug/targets/target/polypeptide/locus", parent.name: "polypeptide"}
+| | | | | | # XmlNode{name: "signal-regions", count: 16 (100%), valueCount: 16 (100%), minLength: 4, maxLength: 4, xPath: "/drugbank/drug/targets/target/polypeptide/signal-regions", parent.name: "polypeptide"}
+| | | | | | # XmlNode{name: "gene-sequence", count: 16 (100%), valueCount: 16 (100%), minLength: 500, maxLength: 4469, xPath: "/drugbank/drug/targets/target/polypeptide/gene-sequence", parent.name: "polypeptide"}
+| | | | | | | * XmlAttribute{name: "format", count: 16 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets/target/polypeptide/gene-sequence/@format", parent.name: "gene-sequence"}
+| | | | | | # XmlNode{name: "go-classifiers", count: 16 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets/target/polypeptide/go-classifiers", parent.name: "polypeptide"}
+| | | | | | | # XmlNode{name: "go-classifier", count: 305 (1906.2%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets/target/polypeptide/go-classifiers/go-classifier", parent.name: "go-classifiers"}
+| | | | | | | | # XmlNode{name: "description", count: 305 (100%), valueCount: 305 (100%), minLength: 7, maxLength: 130, xPath: "/drugbank/drug/targets/target/polypeptide/go-classifiers/go-classifier/description", parent.name: "go-classifier"}
+| | | | | | | | # XmlNode{name: "category", count: 305 (100%), valueCount: 305 (100%), minLength: 7, maxLength: 9, xPath: "/drugbank/drug/targets/target/polypeptide/go-classifiers/go-classifier/category", parent.name: "go-classifier"}
+| | | | | | # XmlNode{name: "cellular-location", count: 16 (100%), valueCount: 16 (100%), minLength: 8, maxLength: 13, xPath: "/drugbank/drug/targets/target/polypeptide/cellular-location", parent.name: "polypeptide"}
+| | | | | | # XmlNode{name: "chromosome-location", count: 16 (100%), valueCount: 16 (100%), minLength: 1, maxLength: 2, xPath: "/drugbank/drug/targets/target/polypeptide/chromosome-location", parent.name: "polypeptide"}
+| | | | | # XmlNode{name: "organism", count: 17 (100%), valueCount: 17 (100%), minLength: 5, maxLength: 5, xPath: "/drugbank/drug/targets/target/organism", parent.name: "target"}
+| | | | | # XmlNode{name: "references", count: 17 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets/target/references", parent.name: "target"}
+| | | | | | # XmlNode{name: "links", count: 17 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets/target/references/links", parent.name: "references"}
+| | | | | | # XmlNode{name: "articles", count: 17 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets/target/references/articles", parent.name: "references"}
+| | | | | | | # XmlNode{name: "article", count: 47 (276.5%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets/target/references/articles/article", parent.name: "articles"}
+| | | | | | | | # XmlNode{name: "pubmed-id", count: 47 (100%), valueCount: 47 (100%), minLength: 7, maxLength: 8, xPath: "/drugbank/drug/targets/target/references/articles/article/pubmed-id", parent.name: "article"}
+| | | | | | | | # XmlNode{name: "citation", count: 47 (100%), valueCount: 47 (100%), minLength: 93, maxLength: 363, xPath: "/drugbank/drug/targets/target/references/articles/article/citation", parent.name: "article"}
+| | | | | | # XmlNode{name: "textbooks", count: 17 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets/target/references/textbooks", parent.name: "references"}
+| | | | | # XmlNode{name: "known-action", count: 17 (100%), valueCount: 17 (100%), minLength: 3, maxLength: 7, xPath: "/drugbank/drug/targets/target/known-action", parent.name: "target"}
+| | | | | # XmlNode{name: "name", count: 17 (100%), valueCount: 17 (100%), minLength: 3, maxLength: 58, xPath: "/drugbank/drug/targets/target/name", parent.name: "target"}
+| | | | | # XmlNode{name: "id", count: 17 (100%), valueCount: 17 (100%), minLength: 9, maxLength: 9, xPath: "/drugbank/drug/targets/target/id", parent.name: "target"}
+| | | | | # XmlNode{name: "actions", count: 17 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/targets/target/actions", parent.name: "target"}
+| | | | | | # XmlNode{name: "action", count: 5 (29.4%), valueCount: 5 (100%), minLength: 7, maxLength: 10, xPath: "/drugbank/drug/targets/target/actions/action", parent.name: "actions"}
+| | | # XmlNode{name: "unii", count: 5 (100%), valueCount: 5 (100%), minLength: 10, maxLength: 10, xPath: "/drugbank/drug/unii", parent.name: "drug"}
+| | | # XmlNode{name: "protein-binding", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/protein-binding", parent.name: "drug"}
+| | | # XmlNode{name: "products", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/products", parent.name: "drug"}
+| | | | # XmlNode{name: "product", count: 14 (280%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/products/product", parent.name: "products"}
+| | | | | # XmlNode{name: "country", count: 14 (100%), valueCount: 14 (100%), minLength: 2, maxLength: 6, xPath: "/drugbank/drug/products/product/country", parent.name: "product"}
+| | | | | # XmlNode{name: "ema-ma-number", count: 14 (100%), valueCount: 6 (42.9%), minLength: 15, maxLength: 15, xPath: "/drugbank/drug/products/product/ema-ma-number", parent.name: "product"}
+| | | | | # XmlNode{name: "ema-product-code", count: 14 (100%), valueCount: 6 (42.9%), minLength: 15, maxLength: 15, xPath: "/drugbank/drug/products/product/ema-product-code", parent.name: "product"}
+| | | | | # XmlNode{name: "strength", count: 14 (100%), valueCount: 14 (100%), minLength: 4, maxLength: 13, xPath: "/drugbank/drug/products/product/strength", parent.name: "product"}
+| | | | | # XmlNode{name: "started-marketing-on", count: 14 (100%), valueCount: 14 (100%), minLength: 10, maxLength: 10, xPath: "/drugbank/drug/products/product/started-marketing-on", parent.name: "product"}
+| | | | | # XmlNode{name: "ended-marketing-on", count: 14 (100%), valueCount: 7 (50%), minLength: 10, maxLength: 10, xPath: "/drugbank/drug/products/product/ended-marketing-on", parent.name: "product"}
+| | | | | # XmlNode{name: "fda-application-number", count: 14 (100%), valueCount: 3 (21.4%), minLength: 9, maxLength: 9, xPath: "/drugbank/drug/products/product/fda-application-number", parent.name: "product"}
+| | | | | # XmlNode{name: "ndc-product-code", count: 14 (100%), valueCount: 3 (21.4%), minLength: 9, maxLength: 9, xPath: "/drugbank/drug/products/product/ndc-product-code", parent.name: "product"}
+| | | | | # XmlNode{name: "source", count: 14 (100%), valueCount: 14 (100%), minLength: 3, maxLength: 7, xPath: "/drugbank/drug/products/product/source", parent.name: "product"}
+| | | | | # XmlNode{name: "dpd-id", count: 14 (100%), valueCount: 5 (35.7%), minLength: 8, maxLength: 8, xPath: "/drugbank/drug/products/product/dpd-id", parent.name: "product"}
+| | | | | # XmlNode{name: "generic", count: 14 (100%), valueCount: 14 (100%), minLength: 5, maxLength: 5, xPath: "/drugbank/drug/products/product/generic", parent.name: "product"}
+| | | | | # XmlNode{name: "approved", count: 14 (100%), valueCount: 14 (100%), minLength: 4, maxLength: 5, xPath: "/drugbank/drug/products/product/approved", parent.name: "product"}
+| | | | | # XmlNode{name: "route", count: 14 (100%), valueCount: 14 (100%), minLength: 11, maxLength: 27, xPath: "/drugbank/drug/products/product/route", parent.name: "product"}
+| | | | | # XmlNode{name: "name", count: 14 (100%), valueCount: 14 (100%), minLength: 7, maxLength: 31, xPath: "/drugbank/drug/products/product/name", parent.name: "product"}
+| | | | | # XmlNode{name: "ndc-id", count: 14 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/products/product/ndc-id", parent.name: "product"}
+| | | | | # XmlNode{name: "dosage-form", count: 14 (100%), valueCount: 14 (100%), minLength: 6, maxLength: 32, xPath: "/drugbank/drug/products/product/dosage-form", parent.name: "product"}
+| | | | | # XmlNode{name: "labeller", count: 14 (100%), valueCount: 14 (100%), minLength: 5, maxLength: 28, xPath: "/drugbank/drug/products/product/labeller", parent.name: "product"}
+| | | | | # XmlNode{name: "over-the-counter", count: 14 (100%), valueCount: 14 (100%), minLength: 5, maxLength: 5, xPath: "/drugbank/drug/products/product/over-the-counter", parent.name: "product"}
+| | | # XmlNode{name: "fda-label", count: 3 (60%), valueCount: 3 (100%), minLength: 71, maxLength: 71, xPath: "/drugbank/drug/fda-label", parent.name: "drug"}
+| | | # XmlNode{name: "clearance", count: 5 (100%), valueCount: 3 (60%), minLength: 69, maxLength: 310, xPath: "/drugbank/drug/clearance", parent.name: "drug"}
+| | | # XmlNode{name: "atc-codes", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/atc-codes", parent.name: "drug"}
+| | | | # XmlNode{name: "atc-code", count: 6 (120%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/atc-codes/atc-code", parent.name: "atc-codes"}
+| | | | | * XmlAttribute{name: "code", count: 6 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/atc-codes/atc-code/@code", parent.name: "atc-code"}
+| | | | | # XmlNode{name: "level", count: 24 (400%), valueCount: 24 (100%), minLength: 7, maxLength: 63, xPath: "/drugbank/drug/atc-codes/atc-code/level", parent.name: "atc-code"}
+| | | | | | * XmlAttribute{name: "code", count: 24 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/atc-codes/atc-code/level/@code", parent.name: "level"}
+| | | # XmlNode{name: "patents", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/patents", parent.name: "drug"}
+| | | | # XmlNode{name: "patent", count: 4 (80%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/patents/patent", parent.name: "patents"}
+| | | | | # XmlNode{name: "number", count: 4 (100%), valueCount: 4 (100%), minLength: 7, maxLength: 7, xPath: "/drugbank/drug/patents/patent/number", parent.name: "patent"}
+| | | | | # XmlNode{name: "country", count: 4 (100%), valueCount: 4 (100%), minLength: 6, maxLength: 13, xPath: "/drugbank/drug/patents/patent/country", parent.name: "patent"}
+| | | | | # XmlNode{name: "approved", count: 4 (100%), valueCount: 4 (100%), minLength: 10, maxLength: 10, xPath: "/drugbank/drug/patents/patent/approved", parent.name: "patent"}
+| | | | | # XmlNode{name: "expires", count: 4 (100%), valueCount: 4 (100%), minLength: 10, maxLength: 10, xPath: "/drugbank/drug/patents/patent/expires", parent.name: "patent"}
+| | | | | # XmlNode{name: "pediatric-extension", count: 4 (100%), valueCount: 4 (100%), minLength: 5, maxLength: 5, xPath: "/drugbank/drug/patents/patent/pediatric-extension", parent.name: "patent"}
+| | | # XmlNode{name: "categories", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/categories", parent.name: "drug"}
+| | | | # XmlNode{name: "category", count: 70 (1400%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/categories/category", parent.name: "categories"}
+| | | | | # XmlNode{name: "category", count: 70 (100%), valueCount: 70 (100%), minLength: 7, maxLength: 63, xPath: "/drugbank/drug/categories/category/category", parent.name: "category"}
+| | | | | # XmlNode{name: "mesh-id", count: 70 (100%), valueCount: 58 (82.9%), minLength: 7, maxLength: 7, xPath: "/drugbank/drug/categories/category/mesh-id", parent.name: "category"}
+| | | # XmlNode{name: "prices", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/prices", parent.name: "drug"}
+| | | | # XmlNode{name: "price", count: 9 (180%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/prices/price", parent.name: "prices"}
+| | | | | # XmlNode{name: "unit", count: 9 (100%), valueCount: 9 (100%), minLength: 2, maxLength: 7, xPath: "/drugbank/drug/prices/price/unit", parent.name: "price"}
+| | | | | # XmlNode{name: "cost", count: 9 (100%), valueCount: 9 (100%), minLength: 3, maxLength: 6, xPath: "/drugbank/drug/prices/price/cost", parent.name: "price"}
+| | | | | | * XmlAttribute{name: "currency", count: 9 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/prices/price/cost/@currency", parent.name: "cost"}
+| | | | | # XmlNode{name: "description", count: 9 (100%), valueCount: 9 (100%), minLength: 18, maxLength: 50, xPath: "/drugbank/drug/prices/price/description", parent.name: "price"}
+| | | # XmlNode{name: "salts", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/salts", parent.name: "drug"}
+| | | | # XmlNode{name: "salt", count: 1 (20%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/salts/salt", parent.name: "salts"}
+| | | | | # XmlNode{name: "inchikey", count: 1 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/salts/salt/inchikey", parent.name: "salt"}
+| | | | | # XmlNode{name: "name", count: 1 (100%), valueCount: 1 (100%), minLength: 18, maxLength: 18, xPath: "/drugbank/drug/salts/salt/name", parent.name: "salt"}
+| | | | | # XmlNode{name: "cas-number", count: 1 (100%), valueCount: 1 (100%), minLength: 11, maxLength: 11, xPath: "/drugbank/drug/salts/salt/cas-number", parent.name: "salt"}
+| | | | | # XmlNode{name: "drugbank-id", count: 1 (100%), valueCount: 1 (100%), minLength: 12, maxLength: 12, xPath: "/drugbank/drug/salts/salt/drugbank-id", parent.name: "salt"}
+| | | | | | * XmlAttribute{name: "primary", count: 1 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/salts/salt/drugbank-id/@primary", parent.name: "drugbank-id"}
+| | | | | # XmlNode{name: "unii", count: 1 (100%), valueCount: 1 (100%), minLength: 10, maxLength: 10, xPath: "/drugbank/drug/salts/salt/unii", parent.name: "salt"}
+| | | # XmlNode{name: "manufacturers", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/manufacturers", parent.name: "drug"}
+| | | | # XmlNode{name: "manufacturer", count: 3 (60%), valueCount: 3 (100%), minLength: 14, maxLength: 36, xPath: "/drugbank/drug/manufacturers/manufacturer", parent.name: "manufacturers"}
+| | | | | * XmlAttribute{name: "generic", count: 3 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/manufacturers/manufacturer/@generic", parent.name: "manufacturer"}
+| | | | | * XmlAttribute{name: "url", count: 3 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/manufacturers/manufacturer/@url", parent.name: "manufacturer"}
+| | | # XmlNode{name: "drug-interactions", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/drug-interactions", parent.name: "drug"}
+| | | | # XmlNode{name: "drug-interaction", count: 451 (9020%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/drug-interactions/drug-interaction", parent.name: "drug-interactions"}
+| | | | | # XmlNode{name: "name", count: 451 (100%), valueCount: 451 (100%), minLength: 5, maxLength: 80, xPath: "/drugbank/drug/drug-interactions/drug-interaction/name", parent.name: "drug-interaction"}
+| | | | | # XmlNode{name: "description", count: 451 (100%), valueCount: 451 (100%), minLength: 61, maxLength: 166, xPath: "/drugbank/drug/drug-interactions/drug-interaction/description", parent.name: "drug-interaction"}
+| | | | | # XmlNode{name: "drugbank-id", count: 451 (100%), valueCount: 451 (100%), minLength: 7, maxLength: 7, xPath: "/drugbank/drug/drug-interactions/drug-interaction/drugbank-id", parent.name: "drug-interaction"}
+| | | # XmlNode{name: "groups", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/groups", parent.name: "drug"}
+| | | | # XmlNode{name: "group", count: 7 (140%), valueCount: 7 (100%), minLength: 8, maxLength: 15, xPath: "/drugbank/drug/groups/group", parent.name: "groups"}
+| | | # XmlNode{name: "packagers", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/packagers", parent.name: "drug"}
+| | | | # XmlNode{name: "packager", count: 15 (300%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/packagers/packager", parent.name: "packagers"}
+| | | | | # XmlNode{name: "name", count: 15 (100%), valueCount: 15 (100%), minLength: 7, maxLength: 44, xPath: "/drugbank/drug/packagers/packager/name", parent.name: "packager"}
+| | | | | # XmlNode{name: "url", count: 15 (100%), valueCount: 12 (80%), minLength: 18, maxLength: 32, xPath: "/drugbank/drug/packagers/packager/url", parent.name: "packager"}
+| | | # XmlNode{name: "international-brands", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/international-brands", parent.name: "drug"}
+| | | | # XmlNode{name: "international-brand", count: 3 (60%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/international-brands/international-brand", parent.name: "international-brands"}
+| | | | | # XmlNode{name: "name", count: 3 (100%), valueCount: 3 (100%), minLength: 5, maxLength: 9, xPath: "/drugbank/drug/international-brands/international-brand/name", parent.name: "international-brand"}
+| | | | | # XmlNode{name: "company", count: 3 (100%), valueCount: 3 (100%), minLength: 13, maxLength: 15, xPath: "/drugbank/drug/international-brands/international-brand/company", parent.name: "international-brand"}
+| | | # XmlNode{name: "reactions", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/reactions", parent.name: "drug"}
+| | | # XmlNode{name: "ahfs-codes", count: 5 (100%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/ahfs-codes", parent.name: "drug"}
+| | | | # XmlNode{name: "ahfs-code", count: 2 (40%), valueCount: 2 (100%), minLength: 8, maxLength: 8, xPath: "/drugbank/drug/ahfs-codes/ahfs-code", parent.name: "ahfs-codes"}
+| | | # XmlNode{name: "drugbank-id", count: 16 (320%), valueCount: 16 (100%), minLength: 7, maxLength: 9, xPath: "/drugbank/drug/drugbank-id", parent.name: "drug"}
+| | | | * XmlAttribute{name: "primary", count: 5 (31.2%), valueCount: 0 (0%), minLength: N/A, maxLength: N/A, xPath: "/drugbank/drug/drugbank-id/@primary", parent.name: "drugbank-id"}
