@@ -12,7 +12,11 @@ sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/xml2rdf/drugbank"
 
 # RdfUpload params
 sparql_triplestore_url: http://graphdb:7200
-sparql_triplestore_repository: test
+sparql_triplestore_tmp_repository: test
+# sparql_triplestore_tmp_repository: test
+# sparql_service_tmp_repository: repository:test
+
+# sparql_triplestore_final_repository: ncats-red-kg
 
 # Execute SPARQL conversion queries
 sparql_username: import_user

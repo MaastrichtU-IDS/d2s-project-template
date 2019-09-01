@@ -17,7 +17,7 @@ sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/stitch"
 
 # RdfUpload params
 sparql_triplestore_url: http://graphdb:7200
-sparql_triplestore_repository: test
+sparql_triplestore_tmp_repository: test
 
 # Execute SPARQL conversion queries
 sparql_username: import_user

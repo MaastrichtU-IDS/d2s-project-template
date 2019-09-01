@@ -82,7 +82,7 @@ sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/xml2rdf/drugbank"
 
 # RdfUpload params
 sparql_triplestore_url: http://graphdb:7200
-sparql_triplestore_repository: test
+sparql_triplestore_tmp_repository: test
 
 # Execute SPARQL conversion queries
 sparql_username: import_user
@@ -113,7 +113,7 @@ sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/stitch"
 
 # RdfUpload params
 sparql_triplestore_url: http://graphdb:7200
-sparql_triplestore_repository: test
+sparql_triplestore_tmp_repository: test
 
 # Execute SPARQL conversion queries
 sparql_username: import_user
@@ -143,7 +143,7 @@ sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/eggnog"
 
 # RdfUpload params
 sparql_triplestore_url: http://graphdb:7200
-sparql_triplestore_repository: test
+sparql_triplestore_tmp_repository: test
 
 # Split params
 split_property: https://w3id.org/data2services/model/Proteinids
