@@ -15,13 +15,13 @@ INSERT {
       # bl:category bl:Publication ;
       bl:id ?PubmedArticleSet_PubmedArticle_MedlineCitation_MeshHeadingList_MeshHeading_QualifierName ;
       bl:name ?PubmedArticleSet_PubmedArticle_MedlineCitation_MeshHeadingList_MeshHeading_DescriptorName ;
-      ?descriptorUri
-      ?descriptorMeshId
-      ?descriptorMajorTopic
+      # ?descriptorUri
+      # ?descriptorMeshId
+      # ?descriptorMajorTopic
 
-      ?qualifierUri
-      ?qualifierMeshId
-      ?qualifierMajorTopic
+      # ?qualifierUri
+      # ?qualifierMeshId
+      # ?qualifierMajorTopic
   }
 } WHERE {
   SERVICE <?_serviceUrl>  {

@@ -1,0 +1,70 @@
+PREFIX x2rm: <http://ids.unimaas.nl/xml2rdf/model#>
+PREFIX x2rd: <http://ids.unimaas.nl/xml2rdf/data/>
+PREFIX d2s: <https://w3id.org/data2services/vocab/>
+PREFIX ido: <http://identifiers.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+INSERT {
+  GRAPH <?_outputGraph> {
+    ?pubmedUri a bl:Publication ;
+      # bl:category bl:Publication ;
+      bl:id ?PubmedArticleSet_PubmedArticle_MedlineCitation_MeshHeadingList_MeshHeading_QualifierName ;
+      bl:name ?PubmedArticleSet_PubmedArticle_MedlineCitation_MeshHeadingList_MeshHeading_DescriptorName ;
+      # ?descriptorUri
+      # ?descriptorMeshId
+      # ?descriptorMajorTopic
+
+      # ?qualifierUri
+      # ?qualifierMeshId
+      # ?qualifierMajorTopic
+  }
+} WHERE {
+  SERVICE <?_serviceUrl>  {
+    GRAPH <?_inputGraph> {
+
+      # Get article PMID
+      ?medlineCitationObj a x2rm:PubmedArticleSet.PubmedArticle.MedlineCitation .
+
+        # Get drug primary ID        
+	    ?medlineCitationObj x2rm:child:PMID [ x2rm:hasValue ?pmid ]
+      # ?pmid x2rm:attribute:version "1" .
+      
+      BIND ( iri(concat("https://identifiers.org/pubmed:", ?pmid)) AS ?pubmedUri )
+
+      OPTIONAL{
+        ?medlineCitationObj x2rm:child:MeshHeadingList ?MeshHeadingList .
+
+        OPTIONAL{
+          ?MeshHeadingList x2rm:child:MeshHeading ?MeshHeading .
+          
+          OPTIONAL{
+            # 1 descriptor, 0 or more qualifiers
+            ?MeshHeading x2rm:child:DescriptorName ?descriptorObj .
+            ?descriptorObj x2rm:hasValue ?descritorName ;
+              
+              # Get descriptor MeSH ID and major topic
+              x2rm:attribute:UI ?descriptorMeshId ;
+              x2rm:attribute:MajorTopicYN ?descriptorMajorTopic .
+              BIND ( iri(concat("https://identifiers.org/mesh:", ?descriptorMeshId)) AS ?descriptorUri )
+
+          } OPTIONAL {
+            # Get MeSH qualitifer
+            ?MeshHeading x2rm:child:QualifierName ?qualifierObj .
+            ?qualifierObj x2rm:hasValue ?qualifierName ;
+              
+              # Get qualifier attributesMeSH ID and major topic
+              x2rm:attribute:UI  ?qualifierMeshId ;
+              x2rm:attribute:MajorTopicYN ?qualifierMajorTopic .
+              BIND ( iri(concat("https://id.nlm.nih.gov/mesh/", ?qualifierMeshId)) AS ?qualifierUri )
+              # Q not resolved by identifiers.org
+          }
+        }
+      }
+    }
+  }
+}
