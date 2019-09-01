@@ -53,8 +53,8 @@ docker run -d --rm --name graphdb -p 7200:7200 -v /data/graphdb:/opt/graphdb/hom
     * e.g. `output/$dataset_name`.
   * The `.cwl` [workflow file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/cwl/workflow-xml.cwl)
     * e.g. `data2services-cwl-workflows/workflows/workflow-xml.cwl`
-  * The `.yml` [configuration file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/cwl/config/config-transform-xml-drugbank.yml) with all parameters required to run the workflow
-    * e.g. `support/config/config-transform-xml-drugbank.yml`
+  * The `.yml` [configuration file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/example-config/config-transform-xml-drugbank.yml) with all parameters required to run the workflow
+    * e.g. `support/example-config/config-transform-xml-drugbank.yml`
 
 * 3 types of workflows can be run depending on the input data:
   * [Convert XML to RDF](https://github.com/MaastrichtU-IDS/data2services-transform-biolink#convert-xml-with-xml2rdf)
@@ -64,20 +64,21 @@ docker run -d --rm --name graphdb -p 7200:7200 -v /data/graphdb:/opt/graphdb/hom
 ### Convert XML with [xml2rdf](https://github.com/MaastrichtU-IDS/xml2rdf)
 
 ```shell
-cwl-runner --outdir output/drugbank data2services-cwl-workflows/workflows/workflow-xml.cwl support/config/config-transform-xml-drugbank.yml
+cwl-runner --outdir output/drugbank data2services-cwl-workflows/workflows/workflow-xml.cwl support/example-config/config-transform-xml-drugbank.yml
 ```
 
-See [config file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/cwl/config/config-transform-xml-drugbank.yml):
+See [config file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/example-config/config-transform-xml-drugbank.yml):
 
 ```yaml
 working_directory: /data/data2services-transform-biolink
 dataset: drugbank-sample
 
 # d2s-download params
-download_username: vincent.emonet@maastrichtuniversity.nl
+download_username: my.drugbank.account@email.com
 download_password: PASSWORD
 
 # tmp RDF4J server SPARQL endpoint to load generic RDF
+# By default linked on 'graphdb' docker container
 sparql_tmp_triplestore_url: http://graphdb:7200
 sparql_tmp_triplestore_repository: "test"
 sparql_tmp_service_url: "repository:test"
@@ -87,6 +88,7 @@ sparql_tmp_triplestore_password: PASSWORD
 sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/xml2rdf/drugbank"
 
 # Final RDF4J server SPARQL endpoint to load the BioLink RDF
+# By default linked on 'graphdb' docker container
 sparql_final_triplestore_url: http://graphdb:7200
 sparql_final_triplestore_repository: "test"
 sparql_final_triplestore_username: import_user
@@ -95,26 +97,26 @@ sparql_final_triplestore_password: PASSWORD
 sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/drugbank
 
 sparql_transform_queries_path: /data/mapping/drugbank/transform/1
-# Could be https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/mapping/drugbank/transform/1
 sparql_insert_metadata_path: /data/mapping/drugbank/metadata/1
 ```
 
 ### Convert CSV/TSV with [AutoR2RML](https://github.com/amalic/autor2rml)
 
 ```shell
-cwl-runner --outdir output/stitch data2services-cwl-workflows/workflows/workflow-csv.cwl support/config/config-transform-csv-stitch.yml
+cwl-runner --outdir output/stitch data2services-cwl-workflows/workflows/workflow-csv.cwl support/example-config/config-transform-csv-stitch.yml
 ```
 
-See [config file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/cwl/config/config-transform-csv-stitch.yml):
+See [config file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/example-config/config-transform-csv-stitch.yml):
 
 ```yaml
 working_directory: /data/data2services-transform-biolink
-dataset: stitch
+dataset: stitch-sample
 
 # R2RML params
 input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
 
 # tmp RDF4J server SPARQL endpoint to load generic RDF
+# By default linked on 'graphdb' docker container
 sparql_tmp_triplestore_url: http://graphdb:7200
 sparql_tmp_triplestore_repository: "test"
 sparql_tmp_service_url: "repository:test"
@@ -124,10 +126,13 @@ sparql_tmp_triplestore_password: PASSWORD
 sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/stitch"
 
 # Final RDF4J server SPARQL endpoint to load the BioLink RDF
+# By default linked on 'graphdb' docker container
 sparql_final_triplestore_url: http://graphdb:7200
 sparql_final_triplestore_repository: "test"
 sparql_final_triplestore_username: import_user
 sparql_final_triplestore_password: PASSWORD
+
+sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/stitch
 
 sparql_transform_queries_path: /data/mapping/stitch/transform/1
 sparql_insert_metadata_path: /data/mapping/stitch/metadata/1
@@ -136,41 +141,42 @@ sparql_insert_metadata_path: /data/mapping/stitch/metadata/1
 ### Convert CSV/TSV with [AutoR2RML](https://github.com/amalic/autor2rml) and split a property
 
 ```shell
-cwl-runner --outdir output/eggnog data2services-cwl-workflows/workflows/workflow-csv-split.cwl support/config/config-transform-split-eggnog.yml
+cwl-runner --outdir output/eggnog data2services-cwl-workflows/workflows/workflow-csv-split.cwl support/example-config/config-transform-split-eggnog.yml
 ```
 
-See [config file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/cwl/config/config-transform-split-eggnog.yml):
+See [config file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/example-config/config-transform-split-eggnog.yml):
 
 ```yaml
 working_directory: /data/data2services-transform-biolink
-dataset: eggnog
+dataset: eggnog-sample
 
 # R2RML params
 input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
-#autor2rml_column_header: "test1,test2,test3,test5"
 
 # Split params
-split_property: https://w3id.org/data2services/model/Pmids
-split_class: https://w3id.org/data2services/data/input/pharmgkb/relationships_extract101.tsv
-split_delimiter: ";"
+split_property: https://w3id.org/data2services/model/Proteinids
+split_class: https://w3id.org/data2services/data/input/eggnog/NOG.members.extract101.tsv
+split_delimiter: ","
 split_quote: '"'
 
 # tmp RDF4J server SPARQL endpoint to load generic RDF
+# By default linked on 'graphdb' docker container
 sparql_tmp_triplestore_url: http://graphdb:7200
 sparql_tmp_triplestore_repository: "test"
 sparql_tmp_service_url: "repository:test"
 sparql_tmp_triplestore_username: import_user
 sparql_tmp_triplestore_password: PASSWORD
 
-sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/pharmgkb"
+sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/eggnog"
 
 # Final RDF4J server SPARQL endpoint to load the BioLink RDF
+# By default linked on 'graphdb' docker container
 sparql_final_triplestore_url: http://graphdb:7200
 sparql_final_triplestore_repository: "test"
 sparql_final_triplestore_username: import_user
 sparql_final_triplestore_password: PASSWORD
 
-sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/pharmgkb
+sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/eggnog
 
 sparql_transform_queries_path: /data/mapping/eggnog/transform/1
 sparql_insert_metadata_path: /data/mapping/eggnog/metadata/1
@@ -181,7 +187,7 @@ sparql_insert_metadata_path: /data/mapping/eggnog/metadata/1
 When you don't have set the mappings for R2RML: generates the generic RDF and template SPARQL mapping files, and load the generic RDF.
 
 ```shell
-cwl-runner --outdir output/hpo_annotations data2services-cwl-workflows/workflows/workflow-csv-generate_mapping.cwl support/config/config-transform-csv-hpo_annotations.yml
+cwl-runner --outdir output/stitch data2services-cwl-workflows/workflows/workflow-csv-generate_mapping.cwl support/example-config/config-transform-csv-stitch.yml
 ```
 
 Same [config file](https://github.com/MaastrichtU-IDS/data2services-transform-biolink/blob/master/support/cwl/config/config-transform-csv-stitch.yml) as the regular CSV workflow.
@@ -191,7 +197,7 @@ Same [config file](https://github.com/MaastrichtU-IDS/data2services-transform-bi
 And write all terminal output to `nohup.out`.
 
 ```shell
-nohup cwl-runner --outdir output/drugbank data2services-cwl-workflows/workflows/workflow-xml.cwl support/config/config-transform-xml-drugbank.yml &
+nohup cwl-runner --outdir output/drugbank data2services-cwl-workflows/workflows/workflow-xml.cwl support/example-config/config-transform-xml-drugbank.yml &
 ```
 
 
