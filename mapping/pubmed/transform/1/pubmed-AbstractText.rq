@@ -20,7 +20,7 @@ INSERT {
     GRAPH <?_input> {
 
       # Get PMID
-      ?medlineCitationObj x2rm:child:PMID [ x2rm:hasValue ?pmid ]
+      ?medlineCitationObj x2rm:child:PMID [ x2rm:hasValue ?pmid ] .
       BIND ( iri(concat("https://identifiers.org/pubmed:", ?pmid)) AS ?pubmedUri )
 
       ?medlineCitationObj x2rm:child:Article [ x2rm:child:Abstract [ x2rm:child:AbstractText ?AbstractTextNode ]  ] .

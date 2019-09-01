@@ -4,13 +4,8 @@ dataset: pharmgkb
 
 # R2RML params
 input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
-sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/pharmgkb"
 #sparql_base_uri: "https://w3id.org/data2services/"
 #autor2rml_column_header: "test1,test2,test3,test5"
-
-# RdfUpload params
-sparql_triplestore_url: http://graphdb:7200
-sparql_triplestore_tmp_repository: test
 
 # Split params
 split_property: https://w3id.org/data2services/model/Pmids
@@ -18,11 +13,23 @@ split_class: https://w3id.org/data2services/data/input/pharmgkb/relationships_ex
 split_delimiter: ";"
 split_quote: '"'
 
-# Execute SPARQL conversion queries
-sparql_username: emonet
-sparql_password: PASSWORD
-sparql_output_graph_uri: https://w3id.org/data2services/graph/biolink/pharmgkb
-sparql_service_url: "http://localhost:7200/repositories/test"
+# tmp RDF4J server SPARQL endpoint to load generic RDF
+sparql_tmp_triplestore_url: http://graphdb:7200
+sparql_tmp_triplestore_repository: test
+sparql_tmp_service_url: repository:test
+sparql_tmp_triplestore_username: import_user
+sparql_tmp_triplestore_password: PASSWORD
+
+sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/pharmgkb"
+
+# Final RDF4J server SPARQL endpoint to load the BioLink RDF
+sparql_final_triplestore_url: http://graphdb:7200
+sparql_final_triplestore_repository: "test"
+sparql_final_triplestore_username: import_user
+sparql_final_triplestore_password: PASSWORD
+
+sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/pharmgkb
+
 
 sparql_transform_queries_path: /data/mapping/pharmgkb/transform/1
 sparql_insert_metadata_path: /data/mapping/pharmgkb/metadata/1
