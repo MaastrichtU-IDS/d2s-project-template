@@ -120,7 +120,7 @@ INSERT {
 
       dct:title ?dctTitle ;
       dct:description ?dctDescription ;
-      dc:rights ?dctRights ;
+      dct:rights ?dctRights ;
       dct:license ?dctLicense ;
       idot:preferredPrefix ?idotPreferredPrefix ;
       pav:retrievedOn ?now ;
