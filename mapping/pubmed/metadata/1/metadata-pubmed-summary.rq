@@ -34,7 +34,7 @@ INSERT {
       rdf:type dctypes:Dataset;
       dct:title "PubMed" ;
       idot:preferredPrefix "pubmed" ;
-      dct:description "PubMed description."@en;
+      dct:description "PubMed comprises more than 30 million citations for biomedical literature from MEDLINE, life science journals, and online books. Citations may include links to full-text content from PubMed Central and publisher web sites."@en;
       dct:publisher <https://w3id.org/data2services/agent/ncbi> ;
       
       dct:license <https://www.ncbi.nlm.nih.gov/home/about/policies/> ;
