@@ -8,7 +8,7 @@ PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
 PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
 INSERT
 {
-  GRAPH <?_outputGraph> { 
+  GRAPH <?_output> { 
 
     ?entityOriginalUri a ?entityType ;
       bl:id ?phenotypeId ;
@@ -21,8 +21,8 @@ INSERT
  }
 }
 WHERE {
-  SERVICE <?_serviceUrl>  {
-    GRAPH <?_inputGraph> { # bio2vec-test
+  SERVICE <?_service>  {
+    GRAPH <?_input> { # bio2vec-test
       # What to do with PMID?
       #http://graphdb.dumontierlab.com/resource?uri=http:%2F%2Fdata2services%2Fdata%2Fbio2vec%2Fphenomenet%2Fphenotype_annotation_hpoteam.tsv%2F87104
 

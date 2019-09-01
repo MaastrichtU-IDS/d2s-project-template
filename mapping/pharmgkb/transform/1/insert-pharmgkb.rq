@@ -7,7 +7,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
 PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
 INSERT
 {
-  GRAPH <?_outputGraph> {  
+  GRAPH <?_output> {  
 
     # https://biolink.github.io/biolink-model/docs/TranscriptToGeneRelationship.html
     ?refseqAssociationUri a bl:TranscriptToGeneRelationship ;
@@ -30,8 +30,8 @@ INSERT
  }
 }
 WHERE {
-  SERVICE <?_serviceUrl>  {
-    GRAPH <?_inputGraph> {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
       ?s d2smodel:Entity1_id ?Entity1_id ;
         d2smodel:Entity1_name ?Entity1_name ;
         d2smodel:Entity1_type ?Entity1_type ; # Can be gene, chemical, Haplotype

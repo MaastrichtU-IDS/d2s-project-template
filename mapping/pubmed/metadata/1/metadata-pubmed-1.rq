@@ -21,7 +21,7 @@
 
 
 INSERT {
-	GRAPH <?_outputGraph/metadata> {
+	GRAPH <?_output/metadata> {
 
     <https://w3id.org/data2services/agent/data2services-pipeline> a dct:Agent ;
       foaf:name "Data2Services Pipeline, by the Institute of Data Science at Maastricht University" ;
@@ -34,7 +34,7 @@ INSERT {
       dct:isVersionOf ?summaryUri ;
       pav:version ?pavVersion ;
 
-      dcat:distribution <?_outputGraph>;
+      dcat:distribution <?_output>;
       dcat:accessURL <https://graphdb.dumontierlab.com/graphs> ; 
 
       ## MAY
@@ -62,7 +62,7 @@ INSERT {
 		.
   
     ### RDF Distribution description (Complete)
-    <?_outputGraph>
+    <?_output>
       a dcat:Distribution, void:Dataset ;
       # TODO: should we use the same pav:version as the source for RDF distribution? 
       pav:version ?pavVersion ;
@@ -141,7 +141,7 @@ INSERT {
   BIND(<http://lexvo.org/id/iso639-3/eng> AS ?dctLanguage)
 
   # Extract RDF version from URI. Only works if using #1
-  BIND(strafter(str("?_outputGraph"), "#")  AS ?rdfPavVersion)
+  BIND(strafter(str("?_output"), "#")  AS ?rdfPavVersion)
   BIND(concat("N-Quads distribution of PubMed build #", ?rdfPavVersion) AS ?rdfDctTitle)
   BIND(concat("N-Quads distribution of PubMed build #", ?rdfPavVersion, " produced by Data2Services on NOW()") AS ?rdfDctDescription)
 

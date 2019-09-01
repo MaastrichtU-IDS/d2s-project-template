@@ -7,7 +7,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
 PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
 INSERT
 {
-  GRAPH <?_outputGraph> {  
+  GRAPH <?_output> {  
 
     # https://biolink.github.io/biolink-model/docs/GeneToGeneHomologyAssociation.html
    ?groupUri a bl:GeneGrouping ; # Or bl:GeneFamily
@@ -24,8 +24,8 @@ INSERT
  }
 }
 WHERE {
-  SERVICE <?_serviceUrl>  {
-    GRAPH <?_inputGraph> {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
 
       ?s d2smodel:Groupname ?GroupName .
 

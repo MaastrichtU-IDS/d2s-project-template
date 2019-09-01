@@ -7,7 +7,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
 PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
 INSERT
 {
-  GRAPH <?_outputGraph> {  
+  GRAPH <?_output> {  
     ?chemical1Uri a bl:ChemicalSubstance ;
       bl:id ?chemical1Curie .
     ?chemical2Uri a bl:ChemicalSubstance ;
@@ -28,8 +28,8 @@ INSERT
  }
 }
 WHERE {
-  SERVICE <?_serviceUrl>  {
-    GRAPH <?_inputGraph> {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
       # Transform https://stringdb-static.org/download/protein.actions.v10.5/9606.protein.actions.v10.5.txt.gz
 
       # CIDs is a stereo-specific compound, and the suffix is the PubChem compound id.

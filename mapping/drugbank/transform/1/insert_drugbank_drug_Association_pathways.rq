@@ -4,7 +4,7 @@ PREFIX d2s: <https://w3id.org/data2services/vocab/>
 PREFIX bl: <https://w3id.org/biolink/vocab/>
 INSERT 
 { 
-    GRAPH <?_outputGraph> {   
+    GRAPH <?_output> {   
         # Pathways (use blank node)
         ?drugPathwayAssociationUri a bl:ChemicalToPathwayAssociation ;
              bl:relation bl:affects_activity_of ;
@@ -24,8 +24,8 @@ INSERT
     }
 }
 WHERE {
-    SERVICE <?_serviceUrl>  {
-        GRAPH <?_inputGraph> {
+    SERVICE <?_service>  {
+        GRAPH <?_input> {
 
             ?drugObj a x2rm:drugbank.drug ;
                 # Get drug primary ID

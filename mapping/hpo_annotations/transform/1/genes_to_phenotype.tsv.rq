@@ -6,7 +6,7 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX biolink: <https://w3id.org/biolink/vocab/>
 PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
 INSERT {
-  GRAPH <?_outputGraph> {  
+  GRAPH <?_output> {  
     # Attribute the retrieved data to your model properties
     ?geneUri a biolink:Gene ;
       biolink:id ?Entrezgeneid ;
@@ -27,8 +27,8 @@ INSERT {
 
 );
 } WHERE {
-  SERVICE <?_serviceUrl>  {
-    GRAPH <?_inputGraph> {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
 
       ?row d2s:Entrezgeneid ?Entrezgeneid ;
         a <https://w3id.org/data2services/data/input/hpo_annotations/genes_to_phenotype.tsv> .

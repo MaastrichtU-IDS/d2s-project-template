@@ -29,7 +29,7 @@ PREFIX d2sdata: <https://w3id.org/data2services/data/>
 # Complete example at https://www.w3.org/TR/hcls-dataset/#appendix_1
 
 INSERT {
-    GRAPH <?_outputGraph/metadata> {
+    GRAPH <?_output/metadata> {
 
         ?dctPublisher a dct:Agent ;
             foaf:name ?dctPublisherName ;

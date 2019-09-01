@@ -21,7 +21,7 @@
 
 
 INSERT {
-	GRAPH <?_outputGraph/metadata> {
+	GRAPH <?_output/metadata> {
 
     <https://w3id.org/data2services/agent/hpo> a dct:Agent ;
       foaf:name "Human Phenotype Ontology Consortium" ;

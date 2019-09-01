@@ -11,7 +11,7 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX bl: <https://w3id.org/biolink/vocab/>
 INSERT 
 { 
-    GRAPH <?_outputGraph> {  
+    GRAPH <?_output> {  
     ### experimental-properties
     ?drugUri bl:filler ?drugExpePropertiesIdUri .
 
@@ -24,8 +24,8 @@ INSERT
     ?drugExpePropertiesType rdfs:subClassOf bl:Attribute .
 }
 WHERE {
-    SERVICE <?_serviceUrl>  {
-        GRAPH <?_inputGraph> {
+    SERVICE <?_service>  {
+        GRAPH <?_input> {
             ?drugObj a x2rm:drugbank.drug ;
                 # Get drug primary ID
                 x2rm:hasChild [

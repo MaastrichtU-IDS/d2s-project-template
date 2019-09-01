@@ -10,7 +10,7 @@ PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX bl: <https://w3id.org/biolink/vocab/>
 INSERT {
-  GRAPH <?_outputGraph> {
+  GRAPH <?_output> {
     ?pubmedUri a bl:Publication ;
       # bl:category bl:Publication ;
       bl:id ?PubmedArticleSet_PubmedArticle_MedlineCitation_MeshHeadingList_MeshHeading_QualifierName ;
@@ -24,8 +24,8 @@ INSERT {
       # ?qualifierMajorTopic
   }
 } WHERE {
-  SERVICE <?_serviceUrl>  {
-    GRAPH <?_inputGraph> {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
 
       # Get article PMID
       ?medlineCitationObj a x2rm:PubmedArticleSet.PubmedArticle.MedlineCitation .

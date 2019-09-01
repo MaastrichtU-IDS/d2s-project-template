@@ -21,7 +21,7 @@
 
 
 INSERT {
-	GRAPH <?_outputGraph/metadata> {
+	GRAPH <?_output/metadata> {
 
     <https://w3id.org/data2services/agent/ncbi> a dct:Agent ;
       foaf:name "National Center for Biotechnology Information, U.S. National Library of Medicine" ;

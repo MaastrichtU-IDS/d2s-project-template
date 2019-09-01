@@ -11,7 +11,7 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX bl: <https://w3id.org/biolink/vocab/>
 INSERT 
 {
-    GRAPH <?_outputGraph> {  
+    GRAPH <?_output> {  
         # external-identifiers
         ?drugUri ?drugIdentifierProperty ?drugIdentifierUri .
         ?drugIdentifierUri a bl:Drug ;
@@ -19,8 +19,8 @@ INSERT
     }
 }
 WHERE {
-    SERVICE <?_serviceUrl>  {
-        GRAPH <?_inputGraph> {
+    SERVICE <?_service>  {
+        GRAPH <?_input> {
 
             ?drugObj a x2rm:drugbank.drug ;
                 # Get drug primary ID

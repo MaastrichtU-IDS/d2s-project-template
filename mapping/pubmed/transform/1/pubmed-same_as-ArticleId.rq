@@ -10,14 +10,14 @@ PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX bl: <https://w3id.org/biolink/vocab/>
 INSERT {
-  GRAPH <?_outputGraph> {
+  GRAPH <?_output> {
     ?pubmedUri a bl:Publication ;
       bl:same_as ?sameAsUri .
   }
     .
 } WHERE {
-  SERVICE <?_serviceUrl>  {
-    GRAPH <?_inputGraph> {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
 
       # Get PMID
       ?pubmedArticleObj x2rm:child:MedlineCitation [ x2rm:child:PMID [ x2rm:hasValue ?pmid ] ]
