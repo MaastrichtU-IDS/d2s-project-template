@@ -1,12 +1,13 @@
 working_directory: /data/data2services-transform-biolink
 
-dataset: drugbank
+dataset: drugbank-sample
 
 # d2s-download params
-download_username: vincent.emonet@maastrichtuniversity.nl
+download_username: my.drugbank.account@email.com
 download_password: PASSWORD
 
 # tmp RDF4J server SPARQL endpoint to load generic RDF
+# By default linked on 'graphdb' docker container
 sparql_tmp_triplestore_url: http://graphdb:7200
 sparql_tmp_triplestore_repository: "test"
 sparql_tmp_service_url: "repository:test"
@@ -16,6 +17,7 @@ sparql_tmp_triplestore_password: PASSWORD
 sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/xml2rdf/drugbank"
 
 # Final RDF4J server SPARQL endpoint to load the BioLink RDF
+# By default linked on 'graphdb' docker container
 sparql_final_triplestore_url: http://graphdb:7200
 sparql_final_triplestore_repository: "test"
 sparql_final_triplestore_username: import_user
@@ -24,5 +26,4 @@ sparql_final_triplestore_password: PASSWORD
 sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/drugbank
 
 sparql_transform_queries_path: /data/mapping/drugbank/transform/1
-# Could be https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/drugbank/
 sparql_insert_metadata_path: /data/mapping/drugbank/metadata/1

@@ -2,6 +2,7 @@ working_directory: /data/data2services-transform-biolink
 
 dataset: stitch
 
+# TODO: example how download files can be defined 
 download_files: '[
   {
     baseUrl: "http://stitch.embl.de/download/",
