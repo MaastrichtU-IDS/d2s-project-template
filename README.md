@@ -59,7 +59,7 @@ docker run -d --rm --name graphdb -p 7200:7200 -v /data/graphdb:/opt/graphdb/hom
 * 3 types of workflows can be run depending on the input data:
   * [Convert XML to RDF](https://github.com/MaastrichtU-IDS/data2services-transform-biolink#convert-xml-with-xml2rdf)
   * [Convert CSV to RDF](https://github.com/MaastrichtU-IDS/data2services-transform-biolink#convert-csvtsv-with-autor2rml)
-  * [Convert CSV to RDF and split a property]()
+  * [Convert CSV to RDF and split a property](https://github.com/MaastrichtU-IDS/data2services-transform-biolink#convert-csvtsv-with-autor2rml-and-split-a-property)
 
 ### Convert XML with [xml2rdf](https://github.com/MaastrichtU-IDS/xml2rdf)
 
@@ -77,18 +77,22 @@ dataset: drugbank-sample
 download_username: vincent.emonet@maastrichtuniversity.nl
 download_password: PASSWORD
 
-# xml2rdf params
+# tmp RDF4J server SPARQL endpoint to load generic RDF
+sparql_tmp_triplestore_url: http://graphdb:7200
+sparql_tmp_triplestore_repository: "test"
+sparql_tmp_service_url: "repository:test"
+sparql_tmp_triplestore_username: import_user
+sparql_tmp_triplestore_password: PASSWORD
+
 sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/xml2rdf/drugbank"
 
-# RdfUpload params
-sparql_triplestore_url: http://graphdb:7200
-sparql_triplestore_tmp_repository: test
+# Final RDF4J server SPARQL endpoint to load the BioLink RDF
+sparql_final_triplestore_url: http://graphdb:7200
+sparql_final_triplestore_repository: "test"
+sparql_final_triplestore_username: import_user
+sparql_final_triplestore_password: PASSWORD
 
-# Execute SPARQL conversion queries
-sparql_username: import_user
-sparql_password: PASSWORD
-sparql_output_graph_uri: https://w3id.org/data2services/graph/biolink/drugbank
-sparql_service_url: "repository:test"
+sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/drugbank
 
 sparql_transform_queries_path: /data/mapping/drugbank/transform/1
 # Could be https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/mapping/drugbank/transform/1
@@ -109,17 +113,21 @@ dataset: stitch
 
 # R2RML params
 input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
+
+# tmp RDF4J server SPARQL endpoint to load generic RDF
+sparql_tmp_triplestore_url: http://graphdb:7200
+sparql_tmp_triplestore_repository: "test"
+sparql_tmp_service_url: "repository:test"
+sparql_tmp_triplestore_username: import_user
+sparql_tmp_triplestore_password: PASSWORD
+
 sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/stitch"
 
-# RdfUpload params
-sparql_triplestore_url: http://graphdb:7200
-sparql_triplestore_tmp_repository: test
-
-# Execute SPARQL conversion queries
-sparql_username: import_user
-sparql_password: PASSWORD
-sparql_output_graph_uri: https://w3id.org/data2services/graph/biolink/stitch
-sparql_service_url: "repository:test"
+# Final RDF4J server SPARQL endpoint to load the BioLink RDF
+sparql_final_triplestore_url: http://graphdb:7200
+sparql_final_triplestore_repository: "test"
+sparql_final_triplestore_username: import_user
+sparql_final_triplestore_password: PASSWORD
 
 sparql_transform_queries_path: /data/mapping/stitch/transform/1
 sparql_insert_metadata_path: /data/mapping/stitch/metadata/1
@@ -139,23 +147,30 @@ dataset: eggnog
 
 # R2RML params
 input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
-sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/eggnog"
-
-# RdfUpload params
-sparql_triplestore_url: http://graphdb:7200
-sparql_triplestore_tmp_repository: test
+#autor2rml_column_header: "test1,test2,test3,test5"
 
 # Split params
-split_property: https://w3id.org/data2services/model/Proteinids
-split_class: https://w3id.org/data2services/data/input/eggnog/NOG.members.extract101.tsv
-split_delimiter: ","
+split_property: https://w3id.org/data2services/model/Pmids
+split_class: https://w3id.org/data2services/data/input/pharmgkb/relationships_extract101.tsv
+split_delimiter: ";"
 split_quote: '"'
 
-# Execute SPARQL conversion queries
-sparql_username: emonet
-sparql_password: PASSWORD
-sparql_output_graph_uri: https://w3id.org/data2services/graph/biolink/eggnog
-sparql_service_url: "repository:test"
+# tmp RDF4J server SPARQL endpoint to load generic RDF
+sparql_tmp_triplestore_url: http://graphdb:7200
+sparql_tmp_triplestore_repository: "test"
+sparql_tmp_service_url: "repository:test"
+sparql_tmp_triplestore_username: import_user
+sparql_tmp_triplestore_password: PASSWORD
+
+sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/pharmgkb"
+
+# Final RDF4J server SPARQL endpoint to load the BioLink RDF
+sparql_final_triplestore_url: http://graphdb:7200
+sparql_final_triplestore_repository: "test"
+sparql_final_triplestore_username: import_user
+sparql_final_triplestore_password: PASSWORD
+
+sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/pharmgkb
 
 sparql_transform_queries_path: /data/mapping/eggnog/transform/1
 sparql_insert_metadata_path: /data/mapping/eggnog/metadata/1

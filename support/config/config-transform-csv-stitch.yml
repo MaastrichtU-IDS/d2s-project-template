@@ -16,8 +16,8 @@ input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
 
 # tmp RDF4J server SPARQL endpoint to load generic RDF
 sparql_tmp_triplestore_url: http://graphdb:7200
-sparql_tmp_triplestore_repository: test
-sparql_tmp_service_url: repository:test
+sparql_tmp_triplestore_repository: "test"
+sparql_tmp_service_url: "repository:test"
 sparql_tmp_triplestore_username: import_user
 sparql_tmp_triplestore_password: PASSWORD
 
