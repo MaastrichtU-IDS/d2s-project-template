@@ -1,0 +1,74 @@
+PREFIX x2rm: <http://ids.unimaas.nl/xml2rdf/model#>
+PREFIX x2rd: <http://ids.unimaas.nl/xml2rdf/data/>
+PREFIX d2s: <https://w3id.org/data2services/vocab/>
+PREFIX ido: <http://identifiers.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+INSERT {
+  GRAPH <?_outputGraph> {
+    ?pubmedUri a bl:Publication ;
+      #bl:provided_by ?authorUri ;
+      bl:node_property ?authorUri .
+
+    # TODO: add provenance model to BioLink to represent publications properly
+    ?authorUri a bl:Provider ;
+      bl:id ?authorUri ;
+      bl:name ?authorName ;
+      .
+
+    ?affiliationUri a bl:Provider ;
+      bl:id ?affiliationUri ;
+      bl:name ?AffiliationInfo .
+  }
+    .
+} WHERE {
+  SERVICE <?_serviceUrl>  {
+    GRAPH <?_inputGraph> {
+
+      # Get PMID
+      ?medlineCitationObj x2rm:child:PMID [ x2rm:hasValue ?pmid ]
+      BIND ( iri(concat("https://identifiers.org/pubmed:", ?pmid)) AS ?pubmedUri )
+
+      ?medlineCitationObj x2rm:child:Article [ x2rm:child:AuthorList [ x2rm:child:Author ?AuthorNode ]  ] .
+
+      ?AuthorNode a x2rm:PubmedArticleSet.PubmedArticle.MedlineCitation.Article.AuthorList.Author .
+      # Example for building URI using md5 string hashing
+      # BIND(iri(concat("https://identifiers.org/", md5(?nodeId))) AS ?nodeUri)
+
+      OPTIONAL{ 
+        ?AuthorNode x2rm:attribute:ValidYN ?ValidYN .
+        FILTER(?ValidYN = "Y")
+      }
+
+      OPTIONAL{
+        ?AuthorNode x2rm:child:ForeName [
+          x2rm:hasValue ?ForeName
+        ] .
+      }
+      OPTIONAL{
+        ?AuthorNode x2rm:child:LastName [
+          x2rm:hasValue ?LastName
+        ] .
+      }
+      OPTIONAL{
+        ?AuthorNode x2rm:child:Initials [
+          x2rm:hasValue ?Initials
+        ] .
+      }
+      BIND(concat(?ForeName, ?Initials, ?LastName) AS ?authorName)
+      BIND( iri(concat("https://w3id.org/data2services/provider/", md5(?authorName))) AS ?authorUri)
+
+      OPTIONAL{
+        ?AuthorNode x2rm:child:AffiliationInfo [
+          x2rm:child:Affiliation [ x2rm:hasValue ?AffiliationInfo]
+        ] .
+        BIND( iri(concat("https://w3id.org/data2services/provider/", md5(?AffiliationInfo))) AS ?affiliationUri)
+      }
+    }
+  }
+}

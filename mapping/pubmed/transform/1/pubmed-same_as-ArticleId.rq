@@ -1,0 +1,40 @@
+PREFIX x2rm: <http://ids.unimaas.nl/xml2rdf/model#>
+PREFIX x2rd: <http://ids.unimaas.nl/xml2rdf/data/>
+PREFIX d2s: <https://w3id.org/data2services/vocab/>
+PREFIX ido: <http://identifiers.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+INSERT {
+  GRAPH <?_outputGraph> {
+    ?pubmedUri a bl:Publication ;
+      bl:same_as ?sameAsUri .
+  }
+    .
+} WHERE {
+  SERVICE <?_serviceUrl>  {
+    GRAPH <?_inputGraph> {
+
+      # Get PMID
+      ?pubmedArticleObj x2rm:child:MedlineCitation [ x2rm:child:PMID [ x2rm:hasValue ?pmid ] ]
+      BIND ( iri(concat("https://identifiers.org/pubmed:", ?pmid)) AS ?pubmedUri )
+
+      ?pubmedArticleObj x2rm:child:PubmedData [ x2rm:child:ArticleIdList [ x2rm:child:ArticleId ?ArticleIdNode ] ] .
+
+      ?ArticleIdNode a x2rm:PubmedArticleSet.PubmedArticle.PubmedData.ArticleIdList.ArticleId .
+      # Example for building URI using md5 string hashing
+      # BIND(iri(concat("https://identifiers.org/", md5(?nodeId))) AS ?nodeUri)
+
+      ?ArticleIdNode x2rm:attribute:IdType ?IdType .
+      FILTER( ?IdType = "doi" || ?IdType = "pmc")
+      # Only do doi and pmc as they are the most common and have identifiers.org namespaces
+
+      ?ArticleIdNode x2rm:hasValue ?ArticleIdValue .
+      BIND( iri(concat("https://identifiers.org/", ?IdType, "/", ?ArticleIdValue)) AS ?sameAsUri)
+    }
+  }
+}

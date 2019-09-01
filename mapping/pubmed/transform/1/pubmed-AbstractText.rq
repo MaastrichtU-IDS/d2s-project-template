@@ -1,0 +1,62 @@
+PREFIX x2rm: <http://ids.unimaas.nl/xml2rdf/model#>
+PREFIX x2rd: <http://ids.unimaas.nl/xml2rdf/data/>
+PREFIX d2s: <https://w3id.org/data2services/vocab/>
+PREFIX ido: <http://identifiers.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+INSERT {
+  GRAPH <?_outputGraph> {
+    ?pubmedUri a bl:Publication ;
+      bl:description ?AbstractTextValue .
+  }
+    .
+} WHERE {
+  SERVICE <?_serviceUrl>  {
+    GRAPH <?_inputGraph> {
+
+      # Get PMID
+      ?medlineCitationObj x2rm:child:PMID [ x2rm:hasValue ?pmid ]
+      BIND ( iri(concat("https://identifiers.org/pubmed:", ?pmid)) AS ?pubmedUri )
+
+      ?medlineCitationObj x2rm:child:Article [ x2rm:child:Abstract [ x2rm:child:AbstractText ?AbstractTextNode ]  ] .
+
+      ?AbstractTextNode a x2rm:PubmedArticleSet.PubmedArticle.MedlineCitation.Article.Abstract.AbstractText .
+
+      # Get AbstractText value but we loose all infos in sub tags (e.g. <i>, <b>, <sup>)
+      OPTIONAL{ ?AbstractTextNode x2rm:hasValue ?AbstractTextValue . }
+
+      # To get category and labels of abstracts
+      # OPTIONAL{ ?AbstractTextNode x2rm:attribute:NlmCategory ?NlmCategory . }
+      # OBJECTIVE, RESULTS, METHODS, CONCLUSIONS
+
+      # OPTIONAL{ ?AbstractTextNode x2rm:attribute:Label ?Label . }
+      # PURPOSE, RESULTS, METHODS, CONCLUSIONS
+
+      # OPTIONAL{
+      #   ?AbstractTextNode x2rm:child:sub [
+      #     x2rm:hasValue ?sub
+      #   ] .
+      # }
+      # OPTIONAL{
+      #   ?AbstractTextNode x2rm:child:b [
+      #     x2rm:hasValue ?b
+      #   ] .
+      # }
+      # OPTIONAL{
+      #   ?AbstractTextNode x2rm:child:i [
+      #     x2rm:hasValue ?i
+      #   ] .
+      # }
+      # OPTIONAL{
+      #   ?AbstractTextNode x2rm:child:sup [
+      #     x2rm:hasValue ?sup
+      #   ] .
+      # }
+    }
+  }
+}

@@ -11,20 +11,28 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX bl: <https://w3id.org/biolink/vocab/>
 INSERT {
   GRAPH <?_outputGraph> {
-    ?node a owl:Thing ;
-      property ?PubmedArticleSet_PubmedArticle_PubmedData_ArticleIdList_ArticleId__IdType ;
+    ?pubmedUri a bl:Publication ;
+      bl:node_property ?KeywordValue .
+      # No keyword property
   }
+    .
 } WHERE {
   SERVICE <?_serviceUrl>  {
     GRAPH <?_inputGraph> {
 
-      ?node a x2rm:PubmedArticleSet.PubmedArticle.PubmedData.ArticleIdList.ArticleId .
+      # Get PMID
+      ?medlineCitationObj x2rm:child:PMID [ x2rm:hasValue ?pmid ]
+      BIND ( iri(concat("https://identifiers.org/pubmed:", ?pmid)) AS ?pubmedUri )
 
-      ?node x2rm:hasAttribute [
+      ?medlineCitationObj x2rm:child:KeywordList [ x2rm:child:Keyword ?KeywordNode  ] .
 
-        a x2rm:PubmedArticleSet.PubmedArticle.PubmedData.ArticleIdList.ArticleId.-IdType ;
-        x2rm:hasValue ?PubmedArticleSet_PubmedArticle_PubmedData_ArticleIdList_ArticleId__IdType
-      ] .
+      ?KeywordNode a x2rm:PubmedArticleSet.PubmedArticle.MedlineCitation.KeywordList.Keyword .
+
+      OPTIONAL{ ?KeywordNode x2rm:hasValue ?KeywordValue . }
+
+      OPTIONAL{ ?KeywordNode x2rm:attribute:MajorTopicYN ?MajorTopicYN . }
+      # FILTER(?ValidYN = "Y")
+
     }
   }
 }
