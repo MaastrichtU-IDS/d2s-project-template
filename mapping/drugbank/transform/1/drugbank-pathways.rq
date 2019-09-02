@@ -24,7 +24,6 @@ INSERT {
       bl:id ?smpdbId ;
       bl:name ?pathwayName .
   }
-    .
 } WHERE {
   SERVICE <?_service>  {
     GRAPH <?_input> {

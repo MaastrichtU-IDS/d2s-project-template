@@ -21,7 +21,6 @@ INSERT {
     # bl:in_taxon could be interesting
     ?drugUri bl:affects ?organismUri .
   }
-    .
 } WHERE {
   SERVICE <?_service>  {
     GRAPH <?_input> {

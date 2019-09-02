@@ -12,23 +12,21 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
 INSERT {
   GRAPH <?_output> {
 
-    ?associationUri bl:publications ?articleUri .
+    ?targetUri bl:has_biological_sequence ?sequence .
     
-    ?articleUri a bl:Publication ;
-      bl:id ?articleCurie ;
-      bl:name ?articleCitation .
+    # bl:BiologicalSequence is a string
   }
-    .
 } WHERE {
   SERVICE <?_service>  {
     GRAPH <?_input> {
       # Iterates on those different associations articles
-      VALUES( ?associationType ?associationArticleType ) {
-        ("target" x2rm:drugbank.drug.targets.target.references.articles.article )
-        ("enzyme" x2rm:drugbank.drug.enzymes.enzyme.references.articles.article )
-        ("carrier" x2rm:drugbank.drug.carriers.carrier.references.articles.article )
-        ("transporter" x2rm:drugbank.drug.transporters.transporter.references.articles.article )
+      VALUES( ?associationType ?associationSequenceType ) {
+        ("target" x2rm:drugbank.drug.targets.target.polypeptide.gene-sequence)
+        ("enzyme" x2rm:drugbank.drug.enzymes.enzyme.polypeptide.gene-sequence )
+        ("carrier" x2rm:drugbank.drug.carriers.carrier.polypeptide.gene-sequence )
+        ("transporter" x2rm:drugbank.drug.transporters.transporter.polypeptide.gene-sequence )
       }
+      # amino-acid-sequence or gene-sequence?
       # Not on the Drug articles, no way to represent it properly in BioLink
       # (x2rm:drugbank.drug.general-references.articles.article )
 
@@ -39,6 +37,7 @@ INSERT {
         x2rm:hasValue ?drugbankId 
       ] .
       BIND(iri(concat("https://identifiers.org/drugbank:", ?drugbankId)) AS ?drugUri)
+
       # ?drugObj x2rm:child:TARGETS [ 
       #   x2rm:child:TARGET [
       ?drugObj ?targetsPredicate [ 
@@ -47,23 +46,21 @@ INSERT {
 
       # Get target ID 
       ?targetObj x2rm:child:id [ x2rm:hasValue ?targetId ] ;
-        x2rm:child:references [
-            x2rm:child:articles [
-              x2rm:child:article ?articleObj
-            ]
-          ] .
+        x2rm:child:polypeptide ?popypeptide .
+      
+      ?polypeptide x2rm:child:articles [
+        x2rm:child:article ?articleObj
+      ] .
 
       # Iterate on
       #?articleObj a x2rm:drugbank.drug.enzymes.enzyme.references.articles.article .
-      ?articleObj a ?associationArticleType .
+      ?sequenceObj a ?associationSequenceType ;
+        x2rm:hasValue ?sequence .
 
-      ?articleObj x2rm:child:pubmed-id [
-        x2rm:hasValue ?articlePmid
-      ] .
 
       OPTIONAL{
-        ?articleObj x2rm:child:citation [
-          x2rm:hasValue ?articleCitation
+        ?sequenceObj x2rm:attribute:format [
+          x2rm:hasValue ?sequenceFormat
         ] .
       }
 

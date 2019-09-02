@@ -25,7 +25,6 @@ INSERT {
     # ?drugUri a bl:Drug .
     # ?interactingDrugUri a bl:Drug .
   }
-    .
 } WHERE {
   SERVICE <?_service>  {
     GRAPH <?_input> {

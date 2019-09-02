@@ -20,7 +20,6 @@ INSERT {
     # TODO: avoid using category? See GitHub issue
     ?drugUri bl:category ?atcCodeUri .
   }
-    .
 } WHERE {
   SERVICE <?_service>  {
     GRAPH <?_input> {

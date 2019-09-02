@@ -1,0 +1,93 @@
+PREFIX x2rm: <http://ids.unimaas.nl/xml2rdf/model#>
+PREFIX x2rd: <http://ids.unimaas.nl/xml2rdf/data/>
+PREFIX d2s: <https://w3id.org/data2services/vocab/>
+PREFIX ido: <http://identifiers.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+INSERT {
+  GRAPH <?_output> {
+
+    # Represent target (Drug to protein or DNA) ChemicalToGeneAssociation
+    ?associationUri a bl:ChemicalToGeneAssociation ;
+        bl:relation ?targetActionPropertyUri ;
+        bl:subject ?drugUri ;
+        bl:object ?bioentityUri ;
+        bl:qualifiers ?actionUri ;
+        bl:affects ?organismUri ;
+        bl:relation ?targetActionPropertyUri .
+
+    ?actionUri a bl:OntologyClass ;
+      bl:id ?actionUri ;
+      bl:name ?targetAction .
+
+    ?bioentityUri a bl:GeneOrGeneProduct ;
+        bl:name ?bioentityName ;
+        bl:id ?bioentityUri .
+
+    ?organismUri a bl:OrganismTaxon ;
+      bl:id ?organismUri ;
+      bl:name ?bioentityOrganism .
+  }
+} WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+      # Iterates on those different associations articles
+      VALUES( ?bioentityType ?associationType ) {
+        ("target" x2rm:drugbank.drug.targets.target )
+        ("enzyme" x2rm:drugbank.drug.enzymes.enzyme )
+        ("carrier" x2rm:drugbank.drug.carriers.carrier )
+        ("transporter" x2rm:drugbank.drug.transporters.transporter )
+      }
+      # amino-acid-sequence or gene-sequence?
+      # Not on the Drug articles, no way to represent it properly in BioLink
+      # (x2rm:drugbank.drug.general-references.articles.article )
+
+      # Get primary DrugBank ID of drug
+      ?drugObj a x2rm:drugbank.drug ;
+        x2rm:child:drugbank-id [ 
+        x2rm:attribute:primary "true" ; 
+        x2rm:hasValue ?drugbankId 
+      ] .
+      BIND(iri(concat("https://identifiers.org/drugbank:", ?drugbankId)) AS ?drugUri)
+
+      # e.g. ?drugObj x2rm:child:TARGETS [ 
+      #        x2rm:child:TARGET ?targetObj
+      ?drugObj ?targetsPredicate [ 
+        ?targetPredicate ?targetObj 
+      ] .
+
+      # Iterate on, and get target ID 
+      # ?targetObj a x2rm:drugbank.drug.targets.target ;
+      ?targetObj a ?associationType ;
+       x2rm:child:id [ x2rm:hasValue ?bioentityId ] .
+
+      OPTIONAL{ ?targetObj x2rm:child:name [ x2rm:hasValue ?bioentityName ] . }
+      OPTIONAL{ ?targetObj x2rm:child:organism [ x2rm:hasValue ?bioentityOrganism ] . }
+      # e.g. Human
+      OPTIONAL{ ?targetObj x2rm:child:actions [ 
+          x2rm:child:action [ x2rm:hasValue ?targetAction ] 
+          # e.g. substrate, inhibitor
+        ] . 
+        VALUES (?targetAction ?targetActionPropertyUri) {
+            ( "inhibitor" bl:decreases_activity_of )
+            ( "antagonist" bl:decreases_activity_of )
+            ( "agonist" bl:increases_activity_of )
+            ( "activator" bl:increases_activity_of )
+            ( UNDEF bl:affects )
+        }
+      }
+      # OPTIONAL{ ?targetObj x2rm:child:name [ x2rm:hasValue ?bioentityKnownAction ] . }
+      # e.g. unknown, yes
+
+      BIND(iri(concat("https://identifiers.org/drugbankv4.target:", ?bioentityId)) AS ?bioentityUri)
+      BIND(iri(concat("https://w3id.org/data2services/data/association/drug_", ?bioentityType, ":", ?drugbankId, "_", ?bioentityId)) AS ?associationUri)
+      BIND(iri(concat("https://w3id.org/data2services/data/organism:", ?bioentityOrganism)) AS ?organismUri )
+      BIND(iri(concat("https://w3id.org/data2services/data/drug_action:", ?targetAction)) AS ?actionUri )
+    }
+  }
+}

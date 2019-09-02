@@ -19,7 +19,6 @@ INSERT {
     # ?identifierUri a bl:Drug ;
     #     bl:id ?identifierId .
   }
-    .
 } WHERE {
   SERVICE <?_service>  {
     GRAPH <?_input> {
