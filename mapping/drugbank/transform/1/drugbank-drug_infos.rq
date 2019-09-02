@@ -1,0 +1,108 @@
+PREFIX x2rm: <http://ids.unimaas.nl/xml2rdf/model#>
+PREFIX x2rd: <http://ids.unimaas.nl/xml2rdf/data/>
+PREFIX d2s: <https://w3id.org/data2services/vocab/>
+PREFIX ido: <http://identifiers.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+INSERT {
+  GRAPH <?_output> {
+
+    ?drugUri a bl:Drug ;
+      bl:id ?drugCurie ;
+      bl:name ?name ;
+      bl:has_chemical_formula ?molecularFormula ;
+      # Put all descriptive textual infos about the drug as description
+      bl:description ?description ;
+      bl:description ?drugIndication ;
+      bl:description ?synthesisReference ;
+      bl:description ?pharmacodynamics ;
+      bl:description ?mechanismOfAction ;
+      bl:description ?toxicity ;
+      bl:description ?metabolism ;
+      bl:description ?absorption ;
+      bl:same_as ?casNumberUri ;
+      bl:same_as ?uniiUri ;
+      bl:category ?drugGroupUri ;
+      bl:category ?drugStateUri .
+      # TODO: use bl:filler instead of category?
+
+    ?drugStateUri a bl:OntologyClass ;
+      bl:id ?drugStateUri ;
+      bl:name ?drugState .
+
+    ?drugGroupUri a bl:OntologyClass ;
+      bl:id ?drugGroupUri ;
+      bl:name ?drugGroup .
+
+  }
+} WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+
+      # Get primary DrugBank ID of drug
+      ?drugObj x2rm:child:drugbank-id [ 
+        x2rm:attribute:primary "true" ; 
+        x2rm:hasValue ?drugbankId 
+      ] .
+      BIND(iri(concat("https://identifiers.org/drugbank:", ?drugbankId)) AS ?drugUri)
+
+      OPTIONAL{ ?drugObj x2rm:child:name [ x2rm:hasValue ?name ] . }
+      OPTIONAL{ ?drugObj x2rm:child:description [ x2rm:hasValue ?description ] . }
+      OPTIONAL{ 
+        ?drugObj x2rm:child:cas-number [ x2rm:hasValue ?casNumber ] . 
+        BIND ( iri(concat("https://identifiers.org/cas:", ?casNumber)) AS ?casNumberUri )
+      } 
+      OPTIONAL{ 
+        ?drugObj x2rm:child:unii [ x2rm:hasValue ?unii ] . 
+        BIND ( iri(concat("https://identifiers.org/unii:", ?unii)) AS ?uniiUri )
+      }
+      OPTIONAL{ 
+        ?drugObj x2rm:child:state [ x2rm:hasValue ?drugState ] . 
+        VALUES( ?drugState ?drugStateUri ) {
+          ("liquid" <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C45298> )
+          ("gas" <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C45299> )
+          ("solid" <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C45300> )
+        }
+      }
+      OPTIONAL{ 
+        # Array, e.g. Approved
+        ?drugObj x2rm:child:groups [ x2rm:child:group [ x2rm:hasValue ?drugGroup ] ] .
+        VALUES( ?drugGroup ?drugGroupUri ) {
+          ("approved" <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25425> )
+          ("vet_approved" <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25425> )
+          ("investigational" <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C28041> )
+          ("experimental" <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C28041> )
+          ("withdrawn" <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C70758> )
+          ("nutraceutical" <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C1954> )
+          ("illicit" <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C79097> )
+        }
+        # approved, investigational, withdrawn, vet_approved, nutraceutical, illicit, experimental
+      }
+      OPTIONAL{ ?drugObj x2rm:child:indication [ x2rm:hasValue ?drugIndication ] . }
+      OPTIONAL{ ?drugObj x2rm:child:synthesis-reference [ x2rm:hasValue ?synthesisReference ] . }
+      OPTIONAL{ ?drugObj x2rm:child:pharmacodynamics [ x2rm:hasValue ?pharmacodynamics ] . }
+      OPTIONAL{ ?drugObj x2rm:child:mechanism-of-action [ x2rm:hasValue ?mechanismOfAction ] . }
+      OPTIONAL{ ?drugObj x2rm:child:toxicity [ x2rm:hasValue ?toxicity ] . }
+      OPTIONAL{ ?drugObj x2rm:child:metabolism [ x2rm:hasValue ?metabolism ] . }
+      OPTIONAL{ ?drugObj x2rm:child:absorption [ x2rm:hasValue ?absorption ] . }
+
+      # Get Chemical formula
+      OPTIONAL{ 
+        ?drugObj x2rm:child:experimental-properties [ 
+          x2rm:child:property [
+            x2rm:child:kind [ x2rm:hasValue "Molecular Formula" ] ;
+            x2rm:child:value [ x2rm:hasValue ?molecularFormula ] 
+          ]
+        ] 
+      }
+
+      # <average-mass>177.2462</average-mass>
+      # <monoisotopic-mass>177.126597495</monoisotopic-mass>
+    }
+  }
+}

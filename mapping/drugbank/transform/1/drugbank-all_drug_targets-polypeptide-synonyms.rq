@@ -55,6 +55,8 @@ INSERT {
       # <molecular-weight>57525.03</molecular-weight>
       # <chromosome-location>10</chromosome-location>
 
+      # go-classifier already done through Uniprot transformation
+
     }
   }
 }

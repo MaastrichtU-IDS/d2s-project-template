@@ -1,0 +1,38 @@
+PREFIX x2rm: <http://ids.unimaas.nl/xml2rdf/model#>
+PREFIX x2rd: <http://ids.unimaas.nl/xml2rdf/data/>
+PREFIX d2s: <https://w3id.org/data2services/vocab/>
+PREFIX ido: <http://identifiers.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+INSERT {
+  GRAPH <?_output> {
+    
+    ?drugUri bl:same_as ?drugAltUri .
+
+  }
+} WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+
+      # Get primary DrugBank ID of drug
+      ?drugObj x2rm:child:drugbank-id [ 
+        x2rm:attribute:primary "true" ; 
+        x2rm:hasValue ?drugbankId 
+      ] ; 
+      x2rm:child:drugbank-id [ 
+        x2rm:hasValue ?drugbankAltId 
+      ] .
+      BIND(iri(concat("https://identifiers.org/drugbank:", ?drugbankId)) AS ?drugUri)
+
+      # Filter out unknown IDs (e.g. DBSALT001314, BIOD00024, BTD00024)
+      FILTER(strlen(?drugbankAltId) != 7)
+      FILTER(strstarts(?drugbankAltId, "DB"))
+      BIND(iri(concat("https://identifiers.org/drugbank:", ?drugbankAltId)) AS ?drugAltUri)
+    }
+  }
+}
