@@ -1,0 +1,60 @@
+PREFIX x2rm: <http://ids.unimaas.nl/xml2rdf/model#>
+PREFIX x2rd: <http://ids.unimaas.nl/xml2rdf/data/>
+PREFIX d2s: <https://w3id.org/data2services/vocab/>
+PREFIX ido: <http://identifiers.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+INSERT {
+  GRAPH <?_output> {
+
+    ?categoryMeshUri a bl:OntologyClass ;
+      bl:id ?categoryMeshId ;
+      bl:name ?categoryName .
+
+    # TODO: avoid using category? See GitHub issue
+    ?drugUri bl:category ?categoryMeshUri .
+  }
+    .
+} WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+
+      # Get primary DrugBank ID of drug
+      ?drugObj x2rm:child:drugbank-id [ 
+        x2rm:attribute:primary "true" ; 
+        x2rm:hasValue ?drugbankId 
+      ] .
+      BIND(iri(concat("https://identifiers.org/drugbank:", ?drugbankId)) AS ?drugUri)
+      ?drugObj x2rm:child:categories [ 
+        x2rm:child:category ?categoryObj
+      ] .
+
+      # Iterates on
+      ?categoryObj a x2rm:drugbank.drug.categories.category .
+
+      ?categoryObj x2rm:child:mesh-id [
+        x2rm:hasValue ?categoryMeshId
+      ] .
+
+      OPTIONAL{
+        ?categoryObj x2rm:child:category [
+          x2rm:hasValue ?categoryName
+        ] .
+      }
+
+      BIND(iri(concat("https://identifiers.org/mesh:", ?categoryMeshId)) AS ?categoryMeshUri)
+
+      # OPTIONAL{
+      #   # It corresponds to the interacting drug name
+      #   ?drugInteractionObj x2rm:child:name [
+      #     x2rm:hasValue ?drugInteractionName
+      #   ] .
+      # }
+    }
+  }
+}
