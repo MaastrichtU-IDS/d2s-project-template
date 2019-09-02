@@ -73,12 +73,30 @@ INSERT {
           x2rm:child:action [ x2rm:hasValue ?targetAction ] 
           # e.g. substrate, inhibitor
         ] . 
-        VALUES (?targetAction ?targetActionPropertyUri) {
-            ( "inhibitor" bl:decreases_activity_of )
-            ( "antagonist" bl:decreases_activity_of )
-            ( "agonist" bl:increases_activity_of )
-            ( "activator" bl:increases_activity_of )
-            ( UNDEF bl:affects )
+
+        # Define association relation depending on the action
+        # TODO: substrate
+        VALUES (?bioentityType ?targetAction ?targetActionPropertyUri) {
+            ( "target" "inhibitor" bl:decreases_activity_of )
+            ( "target" "antagonist" bl:decreases_activity_of )
+            ( "target" "agonist" bl:increases_activity_of )
+            ( "target" "activator" bl:increases_activity_of )
+            ( "enzyme" "inhibitor" bl:decreases_activity_of )
+            ( "enzyme" "antagonist" bl:decreases_activity_of )
+            ( "enzyme" "agonist" bl:increases_activity_of )
+            ( "enzyme" "activator" bl:increases_activity_of )
+            ( "transporter" "inhibitor" bl:decreases_transport_of )
+            ( "transporter" "antagonist" bl:decreases_transport_of )
+            ( "transporter" "agonist" bl:increases_transport_of )
+            ( "transporter" "activator" bl:increases_transport_of )
+            ( "carrier" "inhibitor" bl:decreases_transport_of )
+            ( "carrier" "antagonist" bl:decreases_transport_of )
+            ( "carrier" "agonist" bl:increases_transport_of )
+            ( "carrier" "activator" bl:increases_transport_of )
+            ( "target" UNDEF bl:affects_activity_of )
+            ( "enzyme" UNDEF bl:affects_activity_of )
+            ( "transporter" UNDEF bl:affects_transport_of )
+            ( "carrier" UNDEF bl:affects_transport_of )
         }
       }
       # OPTIONAL{ ?targetObj x2rm:child:name [ x2rm:hasValue ?bioentityKnownAction ] . }
