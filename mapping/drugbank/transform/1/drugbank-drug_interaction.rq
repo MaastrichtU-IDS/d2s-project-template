@@ -40,6 +40,7 @@ INSERT {
         x2rm:child:drug-interaction ?drugInteractionObj
       ] .
 
+      # Iterate on
       ?drugInteractionObj a x2rm:drugbank.drug.drug-interactions.drug-interaction .
 
       ?drugInteractionObj x2rm:child:drugbank-id [
@@ -53,7 +54,7 @@ INSERT {
       }
 
       BIND(iri(concat("https://identifiers.org/drugbank:", ?interactingDrugDrugbankId)) AS ?interactingDrugUri)
-      BIND(iri(concat("https://w3id.org/data2services/DrugDrugInteraction:", concat(?drugbankId, "_", ?interactingDrugDrugbankId))) AS ?drugInteractionAssociationUri)
+      BIND(iri(concat("https://w3id.org/data2services/data/association/drug_drug:", concat(?drugbankId, "_", ?interactingDrugDrugbankId))) AS ?drugInteractionAssociationUri)
 
       FILTER(STR(?drugbankId) < STR(?interactingDrugDrugbankId)).
 

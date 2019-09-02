@@ -44,13 +44,14 @@ INSERT {
         x2rm:child:food-interaction ?foodInteractionObj
       ] .
 
+      # Iterate on
       ?foodInteractionObj a x2rm:drugbank.drug.food-interactions.food-interaction .
 
       ?foodInteractionObj x2rm:hasValue ?foodInteractionDescription .
 
       BIND(SHA1(?foodInteractionDescription) AS ?foodInteractionId)
-      BIND(iri(concat("https://w3id.org/data2services/FoodInteraction:", ?foodInteractionId)) AS ?interactingFoodUri)
-      BIND(iri(concat("https://w3id.org/data2services/DrugFoodInteraction:", concat(?drugbankId, "_", ?foodInteractionId))) AS ?foodInteractionAssociationUri)
+      BIND(iri(concat("https://w3id.org/data2services/data/foodinteraction:", ?foodInteractionId)) AS ?interactingFoodUri)
+      BIND(iri(concat("https://w3id.org/data2services/data/association/drug_foodinteraction:", concat(?drugbankId, "_", ?foodInteractionId))) AS ?foodInteractionAssociationUri)
 
       # OPTIONAL{
       #   # It corresponds to the interacting drug name

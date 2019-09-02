@@ -41,7 +41,7 @@ INSERT {
         x2rm:hasValue ?organismName .
 
 
-      BIND(iri(concat("https://w3id.org/data2services/organism:", SHA1(?organismName))) AS ?organismUri)
+      BIND(iri(concat("https://w3id.org/data2services/data/organism:", SHA1(?organismName))) AS ?organismUri)
 
       # OPTIONAL{
       #   # It corresponds to the interacting drug name
