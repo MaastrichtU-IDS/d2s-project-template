@@ -1,0 +1,76 @@
+PREFIX x2rm: <http://ids.unimaas.nl/xml2rdf/model#>
+PREFIX x2rd: <http://ids.unimaas.nl/xml2rdf/data/>
+PREFIX d2s: <https://w3id.org/data2services/vocab/>
+PREFIX ido: <http://identifiers.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+INSERT {
+  GRAPH <?_output> {
+
+    ?associationUri bl:publications ?articleUri .
+    
+    ?articleUri a bl:Publication ;
+      bl:id ?articleCurie ;
+      bl:name ?articleCitation .
+  }
+    .
+} WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+      # Iterates on those different associations articles
+      VALUES( ?associationType ?associationArticleType ) {
+        ("target" x2rm:drugbank.drug.targets.target.references.articles.article )
+        ("enzyme" x2rm:drugbank.drug.enzymes.enzyme.references.articles.article )
+        ("carrier" x2rm:drugbank.drug.carriers.carrier.references.articles.article )
+        ("transporter" x2rm:drugbank.drug.transporters.transporter.references.articles.article )
+      }
+      # Not on the Drug articles, no way to represent it properly in BioLink
+      # (x2rm:drugbank.drug.general-references.articles.article )
+
+      # Get primary DrugBank ID of drug
+      ?drugObj a x2rm:drugbank.drug ;
+        x2rm:child:drugbank-id [ 
+        x2rm:attribute:primary "true" ; 
+        x2rm:hasValue ?drugbankId 
+      ] .
+      BIND(iri(concat("https://identifiers.org/drugbank:", ?drugbankId)) AS ?drugUri)
+      # ?drugObj x2rm:child:TARGETS [ 
+      #   x2rm:child:TARGET [
+      ?drugObj ?targetsPredicate [ 
+        ?targetPredicate ?targetObj 
+      ] .
+
+      # Get target ID 
+      ?targetObj x2rm:child:id [ x2rm:hasValue ?targetId ] ;
+        x2rm:child:references [
+            x2rm:child:articles [
+              x2rm:child:article ?articleObj
+            ]
+          ] .
+
+      # Iterate on
+      #?articleObj a x2rm:drugbank.drug.enzymes.enzyme.references.articles.article .
+      ?articleObj a ?associationArticleType .
+
+      ?articleObj x2rm:child:pubmed-id [
+        x2rm:hasValue ?articlePmid
+      ] .
+
+      OPTIONAL{
+        ?articleObj x2rm:child:citation [
+          x2rm:hasValue ?articleCitation
+        ] .
+      }
+
+      BIND(concat("pubmed:", ?articlePmid) AS ?articleCurie)
+      BIND(iri(concat("https://identifiers.org/", ?articleCurie)) AS ?articleUri)
+      BIND(iri(concat("https://w3id.org/data2services/data/association/drug_", ?associationType, ":", ?drugbankId, "_", ?targetId)) AS ?associationUri)
+
+    }
+  }
+}
