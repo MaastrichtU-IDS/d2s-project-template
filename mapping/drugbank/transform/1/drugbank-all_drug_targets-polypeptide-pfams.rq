@@ -1,0 +1,48 @@
+PREFIX x2rm: <http://ids.unimaas.nl/xml2rdf/model#>
+PREFIX x2rd: <http://ids.unimaas.nl/xml2rdf/data/>
+PREFIX d2s: <https://w3id.org/data2services/vocab/>
+PREFIX ido: <http://identifiers.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+INSERT {
+  GRAPH <?_output> {
+
+    ?polypeptideUniprotUri bl:category ?pfamUri .
+
+    ?pfamUri a bl:OntologyClass ;
+      bl:id ?pfamCurie ;
+      bl:name ?pfamName .
+  }
+} WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+      VALUES( ?type ?polypeptideType ) {
+        ("target" x2rm:drugbank.drug.targets.target.polypeptide )
+        ("enzyme" x2rm:drugbank.drug.enzymes.enzyme.polypeptide )
+        ("carrier" x2rm:drugbank.drug.carriers.carrier.polypeptide )
+        ("transporter" x2rm:drugbank.drug.transporters.transporter.polypeptide )
+      }
+
+      # Iterate on, and get polypeptide ID 
+      ?polypeptideObj a ?polypeptideType ;
+        x2rm:attribute:id ?polypeptideId ;
+        
+        x2rm:child:pfams [ 
+          x2rm:child:pfam [ 
+            x2rm:child:identifier [ x2rm:hasValue ?pfamId ] ;
+            x2rm:child:name [ x2rm:hasValue ?pfamName ]
+          ]
+        ] .
+      
+      BIND( iri(concat("https://identifiers.org/uniprot:", ?polypeptideId)) AS ?polypeptideUniprotUri )
+      BIND ( concat("pfam:", ?pfamId) AS ?pfamCurie )
+      BIND ( iri(concat("https://identifiers.org/", ?pfamCurie)) AS ?pfamUri )
+
+    }
+  }
+}

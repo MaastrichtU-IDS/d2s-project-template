@@ -1,0 +1,60 @@
+PREFIX x2rm: <http://ids.unimaas.nl/xml2rdf/model#>
+PREFIX x2rd: <http://ids.unimaas.nl/xml2rdf/data/>
+PREFIX d2s: <https://w3id.org/data2services/vocab/>
+PREFIX ido: <http://identifiers.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+INSERT {
+  GRAPH <?_output> {
+
+    ?polypeptideUniprotUri a bl:Protein ;
+        bl:has_biological_sequence ?aminoAcidSequence ;
+        bl:synonym ?polypeptideSynonym .
+
+    ?associationLocationUri a bl:MacromolecularMachineToCellularComponentAssociation ;
+      bl:subject ?polypeptideUniprotUri ;
+      bl:relation bl:located_in ;
+      bl:object ?cellularLocationUri .
+
+    ?cellularLocationUri a bl:CellularComponent ;
+      bl:id ?cellularLocationUri ;
+      bl:name ?cellularLocation .
+  }
+} WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+      VALUES( ?polypeptideType ?associationType ) {
+        ("target" x2rm:drugbank.drug.targets.target.polypeptide )
+        ("enzyme" x2rm:drugbank.drug.enzymes.enzyme.polypeptide )
+        ("carrier" x2rm:drugbank.drug.carriers.carrier.polypeptide )
+        ("transporter" x2rm:drugbank.drug.transporters.transporter.polypeptide )
+      }
+      
+      # Iterate on, and get polypeptide ID 
+      ?polypeptideObj a ?polypeptideType ;
+        x2rm:attribute:id ?polypeptideId ;
+        # x2rm:attribute:source ?polypeptideSource ; # Swiss-Prot and Chembl, but the 2 are uniprot ID
+
+        x2rm:child:amino-acid-sequence [ x2rm:hasValue ?aminoAcidSequence ] ;
+        x2rm:child:cellular-location [ x2rm:hasValue ?cellularLocation ] ; # e.g. Cell membrane
+        x2rm:child:synonyms [ x2rm:child:synonym [ x2rm:hasValue ?polypeptideSynonym ] ] .
+        # Multiple synonyms 
+      
+      BIND(iri(concat("https://identifiers.org/uniprot:", ?polypeptideId)) AS ?polypeptideUniprotUri)
+
+      BIND(iri(concat("https://w3id.org/data2services/data/cellularlocation:", lcase(replace(?cellularLocation, " ", "_")))) AS ?cellularLocationUri )
+      BIND(iri(concat("https://w3id.org/data2services/data/association/protein_cellularlocation:", ?polypeptideId, "_", SHA1(?cellularLocation))) AS ?associationLocationUri )
+      
+
+      # Other interesting fields:
+      # <molecular-weight>57525.03</molecular-weight>
+      # <chromosome-location>10</chromosome-location>
+
+    }
+  }
+}

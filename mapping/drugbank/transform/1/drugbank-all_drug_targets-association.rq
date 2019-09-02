@@ -27,11 +27,21 @@ INSERT {
 
     ?bioentityUri a bl:GeneOrGeneProduct ;
         bl:name ?bioentityName ;
-        bl:id ?bioentityUri .
+        bl:id ?bioentityUri ;
+        bl:has_gene_product ?polypeptideUniprotUri .
+        # We link directly the polypeptide with the drug it is affected by and the drugbank BioEntity
 
     ?organismUri a bl:OrganismTaxon ;
       bl:id ?organismUri ;
       bl:name ?bioentityOrganism .
+
+    ?polypeptideAssociationUri a bl:ChemicalToGeneAssociation ;
+        bl:relation ?targetActionPropertyUri ;
+        bl:subject ?drugUri ;
+        bl:object ?polypeptideUniprotUri ;
+        bl:qualifiers ?actionUri ;
+        bl:affects ?organismUri ;
+        bl:relation ?targetActionPropertyUri .
   }
 } WHERE {
   SERVICE <?_service>  {
@@ -64,7 +74,12 @@ INSERT {
       # Iterate on, and get target ID 
       # ?targetObj a x2rm:drugbank.drug.targets.target ;
       ?targetObj a ?associationType ;
-       x2rm:child:id [ x2rm:hasValue ?bioentityId ] .
+       x2rm:child:id [ x2rm:hasValue ?bioentityId ] ;
+       x2rm:child:polypeptide [
+        x2rm:attribute:id ?polypeptideId ;
+        # x2rm:attribute:source ?polypeptideSource ; # Swiss-Prot and Chembl, but the 2 are uniprot ID
+      ]
+.
 
       OPTIONAL{ ?targetObj x2rm:child:name [ x2rm:hasValue ?bioentityName ] . }
       OPTIONAL{ ?targetObj x2rm:child:organism [ x2rm:hasValue ?bioentityOrganism ] . }
@@ -106,6 +121,10 @@ INSERT {
       BIND(iri(concat("https://w3id.org/data2services/data/association/drug_", ?bioentityType, ":", ?drugbankId, "_", ?bioentityId)) AS ?associationUri)
       BIND(iri(concat("https://w3id.org/data2services/data/organism:", ?bioentityOrganism)) AS ?organismUri )
       BIND(iri(concat("https://w3id.org/data2services/data/drug_action:", ?targetAction)) AS ?actionUri )
+
+      # Define polypeptide association
+      BIND(iri(concat("https://identifiers.org/uniprot:", ?polypeptideId)) AS ?polypeptideUniprotUri)
+      BIND(iri(concat("https://w3id.org/data2services/data/association/drug_protein:", ?drugbankId, "_", ?polypeptideId)) AS ?polypeptideAssociationUri)
     }
   }
 }

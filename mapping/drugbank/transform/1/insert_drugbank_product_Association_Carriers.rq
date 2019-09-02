@@ -9,6 +9,7 @@ PREFIX obo: <http://purl.obolibrary.org/obo/>
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX bl: <https://w3id.org/biolink/vocab/>
+DONE
 INSERT { 
     GRAPH <?_output> {   
 
