@@ -13,18 +13,15 @@ INSERT {
   GRAPH <?_output> {
 
     # TODO: biolink, we should have a ChemicalToVariantAssociation
-    # That could be a mixin with ChemicalToThingAssociation
-    ?drugVariantAssociationUri a bl:VariantToThingAssociation ; 
+    # That could be a mixin with VariantToThingAssociation
+    ?drugVariantAssociationUri a bl:ChemicalToThingAssociation ; 
       bl:relation bl:affects_activity_of ;
-      bl:subject ?snpUri ;
-      bl:object ?drugUri ;
+      bl:subject ?drugUri ;
+      bl:object ?snpUri ;
       bl:description ?associationDescription ;
-      bl:description ?definingChangeDescription ;
+      bl:description ?adverseReactionDescription ;
       bl:description ?alleleDescription ;
       bl:publications ?pubmedUri .
-
-      # Direct link
-      #?drugUri bl:affects_activity_of ?drugPathwayUri .
 
     ?snpUri a bl:SequenceVariant ;
       bl:id ?snpCurie ;
@@ -42,12 +39,12 @@ INSERT {
         x2rm:hasValue ?drugbankId 
       ] .
       BIND(iri(concat("https://identifiers.org/drugbank:", ?drugbankId)) AS ?drugUri)
-      ?drugObj x2rm:child:snp-effects [ 
-        x2rm:child:effect ?snpObj
+      ?drugObj x2rm:child:snp-adverse-drug-reactions [ 
+        x2rm:child:reaction ?snpObj
       ] .
 
       # Iterate on
-      ?snpObj a x2rm:drugbank.drug.snp-effects.effect ;
+      ?snpObj a x2rm:drugbank.drug.snp-adverse-drug-reactions.reaction ;
 
         x2rm:child:rs-id [ x2rm:hasValue ?snpRsId ] ;
         x2rm:child:gene-symbol [ x2rm:hasValue ?geneSymbol ] .
@@ -64,8 +61,8 @@ INSERT {
         BIND( concat("Allele: ", ?allele) AS ?alleleDescription )
       }
       OPTIONAL{
-        ?snpObj x2rm:child:defining-change [ x2rm:hasValue ?definingChange ]
-        BIND( concat("Defining change: ", ?definingChange) AS ?definingChangeDescription )
+        ?snpObj x2rm:child:adverse-reaction [ x2rm:hasValue ?adverseReaction ]
+        BIND( concat("Adverse reaction: ", ?adverseReaction) AS ?adverseReactionDescription )
       }
       OPTIONAL{ ?snpObj x2rm:child:description [ x2rm:hasValue ?associationDescription ] }
 
@@ -74,18 +71,17 @@ INSERT {
       BIND( iri(concat("https://w3id.org/data2services/data/association/chemical_variant:", concat(?drugbankId, "_", ?snpRsId))) AS ?drugVariantAssociationUri )
 
       # Example:
-      # <snp-effects>
-      #   <effect>
-      #     <protein-name>Epidermal growth factor receptor</protein-name>
-      #     <gene-symbol>EGFR</gene-symbol>
-      #     <uniprot-id>P00533</uniprot-id>
-      #     <rs-id>rs121913444</rs-id>
-      #     <allele>L861Q</allele>
-      #     <defining-change>T &gt; A or G</defining-change>
-      #     <description>The presence of this polymorphism in EGFR is associated with a higher response rate to afatinib.</description>
-      #     <pubmed-id>15118073</pubmed-id>
-      #   </effect>
-      # </snp-effects>
+      # <snp-adverse-drug-reactions>
+      # <reaction>
+      #   <protein-name>Dihydropyrimidine dehydrogenase [NADP(+)]</protein-name>
+      #   <gene-symbol>DPYD</gene-symbol>
+      #   <uniprot-id>Q12882</uniprot-id>
+      #   <rs-id>rs3918290</rs-id>
+      #   <allele>DPYD*2A</allele>
+      #   <adverse-reaction>G &gt; A</adverse-reaction>
+      #   <description>The presence of this genotype in DPYD is associated with an increased risk of drug-related toxicity from tegafur therapy.</description>
+      #   <pubmed-id>23988873</pubmed-id>
+      # </reaction>
     }
   }
 }
