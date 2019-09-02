@@ -1,0 +1,91 @@
+PREFIX x2rm: <http://ids.unimaas.nl/xml2rdf/model#>
+PREFIX x2rd: <http://ids.unimaas.nl/xml2rdf/data/>
+PREFIX d2s: <https://w3id.org/data2services/vocab/>
+PREFIX ido: <http://identifiers.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+INSERT {
+  GRAPH <?_output> {
+
+    # TODO: biolink, we should have a ChemicalToVariantAssociation
+    # That could be a mixin with VariantToThingAssociation
+    ?drugVariantAssociationUri a bl:ChemicalToThingAssociation ; 
+      bl:relation bl:affects_activity_of ;
+      bl:subject ?drugUri ;
+      bl:object ?snpUri ;
+      bl:description ?associationDescription ;
+      bl:description ?definingChangeDescription ;
+      bl:description ?alleleDescription ;
+      bl:publications ?pubmedUri .
+
+      # Direct link
+      #?drugUri bl:affects_activity_of ?drugPathwayUri .
+
+    ?snpUri a bl:SequenceVariant ;
+      bl:id ?snpCurie ;
+      bl:name ?pathwayName ;
+      bl:has_gene ?geneUri .
+      # bl:has_biological_sequence (optional)
+  }
+} WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+
+      # Get primary DrugBank ID of drug
+      ?drugObj x2rm:child:drugbank-id [ 
+        x2rm:attribute:primary "true" ; 
+        x2rm:hasValue ?drugbankId 
+      ] .
+      BIND(iri(concat("https://identifiers.org/drugbank:", ?drugbankId)) AS ?drugUri)
+      ?drugObj x2rm:child:snp-effects [ 
+        x2rm:child:effect ?snpObj
+      ] .
+
+      # Iterate on
+      ?snpObj a x2rm:drugbank.drug.snp-effects.effect ;
+
+        x2rm:child:rs-id [ x2rm:hasValue ?snpRsId ] ;
+        x2rm:child:gene-symbol [ x2rm:hasValue ?geneSymbol ] .
+      
+      BIND( iri(concat("https://identifiers.org/hgnc.symbol:", ?geneSymbol)) AS ?geneUri )
+
+      OPTIONAL{
+        ?snpObj x2rm:child:pubmed-id [ x2rm:hasValue ?pmid ]
+        BIND( iri(concat("https://identifiers.org/pubmed:", ?pmid)) AS ?pubmedUri )
+      }
+      OPTIONAL{
+        ?snpObj x2rm:child:allele [ x2rm:hasValue ?allele ]
+        # TODO: resolve allele to an URI?
+        BIND( concat("Allele: ", ?allele) AS ?alleleDescription )
+      }
+      OPTIONAL{
+        ?snpObj x2rm:child:defining-change [ x2rm:hasValue ?definingChange ]
+        BIND( concat("Defining change: ", ?definingChange) AS ?definingChangeDescription )
+      }
+      OPTIONAL{ ?snpObj x2rm:child:description [ x2rm:hasValue ?associationDescription ] }
+
+      BIND( concat("snpdb:", ?snpRsId) AS ?snpCurie )
+      BIND( iri(concat("https://identifiers.org/", ?snpCurie)) AS ?snpUri )
+      BIND( iri(concat("https://w3id.org/data2services/data/association/chemical_variant:", concat(?drugbankId, "_", ?snpRsId))) AS ?drugVariantAssociationUri )
+
+      # Example:
+      # <snp-effects>
+      #   <effect>
+      #     <protein-name>Epidermal growth factor receptor</protein-name>
+      #     <gene-symbol>EGFR</gene-symbol>
+      #     <uniprot-id>P00533</uniprot-id>
+      #     <rs-id>rs121913444</rs-id>
+      #     <allele>L861Q</allele>
+      #     <defining-change>T &gt; A or G</defining-change>
+      #     <description>The presence of this polymorphism in EGFR is associated with a higher response rate to afatinib.</description>
+      #     <pubmed-id>15118073</pubmed-id>
+      #   </effect>
+      # </snp-effects>
+    }
+  }
+}

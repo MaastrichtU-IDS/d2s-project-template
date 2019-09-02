@@ -27,6 +27,9 @@ INSERT {
       bl:description ?absorption ;
       bl:same_as ?casNumberUri ;
       bl:same_as ?uniiUri ;
+      bl:same_as ?inchikeyUri ;
+      bl:same_as ?inchiUri ;
+      bl:synonym ?smiles ;
       bl:category ?drugGroupUri ;
       bl:category ?drugStateUri .
       # TODO: use bl:filler instead of category?
@@ -93,13 +96,62 @@ INSERT {
 
       # Get Chemical formula
       OPTIONAL{ 
-        ?drugObj x2rm:child:experimental-properties [ 
+        # x2rm:child:experimental-properties or x2rm:child:calculated-properties
+        ?drugObj ?formulaProperties [ 
           x2rm:child:property [
             x2rm:child:kind [ x2rm:hasValue "Molecular Formula" ] ;
             x2rm:child:value [ x2rm:hasValue ?molecularFormula ] 
           ]
         ] 
       }
+      # Get InChi
+      OPTIONAL{ 
+        # x2rm:child:experimental-properties or x2rm:child:calculated-properties
+        ?drugObj ?inchiProperties [ 
+          x2rm:child:property [
+            x2rm:child:kind [ x2rm:hasValue "InChI" ] ;
+            x2rm:child:value [ x2rm:hasValue ?inchi ] 
+          ]
+        ] .
+        BIND( iri(concat("https://identifiers.org/inchi:", ?inchi)) AS ?inchiUri)
+      }
+      # Get InChi
+      OPTIONAL{ 
+        # x2rm:child:experimental-properties or x2rm:child:calculated-properties
+        ?drugObj ?inchikeyProperties [ 
+          x2rm:child:property [
+            x2rm:child:kind [ x2rm:hasValue "InChIKey" ] ;
+            x2rm:child:value [ x2rm:hasValue ?inchikey ] 
+          ]
+        ] .
+        BIND( iri(concat("https://identifiers.org/inchikey:", ?inchikey)) AS ?inchikeyUri)
+      }
+      # Get SMILES
+      OPTIONAL{ 
+        # x2rm:child:experimental-properties or x2rm:child:calculated-properties
+        ?drugObj ?smilesProperties [ 
+          x2rm:child:property [
+            x2rm:child:kind [ x2rm:hasValue "SMILES" ] ;
+            x2rm:child:value [ x2rm:hasValue ?smiles ] 
+          ]
+        ] 
+      }
+
+      #   <property>
+      #   <kind>SMILES</kind>
+      #   <value>OC[C@H](O)[C@@H](O)[C@H](O)[C@H](O)C(O)=O</value>
+      #   <source>ChemAxon</source>
+      # </property>
+      # <property>    https://identifiers.org/inchi:InChI=1S/C2H6O/c1-2-3/h3H,2H2,1H3
+      #   <kind>InChI</kind>
+      #   <value>InChI=1S/C6H12O7/c7-1-2(8)3(9)4(10)5(11)6(12)13/h2-5,7-11H,1H2,(H,12,13)/t2-,3+,4-,5-/m0/s1</value>
+      #   <source>ChemAxon</source>
+      # </property>
+      # <property>    https://identifiers.org/inchikey:RYYVLZVUVIJVGH-UHFFFAOYSA-N
+      #   <kind>InChIKey</kind>
+      #   <value>RGHNJXZEOKUKBD-QTBDOELSSA-N</value>
+      #   <source>ChemAxon</source>
+      # </property>
 
       # <average-mass>177.2462</average-mass>
       # <monoisotopic-mass>177.126597495</monoisotopic-mass>
