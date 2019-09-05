@@ -1,0 +1,94 @@
+PREFIX x2rm: <http://ids.unimaas.nl/xml2rdf/model#>
+PREFIX x2rd: <http://ids.unimaas.nl/xml2rdf/data/>
+PREFIX d2s: <https://w3id.org/data2services/model/>
+PREFIX ido: <http://identifiers.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+INSERT {
+  GRAPH <?_output> {
+
+    ?envPhenoAssociationUri a bl:EnvironmentToPhenotypicFeatureAssociation ; 
+      bl:id ?envPhenoAssociationUri ;
+      bl:subject ?environmentUri ;
+      bl:relation ?envPhenoRelation ;
+      bl:object ?phenotypeUri .
+
+    ?phenotypeUri a bl:PhenotypicFeature ; # https://identifiers.org/snomedct:91175000 or https://identifiers.org/meddra:10020772
+      bl:id ?phenotypeCurie ;
+      bl:name ?phenotypeName .
+
+    ?environmentUri a bl:DrugExposure ;
+      bl:id ?environmentUri ;
+      bl:name ?environmentName ;
+      bl:drug ?drugUri , ?drugUri2 .
+
+    ?drugUri a bl:Drug .
+
+  }
+} WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+
+      ?drugReaction a <https://w3id.org/data2services/data/input/aeolus/drugpairReactionCounts.tsv> ;
+        d2s:nreports ?nreports ;
+        d2s:outcome_concept_id ?outcome_concept_id ;
+        d2s:drug_concept_id ?drug_concept_id ;
+        d2s:ndrugreports ?ndrugreports .
+
+      ### TODO: resolution of concept_id
+
+      # {"results": [{"valid_end_date": "2099-12-31", "concept_class_id": "PT", "outcome_concept_id": 37622529, "valid_start_date": "1970-01-01", 
+      # "domain_id": "Condition", "concept_id": 37622529, "vocabulary_id": "MedDRA", "concept_name": "Hypertension", "invalid_reason": "", 
+      # "standard_concept": "C", "concept_code": 10020772}
+      ?ingredientList a <https://w3id.org/data2services/data/input/aeolus/ingredientList.tsv> ;
+        d2s:concept_code ?concept_code; # RxNorm ID
+        d2s:concept_id ?concept_id; # Internal ID
+        d2s:concept_name ?concept_name; # proper label
+        d2s:valid_end_date ?valid_end_date ;
+        d2s:valid_start_date ?valid_start_date ;
+        d2s:concept_class_id ?concept_class_id ; # e.g. Ingredient
+        d2s:domain_id ?domain_id ; # e.g. Drug
+        d2s:vocabulary_id ?vocabulary_id; # e.g. RxNorm
+        d2s:standard_concept_id ?standard_concept_id ; # e.g. 501343. What is this ID?
+        d2s:standard_concept ?standard_concept . # e.g. S. Irrelevant 
+
+      OPTIONAL { ?ingredientList d2s:invalid_reason ?invalid_reason }
+
+
+      # TODO: make sure we take the proper predicates
+      ?drugpairReactionListMedDRA a <https://w3id.org/data2services/data/input/aeolus/drugpairReactionListMedDRA.tsv> ;
+        d2s:concept_code ?concept_code_meddra; # Meddra ID
+        d2s:concept_id ?concept_id; # Internal ID
+        d2s:valid_end_date ?valid_end_date ;
+        d2s:valid_start_date ?valid_start_date ;
+        d2s:concept_class_id ?concept_class_id ;
+        d2s:outcome_concept_id ?outcome_concept_id ; # ???
+        d2s:domain_id ?domain_id ;
+        d2s:concept_id ?concept_id;
+        d2s:vocabulary_id ?vocabulary_id;
+        d2s:concept_name ?concept_name; # proper label
+        d2s:standard_concept ?standard_concept .
+
+      BIND(iri(concat("http://purl.bioontology.org/ontology/RXNORM/", ?rxNormId1)) AS ?drugUri1)
+      BIND(iri(concat("http://purl.bioontology.org/ontology/RXNORM/", ?rxNormId2)) AS ?drugUri2)
+
+      BIND(concat("meddra:", ?concept_code_meddra) AS ?meddraCurie)
+      BIND(iri(concat("https://identifiers.org/", ?meddraCurie)) AS ?meddraUri)
+
+      BIND(concat("Exposure to ", ?drugName) AS ?environmentName)
+      BIND(iri(concat("https://w3id.org/data2services/data/drug_exposure:", ?rxNormId)) AS ?environmentUri) 
+
+      # OPTIONAL{
+      #   # It corresponds to the interacting drug name
+      #   ?drugInteractionObj x2rm:child:name [
+      #     x2rm:hasValue ?drugInteractionName
+      #   ] .
+      # }
+    }
+  }
+}
