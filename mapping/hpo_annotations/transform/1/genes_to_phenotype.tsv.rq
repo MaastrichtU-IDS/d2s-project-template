@@ -24,8 +24,7 @@ INSERT {
       biolink:object ?hpoUri ;
       biolink:relation biolink:gene_associated_with_condition ;
       biolink:association_type biolink:gene_associated_with_condition .
-
-);
+  }
 } WHERE {
   SERVICE <?_service>  {
     GRAPH <?_input> {
