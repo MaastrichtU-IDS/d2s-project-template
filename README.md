@@ -6,7 +6,7 @@ The [Common Workflow Language](https://www.commonwl.org/) is used to describe wo
 
 ## Requirements
 
-- Install [Docker](https://docs.docker.com/install/) to run the modules.
+- Install [Docker](https://docs.docker.com/install/) to run the modules. Checkout the [Wiki](https://github.com/MaastrichtU-IDS/data2services-pipeline/wiki/Docker-documentation) if you have issues with Docker installation.
 - Install [cwltool](https://github.com/common-workflow-language/cwltool#install) to get cwl-runner to run workflows of Docker modules.
 
 ```shell
@@ -15,6 +15,9 @@ apt-get install cwltool
 
 - Those workflows use Data2Services modules, see the [data2services-pipeline](https://github.com/MaastrichtU-IDS/data2services-pipeline) project.
 - It is recommended to build the Docker images before running workflows, as the `docker pull` might crash when done through `cwl-runner`.
+
+- Following documentation focuses on Linux & MacOS, as no workflow engine supports Windows.
+- Windows documentation to run the docker containers can be found [here](https://github.com/MaastrichtU-IDS/data2services-pipeline/wiki/Run-on-Windows).
 
 ---
 
