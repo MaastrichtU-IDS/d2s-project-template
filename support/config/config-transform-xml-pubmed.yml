@@ -25,8 +25,8 @@ sparql_final_triplestore_password: PASSWORD
 sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/pubmed
 
 
-sparql_transform_queries_path: /data/mapping/pubmed/transform/1
-sparql_insert_metadata_path: /data/mapping/pubmed/metadata/1
+sparql_transform_queries_path: https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/mapping/pubmed/transform/1
+sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/mapping/pubmed/metadata/1
 
 # Run workflow
 # cwl-runner --outdir output/pubmed data2services-cwl-workflows/workflows/workflow-xml.cwl support/config/config-transform-xml-pubmed.yml

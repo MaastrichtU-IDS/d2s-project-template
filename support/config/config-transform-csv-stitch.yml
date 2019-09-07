@@ -32,5 +32,8 @@ sparql_final_triplestore_password: PASSWORD
 
 sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/stitch
 
-sparql_transform_queries_path: /data/mapping/stitch/transform/1
-sparql_insert_metadata_path: /data/mapping/stitch/metadata/1
+sparql_transform_queries_path: https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/mapping/stitch/transform/1
+sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/mapping/stitch/metadata/1
+
+# Argo require to use the URL
+# sparql_transform_queries_path: /data/mapping/stitch/transform/1

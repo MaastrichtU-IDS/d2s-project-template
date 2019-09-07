@@ -28,5 +28,5 @@ sparql_final_triplestore_password: PASSWORD
 
 sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/eggnog
 
-sparql_transform_queries_path: /data/mapping/eggnog/transform/1
-sparql_insert_metadata_path: /data/mapping/eggnog/metadata/1
+sparql_transform_queries_path: https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/mapping/eggnog/transform/1
+sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/mapping/eggnog/metadata/1
