@@ -4,7 +4,7 @@ dataset: drugbank-sample
 
 # d2s-download params
 download-username: vincent.emonet@maastrichtuniversity.nl
-download-password: PASSWORD
+download-password: maasitest12
 
 # tmp RDF4J server SPARQL endpoint to load generic RDF
 #sparql-tmp-triplestore-url: http://graphdb:7200
@@ -12,7 +12,7 @@ sparql-tmp-triplestore-url: http://node000002.cluster.ids.unimaas.nl/
 sparql-tmp-triplestore-repository: "test"
 sparql-tmp-service-url: "repository:test"
 sparql-tmp-triplestore-username: import_user
-sparql-tmp-triplestore-password: PASSWORD
+sparql-tmp-triplestore-password: test
 
 sparql-tmp-graph-uri: "https://w3id.org/data2services/graph/xml2rdf/drugbank"
 
@@ -21,7 +21,7 @@ sparql-tmp-graph-uri: "https://w3id.org/data2services/graph/xml2rdf/drugbank"
 sparql-final-triplestore-url: http://node000002.cluster.ids.unimaas.nl/
 sparql-final-triplestore-repository: "test"
 sparql-final-triplestore-username: import_user
-sparql-final-triplestore-password: PASSWORD
+sparql-final-triplestore-password: test
 
 sparql-final-graph-uri: https://w3id.org/data2services/graph/biolink/drugbank
 
