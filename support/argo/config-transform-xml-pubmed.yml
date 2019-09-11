@@ -1,6 +1,7 @@
 working-directory: /data/data2services-transform-biolink
 
-dataset: pubmed-sample
+#dataset: pubmed-sample
+dataset: pubmed
 
 # d2s-download params
 # download-username: vincent.emonet@maastrichtuniversity.nl
@@ -28,5 +29,5 @@ sparql-final-graph-uri: https://w3id.org/data2services/graph/biolink/pubmed
 sparql-transform-queries-path: https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/mapping/pubmed/transform/1
 sparql-insert-metadata-path: https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/mapping/pubmed/metadata/1
 
-# Argo require to use the URL
+# Argo require to use the URL, but local volumes can be shared
 # sparql-transform-queries-path: /data/mapping/pubmed/transform/1

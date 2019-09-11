@@ -1,7 +1,6 @@
 working_directory: /data/data2services-transform-biolink
-
-#dataset: drugbank
-dataset: pubmed-sample
+#dataset: pubmed-sample
+dataset: pubmed
 
 # d2s-download params
 download_username: vincent.emonet@maastrichtuniversity.nl
