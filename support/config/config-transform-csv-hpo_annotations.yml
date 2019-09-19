@@ -7,21 +7,21 @@ dataset: hpo_annotations
 input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
 
 # tmp RDF4J server SPARQL endpoint to load generic RDF
-sparql_tmp_triplestore_url: http://graphdb:7200
-sparql_tmp_triplestore_repository: test
-sparql_tmp_service_url: repository:test
+sparql_tmp_triplestore_url: http://node000002.cluster.ids.unimaas.nl/
+sparql_tmp_triplestore_repository: ncats-test
+sparql_tmp_service_url: repository:ncats-test
 sparql_tmp_triplestore_username: import_user
-sparql_tmp_triplestore_password: PASSWORD
+sparql_tmp_triplestore_password: test
 
-sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/hpo_annotations"
+sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/hpo_annotations/1"
 
 # Final RDF4J server SPARQL endpoint to load the BioLink RDF
-sparql_final_triplestore_url: http://graphdb:7200
-sparql_final_triplestore_repository: "test"
+sparql_final_triplestore_url: http://node000002.cluster.ids.unimaas.nl/
+sparql_final_triplestore_repository: "ncats-red-kg"
 sparql_final_triplestore_username: import_user
-sparql_final_triplestore_password: PASSWORD
+sparql_final_triplestore_password: test
 
-sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/hpo_annotations
+sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/hpo_annotations/1
 
 sparql_transform_queries_path: https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/mapping/hpo_annotations/transform/1
 sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/mapping/hpo_annotations/metadata/1
