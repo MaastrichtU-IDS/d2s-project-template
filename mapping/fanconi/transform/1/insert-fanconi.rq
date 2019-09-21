@@ -1,0 +1,46 @@
+PREFIX d2s: <https://w3id.org/data2services/model/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
+
+INSERT {
+  GRAPH <?_output> {
+
+    ?associationUri a bl:PairwiseGeneToGeneInteraction ;
+      bl:subject ?Input_id_uri ;
+      bl:object ?Hit_id_uri ;
+      bl:relation bl:interacts_with ; # could be bl:physically_interacts_with?
+      #bl:has_confidence ?Functional_sim_score 
+      .
+  
+  } 
+} WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+
+      ?row d2s:Input_id ?Input_id .
+      ?row d2s:Hit_id ?Hit_id .
+
+      # ?row a <https://w3id.org/data2services/data/fanconi/fanconi_query_full_summary.csv> .
+
+      # Generate URI from ID
+      BIND ( iri(concat("https://identifiers.org/", ?Hit_id)) AS ?Hit_id_uri )
+      BIND ( iri(concat("https://identifiers.org/", ?Input_id)) AS ?Input_id_uri )
+      BIND ( iri(concat("https://w3id.org/data2services/data/", concat(?Hit_id, ?Input_id))) AS ?associationUri )
+
+      OPTIONAL { ?row d2s:Hit_symbol ?Hit_symbol . }
+      OPTIONAL { ?row d2s:Input_symbol ?Input_symbol . }
+      OPTIONAL { ?row d2s:Functional_sim_score ?Functional_sim_score . }
+      OPTIONAL { ?row d2s:Functional_sim_rank ?Functional_sim_rank . }
+      OPTIONAL { ?row d2s:Phenotype_sim_score ?Phenotype_sim_score . }
+      OPTIONAL { ?row d2s:Phenotype_sim_rank ?Phenotype_sim_rank . }
+      OPTIONAL { ?row d2s:Num_protein_interactions ?Num_protein_interactions . }
+      OPTIONAL { ?row d2s:GeneGene_bicluster_score ?GeneGene_bicluster_score . }
+      OPTIONAL { ?row d2s:GeneGene_bicluster_rank ?GeneGene_bicluster_rank . }
+    }
+  }
+}
+

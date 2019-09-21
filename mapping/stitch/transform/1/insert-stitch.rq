@@ -23,7 +23,7 @@ INSERT
     ?ConfidenceLevelUri a bl:ConfidenceLevel ;
       bl:id "text mining score" ;
       bl:name "Text mining score" ;
-      bl:node_property ?score .
+      bl:node_property ?textminingScore .
 
  }
 }
@@ -43,9 +43,8 @@ WHERE {
       BIND ( iri(replace(?chemical2, "CID[ms]", "https://identifiers.org/pubchem.compound:")) AS ?chemical2Uri )
       BIND ( iri(replace(?chemical1, "CID[ms]", "pubchem.compound:")) AS ?chemical1Curie )
       BIND ( iri(replace(?chemical2, "CID[ms]", "pubchem.compound:")) AS ?chemical2Curie )
+      BIND ( iri(concat(str(?associationUri), "/confidence")) AS ?ConfidenceLevelUri )
 
-      # Avoid taking the first row with columns labels
-      FILTER( ?chemical1 != "chemical1")
     }
   }
 }

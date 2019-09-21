@@ -1,0 +1,30 @@
+working_directory: "/data/data2services-transform-biolink"
+
+dataset: fanconi
+
+# R2RML params
+input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
+
+# tmp RDF4J server SPARQL endpoint to load generic RDF
+# By default linked on 'graphdb' docker container
+sparql_tmp_triplestore_url: http://graphdb:7200
+#sparql_tmp_triplestore_url: http://graphdb.dumontierlab.com
+sparql_tmp_triplestore_repository: "test"
+sparql_tmp_service_url: "http://localhost:7200/repositories/test"
+sparql_tmp_triplestore_username: import_user
+sparql_tmp_triplestore_password: PASSWORD
+
+sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/fanconi"
+
+# Final RDF4J server SPARQL endpoint to load the BioLink RDF
+# By default linked on 'graphdb' docker container
+sparql_final_triplestore_url: http://graphdb:7200
+#sparql_final_triplestore_url: http://graphdb.dumontierlab.com
+sparql_final_triplestore_repository: "test"
+sparql_final_triplestore_username: import_user
+sparql_final_triplestore_password: PASSWORD
+
+sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/fanconi
+
+sparql_transform_queries_path: /data/mapping/fanconi/transform/1
+sparql_insert_metadata_path: /data/mapping/fanconi/metadata/1
