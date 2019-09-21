@@ -1,0 +1,15 @@
+Triplestore is not a RDF4J server, using SPARQLRepository instead of HTTPRepository
+Usage: rdf-upload [-?] -if=<inputFile> [-pw=<password>] [-rep=<repositoryId>]
+                  [-un=<username>] -url=<dbUrl>
+  -?, --help   Display a help message
+      -if, --inputFile=<inputFile>
+               Absolute path to RDF file to upload
+      -pw, --password=<password>
+               Password used for triplestore authentication
+      -rep, --repositoryId=<repositoryId>
+               RDF4J Repository ID for HTTPRepository file upload
+      -un, --username=<username>
+               Username used for triplestore authentication
+      -url, --database-url=<dbUrl>
+               URL of RDF4J Server or SPARQL endpoint to upload the RDF to. e.g.
+                 http://graphdb:7200/repositories/test/statements

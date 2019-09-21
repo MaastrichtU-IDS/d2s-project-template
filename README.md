@@ -55,9 +55,9 @@ docker run -d --rm --name graphdb -p 7200:7200 -v /data/graphdb:/opt/graphdb/hom
 Use `docker-compose`:
 
 ```bash
-docker-compose -f docker-compose.yaml -f drill.yaml -f postgres.yaml up -d --build --force-recreate
+docker-compose -f data2services-cwl-workflows/docker-compose/virtuoso.yaml -f data2services-cwl-workflows/docker-compose/drill.yaml -f data2services-cwl-workflows/docker-compose/postgres.yaml up -d --build --force-recreate
 
-docker-compose -f docker-compose.yaml -f drill.yaml up -d --build --force-recreate
+docker-compose -f data2services-cwl-workflows/docker-compose/virtuoso.yaml -f data2services-cwl-workflows/docker-compose/drill.yaml up -d --build --force-recreate
 ```
 
 ---
