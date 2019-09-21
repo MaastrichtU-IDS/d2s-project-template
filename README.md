@@ -25,7 +25,7 @@ apt-get install cwltool
 
 Clone the repository with its submodules
 
-```shell
+```bash
 git clone --recursive https://github.com/MaastrichtU-IDS/data2services-transform-biolink.git
 ```
 
@@ -41,7 +41,7 @@ GraphDB needs to be built locally, for this:
 * Put the downloaded `.zip` file in the GraphDB repository (cloned from [GitHub](https://github.com/MaastrichtU-IDS/graphdb/)).
 * Run `docker build -t graphdb --build-arg version=CHANGE_ME .` in the GraphDB repository.
 
-```shell
+```bash
 # Start Apache Drill sharing volume with this repository.
 # Here shared locally at /data/data2services-transform-biolink
 docker run -dit --rm -v /data/data2services-transform-biolink:/data:ro -p 8047:8047 -p 31010:31010 --name drill vemonet/apache-drill
@@ -50,6 +50,14 @@ docker run -dit --rm -v /data/data2services-transform-biolink:/data:ro -p 8047:8
 # Here shared locally at /data/graphdb and /data/graphdb-import
 docker build -t graphdb --build-arg version=8.11.0 .
 docker run -d --rm --name graphdb -p 7200:7200 -v /data/graphdb:/opt/graphdb/home -v /data/graphdb-import:/root/graphdb-import graphdb
+```
+
+Use `docker-compose`:
+
+```bash
+docker-compose -f docker-compose.yaml -f drill.yaml -f postgres.yaml up -d --build --force-recreate
+
+docker-compose -f docker-compose.yaml -f drill.yaml up -d --build --force-recreate
 ```
 
 ---

@@ -1,0 +1,64 @@
+version: "3"
+
+services:
+
+  # graphdb:
+  #   build: ./submodules/graphdb
+  #   volumes:
+  #     - /data/red-kg/graphdb:/opt/graphdb/home
+  #     - /data/red-kg/graphdb-import:/root/graphdb-import
+  #   ports:
+  #     - 7200:7200
+  #   networks:
+  #     - d2s-network
+
+  virtuoso:
+    image: tenforce/virtuoso
+    restart: unless-stopped
+    volumes:
+      - /data/red-kg:/data
+    ports: 
+      - 8890:8890 
+      - 1111:1111
+    environment:
+      - DBA_PASSWORD=password
+      - SPARQL_UPDATE=true
+      - DEFAULT_GRAPH=https://w3id.org/data2services/graph
+    networks:
+      - d2s-network
+
+  # http://localhost:8889/bigdata/#splash
+  # https://hub.docker.com/r/lyrasis/blazegraph
+  # blazegraph:
+  #   image: lyrasis/blazegraph:2.1.5
+  #   volumes:
+  #     # - /data/red-kg/RWStore.properties:/RWStore.properties
+  #     - /data/red-kg:/data
+  #   ports:
+  #     - 8889:8080
+  #   # environment:
+  #   #   - BLAZEGRAPH_UID=$BLAZEGRAPH_UID
+  #   #   - BLAZEGRAPH_GID=$BLAZEGRAPH_GID
+  #   networks:
+  #     - d2s-network
+
+networks:
+  d2s-network:
+    driver: bridge
+
+
+
+# Blazegraph load?
+# curl -X POST -H 'Content-Type:text/x-nquads' --data-binary '@data-1.nq' http://localhost:8080/bigdata/sparql
+
+
+# docker exec -it data2services-transform-biolink_virtuoso_1 bash
+# isql-v -U dba -P password
+# ld_dir('output', '*.nq', 'http://test/');
+# rdf_loader_run();
+
+# One liner virtuoso bulk load:
+#docker exec -it data2services-transform-biolink_virtuoso_1 isql-v -U dba -P password exec="ld_dir('/usr/local/virtuoso-opensource/var/lib/virtuoso/db/output', '*.nq', 'http://test/'); rdf_loader_run();"
+
+# Reset triplestore:
+#docker exec -it data2services-transform-biolink_virtuoso_1 isql-v -U dba -P password exec="RDF_GLOBAL_RESET ();"

@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+
+  drill:
+    image: vemonet/apache-drill
+    ports:
+      - 8047:8047
+      - 31010:31010
+    tty: true
+    volumes:
+      - /data/red-kg:/data:ro
+    networks:
+      - d2s-network
