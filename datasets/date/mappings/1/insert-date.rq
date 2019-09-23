@@ -1,0 +1,91 @@
+PREFIX d2smodel: <http://data2services/model/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
+INSERT
+{
+  GRAPH <?_output> {  
+    ?drugUri a bl:Drug ;
+      bl:id ?drugId ;
+      bl:name ?drugName . 
+
+    ?targetUniprotUri a bl:Protein .
+
+    ?targetSymbolUri a bl:Gene ;
+      bl:id ?targetSymbol ;
+      bl:has_gene_product ?targetUniprotUri ;
+      bl:systematic_synonym ?targetSymbol .
+    # expressed_in tissue?
+
+    ?pathwayUri a bl:Pathway ; # tissue-specific molecular pathway
+      bl:name ?pathwayName ;
+      bl:part_of ?tissueUri .
+
+    ?tissueUri a bl:GrossAnatomicalStructure ; # tissue
+      bl:name ?tissueName .
+
+
+    ?interactionUri a bl:ChemicalToGeneAssociation ;
+      bl:relation bl:interacts_with ;
+      bl:subject ?drugUri ;
+      bl:object ?targetUniprotUri ;
+      bl:part_of ?pathwayUri .
+
+    # TODO: We also could create a bl:ChemicalToPathwayAssociation. What would be the best choice?
+
+    # TODO: CellLine https://biolink.github.io/biolink-model/docs/CellLineToDiseaseOrPhenotypicFeatureAssociation.html
+    #?cellLineUri a bl:CellLine ;
+    #bl:id ?cellLineId .
+  }
+}
+WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+      # To filter out Drug_target_reactome_pathway_filtered.tsv file
+      # TODO: Be careful the file path in the type can change:
+      ?s a <http://data2services/data/ncats/date/Drug_target_reactome_pathway.tsv> ;
+        d2smodel:Drug_idStitch ?drugId ; # eg: CID000004927
+        d2smodel:Drug_name ?drugName .
+      BIND( iri(concat("http://identifiers.org/pubchem.compound/", replace(?drugId, "CID", "") ) ) AS ?drugUri )
+
+      ?s d2smodel:TargetUniprot ?targetUniprotId .
+      BIND( iri(concat("http://identifiers.org/uniprot/", ?targetUniprotId ) ) AS ?targetUniprotUri )
+
+      ?s d2smodel:Pathway ?pathwayName . # eg: Retrograde neurotrophin signalling
+      BIND( iri(concat("https://w3id.org/data2services/data/pathway/", md5(?pathwayName) ) ) AS ?pathwayUri )
+
+      BIND( iri(concat("https://w3id.org/data2services/data/protein/interaction/", md5(concat(?drugId, ?targetUniprotId, ?pathwayName)) ) ) AS ?interactionUri )
+      BIND( iri(concat("https://w3id.org/data2services/data/pathway/association/", md5(concat(?drugId, ?targetUniprotId, ?pathwayName)) ) ) AS ?pathwayAssociationUri )
+
+      OPTIONAL {
+        ?s d2smodel:Cell_line_id ?cellLineId . # NA (majority), HT1080, SHSYSY.RA, astrocytes, GM2313...
+        BIND( if( ?cellLineId="NA",
+          iri("") ,
+          iri(concat("https://w3id.org/data2services/data/cell_line/", ?cellLineId) )
+        ) AS ?cellLineUri )
+      } 
+      OPTIONAL { 
+        ?s d2smodel:Tissue ?tissueName . # Fetalbrain
+        BIND( iri(concat("https://w3id.org/data2services/data/tissue/", md5(?tissueName) ) ) AS ?tissueUri )
+      } 
+      OPTIONAL { 
+        ?s d2smodel:Pathway_size ?pathwaySize . # 42...
+      }
+      OPTIONAL { 
+        ?s d2smodel:TargetSymbol ?targetSymbol . # CHRM3
+        FILTER(!contains(?targetSymbol, "c("))    # filter out symbol like c(\"CALM1\", \"CALM2\", \"CALM3\")
+        BIND( iri(concat("http://identifiers.org/hgnc.symbol/", ?targetSymbol ) ) AS ?targetSymbolUri )
+      } 
+      OPTIONAL { 
+        ?s d2smodel:Target_class ?targetClass . # gpcr, enzyme, lgic, vgic, transporter, other_protein, catalytic_receptor, nhr, other_ic
+        BIND( iri(concat("https://w3id.org/data2services/data/protein/class/", md5(?targetClass) ) ) AS ?targetClassUri )
+      } 
+      OPTIONAL { 
+        ?s d2smodel:Dataset ?dataset . # GTEx, U133A, NCI60, HPM_PRT
+      }
+    }
+  }
+}

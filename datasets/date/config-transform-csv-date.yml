@@ -1,0 +1,42 @@
+#working_directory: /data/data2services-transform-biolink
+working_directory: /data/red-kg
+
+dataset: date
+
+# R2RML params
+input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
+
+# tmp RDF4J server SPARQL endpoint to load generic RDF
+# By default linked on 'graphdb' docker container
+# sparql_tmp_triplestore_url: http://blazegraph:8889/bigdata/sparql
+
+# sparql_tmp_triplestore_url: http://virtuoso:8890/sparql
+# sparql_tmp_service_url: "http://localhost:8890/sparql"
+# sparql_tmp_triplestore_username: dba
+# sparql_tmp_triplestore_password: password
+
+sparql_tmp_triplestore_url: http://graphdb:7200/repositories/ncats-test
+# sparql_tmp_triplestore_repository: "test"
+sparql_tmp_triplestore_username: import_user
+sparql_tmp_triplestore_password: PASSWORD
+
+sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/date"
+
+# Final RDF4J server SPARQL endpoint to load the BioLink RDF
+# By default linked on 'graphdb' docker container
+# sparql_final_triplestore_url: "http://blazegraph:8889/bigdata/sparql"
+
+# sparql_final_triplestore_url: "http://virtuoso:8890/sparql"
+# sparql_final_triplestore_username: dba
+# sparql_final_triplestore_password: password
+
+sparql_final_triplestore_url: http://graphdb:7200/repositories/ncats-test
+# sparql_final_triplestore_repository: "test"
+sparql_final_triplestore_username: import_user
+sparql_final_triplestore_password: PASSWORD
+
+sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/date
+
+sparql_transform_queries_path: https://raw.githubusercontent.com/MaastrichtU-IDS/data2services-transform-biolink/master/datasets/date/mappings/1/insert-date.rq
+sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/datasets/date/metadata/1
+
