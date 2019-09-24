@@ -14,12 +14,6 @@ INSERT
 
     ?targetUniprotUri a bl:Protein .
 
-    ?targetSymbolUri a bl:Gene ;
-      bl:id ?targetSymbol ;
-      bl:has_gene_product ?targetUniprotUri ;
-      bl:systematic_synonym ?targetSymbol .
-    # expressed_in tissue?
-
     ?pathwayUri a bl:Pathway ; # tissue-specific molecular pathway
       bl:name ?pathwayName ;
       bl:part_of ?tissueUri .
@@ -71,19 +65,21 @@ WHERE {
         ?s d2smodel:Tissue ?tissueName . # Fetalbrain
         BIND( iri(concat("https://w3id.org/data2services/data/tissue/", md5(?tissueName) ) ) AS ?tissueUri )
       } 
-      OPTIONAL { 
-        ?s d2smodel:Pathway_size ?pathwaySize . # 42...
-      }
-      OPTIONAL { 
-        ?s d2smodel:TargetSymbol ?targetSymbol . # CHRM3
-        FILTER(!contains(?targetSymbol, "c("))    # filter out symbol like c(\"CALM1\", \"CALM2\", \"CALM3\")
-        BIND( iri(concat("http://identifiers.org/hgnc.symbol/", ?targetSymbol ) ) AS ?targetSymbolUri )
-      } 
+      # OPTIONAL { 
+      #   ?s d2smodel:Pathway_size ?pathwaySize . # 42...
+      # }
+      # OPTIONAL { 
+        # ?s d2smodel:TargetSymbol ?targetSymbol . # CHRM3
+        # Not used, we trust HGNC for this relation
+        # In DATE some rows contain symbols like c(\"CALM1\", \"CALM2\", \"CALM3\")
+        # BIND( iri(concat("http://identifiers.org/hgnc.symbol/", ?targetSymbol ) ) AS ?targetSymbolUri )
+      # } 
       OPTIONAL { 
         ?s d2smodel:Target_class ?targetClass . # gpcr, enzyme, lgic, vgic, transporter, other_protein, catalytic_receptor, nhr, other_ic
         BIND( iri(concat("https://w3id.org/data2services/data/protein/class/", md5(?targetClass) ) ) AS ?targetClassUri )
       } 
       OPTIONAL { 
+        # TODO: add this to provenance when model will be defined
         ?s d2smodel:Dataset ?dataset . # GTEx, U133A, NCI60, HPM_PRT
       }
     }
