@@ -322,7 +322,7 @@ WHERE
     BIND(<http://w3id.org/biolink/vocab/> AS ?voidVocabulary)
     #BIND(<http://identifiers.org/drugbank/version#0> AS ?pavPreviousVersionRdf)
     BIND(<http://graphdb.dumontierlab.com/> AS ?dcatLandingPageRdf) 
-    BIND(<https://github.com/MaastrichtU-IDS/data2services-transform-repository/tree/master/sparql/insert-biolink/eggnog> AS ?pavCreatedWithRdf )
+    BIND(<https://github.com/MaastrichtU-IDS/d2s-transform-repository/tree/master/sparql/insert-biolink/eggnog> AS ?pavCreatedWithRdf )
     BIND(<http://graphdb.dumontierlab.com/graphs> AS ?dcatDownloadURLRdf)
     BIND(<http://graphdb.dumontierlab.com/graphs> AS ?voidDataDump )
 
