@@ -1,4 +1,4 @@
-working_directory: /data/data2services-transform-biolink
+working_directory: /data/d2s-transform-biolink
 
 dataset: hpo_annotations
 
@@ -23,5 +23,5 @@ sparql_final_triplestore_password: test
 
 sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/hpo_annotations/1
 
-sparql_transform_queries_path: https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/mapping/hpo_annotations/transform/1
-sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/mapping/hpo_annotations/metadata/1
+sparql_transform_queries_path: https://github.com/MaastrichtU-IDS/d2s-transform-biolink/tree/master/mapping/hpo_annotations/transform/1
+sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/d2s-transform-biolink/tree/master/mapping/hpo_annotations/metadata/1

@@ -1,4 +1,4 @@
-working-directory: /data/data2services-transform-biolink
+working-directory: /data/d2s-transform-biolink
 
 #dataset: pubmed-sample
 dataset: pubmed
@@ -26,8 +26,8 @@ sparql-final-triplestore-password: test
 
 sparql-final-graph-uri: https://w3id.org/data2services/graph/biolink/pubmed
 
-sparql-transform-queries-path: https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/mapping/pubmed/transform/1
-sparql-insert-metadata-path: https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/mapping/pubmed/metadata/1
+sparql-transform-queries-path: https://github.com/MaastrichtU-IDS/d2s-transform-biolink/tree/master/mapping/pubmed/transform/1
+sparql-insert-metadata-path: https://github.com/MaastrichtU-IDS/d2s-transform-biolink/tree/master/mapping/pubmed/metadata/1
 
 # Argo require to use the URL, but local volumes can be shared
 # sparql-transform-queries-path: /data/mapping/pubmed/transform/1

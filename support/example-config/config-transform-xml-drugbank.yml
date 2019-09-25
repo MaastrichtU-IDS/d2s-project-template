@@ -1,4 +1,4 @@
-working_directory: /data/data2services-transform-biolink
+working_directory: /data/d2s-transform-biolink
 
 dataset: drugbank-sample
 

@@ -1,4 +1,4 @@
-#working_directory: /data/data2services-transform-biolink
+#working_directory: /data/d2s-transform-biolink
 working_directory: /data/red-kg
 
 dataset: stitch-sample
@@ -33,6 +33,6 @@ sparql_final_triplestore_password: password
 
 sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/stitch
 
-sparql_transform_queries_path: https://raw.githubusercontent.com/MaastrichtU-IDS/data2services-transform-biolink/master/mapping/stitch/transform/1/insert-stitch.rq
-sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/mapping/stitch/metadata/1
+sparql_transform_queries_path: https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-transform-biolink/master/mapping/stitch/transform/1/insert-stitch.rq
+sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/d2s-transform-biolink/tree/master/mapping/stitch/metadata/1
 

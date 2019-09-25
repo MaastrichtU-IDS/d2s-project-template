@@ -1,4 +1,4 @@
-#working_directory: /data/data2services-transform-biolink
+#working_directory: /data/d2s-transform-biolink
 working_directory: /data/red-kg
 
 dataset: date
@@ -37,6 +37,6 @@ sparql_final_triplestore_password: PASSWORD
 
 sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/date
 
-sparql_transform_queries_path: https://raw.githubusercontent.com/MaastrichtU-IDS/data2services-transform-biolink/master/datasets/date/mappings/1/insert-date.rq
-sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/data2services-transform-biolink/tree/master/datasets/date/metadata/1
+sparql_transform_queries_path: https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-transform-biolink/master/datasets/date/mappings/1/insert-date.rq
+sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/d2s-transform-biolink/tree/master/datasets/date/metadata/1
 
