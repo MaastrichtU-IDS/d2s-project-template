@@ -1,5 +1,12 @@
 #working_directory: /data/d2s-transform-biolink
-working_directory: /data/red-kg
+# config_dir: /data/config-transform-csv-stitch
+config_dir:
+  class: Directory
+  path: .
+
+download_file: 
+  class: File
+  path: download/download-stitch.sh
 
 dataset: stitch-sample
 
@@ -13,26 +20,22 @@ input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
 # sparql_tmp_triplestore_username: import_user
 # sparql_tmp_triplestore_password: PASSWORD
 
-sparql_tmp_triplestore_url: http://virtuoso:8890/sparql
-sparql_tmp_service_url: "http://localhost:8890/sparql"
+
+sparql_tmp_triplestore_url: http://graphdb:7200/repositories/test
+sparql_tmp_service_url: "http://localhost:7200/repositories/test"
 sparql_tmp_triplestore_username: dba
 sparql_tmp_triplestore_password: password
 
 sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/stitch"
 
 # Final RDF4J server SPARQL endpoint to load the BioLink RDF
-# By default linked on 'graphdb' docker container
-# sparql_final_triplestore_url: "http://blazegraph:8889/bigdata/sparql"
-# sparql_final_triplestore_repository: "test"
-# sparql_final_triplestore_username: import_user
-# sparql_final_triplestore_password: PASSWORD
 
-sparql_final_triplestore_url: "http://virtuoso:8890/sparql"
+sparql_final_triplestore_url: http://graphdb:7200/repositories/test
 sparql_final_triplestore_username: dba
 sparql_final_triplestore_password: password
 
 sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/stitch
 
-sparql_transform_queries_path: https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-transform-biolink/master/mapping/stitch/transform/1/insert-stitch.rq
-sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/d2s-transform-biolink/tree/master/mapping/stitch/metadata/1
+#sparql_transform_queries_path: https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-transform-biolink/master/mapping/stitch/transform/1/insert-stitch.rq
+#sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/d2s-transform-biolink/tree/master/mapping/stitch/metadata/1
 
