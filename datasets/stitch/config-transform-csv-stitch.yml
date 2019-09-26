@@ -1,13 +1,9 @@
 
+dataset: stitch
+
 config_dir:
   class: Directory
   path: .
-
-download_file: 
-  class: File
-  path: download/download.sh
-
-dataset: stitch
 
 # R2RML params
 input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
