@@ -1,14 +1,13 @@
-#working_directory: /data/d2s-transform-biolink
-# config_dir: /data/config-transform-csv-stitch
+
 config_dir:
   class: Directory
   path: .
 
 download_file: 
   class: File
-  path: download/download-stitch.sh
+  path: download/download.sh
 
-dataset: stitch-sample
+dataset: stitch
 
 # R2RML params
 input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
