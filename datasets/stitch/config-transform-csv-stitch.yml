@@ -16,7 +16,7 @@ input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
 # sparql_tmp_triplestore_password: PASSWORD
 
 
-sparql_tmp_triplestore_url: http://graphdb:7200/repositories/test
+sparql_tmp_triplestore_url: http://graphdb:7200/repositories/test/statements
 sparql_tmp_service_url: "http://localhost:7200/repositories/test"
 sparql_tmp_triplestore_username: dba
 sparql_tmp_triplestore_password: password
@@ -25,7 +25,7 @@ sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/stitch"
 
 # Final RDF4J server SPARQL endpoint to load the BioLink RDF
 
-sparql_final_triplestore_url: http://graphdb:7200/repositories/test
+sparql_final_triplestore_url: http://graphdb:7200/repositories/test/statements
 sparql_final_triplestore_username: dba
 sparql_final_triplestore_password: password
 
