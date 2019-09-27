@@ -1,0 +1,35 @@
+
+dataset: eggnog
+
+# R2RML params
+input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
+
+# Split params
+split_property: https://w3id.org/data2services/model/Proteinids
+split_class: https://w3id.org/data2services/data/input/eggnog/NOG.members.extract101.tsv
+split_delimiter: ","
+split_quote: '"'
+
+# tmp RDF4J server SPARQL endpoint to load generic RDF
+sparql_tmp_triplestore_url: http://graphdb:7200/repositories/test/statements
+sparql_tmp_service_url: "http://localhost:7200/repositories/test"
+sparql_tmp_triplestore_username: dba
+sparql_tmp_triplestore_password: password
+
+sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/eggnog"
+
+
+# Final RDF4J server SPARQL endpoint to load the BioLink RDF
+sparql_final_triplestore_url: http://graphdb:7200/repositories/test/statements
+sparql_final_triplestore_username: dba
+sparql_final_triplestore_password: password
+
+sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/eggnog
+
+
+sparql_transform_queries_path: https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-transform-biolink/master/datasets/eggnog/mappings/1/insert-eggnog.rq
+sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/d2s-transform-biolink/tree/master/datasets/eggnog/metadata/1
+
+config_dir:
+  class: Directory
+  path: .
