@@ -5,8 +5,8 @@ dataset: eggnog
 input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
 
 # Split params
-split_property: https://w3id.org/data2services/model/Proteinids
-split_class: https://w3id.org/data2services/data/input/eggnog/NOG.members.extract101.tsv
+split_property: https://w3id.org/biolink/vocab/has_participant
+split_class: https://w3id.org/biolink/vocab/GeneGrouping
 split_delimiter: ","
 split_quote: '"'
 
