@@ -1,6 +1,3 @@
-[submodule "d2s-argo-workflows"]
-	path = d2s-argo-workflows
-	url = git@github.com:MaastrichtU-IDS/d2s-argo-workflows.git
 [submodule "d2s-cwl-workflows"]
 	path = d2s-cwl-workflows
 	url = git@github.com:MaastrichtU-IDS/d2s-cwl-workflows.git
