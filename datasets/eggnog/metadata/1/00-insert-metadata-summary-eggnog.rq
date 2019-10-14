@@ -27,6 +27,7 @@ PREFIX dqv: <http://www.w3.org/ns/dqv#>
 PREFIX hcls: <http://www.w3.org/hcls#>
 PREFIX d2sdata: <https://w3id.org/data2services/data/>
 
+### TODO: fix, use DrugBank as example
 
 # Complete example at https://www.w3.org/TR/hcls-dataset/#appendix_1
 
