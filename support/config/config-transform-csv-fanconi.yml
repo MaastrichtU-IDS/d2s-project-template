@@ -3,7 +3,7 @@ working_directory: "/data/d2s-transform-biolink"
 dataset: fanconi
 
 # R2RML params
-input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
+input_data_jdbc: "jdbc:drill:drillbit=drill:31011"
 
 # tmp RDF4J server SPARQL endpoint to load generic RDF
 # By default linked on 'graphdb' docker container
