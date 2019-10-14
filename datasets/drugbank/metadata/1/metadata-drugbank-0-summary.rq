@@ -1,24 +1,23 @@
-  PREFIX ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
-  PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-  PREFIX cito: <http://purl.org/spar/cito/>
-  PREFIX dcat: <http://www.w3.org/ns/dcat#>
-  PREFIX dctypes: <http://purl.org/dc/dcmitype/>
-  PREFIX dct: <http://purl.org/dc/terms/>
-  PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-  PREFIX freq: <http://purl.org/cld/freq/>
-  PREFIX idot: <http://identifiers.org/idot/>
-  PREFIX lexvo: <http://lexvo.org/ontology#>
-  PREFIX pav: <http://purl.org/pav/>
-  PREFIX prov: <http://www.w3.org/ns/prov#>
-  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-  PREFIX schemaorg: <http://schema.org/>
-  PREFIX sd: <http://www.w3.org/ns/sparql-service-description#>
-  PREFIX sio: <http://semanticscience.org/resource/>
-  PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-  PREFIX void: <http://rdfs.org/ns/void/>
-  PREFIX void-ext: <http://ldf.fi/void-ext#>
-
+PREFIX ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX cito: <http://purl.org/spar/cito/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dctypes: <http://purl.org/dc/dcmitype/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX freq: <http://purl.org/cld/freq/>
+PREFIX idot: <http://identifiers.org/idot/>
+PREFIX lexvo: <http://lexvo.org/ontology#>
+PREFIX pav: <http://purl.org/pav/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schemaorg: <http://schema.org/>
+PREFIX sd: <http://www.w3.org/ns/sparql-service-description#>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX void: <http://rdfs.org/ns/void/>
+PREFIX void-ext: <http://ldf.fi/void-ext#>
 
 INSERT {
 	GRAPH <?_output/metadata> {
