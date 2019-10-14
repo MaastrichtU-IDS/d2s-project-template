@@ -3,7 +3,7 @@ working_directory: /data/d2s-transform-biolink
 dataset: pharmgkb
 
 # R2RML params
-input_data_jdbc: "jdbc:drill:drillbit=drill:31011"
+input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
 #sparql_base_uri: "https://w3id.org/data2services/"
 #autor2rml_column_header: "test1,test2,test3,test5"
 

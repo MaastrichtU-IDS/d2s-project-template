@@ -2,7 +2,7 @@
 dataset: eggnog
 
 # R2RML params
-input_data_jdbc: "jdbc:drill:drillbit=drill:31011"
+input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
 
 # Split params
 split_property: https://w3id.org/biolink/vocab/has_participant

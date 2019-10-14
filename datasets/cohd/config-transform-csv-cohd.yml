@@ -4,7 +4,7 @@ working_directory: /data/red-kg
 dataset: cohd
 
 # R2RML params
-input_data_jdbc: "jdbc:drill:drillbit=drill:31011"
+input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
 
 # tmp RDF4J server SPARQL endpoint to load generic RDF
 # By default linked on 'graphdb' docker container
