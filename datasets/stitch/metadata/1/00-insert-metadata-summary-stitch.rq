@@ -72,7 +72,7 @@ INSERT {
 
         ?dctPublisher a dct:Agent ;
             foaf:name ?dctPublisherName ;
-            foaf:page ?dctPublisherPage ;
+            foaf:page ?dctPublisherPage
         .
     }
 }

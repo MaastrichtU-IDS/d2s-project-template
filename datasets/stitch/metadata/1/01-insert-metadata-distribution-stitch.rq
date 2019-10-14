@@ -33,7 +33,7 @@ INSERT {
 
         ?dctPublisher a dct:Agent ;
             foaf:name ?dctPublisherName ;
-            foaf:page ?dctPublisherPage ;
+            foaf:page ?dctPublisherPage
         .
 
         ?dctCreator a dct:Agent ;
@@ -42,7 +42,7 @@ INSERT {
 
         ?dctPublisherRdf a dct:Agent ;
             foaf:name ?dctPublisherNameRdf ;
-            foaf:page ?dctPublisherPageRdf ;
+            foaf:page ?dctPublisherPageRdf
         .
 
         ?dctCreatorRdf a dct:Agent ;
