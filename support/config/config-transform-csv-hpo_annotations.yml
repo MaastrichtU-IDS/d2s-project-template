@@ -4,7 +4,7 @@ dataset: hpo_annotations
 
 
 # R2RML params
-input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
+input_data_jdbc: "jdbc:drill:drillbit=drill:31011"
 
 # tmp RDF4J server SPARQL endpoint to load generic RDF
 sparql_tmp_triplestore_url: http://node000002.cluster.ids.unimaas.nl/
