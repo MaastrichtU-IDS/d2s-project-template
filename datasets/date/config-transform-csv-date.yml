@@ -1,5 +1,5 @@
 #working_directory: /data/d2s-transform-biolink
-working_directory: /data/red-kg
+working_directory: /data/d2s-kg
 
 dataset: date
 
