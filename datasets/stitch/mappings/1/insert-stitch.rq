@@ -28,7 +28,7 @@ INSERT
  }
 }
 WHERE {
-  # SERVICE <?_service>  {
+  SERVICE <?_service>  {
     GRAPH <?_input> {
       # Transform https://stringdb-static.org/download/protein.actions.v10.5/9606.protein.actions.v10.5.txt.gz
 
@@ -46,5 +46,5 @@ WHERE {
       BIND ( iri(concat(str(?associationUri), "/confidence")) AS ?ConfidenceLevelUri )
 
     }
-  # }
+  }
 }
