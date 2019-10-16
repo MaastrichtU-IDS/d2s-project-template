@@ -1,1 +1,0 @@
-All data files to be converted to BioLink are download in this folder. 

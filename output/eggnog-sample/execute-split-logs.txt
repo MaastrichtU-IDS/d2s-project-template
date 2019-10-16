@@ -1,5 +1,0 @@
-Split buffer size: 1000000
-SELECT ?s ?p ?toSplit ?g WHERE {    GRAPH ?g {    	?s a <https://w3id.org/data2services/data/input/eggnog/NOG.members.extract101.tsv> ;      ?p ?toSplit .    	FILTER(?p = <https://w3id.org/data2services/model/Proteinids>).FILTER(regex(?toSplit, ','))    } }
-
-
-DELETE { GRAPH ?g {?s ?p ?o.} }WHERE {GRAPH ?g {?s a <https://w3id.org/data2services/data/input/eggnog/NOG.members.extract101.tsv> ;?p ?o .FILTER(?p = <https://w3id.org/data2services/model/Proteinids>).FILTER(regex(?o, ','))} } 
