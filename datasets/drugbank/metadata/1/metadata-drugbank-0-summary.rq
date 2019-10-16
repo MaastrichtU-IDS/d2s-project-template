@@ -52,7 +52,7 @@ INSERT {
       
       dct:references <https://www.drugbank.ca/legal/terms_of_use> ;
       dcat:keyword "drugs" , "chemicals", "drug interactions" ;
-      dcat:theme ncit:C48807 , ncit:C54708 ; # Chemical, drug interaction
+      dcat:theme ncit:C48807 , ncit:C54708  # Chemical, drug interaction
 
       ## MAY
       # dct:references <IRI> ; # Supporting material as web pages and documents (use cito for publications)

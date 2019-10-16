@@ -24,18 +24,17 @@ INSERT {
 
     <https://w3id.org/data2services/agent/data2services-pipeline> a dct:Agent ;
       foaf:name "Data2Services Pipeline, by the Institute of Data Science at Maastricht University" ;
-      foaf:page <https://github.com/MaastrichtU-IDS/data2services-pipeline> ;
+      foaf:page <https://github.com/MaastrichtU-IDS/data2services-pipeline> .
       # Or: "Institute of Data Science at Maastricht University"
       # <https://www.maastrichtuniversity.nl/research/institute-data-science>
-    .
 
     # Version
     ?versionUri
-      rdf:type dctypes:Dataset;
+      a dctypes:Dataset ;
       dct:isVersionOf ?summaryUri ;
       pav:version ?pavVersion ;
 
-      dcat:distribution <?_output>;
+      dcat:distribution <?_output> ;
       dcat:accessURL <https://graphdb.dumontierlab.com/graphs> ; 
 
       ## MAY
@@ -48,10 +47,10 @@ INSERT {
       dct:license ?dctLicense ;
       dct:publisher ?dctPublisher ;
       idot:preferredPrefix ?idotPreferredPrefix ;
-      dct:language ?dctLanguage;
+      dct:language ?dctLanguage ;
 
       # TODO: should we put the date of the source release?
-      dct:issued  ?now;
+      dct:issued ?now .
 
       # TODO: should we have a different license than the summary?
       # dct:license <https://opensource.org/licenses/MIT> ;
@@ -59,7 +58,6 @@ INSERT {
       # Same for creator and publisher, should it be HPO for the version?
       # dct:creator <https://github.com/MaastrichtU-IDS/data2services-pipeline> ;
       # dct:publisher <https://github.com/MaastrichtU-IDS/data2services-pipeline> ;
-		.
   
     ### RDF Distribution description
     <?_output>
@@ -86,13 +84,13 @@ INSERT {
       dcat:accessURL <http://graphdb.dumontierlab.com/graphs> ;
       dcat:downloadURL <http://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements> ;
       void:dataDump <http://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements> ;
-      dcat:mediaType "application/n-quads";
+      dcat:mediaType "application/n-quads" ;
 
       dct:title ?rdfDctTitle ;
       dct:description ?rdfDctDistribution ;
       dct:conformsTo ?hclsDataset ;
       idot:preferredPrefix ?idotPreferredPrefix ;
-      dct:created ?now ;
+      dct:created ?now .
 
       # MAY
       # pav:previousVersion <IRI> ;
@@ -101,10 +99,9 @@ INSERT {
       # void:uriRegexPattern "http://rdf.ebi.ac.uk/resource/chembl/target/CHEMBL\\d+" ;
       # idot:accessPattern "http://identifiers.org/chembl.compound/";
       # idot:exampleIdentifier "CHEMBL_TC_4803"^^xsd:string ;
-    .
       
     ### Source distribution (non-RDF) description
-    ?distributionSourceUri
+    ?distributionSourceUri 
       a dcat:Distribution ;
       dct:format "application/xml" ;
       dcat:downloadURL
@@ -124,8 +121,8 @@ INSERT {
       dct:license ?dctLicense ;
       idot:preferredPrefix ?idotPreferredPrefix ;
       pav:retrievedOn ?now ;
-      dct:language ?dctLanguage;
-      dct:conformsTo ?hclsDataset ; 
+      dct:language ?dctLanguage ;
+      dct:conformsTo ?hclsDataset .
 
       # MAY
       # pav:previousVersion <IRI> ;
