@@ -60,7 +60,7 @@ docker-compose -f d2s-cwl-workflows/docker-compose.yaml up virtuoso drill
 docker-compose -f d2s-cwl-workflows/docker-compose.yaml up blazegraph postgres
 ```
 
-> Shared locally at `/data/d2s-kg`
+> Shared locally at `/data/d2s-workspace`
 
 Use `docker-compose`:
 
