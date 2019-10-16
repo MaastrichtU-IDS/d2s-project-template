@@ -24,7 +24,7 @@ INSERT
  }
 }
 WHERE {
-  SERVICE <?_service>  {
+  # SERVICE <?_service>  {
     GRAPH <?_input> {
 
       ?s d2smodel:Groupname ?GroupName .
@@ -48,5 +48,5 @@ WHERE {
       # Avoid taking the first row with columns labels
       FILTER( ?TaxonomicLevel != "TaxonomicLevel")
     }
-  }
+  # }
 }

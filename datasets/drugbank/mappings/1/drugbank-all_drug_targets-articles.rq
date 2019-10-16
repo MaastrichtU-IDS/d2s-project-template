@@ -19,7 +19,7 @@ INSERT {
       bl:name ?articleCitation .
   }
 } WHERE {
-  SERVICE <?_service>  {
+  # SERVICE <?_service>  {
     GRAPH <?_input> {
       # Iterates on those different associations articles
       VALUES( ?associationType ?associationArticleType ) {
@@ -71,5 +71,5 @@ INSERT {
       BIND(iri(concat("https://w3id.org/data2services/data/association/drug_", ?associationType, ":", ?drugbankId, "_", ?targetId)) AS ?associationUri)
 
     }
-  }
+  # }
 }

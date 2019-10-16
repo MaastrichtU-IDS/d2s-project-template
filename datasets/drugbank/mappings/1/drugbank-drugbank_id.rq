@@ -16,7 +16,7 @@ INSERT {
 
   }
 } WHERE {
-  SERVICE <?_service>  {
+  # SERVICE <?_service>  {
     GRAPH <?_input> {
 
       # Get primary DrugBank ID of drug
@@ -34,5 +34,5 @@ INSERT {
       FILTER(strstarts(?drugbankAltId, "DB"))
       BIND(iri(concat("https://identifiers.org/drugbank:", ?drugbankAltId)) AS ?drugAltUri)
     }
-  }
+  # }
 }

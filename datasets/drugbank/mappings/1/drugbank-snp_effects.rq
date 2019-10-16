@@ -33,7 +33,7 @@ INSERT {
       # bl:has_biological_sequence (optional)
   }
 } WHERE {
-  SERVICE <?_service>  {
+  # SERVICE <?_service>  {
     GRAPH <?_input> {
 
       # Get primary DrugBank ID of drug
@@ -87,5 +87,5 @@ INSERT {
       #   </effect>
       # </snp-effects>
     }
-  }
+  # }
 }

@@ -1,4 +1,4 @@
-working-directory: /data/d2s-transform-biolink
+working-directory: /data/d2s-transform-template
 
 dataset: drugbank
 
@@ -25,8 +25,8 @@ sparql-final-triplestore-password: test
 
 sparql-final-graph-uri: https://w3id.org/data2services/graph/biolink/drugbank
 
-sparql-transform-queries-path: https://github.com/MaastrichtU-IDS/d2s-transform-biolink/tree/master/mapping/drugbank/transform/1
-sparql-insert-metadata-path: https://github.com/MaastrichtU-IDS/d2s-transform-biolink/tree/master/mapping/drugbank/metadata/1
+sparql-transform-queries-path: https://github.com/MaastrichtU-IDS/d2s-transform-template/tree/master/mapping/drugbank/transform/1
+sparql-insert-metadata-path: https://github.com/MaastrichtU-IDS/d2s-transform-template/tree/master/mapping/drugbank/metadata/1
 
 # Argo require to use the URL
 # sparql-transform-queries-path: /data/mapping/drugbank/transform/1

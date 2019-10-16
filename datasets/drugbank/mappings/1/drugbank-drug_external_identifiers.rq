@@ -20,7 +20,7 @@ INSERT {
     #     bl:id ?identifierId .
   }
 } WHERE {
-  SERVICE <?_service>  {
+  # SERVICE <?_service>  {
     GRAPH <?_input> {
 
       # Get primary DrugBank ID of drug
@@ -112,5 +112,5 @@ INSERT {
       # BIND(iri(concat("https://w3id.org/data2services/DrugDrugInteraction:", concat(?drugbankId, "_", ?interactingDrugDrugbankId))) AS ?drugInteractionAssociationUri)
 
     }
-  }
+  # }
 }

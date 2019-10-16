@@ -44,7 +44,7 @@ INSERT {
 
   }
 } WHERE {
-  SERVICE <?_service>  {
+  # SERVICE <?_service>  {
     GRAPH <?_input> {
 
       # Get primary DrugBank ID of drug
@@ -156,5 +156,5 @@ INSERT {
       # <average-mass>177.2462</average-mass>
       # <monoisotopic-mass>177.126597495</monoisotopic-mass>
     }
-  }
+  # }
 }

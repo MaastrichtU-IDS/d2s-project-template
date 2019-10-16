@@ -21,8 +21,8 @@ sparql_final_triplestore_password: dba
 sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/drugbank
 
 
-sparql_transform_queries_path: https://github.com/MaastrichtU-IDS/d2s-transform-biolink/tree/master/datasets/drugbank/mappings/1
-sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/d2s-transform-biolink/tree/master/datasets/drugbank/metadata/1
+sparql_transform_queries_path: https://github.com/MaastrichtU-IDS/d2s-transform-template/tree/master/datasets/drugbank/mappings/1
+sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/d2s-transform-template/tree/master/datasets/drugbank/metadata/1
 
 cwl_workflow_filename: workflow-xml.cwl
 

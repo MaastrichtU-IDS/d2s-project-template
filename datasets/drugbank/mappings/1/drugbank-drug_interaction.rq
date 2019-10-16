@@ -26,7 +26,7 @@ INSERT {
     # ?interactingDrugUri a bl:Drug .
   }
 } WHERE {
-  SERVICE <?_service>  {
+  # SERVICE <?_service>  {
     GRAPH <?_input> {
 
       # Get primary DrugBank ID of drug
@@ -64,5 +64,5 @@ INSERT {
       #   ] .
       # }
     }
-  }
+  # }
 }

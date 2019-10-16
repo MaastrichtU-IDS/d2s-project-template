@@ -19,7 +19,7 @@ INSERT {
       bl:name ?pfamName .
   }
 } WHERE {
-  SERVICE <?_service>  {
+  # SERVICE <?_service>  {
     GRAPH <?_input> {
       VALUES( ?type ?polypeptideType ) {
         ("target" x2rm:drugbank.drug.targets.target.polypeptide )
@@ -44,5 +44,5 @@ INSERT {
       BIND ( iri(concat("https://identifiers.org/", ?pfamCurie)) AS ?pfamUri )
 
     }
-  }
+  # }
 }

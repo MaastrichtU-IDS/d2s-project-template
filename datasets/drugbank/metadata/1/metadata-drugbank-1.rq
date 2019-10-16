@@ -73,7 +73,7 @@ INSERT {
       dct:license <http://creativecommons.org/licenses/by/3.0/> ;
       void:exampleResource <https://identifiers.org/drugbank:DB00001> ;
       # TODO: should we point createdWith to the SPARQL mappings?
-      pav:createdWith <https://github.com/MaastrichtU-IDS/d2s-transform-biolink/tree/master/mapping/drugbank> ;
+      pav:createdWith <https://github.com/MaastrichtU-IDS/d2s-transform-template/tree/master/mapping/drugbank> ;
 
       # Which publisher for BioLink Dataset?
       dct:publisher <https://github.com/MaastrichtU-IDS/data2services-pipeline> ; 

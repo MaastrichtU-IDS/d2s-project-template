@@ -26,7 +26,7 @@ INSERT {
       bl:name ?cellularLocation .
   }
 } WHERE {
-  SERVICE <?_service>  {
+  # SERVICE <?_service>  {
     GRAPH <?_input> {
       VALUES( ?polypeptideType ?associationType ) {
         ("target" x2rm:drugbank.drug.targets.target.polypeptide )
@@ -58,5 +58,5 @@ INSERT {
       # go-classifier already done through Uniprot transformation
 
     }
-  }
+  # }
 }
