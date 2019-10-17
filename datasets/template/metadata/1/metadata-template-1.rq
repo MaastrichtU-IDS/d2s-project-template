@@ -69,7 +69,7 @@ INSERT {
       dct:license <http://creativecommons.org/licenses/by/3.0/> ;
       void:exampleResource <https://identifiers.org/drugbank:DB00001> ;
       # TODO: should we point createdWith to the SPARQL mappings?
-      pav:createdWith <https://github.com/MaastrichtU-IDS/d2s-transform-template/tree/master/mapping/drugbank> ;
+      pav:createdWith <https://github.com/MaastrichtU-IDS/d2s-transform-template/tree/master/mapping/template> ;
 
       # Which publisher for BioLink Dataset?
       dct:publisher <https://w3id.org/data2services/agent/umids> ; 
@@ -128,15 +128,15 @@ INSERT {
     }
 } WHERE {
   
-  BIND("5.1.1"^^xsd:string AS ?pavVersion)
+  BIND("0.0.1"^^xsd:string AS ?pavVersion)
 
-  BIND(<https://w3id.org/data2services/dataset/drugbank> AS ?summaryUri)
+  BIND(<https://w3id.org/data2services/dataset/template> AS ?summaryUri)
   BIND(<http://lexvo.org/id/iso639-3/eng> AS ?dctLanguage)
 
   # Extract RDF version from URI. Only works if using #1
   BIND(strafter(str("?_output"), "#")  AS ?rdfPavVersion)
-  BIND(concat("N-Quads distribution of DrugBank build #", ?rdfPavVersion) AS ?rdfDctTitle)
-  BIND(concat("N-Quads distribution of DrugBank build #", ?rdfPavVersion, " produced by Data2Services on NOW()") AS ?rdfDctDescription)
+  BIND(concat("N-Quads distribution of Template build #", ?rdfPavVersion) AS ?rdfDctTitle)
+  BIND(concat("N-Quads distribution of Template build #", ?rdfPavVersion, " produced by Data2Services on NOW()") AS ?rdfDctDescription)
 
   BIND(NOW() AS ?now)
   # Get generic informations from summary
