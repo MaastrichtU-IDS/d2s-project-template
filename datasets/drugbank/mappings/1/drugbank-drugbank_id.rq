@@ -20,11 +20,11 @@ INSERT {
     GRAPH <?_input> {
 
       # Get primary DrugBank ID of drug
-      ?drugObj x2rm:child:drugbank-id [ 
-        x2rm:attribute:primary "true" ; 
+      ?drugObj x2rm:child_drugbank-id [ 
+        x2rm:attribute_primary "true" ; 
         x2rm:hasValue ?drugbankId 
       ] ; 
-      x2rm:child:drugbank-id [ 
+      x2rm:child_drugbank-id [ 
         x2rm:hasValue ?drugbankAltId 
       ] .
       BIND(iri(concat("https://identifiers.org/drugbank:", ?drugbankId)) AS ?drugUri)

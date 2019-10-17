@@ -59,14 +59,14 @@ INSERT {
 
       # Get primary DrugBank ID of drug
       ?drugObj a x2rm:drugbank.drug ;
-        x2rm:child:drugbank-id [ 
-        x2rm:attribute:primary "true" ; 
+        x2rm:child_drugbank-id [ 
+        x2rm:attribute_primary "true" ; 
         x2rm:hasValue ?drugbankId 
       ] .
       BIND(iri(concat("https://identifiers.org/drugbank:", ?drugbankId)) AS ?drugUri)
 
-      # e.g. ?drugObj x2rm:child:TARGETS [ 
-      #        x2rm:child:TARGET ?targetObj
+      # e.g. ?drugObj x2rm:child_TARGETS [ 
+      #        x2rm:child_TARGET ?targetObj
       ?drugObj ?targetsPredicate [ 
         ?targetPredicate ?targetObj 
       ] .
@@ -74,18 +74,18 @@ INSERT {
       # Iterate on, and get target ID 
       # ?targetObj a x2rm:drugbank.drug.targets.target ;
       ?targetObj a ?associationType ;
-       x2rm:child:id [ x2rm:hasValue ?bioentityId ] ;
-       x2rm:child:polypeptide [
-        x2rm:attribute:id ?polypeptideId ;
-        # x2rm:attribute:source ?polypeptideSource ; # Swiss-Prot and Chembl, but the 2 are uniprot ID
+       x2rm:child_id [ x2rm:hasValue ?bioentityId ] ;
+       x2rm:child_polypeptide [
+        x2rm:attribute_id ?polypeptideId ;
+        # x2rm:attribute_source ?polypeptideSource ; # Swiss-Prot and Chembl, but the 2 are uniprot ID
       ]
 .
 
-      OPTIONAL{ ?targetObj x2rm:child:name [ x2rm:hasValue ?bioentityName ] . }
-      OPTIONAL{ ?targetObj x2rm:child:organism [ x2rm:hasValue ?bioentityOrganism ] . }
+      OPTIONAL{ ?targetObj x2rm:child_name [ x2rm:hasValue ?bioentityName ] . }
+      OPTIONAL{ ?targetObj x2rm:child_organism [ x2rm:hasValue ?bioentityOrganism ] . }
       # e.g. Human
-      OPTIONAL{ ?targetObj x2rm:child:actions [ 
-          x2rm:child:action [ x2rm:hasValue ?targetAction ] 
+      OPTIONAL{ ?targetObj x2rm:child_actions [ 
+          x2rm:child_action [ x2rm:hasValue ?targetAction ] 
           # e.g. substrate, inhibitor
         ] . 
 
@@ -114,7 +114,7 @@ INSERT {
             ( "carrier" UNDEF bl:affects_transport_of )
         }
       }
-      # OPTIONAL{ ?targetObj x2rm:child:name [ x2rm:hasValue ?bioentityKnownAction ] . }
+      # OPTIONAL{ ?targetObj x2rm:child_name [ x2rm:hasValue ?bioentityKnownAction ] . }
       # e.g. unknown, yes
 
       BIND(iri(concat("https://identifiers.org/drugbankv4.target:", ?bioentityId)) AS ?bioentityUri)

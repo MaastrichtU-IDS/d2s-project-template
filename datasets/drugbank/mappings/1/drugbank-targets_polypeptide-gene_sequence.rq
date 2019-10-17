@@ -32,24 +32,24 @@ INSERT {
 
       # Get primary DrugBank ID of drug
       ?drugObj a x2rm:drugbank.drug ;
-        x2rm:child:drugbank-id [ 
-        x2rm:attribute:primary "true" ; 
+        x2rm:child_drugbank-id [ 
+        x2rm:attribute_primary "true" ; 
         x2rm:hasValue ?drugbankId 
       ] .
       BIND(iri(concat("https://identifiers.org/drugbank:", ?drugbankId)) AS ?drugUri)
 
-      # ?drugObj x2rm:child:TARGETS [ 
-      #   x2rm:child:TARGET [
+      # ?drugObj x2rm:child_TARGETS [ 
+      #   x2rm:child_TARGET [
       ?drugObj ?targetsPredicate [ 
         ?targetPredicate ?targetObj 
       ] .
 
       # Get target ID 
-      ?targetObj x2rm:child:id [ x2rm:hasValue ?targetId ] ;
-        x2rm:child:polypeptide ?popypeptide .
+      ?targetObj x2rm:child_id [ x2rm:hasValue ?targetId ] ;
+        x2rm:child_polypeptide ?popypeptide .
       
-      ?polypeptide x2rm:child:articles [
-        x2rm:child:article ?articleObj
+      ?polypeptide x2rm:child_articles [
+        x2rm:child_article ?articleObj
       ] .
 
       # Iterate on
@@ -59,7 +59,7 @@ INSERT {
 
 
       OPTIONAL{
-        ?sequenceObj x2rm:attribute:format [
+        ?sequenceObj x2rm:attribute_format [
           x2rm:hasValue ?sequenceFormat
         ] .
       }

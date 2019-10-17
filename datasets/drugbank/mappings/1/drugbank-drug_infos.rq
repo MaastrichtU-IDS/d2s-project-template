@@ -48,24 +48,24 @@ INSERT {
     GRAPH <?_input> {
 
       # Get primary DrugBank ID of drug
-      ?drugObj x2rm:child:drugbank-id [ 
-        x2rm:attribute:primary "true" ; 
+      ?drugObj x2rm:child_drugbank-id [ 
+        x2rm:attribute_primary "true" ; 
         x2rm:hasValue ?drugbankId 
       ] .
       BIND(iri(concat("https://identifiers.org/drugbank:", ?drugbankId)) AS ?drugUri)
 
-      OPTIONAL{ ?drugObj x2rm:child:name [ x2rm:hasValue ?name ] . }
-      OPTIONAL{ ?drugObj x2rm:child:description [ x2rm:hasValue ?description ] . }
+      OPTIONAL{ ?drugObj x2rm:child_name [ x2rm:hasValue ?name ] . }
+      OPTIONAL{ ?drugObj x2rm:child_description [ x2rm:hasValue ?description ] . }
       OPTIONAL{ 
-        ?drugObj x2rm:child:cas-number [ x2rm:hasValue ?casNumber ] . 
+        ?drugObj x2rm:child_cas-number [ x2rm:hasValue ?casNumber ] . 
         BIND ( iri(concat("https://identifiers.org/cas:", ?casNumber)) AS ?casNumberUri )
       } 
       OPTIONAL{ 
-        ?drugObj x2rm:child:unii [ x2rm:hasValue ?unii ] . 
+        ?drugObj x2rm:child_unii [ x2rm:hasValue ?unii ] . 
         BIND ( iri(concat("https://identifiers.org/unii:", ?unii)) AS ?uniiUri )
       }
       OPTIONAL{ 
-        ?drugObj x2rm:child:state [ x2rm:hasValue ?drugState ] . 
+        ?drugObj x2rm:child_state [ x2rm:hasValue ?drugState ] . 
         VALUES( ?drugState ?drugStateUri ) {
           ("liquid" <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C45298> )
           ("gas" <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C45299> )
@@ -74,7 +74,7 @@ INSERT {
       }
       OPTIONAL{ 
         # Array, e.g. Approved
-        ?drugObj x2rm:child:groups [ x2rm:child:group [ x2rm:hasValue ?drugGroup ] ] .
+        ?drugObj x2rm:child_groups [ x2rm:child_group [ x2rm:hasValue ?drugGroup ] ] .
         VALUES( ?drugGroup ?drugGroupUri ) {
           ("approved" <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25425> )
           ("vet_approved" <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25425> )
@@ -86,53 +86,53 @@ INSERT {
         }
         # approved, investigational, withdrawn, vet_approved, nutraceutical, illicit, experimental
       }
-      OPTIONAL{ ?drugObj x2rm:child:indication [ x2rm:hasValue ?drugIndication ] . }
-      OPTIONAL{ ?drugObj x2rm:child:synthesis-reference [ x2rm:hasValue ?synthesisReference ] . }
-      OPTIONAL{ ?drugObj x2rm:child:pharmacodynamics [ x2rm:hasValue ?pharmacodynamics ] . }
-      OPTIONAL{ ?drugObj x2rm:child:mechanism-of-action [ x2rm:hasValue ?mechanismOfAction ] . }
-      OPTIONAL{ ?drugObj x2rm:child:toxicity [ x2rm:hasValue ?toxicity ] . }
-      OPTIONAL{ ?drugObj x2rm:child:metabolism [ x2rm:hasValue ?metabolism ] . }
-      OPTIONAL{ ?drugObj x2rm:child:absorption [ x2rm:hasValue ?absorption ] . }
+      OPTIONAL{ ?drugObj x2rm:child_indication [ x2rm:hasValue ?drugIndication ] . }
+      OPTIONAL{ ?drugObj x2rm:child_synthesis-reference [ x2rm:hasValue ?synthesisReference ] . }
+      OPTIONAL{ ?drugObj x2rm:child_pharmacodynamics [ x2rm:hasValue ?pharmacodynamics ] . }
+      OPTIONAL{ ?drugObj x2rm:child_mechanism-of-action [ x2rm:hasValue ?mechanismOfAction ] . }
+      OPTIONAL{ ?drugObj x2rm:child_toxicity [ x2rm:hasValue ?toxicity ] . }
+      OPTIONAL{ ?drugObj x2rm:child_metabolism [ x2rm:hasValue ?metabolism ] . }
+      OPTIONAL{ ?drugObj x2rm:child_absorption [ x2rm:hasValue ?absorption ] . }
 
       # Get Chemical formula
       OPTIONAL{ 
-        # x2rm:child:experimental-properties or x2rm:child:calculated-properties
+        # x2rm:child_experimental-properties or x2rm:child_calculated-properties
         ?drugObj ?formulaProperties [ 
-          x2rm:child:property [
-            x2rm:child:kind [ x2rm:hasValue "Molecular Formula" ] ;
-            x2rm:child:value [ x2rm:hasValue ?molecularFormula ] 
+          x2rm:child_property [
+            x2rm:child_kind [ x2rm:hasValue "Molecular Formula" ] ;
+            x2rm:child_value [ x2rm:hasValue ?molecularFormula ] 
           ]
         ] 
       }
       # Get InChi
       OPTIONAL{ 
-        # x2rm:child:experimental-properties or x2rm:child:calculated-properties
+        # x2rm:child_experimental-properties or x2rm:child_calculated-properties
         ?drugObj ?inchiProperties [ 
-          x2rm:child:property [
-            x2rm:child:kind [ x2rm:hasValue "InChI" ] ;
-            x2rm:child:value [ x2rm:hasValue ?inchi ] 
+          x2rm:child_property [
+            x2rm:child_kind [ x2rm:hasValue "InChI" ] ;
+            x2rm:child_value [ x2rm:hasValue ?inchi ] 
           ]
         ] .
         BIND( iri(concat("https://identifiers.org/inchi:", ?inchi)) AS ?inchiUri)
       }
       # Get InChi
       OPTIONAL{ 
-        # x2rm:child:experimental-properties or x2rm:child:calculated-properties
+        # x2rm:child_experimental-properties or x2rm:child_calculated-properties
         ?drugObj ?inchikeyProperties [ 
-          x2rm:child:property [
-            x2rm:child:kind [ x2rm:hasValue "InChIKey" ] ;
-            x2rm:child:value [ x2rm:hasValue ?inchikey ] 
+          x2rm:child_property [
+            x2rm:child_kind [ x2rm:hasValue "InChIKey" ] ;
+            x2rm:child_value [ x2rm:hasValue ?inchikey ] 
           ]
         ] .
         BIND( iri(concat("https://identifiers.org/inchikey:", ?inchikey)) AS ?inchikeyUri)
       }
       # Get SMILES
       OPTIONAL{ 
-        # x2rm:child:experimental-properties or x2rm:child:calculated-properties
+        # x2rm:child_experimental-properties or x2rm:child_calculated-properties
         ?drugObj ?smilesProperties [ 
-          x2rm:child:property [
-            x2rm:child:kind [ x2rm:hasValue "SMILES" ] ;
-            x2rm:child:value [ x2rm:hasValue ?smiles ] 
+          x2rm:child_property [
+            x2rm:child_kind [ x2rm:hasValue "SMILES" ] ;
+            x2rm:child_value [ x2rm:hasValue ?smiles ] 
           ]
         ] 
       }

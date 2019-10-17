@@ -30,12 +30,12 @@ INSERT {
 
       # Iterate on, and get polypeptide ID 
       ?polypeptideObj a ?polypeptideType ;
-        x2rm:attribute:id ?polypeptideId ;
+        x2rm:attribute_id ?polypeptideId ;
         
-        x2rm:child:pfams [ 
-          x2rm:child:pfam [ 
-            x2rm:child:identifier [ x2rm:hasValue ?pfamId ] ;
-            x2rm:child:name [ x2rm:hasValue ?pfamName ]
+        x2rm:child_pfams [ 
+          x2rm:child_pfam [ 
+            x2rm:child_identifier [ x2rm:hasValue ?pfamId ] ;
+            x2rm:child_name [ x2rm:hasValue ?pfamName ]
           ]
         ] .
       

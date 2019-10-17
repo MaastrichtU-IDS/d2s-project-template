@@ -25,20 +25,20 @@ INSERT {
     GRAPH <?_input> {
 
       # Get primary DrugBank ID of drug
-      ?drugObj x2rm:child:drugbank-id [ 
-          x2rm:attribute:primary "true" ; 
+      ?drugObj x2rm:child_drugbank-id [ 
+          x2rm:attribute_primary "true" ; 
           x2rm:hasValue ?drugbankId 
         ] ;
-        x2rm:child:name [ x2rm:hasValue ?drugName ].
+        x2rm:child_name [ x2rm:hasValue ?drugName ].
       BIND(iri(concat("https://identifiers.org/drugbank:", ?drugbankId)) AS ?drugUri)
 
-      ?drugObj x2rm:child:atc-codes [ 
-        x2rm:child:atc-code ?atcCodeObj
+      ?drugObj x2rm:child_atc-codes [ 
+        x2rm:child_atc-code ?atcCodeObj
       ] .
 
       # Iterates on
       ?atcCodeObj a x2rm:drugbank.drug.atc-codes.atc-code ;
-        x2rm:attribute:code ?atcCode .
+        x2rm:attribute_code ?atcCode .
 
       BIND( lcase(?drugName) AS ?atcName)
       BIND(concat("atc:", ?atcCode) AS ?atcCodeCurie)

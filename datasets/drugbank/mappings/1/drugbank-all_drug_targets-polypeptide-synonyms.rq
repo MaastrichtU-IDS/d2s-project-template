@@ -37,12 +37,12 @@ INSERT {
       
       # Iterate on, and get polypeptide ID 
       ?polypeptideObj a ?polypeptideType ;
-        x2rm:attribute:id ?polypeptideId ;
-        # x2rm:attribute:source ?polypeptideSource ; # Swiss-Prot and Chembl, but the 2 are uniprot ID
+        x2rm:attribute_id ?polypeptideId ;
+        # x2rm:attribute_source ?polypeptideSource ; # Swiss-Prot and Chembl, but the 2 are uniprot ID
 
-        x2rm:child:amino-acid-sequence [ x2rm:hasValue ?aminoAcidSequence ] ;
-        x2rm:child:cellular-location [ x2rm:hasValue ?cellularLocation ] ; # e.g. Cell membrane
-        x2rm:child:synonyms [ x2rm:child:synonym [ x2rm:hasValue ?polypeptideSynonym ] ] .
+        x2rm:child_amino-acid-sequence [ x2rm:hasValue ?aminoAcidSequence ] ;
+        x2rm:child_cellular-location [ x2rm:hasValue ?cellularLocation ] ; # e.g. Cell membrane
+        x2rm:child_synonyms [ x2rm:child_synonym [ x2rm:hasValue ?polypeptideSynonym ] ] .
         # Multiple synonyms 
       
       BIND(iri(concat("https://identifiers.org/uniprot:", ?polypeptideId)) AS ?polypeptideUniprotUri)

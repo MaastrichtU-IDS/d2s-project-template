@@ -37,37 +37,37 @@ INSERT {
     GRAPH <?_input> {
 
       # Get primary DrugBank ID of drug
-      ?drugObj x2rm:child:drugbank-id [ 
-        x2rm:attribute:primary "true" ; 
+      ?drugObj x2rm:child_drugbank-id [ 
+        x2rm:attribute_primary "true" ; 
         x2rm:hasValue ?drugbankId 
       ] .
       BIND(iri(concat("https://identifiers.org/drugbank:", ?drugbankId)) AS ?drugUri)
-      ?drugObj x2rm:child:snp-effects [ 
-        x2rm:child:effect ?snpObj
+      ?drugObj x2rm:child_snp-effects [ 
+        x2rm:child_effect ?snpObj
       ] .
 
       # Iterate on
       ?snpObj a x2rm:drugbank.drug.snp-effects.effect ;
 
-        x2rm:child:rs-id [ x2rm:hasValue ?snpRsId ] ;
-        x2rm:child:gene-symbol [ x2rm:hasValue ?geneSymbol ] .
+        x2rm:child_rs-id [ x2rm:hasValue ?snpRsId ] ;
+        x2rm:child_gene-symbol [ x2rm:hasValue ?geneSymbol ] .
       
       BIND( iri(concat("https://identifiers.org/hgnc.symbol:", ?geneSymbol)) AS ?geneUri )
 
       OPTIONAL{
-        ?snpObj x2rm:child:pubmed-id [ x2rm:hasValue ?pmid ]
+        ?snpObj x2rm:child_pubmed-id [ x2rm:hasValue ?pmid ]
         BIND( iri(concat("https://identifiers.org/pubmed:", ?pmid)) AS ?pubmedUri )
       }
       OPTIONAL{
-        ?snpObj x2rm:child:allele [ x2rm:hasValue ?allele ]
+        ?snpObj x2rm:child_allele [ x2rm:hasValue ?allele ]
         # TODO: resolve allele to an URI?
         BIND( concat("Allele: ", ?allele) AS ?alleleDescription )
       }
       OPTIONAL{
-        ?snpObj x2rm:child:defining-change [ x2rm:hasValue ?definingChange ]
+        ?snpObj x2rm:child_defining-change [ x2rm:hasValue ?definingChange ]
         BIND( concat("Defining change: ", ?definingChange) AS ?definingChangeDescription )
       }
-      OPTIONAL{ ?snpObj x2rm:child:description [ x2rm:hasValue ?associationDescription ] }
+      OPTIONAL{ ?snpObj x2rm:child_description [ x2rm:hasValue ?associationDescription ] }
 
       BIND( concat("snpdb:", ?snpRsId) AS ?snpCurie )
       BIND( iri(concat("https://identifiers.org/", ?snpCurie)) AS ?snpUri )

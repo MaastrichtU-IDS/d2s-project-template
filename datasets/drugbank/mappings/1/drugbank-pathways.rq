@@ -29,24 +29,24 @@ INSERT {
     GRAPH <?_input> {
 
       # Get primary DrugBank ID of drug
-      ?drugObj x2rm:child:drugbank-id [ 
-        x2rm:attribute:primary "true" ; 
+      ?drugObj x2rm:child_drugbank-id [ 
+        x2rm:attribute_primary "true" ; 
         x2rm:hasValue ?drugbankId 
       ] .
       BIND(iri(concat("https://identifiers.org/drugbank:", ?drugbankId)) AS ?drugUri)
-      ?drugObj x2rm:child:pathways [ 
-        x2rm:child:pathway ?pathwayObj
+      ?drugObj x2rm:child_pathways [ 
+        x2rm:child_pathway ?pathwayObj
       ] .
 
       # Iterate on
       ?pathwayObj a x2rm:drugbank.drug.pathways.pathway ;
-        x2rm:child:smpdb-id [ x2rm:hasValue ?smpdbId ] .
+        x2rm:child_smpdb-id [ x2rm:hasValue ?smpdbId ] .
 
       BIND( iri(concat("https://identifiers.org/smpdb:", ?smpdbId)) AS ?smpdbPathwayUri )
       BIND( iri(concat("https://w3id.org/data2services/data/association/chemical_pathway:", concat(?drugbankId, "_", ?smpdbId))) AS ?drugPathwayAssociationUri )
 
       OPTIONAL{
-        ?pathwayObj x2rm:child:name [
+        ?pathwayObj x2rm:child_name [
           x2rm:hasValue ?pathwayName
         ] .
       }

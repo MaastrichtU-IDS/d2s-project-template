@@ -34,13 +34,13 @@ INSERT {
     GRAPH <?_input> {
 
       # Get primary DrugBank ID of drug
-      ?drugObj x2rm:child:drugbank-id [ 
-        x2rm:attribute:primary "true" ; 
+      ?drugObj x2rm:child_drugbank-id [ 
+        x2rm:attribute_primary "true" ; 
         x2rm:hasValue ?drugbankId 
       ] .
       BIND(iri(concat("https://identifiers.org/drugbank:", ?drugbankId)) AS ?drugUri)
-      ?drugObj x2rm:child:food-interactions [ 
-        x2rm:child:food-interaction ?foodInteractionObj
+      ?drugObj x2rm:child_food-interactions [ 
+        x2rm:child_food-interaction ?foodInteractionObj
       ] .
 
       # Iterate on
@@ -54,7 +54,7 @@ INSERT {
 
       # OPTIONAL{
       #   # It corresponds to the interacting drug name
-      #   ?drugInteractionObj x2rm:child:name [
+      #   ?drugInteractionObj x2rm:child_name [
       #     x2rm:hasValue ?drugInteractionName
       #   ] .
       # }
