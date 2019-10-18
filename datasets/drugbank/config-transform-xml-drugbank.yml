@@ -10,7 +10,7 @@ sparql_tmp_service_url: "http://localhost:8890/sparql"
 sparql_tmp_triplestore_username: dba
 sparql_tmp_triplestore_password: dba
 
-sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml/drugbank"
+sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/xml2rdf"
 
 
 # Final RDF4J server SPARQL endpoint to load the BioLink RDF
