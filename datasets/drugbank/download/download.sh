@@ -7,5 +7,7 @@ wget -N https://github.com/MaastrichtU-IDS/data2services-download/raw/master/dat
 
 # Unzip all files in subdir with name of the zip file
 find . -name "*.zip" | while read filename; do unzip -o -d "`dirname "$filename"`/${filename%.*}" "$filename"; done;
+echo "content of drugbank"
+ls drugbank
 mv drugbank/* .
 rmdir drugbank
