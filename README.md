@@ -1,5 +1,9 @@
 # CWL workflows for RDF conversion
 
+```bash
+git clone --recursive https://github.com/MaastrichtU-IDS/d2s-transform-template.git
+```
+
 See **[d2s.semanticscience.org](http://d2s.semanticscience.org/)** for detailed documentation on building and running CWL workflows to transform structured data to a target RDF knowledge graph.
 
 Use this template repository to build your transformation workflows:
