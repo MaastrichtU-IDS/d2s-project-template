@@ -1,7 +1,9 @@
 
 input_dir:
   class: Directory
-  path: /data/d2s-workspace/input/stitch
+  path: /data/d2s-workspace/input/dataset_name
+
+sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/dataset_name
 
 # R2RML params
 input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
@@ -19,8 +21,6 @@ sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml"
 sparql_final_triplestore_url: "http://virtuoso:8890/sparql"
 sparql_final_triplestore_username: dba
 sparql_final_triplestore_password: dba
-
-sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/stitch
 
 
 # Split params
