@@ -1,0 +1,47 @@
+PREFIX rr: <http://www.w3.org/ns/r2rml#> 
+PREFIX dc: <http://purl.org/dc/elements/1.1/> 
+PREFIX dbo: <http://dbpedia.org/ontology/> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+PREFIX rml: <http://semweb.mmlab.be/ns/rml#> 
+PREFIX ql: <http://semweb.mmlab.be/ns/ql#> 
+PREFIX d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> 
+PREFIX drugbank_vocabulary: <http://bio2rdf.org/drugbank_vocabulary:> 
+PREFIX hgnc_vocabulary: <http://bio2rdf.org/hgnc_vocabulary:> 
+PREFIX clinicaltrials_vocabulary: <http://bio2rdf.org/clinicaltrials_vocabulary:> 
+PREFIX go_vocabulary: <http://bio2rdf.org/go_vocabulary:> 
+PREFIX goa_vocabulary: <http://bio2rdf.org/goa_vocabulary:> 
+PREFIX bio2rdf_vocabulary: <http://bio2rdf.org/bio2rdf_vocabulary:> 
+PREFIX fb_vocabulary: <http://bio2rdf.org/fb_vocabulary:> 
+PREFIX d2s: <https://w3id.org/data2services/model/>
+
+INSERT
+{
+	GRAPH <?_output>{
+		
+		?Subject_uri  ?Predicate_uri ?Object_uri .
+    ?Subject_uri a  fb_vocabulary:Resource .
+			
+	}
+}
+WHERE {
+    GRAPH <?_input> {
+      ?row d2s:Subject ?Subject ;
+        a <https://w3id.org/data2services/test.tsv> .
+
+      # Generate URI from ID
+
+      ?row d2s:Predicate ?Predicate . 
+      ?row d2s:Object ?Object . 
+      ?row d2s:Truth_score ?Truth_score .
+
+      BIND ( iri(concat("https://bio2rdf.org/fb:", ?Subject)) AS ?Subject_uri )
+      BIND ( iri(concat("https://bio2rdf.org/fb_vocabulary:", ?Predicate)) AS ?Predicate_uri )
+      BIND ( iri(concat("https://bio2rdf.org/fb:", ?Object)) AS ?Object_uri )
+
+      FILTER (?Truth_score = "1\r") 
+		
+	}
+}		
+
