@@ -18,7 +18,7 @@ INSERT {
       rdfs:label ?Combined_score ;
   }
 } WHERE {
-  SERVICE <?_service>  {
+  # SERVICE <?_service>  {
     GRAPH <?_input> {
 
       ?row d2s:Chemical ?Chemical ;
@@ -34,5 +34,5 @@ INSERT {
       OPTIONAL { ?row d2s:Textmining ?Textmining . }
       OPTIONAL { ?row d2s:Combined_score ?Combined_score . }
     }
-  }
+  # }
 }

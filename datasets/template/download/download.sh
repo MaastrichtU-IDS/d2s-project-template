@@ -1,10 +1,10 @@
 #!/bin/bash
 
-
 ########## Download files
 
-## Only download if file as changed
+## SIMPLE DOWNLOAD only if file as changed
 wget -N https://github.com/MaastrichtU-IDS/d2s-download/raw/master/datasets/stitch-sample/9606.protein_chemical.links.detailed.v5.0.tsv.gz
+
 
 ## FTP DOWNLOAD recursively all files in ftp that have the given extension
 wget -N -r -A gz -nH ftp://ftp.ncbi.nlm.nih.gov/pubchem/
@@ -36,8 +36,7 @@ array=( ${array[@]//*test.ttl/} )
 ( IFS=$'\n'; echo "${array[*]}" )
 
 
-
-########## UNCOMPRESS
+########## Uncompress
 
 # ZIP
 # Recursive in subdir
@@ -58,6 +57,8 @@ find . -name "*.tgz" -exec tar -xzvf {} \;
 # Bz2
 find . -name "*.bz2" | while read filename; do bzip2 -f -d "$filename"; done;
 
+
+########## Prepare files
 
 ## RENAME EXTENSION (e.g.: txt in tsv)
 rename s/\.txt/.tsv/ *.txt

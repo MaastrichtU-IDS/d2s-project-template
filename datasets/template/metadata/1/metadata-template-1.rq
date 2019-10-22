@@ -22,6 +22,7 @@ PREFIX void-ext: <http://ldf.fi/void-ext#>
 INSERT {
 	GRAPH <?_output/metadata> {
 
+    # Agent publishing the dataset distribution
     <https://w3id.org/data2services/agent/umids> a dct:Agent ;
       foaf:name "Institute of Data Science at Maastricht University" ;
       foaf:page <https://maastrichtuniversity.nl/ids> .
@@ -66,14 +67,14 @@ INSERT {
       # # more convenient to do strafter() and extract version number
 
       # TODO: What should be data2services BioLink RDF license?
-      dct:license <http://creativecommons.org/licenses/by/3.0/> ;
-      void:exampleResource <https://identifiers.org/drugbank:DB00001> ;
+      dct:license <http://creativecommons.org/licenses/by/3.0/> ;           
+      void:exampleResource <https://identifiers.org/drugbank:DB00001> ;     
       # TODO: should we point createdWith to the SPARQL mappings?
-      pav:createdWith <https://github.com/MaastrichtU-IDS/d2s-transform-template/tree/master/mapping/template> ;
+      pav:createdWith <https://github.com/MaastrichtU-IDS/d2s-transform-template/tree/master/mapping/template> ;  
 
       # Which publisher for BioLink Dataset?
-      dct:publisher <https://w3id.org/data2services/agent/umids> ; 
-      dct:creator <https://w3id.org/data2services/agent/umids> ; 
+      dct:publisher <https://w3id.org/data2services/agent/umids> ;  
+      dct:creator <https://w3id.org/data2services/agent/umids> ;    
 
       dct:source ?distributionSourceUri ;
       dct:language ?dctLanguage ;
@@ -130,13 +131,13 @@ INSERT {
   
   BIND("0.0.1"^^xsd:string AS ?pavVersion)
 
-  BIND(<https://w3id.org/data2services/dataset/template> AS ?summaryUri)
+  BIND(<https://w3id.org/data2services/dataset/dataset_name> AS ?summaryUri)
   BIND(<http://lexvo.org/id/iso639-3/eng> AS ?dctLanguage)
 
   # Extract RDF version from URI. Only works if using #1
   BIND(strafter(str("?_output"), "#")  AS ?rdfPavVersion)
-  BIND(concat("N-Quads distribution of Template build #", ?rdfPavVersion) AS ?rdfDctTitle)
-  BIND(concat("N-Quads distribution of Template build #", ?rdfPavVersion, " produced by Data2Services on NOW()") AS ?rdfDctDescription)
+  BIND(concat("N-Quads distribution of Dataset_name build #", ?rdfPavVersion) AS ?rdfDctTitle)
+  BIND(concat("N-Quads distribution of Dataset_name build #", ?rdfPavVersion, " produced by Data2Services on NOW()") AS ?rdfDctDescription)
 
   BIND(NOW() AS ?now)
   # Get generic informations from summary
