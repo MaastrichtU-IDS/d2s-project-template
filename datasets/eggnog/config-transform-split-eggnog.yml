@@ -1,5 +1,7 @@
 
-dataset: eggnog
+input_dir:
+  class: Directory
+  path: /data/d2s-workspace/input/eggnog
 
 # R2RML params
 input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
@@ -26,9 +28,8 @@ sparql_final_triplestore_password: dba
 
 sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/eggnog
 
-
-sparql_transform_queries_path: https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-transform-template/master/datasets/eggnog/mappings/1/insert-eggnog.rq
-sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/d2s-transform-template/tree/master/datasets/eggnog/metadata/1
+sparql_transform_queries_path: "mappings/1"
+sparql_insert_metadata_path: "metadata/1"
 
 cwl_workflow_filename: workflow-csv-split.cwl
 

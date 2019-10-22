@@ -1,5 +1,7 @@
 
-dataset: drugbank
+input_dir:
+  class: Directory
+  path: /data/d2s-workspace/input/drugbank
 
 # download-username: vincent.emonet@maastrichtuniversity.nl
 # download-password: maasitest12
@@ -22,9 +24,8 @@ sparql_final_triplestore_password: test
 
 sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/drugbank/calrissian
 
-
-sparql_transform_queries_path: https://github.com/MaastrichtU-IDS/d2s-transform-template/tree/master/datasets/drugbank/mappings/1
-sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/d2s-transform-template/tree/master/datasets/drugbank/metadata/1
+sparql_transform_queries_path: "mappings/1"
+sparql_insert_metadata_path: "metadata/1"
 
 cwl_workflow_filename: graphdb-workflow-xml.cwl
 

@@ -1,5 +1,7 @@
 
-dataset: stitch
+input_dir:
+  class: Directory
+  path: /data/d2s-workspace/input/stitch
 
 # R2RML params
 input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
@@ -27,9 +29,8 @@ split_class: https://w3id.org/biolink/vocab/GeneGrouping
 split_delimiter: ","
 split_quote: '"'
 
-
-sparql_transform_queries_path: https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-transform-template/master/datasets/stitch/mappings/1/insert-stitch.rq
-sparql_insert_metadata_path: https://github.com/MaastrichtU-IDS/d2s-transform-template/tree/master/datasets/stitch/metadata/1
+sparql_transform_queries_path: "mappings/1"
+sparql_insert_metadata_path: "metadata/1"
 
 cwl_workflow_filename: workflow-csv.cwl
 
