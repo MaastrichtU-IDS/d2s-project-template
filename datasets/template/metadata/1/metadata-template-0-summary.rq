@@ -28,7 +28,7 @@ INSERT {
       foaf:page <https://maastrichtuniversity.nl/ids> .     
 
     # Summary
-    <https://w3id.org/data2services/dataset/$TEMPLATE>      
+    <https://w3id.org/data2services/dataset/dataset_name>      
       rdf:type dctypes:Dataset;
       dct:title "Template_name" ;                                
       idot:preferredPrefix "template_name" ;                     
@@ -47,13 +47,13 @@ INSERT {
 
       dct:references <https://www.drugbank.ca/legal/terms_of_use> ; 
       dcat:keyword "drugs" , "chemicals", "drug interactions" ;     
-      dcat:theme ncit:C48807 , ncit:C54708 .                        
+      dcat:theme ncit:C48807 , ncit:C54708 ;                     
       # Chemical, drug interaction
 
       # dct:accrualPeriodicity freq:annual ; 
       # frequency of update: annual baseline is released in December of each year
 
-      void:sparqlEndpoint "http://graphdb.dumontierlab.com/repositories/ncats-red-kg" ;
+      void:sparqlEndpoint "http://graphdb.dumontierlab.com/repositories/ncats-red-kg" .
 
       ## MAY
       # dct:references <IRI> ; # Supporting material as web pages and documents (use cito for publications)

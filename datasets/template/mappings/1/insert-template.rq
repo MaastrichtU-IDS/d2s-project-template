@@ -18,7 +18,7 @@ INSERT {
       rdfs:label ?Combined_score ;
   }
 } WHERE {
-  # SERVICE <?_service>  {
+  # SERVICE <?_service>  {    # Not working on Virtuoso at the moment
     GRAPH <?_input> {
 
       ?row d2s:Chemical ?Chemical ;
