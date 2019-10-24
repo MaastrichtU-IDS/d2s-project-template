@@ -22,7 +22,7 @@ INSERT {
     ?drugUri bl:affects ?organismUri .
   }
 } WHERE {
-  # SERVICE <?_service>  {
+  SERVICE <?_service>  {
     GRAPH <?_input> {
 
       # Get primary DrugBank ID of drug
@@ -49,5 +49,5 @@ INSERT {
       #   ] .
       # }
     }
-  # }
+  }
 }

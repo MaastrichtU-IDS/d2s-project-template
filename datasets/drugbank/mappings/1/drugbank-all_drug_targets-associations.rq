@@ -44,7 +44,7 @@ INSERT {
         bl:relation ?targetActionPropertyUri .
   }
 } WHERE {
-  # SERVICE <?_service>  {
+  SERVICE <?_service>  {
     GRAPH <?_input> {
       # Iterates on those different associations articles
       VALUES( ?bioentityType ?associationType ) {
@@ -126,5 +126,5 @@ INSERT {
       BIND(iri(concat("https://identifiers.org/uniprot:", ?polypeptideId)) AS ?polypeptideUniprotUri)
       BIND(iri(concat("https://w3id.org/data2services/data/association/drug_protein:", ?drugbankId, "_", ?polypeptideId)) AS ?polypeptideAssociationUri)
     }
-  # }
+  }
 }

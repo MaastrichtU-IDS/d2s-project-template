@@ -21,7 +21,7 @@ INSERT {
     ?drugUri bl:category ?atcCodeUri .
   }
 } WHERE {
-  # SERVICE <?_service>  {
+  SERVICE <?_service>  {
     GRAPH <?_input> {
 
       # Get primary DrugBank ID of drug
@@ -47,5 +47,5 @@ INSERT {
       # We don't get all levels, it should be resolved by the ATC ontology
 
     }
-  # }
+  }
 }
