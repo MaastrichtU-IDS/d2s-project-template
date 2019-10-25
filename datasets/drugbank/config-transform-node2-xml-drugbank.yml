@@ -10,8 +10,8 @@ sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/drugbank
 
 # tmp RDF4J server SPARQL endpoint to load generic RDF
 # TODO: run a virtuoso on node2
-sparql_tmp_triplestore_url: "http://node000002.cluster.ids.unimaas.nl:8890/sparql"
-
+# sparql_tmp_triplestore_url: "http://node000002.cluster.ids.unimaas.nl:8890/sparql"
+sparql_tmp_triplestore_url: "http://d2s-virtuoso.137.120.31.101.nip.io/sparql"
 virtuoso_container_id: "d2scwlworkflows_virtuoso_1"
 sparql_tmp_service_url: "http://node000002.cluster.ids.unimaas.nl:8890/sparql"
 sparql_tmp_triplestore_username: dba
