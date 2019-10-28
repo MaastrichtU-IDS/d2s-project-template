@@ -1,10 +1,11 @@
 # working-directory: /data/d2s-workspace
-
 dataset: drugbank
 
+
+
 # d2s-download params
-download-username: vincent.emonet@maastrichtuniversity.nl
-download-password: maasitest12
+download-username: username
+download-password: password
 
 # tmp RDF4J server SPARQL endpoint to load generic RDF
 #sparql-tmp-triplestore-url: http://graphdb:7200
@@ -21,7 +22,7 @@ sparql-tmp-graph-uri: "https://w3id.org/data2services/graph/xml2rdf"
 # Final RDF4J server SPARQL endpoint to load the BioLink RDF
 #sparql-final-triplestore-url: http://graphdb:7200
 # sparql-final-triplestore-url: http://node000002.cluster.ids.unimaas.nl/
-sparql-final-triplestore-url: http://graphdb.dumontierlab.com/repositories/test-vincent
+sparql-final-triplestore-url: http://graphdb.dumontierlab.com/repositories/test-vincent/statements
 sparql-final-triplestore-username: import_user
 sparql-final-triplestore-password: test
 
