@@ -30,8 +30,8 @@ INSERT {
     # Summary
     <https://w3id.org/data2services/dataset/dataset_name>      
       rdf:type dctypes:Dataset;
-      dct:title "Template_name" ;                                
-      idot:preferredPrefix "template_name" ;                     
+      dct:title "Dataset_name" ;                                
+      idot:preferredPrefix "dataset_name" ;                     
       dct:description "Template dataset to bootstrap a workflow."@en;   
       dct:publisher <https://w3id.org/data2services/agent/umids> ;      
       
