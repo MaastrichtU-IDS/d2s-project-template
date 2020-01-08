@@ -4,7 +4,7 @@ Use this template repository to create a new repository:
 
 ![Use template repository](support/screenshot_d2s_template.png)
 
-Clone the created repository:
+Clone the created repository and add the CWL submodule:
 
 ```bash
 git clone --recursive https://github.com/MY_GIT_REPOSITORY
