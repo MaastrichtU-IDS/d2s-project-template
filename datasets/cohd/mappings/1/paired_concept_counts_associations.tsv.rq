@@ -1,0 +1,46 @@
+PREFIX d2s: <https://w3id.org/data2services/model/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX biolink: <https://w3id.org/biolink/vocab/>
+PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
+INSERT {
+  GRAPH <?_output> {  
+    # Attribute the retrieved data to your model properties
+   ?Dataset_id_uri a owl:Thing ;
+      dc:identifier ?Dataset_id ;
+      rdfs:label ?Concept_id_1 ;
+      rdfs:label ?Concept_id_2 ;
+      rdfs:label ?Concept_count ;
+      rdfs:label ?Concept_prevalence ;
+      rdfs:label ?Chi_square_t ;
+      rdfs:label ?Chi_square_p ;
+      rdfs:label ?Expected_count ;
+      rdfs:label ?Ln_ratio ;
+      rdfs:label ?Rel_freq_1 ;
+      rdfs:label ?Rel_freq_2 .
+  }
+} WHERE {
+  # SERVICE <?_service>  {
+    GRAPH <?_input> {
+
+      ?row d2s:Dataset_id ?Dataset_id ;
+        a <https://w3id.org/data2services/paired_concept_counts_associations.tsv> .
+
+      # Generate URI from ID
+      BIND ( iri(concat("https://w3id.org/data2services/data/", md5(?Dataset_id))) AS ?Dataset_id_uri )
+
+      OPTIONAL { ?row d2s:Concept_id_1 ?Concept_id_1 . }
+      OPTIONAL { ?row d2s:Concept_id_2 ?Concept_id_2 . }
+      OPTIONAL { ?row d2s:Concept_count ?Concept_count . }
+      OPTIONAL { ?row d2s:Concept_prevalence ?Concept_prevalence . }
+      OPTIONAL { ?row d2s:Chi_square_t ?Chi_square_t . }
+      OPTIONAL { ?row d2s:Chi_square_p ?Chi_square_p . }
+      OPTIONAL { ?row d2s:Expected_count ?Expected_count . }
+      OPTIONAL { ?row d2s:Ln_ratio ?Ln_ratio . }
+      OPTIONAL { ?row d2s:Rel_freq_1 ?Rel_freq_1 . }
+      OPTIONAL { ?row d2s:Rel_freq_2 ?Rel_freq_2 . }
+    }
+  # }
+}
