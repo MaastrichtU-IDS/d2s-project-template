@@ -17,7 +17,7 @@ INSERT {
       rdfs:label ?Concept_code .
   }
 } WHERE {
-  # SERVICE <?_service>  {
+  SERVICE <?_service>  {
     GRAPH <?_input> {
 
       ?row d2s:Concept_id ?Concept_id ;
@@ -32,5 +32,5 @@ INSERT {
       OPTIONAL { ?row d2s:Concept_class_id ?Concept_class_id . }
       OPTIONAL { ?row d2s:Concept_code ?Concept_code . }
     }
-  # }
+  }
 }

@@ -15,7 +15,7 @@ INSERT {
       rdfs:label ?Concept_prevalence .
   }
 } WHERE {
-  # SERVICE <?_service>  {
+  SERVICE <?_service>  {
     GRAPH <?_input> {
 
       ?row d2s:Dataset_id ?Dataset_id ;
@@ -28,5 +28,5 @@ INSERT {
       OPTIONAL { ?row d2s:Concept_count ?Concept_count . }
       OPTIONAL { ?row d2s:Concept_prevalence ?Concept_prevalence . }
     }
-  # }
+  }
 }

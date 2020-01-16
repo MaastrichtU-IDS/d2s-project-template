@@ -22,7 +22,7 @@ INSERT {
       rdfs:label ?Rel_freq_2 .
   }
 } WHERE {
-  # SERVICE <?_service>  {
+  SERVICE <?_service>  {
     GRAPH <?_input> {
 
       ?row d2s:Dataset_id ?Dataset_id ;
@@ -42,5 +42,5 @@ INSERT {
       OPTIONAL { ?row d2s:Rel_freq_1 ?Rel_freq_1 . }
       OPTIONAL { ?row d2s:Rel_freq_2 ?Rel_freq_2 . }
     }
-  # }
+  }
 }

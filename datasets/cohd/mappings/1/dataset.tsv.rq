@@ -14,7 +14,7 @@ INSERT {
       rdfs:label ?Dataset_description .
   }
 } WHERE {
-  # SERVICE <?_service>  {
+  SERVICE <?_service>  {
     GRAPH <?_input> {
 
       ?row d2s:Dataset_id ?Dataset_id ;
@@ -26,5 +26,5 @@ INSERT {
       OPTIONAL { ?row d2s:cohd ?cohd . }
       OPTIONAL { ?row d2s:Dataset_description ?Dataset_description . }
     }
-  # }
+  }
 }

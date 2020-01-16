@@ -13,7 +13,7 @@ INSERT {
       rdfs:label ?Count .
   }
 } WHERE {
-  # SERVICE <?_service>  {
+  SERVICE <?_service>  {
     GRAPH <?_input> {
 
       ?row d2s:Dataset_id ?Dataset_id ;
@@ -24,5 +24,5 @@ INSERT {
 
       OPTIONAL { ?row d2s:Count ?Count . }
     }
-  # }
+  }
 }
