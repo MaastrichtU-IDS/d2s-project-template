@@ -20,8 +20,7 @@ Start services (drill, virtuoso, graphdb) and run workflow to convert CSV
 ./restart_virtuoso.sh
 
 docker-compose -f d2s-cwl-workflows/docker-compose.yaml up \
-  -d --build --force-recreate \
-  graphdb
+  -d --build --force-recreate graphdb
 
 # Run workflow
 cwl-runner --custom-net d2s-cwl-workflows_network \
