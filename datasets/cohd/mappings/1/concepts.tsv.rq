@@ -3,14 +3,14 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX biolink: <https://w3id.org/biolink/vocab/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
 PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
 INSERT {
   GRAPH <?_output> {  
     # Attribute the retrieved data to your model properties
    ?Concept_id_uri a owl:Thing ;
-      dc:identifier ?Concept_id ;
-      rdfs:label ?Concept_name ;
+      bl:id ?Concept_id ;
+      bl:name ?Concept_name ;
       rdfs:label ?Domain_id ;
       rdfs:label ?Vocabulary_id ;
       rdfs:label ?Concept_class_id ;
