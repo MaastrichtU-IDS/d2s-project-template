@@ -1,4 +1,4 @@
-PREFIX d2s: <https://w3id.org/data2services/model/>
+PREFIX d2s: <https://w3id.org/d2s/model/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
@@ -25,12 +25,22 @@ INSERT {
         a <https://w3id.org/data2services/template.protein_chemical.tsv> .
 
       # Generate URI from ID
-      BIND ( iri(concat("https://w3id.org/data2services/data/", md5(?Chemical))) AS ?Chemical_uri )
+      BIND ( iri(concat("https://w3id.org/d2s/data/", md5(?Chemical))) AS ?Chemical_uri )
 
       OPTIONAL { ?row d2s:Protein ?Protein . }
       OPTIONAL { ?row d2s:Experimental ?Experimental . }
       OPTIONAL { ?row d2s:Prediction ?Prediction . }
-      OPTIONAL { ?row d2s:Database ?Database . }
+      OPTIONAL { 
+        ?row d2s:Database ?Database . 
+        
+        VALUES( ?Database ?identifiersUri ) {
+          ("drugbank" <https://identifiers.org/drugbank/> )
+          ("chembl" <https://identifiers.org/chembl/> )
+          ("chebi" <https://identifiers.org/chebi/> )
+        }
+      }
+
+
       OPTIONAL { ?row d2s:Textmining ?Textmining . }
       OPTIONAL { ?row d2s:Combined_score ?Combined_score . }
     }
