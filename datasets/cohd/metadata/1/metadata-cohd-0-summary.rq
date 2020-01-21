@@ -40,7 +40,7 @@ INSERT {
       # dct:rights """Rights."""@en ;
 
       foaf:page <http://d2s.semanticscience.org/> ;                 
-      schemaorg:logo <d2s.semanticscience.org/img/d2s-logo.png> ;   
+      # schemaorg:logo <http://d2s.semanticscience.org/img/d2s-logo.png> ;   
       
       dcat:accessURL <https://www.drugbank.ca/releases/latest> ;    
       # Specify the directory containing the file(s) of interest (not the direct file URL)
