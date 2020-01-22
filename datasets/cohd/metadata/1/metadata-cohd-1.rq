@@ -33,7 +33,7 @@ INSERT {
       dct:isVersionOf ?summaryUri ;
       pav:version ?pavVersion ;
 
-      dcat:distribution <?_output> ;
+      dcat:distribution <?_input> ;
       dcat:accessURL <https://graphdb.dumontierlab.com/graphs> ; 
 
       ## MAY
@@ -128,14 +128,14 @@ INSERT {
       # idot:accessPattern "http://identifiers.org/drugbank:" ;
     }
 } WHERE {
-  
+  # Version of the source dataset
   BIND("1"^^xsd:string AS ?pavVersion)
 
   BIND(<https://w3id.org/data2services/dataset/cohd> AS ?summaryUri)
   BIND(<http://lexvo.org/id/iso639-3/eng> AS ?dctLanguage)
 
-  # Use dataset version for RDF version here
-  BIND(?pavVersion  AS ?rdfPavVersion)
+  # Version of our RDF distribution version 
+  BIND("1"^^xsd:string AS ?rdfPavVersion)
   BIND(concat("N-Quads distribution of cohd build #", ?rdfPavVersion) AS ?rdfDctTitle)
   BIND(concat("N-Quads distribution of cohd build #", ?rdfPavVersion, " produced by Data2Services on NOW()") AS ?rdfDctDescription)
 
@@ -151,7 +151,7 @@ INSERT {
   }
 
   # Generates URIs from pav:version
-  BIND(iri(concat(str(?summaryUri), "version#", str(?pavVersion))) AS ?versionUri)
-  BIND(iri(concat(str(?summaryUri), "distribution/source#", str(?pavVersion))) AS ?distributionSourceUri)
+  BIND(iri(concat(str(?summaryUri), "/version#", str(?pavVersion))) AS ?versionUri)
+  BIND(iri(concat(str(?summaryUri), "/distribution/source#", str(?pavVersion))) AS ?distributionSourceUri)
   BIND(<http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/> AS ?hclsDataset)
 }
