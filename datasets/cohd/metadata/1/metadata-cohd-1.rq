@@ -59,7 +59,7 @@ INSERT {
       # dct:publisher <https://w3id.org/data2services/agent/umids> ;
   
     ### RDF Distribution description
-    <?_output>
+    <?_input>
       a dcat:Distribution, void:Dataset ;
       # TODO: should we use the same pav:version as the source for RDF distribution? 
       pav:version ?pavVersion ;
@@ -129,13 +129,13 @@ INSERT {
     }
 } WHERE {
   
-  BIND("0.0.1"^^xsd:string AS ?pavVersion)
+  BIND("1"^^xsd:string AS ?pavVersion)
 
   BIND(<https://w3id.org/data2services/dataset/cohd> AS ?summaryUri)
   BIND(<http://lexvo.org/id/iso639-3/eng> AS ?dctLanguage)
 
-  # Extract RDF version from URI. Only works if using #1
-  BIND(strafter(str("?_output"), "#")  AS ?rdfPavVersion)
+  # Use dataset version for RDF version here
+  BIND(?pavVersion  AS ?rdfPavVersion)
   BIND(concat("N-Quads distribution of cohd build #", ?rdfPavVersion) AS ?rdfDctTitle)
   BIND(concat("N-Quads distribution of cohd build #", ?rdfPavVersion, " produced by Data2Services on NOW()") AS ?rdfDctDescription)
 
