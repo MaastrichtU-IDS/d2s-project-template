@@ -20,7 +20,7 @@ PREFIX void: <http://rdfs.org/ns/void/>
 PREFIX void-ext: <http://ldf.fi/void-ext#>
 
 INSERT {
-	GRAPH <?_output/metadata> {
+	GRAPH <?_output> {
 
     # Agent publishing the dataset distribution
     <https://w3id.org/data2services/agent/umids> a dct:Agent ;

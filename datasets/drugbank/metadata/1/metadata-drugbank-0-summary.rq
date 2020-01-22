@@ -20,7 +20,7 @@ PREFIX void: <http://rdfs.org/ns/void/>
 PREFIX void-ext: <http://ldf.fi/void-ext#>
 
 INSERT {
-	GRAPH <?_output/metadata> {
+	GRAPH <?_output> {
 
     <https://w3id.org/data2services/agent/drugbank> a dct:Agent ;
       foaf:name "DrugBank" ;
