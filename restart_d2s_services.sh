@@ -1,8 +1,10 @@
 #!/bin/bash
 
-# Stop services and delete virtuoso directory
+# Stop services
 docker-compose -f d2s-cwl-workflows/docker-compose.yaml down
-rm -rf /data/d2s-workspace/virtuoso
+
+# Delete virtuoso directory
+# rm -rf /data/d2s-workspace/virtuoso
 
 # Restart all services
 docker-compose -f d2s-cwl-workflows/docker-compose.yaml up -d --build --force-recreate virtuoso drill graphdb browse-local-virtuoso browse-local-graphdb
