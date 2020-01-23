@@ -23,17 +23,17 @@ INSERT {
 	GRAPH <?_output> {
 
     # Agent publishing the dataset
-    <https://w3id.org/data2services/agent/umids> a dct:Agent ;
+    <https://w3id.org/d2s/agent/umids> a dct:Agent ;
       foaf:name "Institute of Data Science at Maastricht University" ;
       foaf:page <https://maastrichtuniversity.nl/ids> .     
 
     # Summary
-    <https://w3id.org/data2services/dataset/cohd>      
+    <https://w3id.org/d2s/dataset/cohd>      
       rdf:type dctypes:Dataset;
       dct:title "COHD" ;                                
       idot:preferredPrefix "cohd" ;                     
       dct:description "From Columbia Open Health."@en;   
-      dct:publisher <https://w3id.org/data2services/agent/umids> ;      
+      dct:publisher <https://w3id.org/d2s/agent/umids> ;      
       
       dct:license <http://creativecommons.org/licenses/by-nc/4.0/legalcode> ;   
       # Human readable licenses terms
@@ -66,7 +66,7 @@ INSERT {
 
 
       ## Needs to be updated at new submission
-      #pav:hasCurrentVersion <https://w3id.org/data2services/dataset/drugbank/version/1> ;
+      #pav:hasCurrentVersion <https://w3id.org/d2s/dataset/drugbank/version/1> ;
   }
 } WHERE {
     # BIND(NOW() AS ?now)

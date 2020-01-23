@@ -15,7 +15,7 @@ sparql_tmp_triplestore_password: "dba"
 
 sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/autor2rml"
 # sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/autor2rml/cohd"
-# sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml"
+# sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/autor2rml"
 
 
 # Final RDF4J server SPARQL endpoint to load the BioLink RDF

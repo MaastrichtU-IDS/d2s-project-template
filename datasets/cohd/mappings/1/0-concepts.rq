@@ -1,10 +1,10 @@
-PREFIX d2s: <https://w3id.org/data2services/model/>
+PREFIX d2s: <https://w3id.org/d2s/model/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX bl: <https://w3id.org/biolink/vocab/>
-PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
+PREFIX w3idvocab: <https://w3id.org/d2s/vocab/>
 INSERT {
   GRAPH <?_output> {  
     # Attribute the retrieved data to your model properties
@@ -23,7 +23,7 @@ INSERT {
     GRAPH <?_input> {
 
       ?row d2s:Concept_id ?Concept_id ;
-        a <https://w3id.org/data2services/concepts.tsv> .
+        a <https://w3id.org/d2s/concepts.tsv> .
         # a <https://w3id.org/d2s/concepts.tsv> .
 
       # Generate URI from ID
