@@ -16,3 +16,6 @@ sudo chown -R ${UID} /data/d2s-workspace
 
 # Copy the load.sh script used for Virtuoso bulk load
 cp d2s-cwl-workflows/support/virtuoso/load.sh /data/d2s-workspace/virtuoso
+
+# Create test repository in GraphDB
+curl -X POST http://localhost:7200/rest/repositories -F "config=@d2s-cwl-workflows/support/graphdb-test-repo-config.ttl" -H 'Content-Type: multipart/form-data'
