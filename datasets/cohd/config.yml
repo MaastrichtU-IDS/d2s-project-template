@@ -1,5 +1,5 @@
 
-input_dir: input/cohd
+input_dir: "input/cohd"
 
 sparql_final_graph_uri: "https://w3id.org/d2s/graph/biolink/cohd"
 
