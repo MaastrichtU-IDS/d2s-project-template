@@ -15,7 +15,7 @@ sparql_tmp_triplestore_username: dba
 sparql_tmp_triplestore_password: dba
 
 sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml"
-
+virtuoso_container_id: "d2s-cwl-workflows_virtuoso_1"
 
 # Final RDF4J server SPARQL endpoint to load the BioLink RDF
 sparql_final_triplestore_url: "http://virtuoso:8890/sparql"
