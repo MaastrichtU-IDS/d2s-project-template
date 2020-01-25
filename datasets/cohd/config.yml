@@ -14,6 +14,7 @@ sparql_tmp_triplestore_password: "dba"
 sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/autor2rml"
 # sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/autor2rml/cohd"
 # sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/autor2rml"
+virtuoso_container_id: "d2s-cwl-workflows_virtuoso_1"
 
 
 # Final RDF4J server SPARQL endpoint to load the BioLink RDF
@@ -22,9 +23,8 @@ sparql_final_triplestore_url: "http://graphdb:7200/repositories/test/statements"
 sparql_tmp_service_url: "http://virtuoso:8890/sparql"
 # sparql_tmp_service_url: "http://localhost:8890/sparql"
 
-sparql_final_triplestore_username: "dba"
-sparql_final_triplestore_password: "dba"
-virtuoso_container_id: "d2s-cwl-workflows_virtuoso_1"
+sparql_final_triplestore_username: "import_user"
+sparql_final_triplestore_password: "password"
 
 # Split params
 # split_property: "https://w3id.org/biolink/vocab/has_participant"
