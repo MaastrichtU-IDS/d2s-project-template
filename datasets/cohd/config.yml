@@ -1,7 +1,5 @@
 
-input_dir:
-  class: Directory
-  path: /data/d2s-workspace/input/cohd
+input_dir: input/cohd
 
 sparql_final_graph_uri: "https://w3id.org/d2s/graph/biolink/cohd"
 
