@@ -1,0 +1,42 @@
+
+input_dir:
+  class: Directory
+  path: /data/d2s-workspace/input/eggnog
+
+# R2RML params
+input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
+
+# Split params
+split_property: https://w3id.org/biolink/vocab/has_participant
+split_class: https://w3id.org/biolink/vocab/GeneGrouping
+split_delimiter: ","
+split_quote: '"'
+
+# tmp RDF4J server SPARQL endpoint to load generic RDF
+sparql_tmp_triplestore_url: "http://virtuoso:8890/sparql"
+sparql_tmp_service_url: "http://localhost:8890/sparql"
+sparql_tmp_triplestore_username: dba
+sparql_tmp_triplestore_password: dba
+
+sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml"
+
+
+# Final RDF4J server SPARQL endpoint to load the BioLink RDF
+sparql_final_triplestore_url: "http://virtuoso:8890/sparql"
+sparql_final_triplestore_username: dba
+sparql_final_triplestore_password: dba
+
+sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/eggnog
+
+sparql_transform_queries_path: "mappings/1"
+sparql_insert_metadata_path: "metadata/1"
+
+cwl_workflow_filename: workflow-csv-split.cwl
+
+config_dir:
+  class: Directory
+  path: .
+
+cwl_dir:
+  class: Directory
+  path: ../../d2s-cwl-workflows
