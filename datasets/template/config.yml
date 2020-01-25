@@ -1,7 +1,9 @@
 
-input_dir:
-  class: Directory
-  path: /data/d2s-workspace/input/dataset_name
+input_dir: "input/dataset_name"
+
+# input_dir:
+#   class: Directory
+#   path: /data/d2s-workspace/input/dataset_name
 
 sparql_final_graph_uri: "https://w3id.org/data2services/graph/biolink/dataset_name"
 

@@ -1,4 +1,5 @@
 
+# Path to the input directory on your machine
 input_dir:
   class: Directory
   path: /data/d2s-workspace/input/drugbank
@@ -11,8 +12,10 @@ sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/drugbank
 # tmp RDF4J server SPARQL endpoint to load generic RDF
 sparql_tmp_triplestore_url: "http://virtuoso:8890/sparql"
 sparql_tmp_service_url: "http://localhost:8890/sparql"
+
 sparql_tmp_triplestore_username: dba
 sparql_tmp_triplestore_password: dba
+virtuoso_container_id: "d2s-cwl-workflows_virtuoso_1"
 
 sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/xml2rdf"
 
@@ -25,7 +28,7 @@ sparql_final_triplestore_password: dba
 sparql_transform_queries_path: "mappings/1"
 sparql_insert_metadata_path: "metadata/1"
 
-cwl_workflow_filename: workflow-xml.cwl
+cwl_workflow_filename: "workflow-xml.cwl"
 
 config_dir:
   class: Directory
