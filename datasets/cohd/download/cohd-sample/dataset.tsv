@@ -1,0 +1,4 @@
+dataset_id	dataset_name	dataset_description
+1	5-year non-hierarchical	Clinical data from 2013-2017. Each concept's count reflects the use of that specific concept.
+2	Lifetime non-hierarchical	Clinical data from all years in the database. Each concept's count reflects the use of that specific concept.
+3	5-year hierarchical	Clinical data from 2013-2017. Each concept's count includes use of that concept and descendant concepts.

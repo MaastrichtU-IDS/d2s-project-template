@@ -1,0 +1,1000 @@
+concept_id	concept_name	domain_id	vocabulary_id	concept_class_id	concept_code
+197339	Congenital abnormality of uterus, affecting pregnancy	Condition	SNOMED	Clinical Finding	41215002
+444258	Abrasion and/or friction burn of neck with infection	Condition	SNOMED	Clinical Finding	84278006
+1319973	24 HR Nisoldipine 17 MG Extended Release Oral Tablet [Sular]	Drug	RxNorm	Quant Branded Drug	763521
+2001333	Endoscopic excision or destruction of lesion or tissue of lung	Procedure	ICD9Proc	4-dig billing code	32.28
+2107263	Anastomosis of pulmonary artery to aorta (Damus-Kaye-Stansel procedure)	Procedure	CPT4	CPT4	33606
+2728215	Dilation of Upper Artery, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	037Y3ZZ
+40163298	Prochlorperazine 15 MG Extended Release Oral Capsule [Compazine]	Drug	RxNorm	Branded Drug	856623
+433745	Amphetamine abuse, episodic	Condition	SNOMED	Clinical Finding	429692000
+435357	Conjoined twins	Condition	SNOMED	Clinical Finding	41337007
+1113573	Aspirin 325 MG / Oxycodone Hydrochloride 4.5 MG / oxycodone terephthalate 0.38 MG Oral Tablet [Percodan]	Drug	RxNorm	Branded Drug	637542
+2104101	Synovectomy, extensor tendon sheath, wrist, single compartment	Procedure	CPT4	CPT4	25118
+2104593	Repair non-union, metacarpal or phalanx (includes obtaining bone graft with or without external or internal fixation)	Procedure	CPT4	CPT4	26546
+2788138	Fluoroscopy of Other Lower Arteries using Low Osmolar Contrast	Procedure	ICD10PCS	ICD10PCS	B41J1ZZ
+4265896	Jellyfish poisoning	Condition	SNOMED	Clinical Finding	62208003
+19042347	Lecithin 1240 MG Oral Capsule	Drug	RxNorm	Clinical Drug	198728
+40163376	sevelamer hydrochloride 403 MG Oral Capsule [RenaGel]	Drug	RxNorm	Branded Drug	857210
+43013665	Hydrocortisone butyrate 1 MG/ML Topical Solution [Locoid]	Drug	RxNorm	Branded Drug	1370768
+45773402	Recipient of transplantation	Condition	SNOMED	Clinical Finding	702774002
+23304	Neck webbing	Condition	SNOMED	Clinical Finding	11731003
+196029	Hepatic coma due to viral hepatitis	Condition	SNOMED	Clinical Finding	40946000
+374646	Toxic cataract	Condition	SNOMED	Clinical Finding	38583007
+435132	Victim in single vehicle accident	Condition	SNOMED	Clinical Finding	129675007
+438226	Short cord	Condition	SNOMED	Clinical Finding	59795007
+715997	donepezil	Drug	RxNorm	Ingredient	135447
+2005092	Excision or correction of bunionette	Procedure	ICD9Proc	4-dig billing code	77.54
+2007106	General physical examination	Procedure	ICD9Proc	3-dig billing code	89.7
+2103041	Excision of malignant tumor of mandible; radical resection	Procedure	CPT4	CPT4	21045
+2104134	Carpectomy; all bones of proximal row	Procedure	CPT4	CPT4	25215
+2104735	Incision, bone cortex, pelvis and/or hip joint (eg, osteomyelitis or bone abscess)	Procedure	CPT4	CPT4	26992
+2105302	Repair, dislocating peroneal tendons; without fibular osteotomy	Procedure	CPT4	CPT4	27675
+2109849	Excision of urethral diverticulum (separate procedure); female	Procedure	CPT4	CPT4	53230
+2726089	Removal of Infusion Device from Great Vessel, Open Approach	Procedure	ICD10PCS	ICD10PCS	02PY03Z
+2741512	Replacement of Right Lens with Synthetic Substitute, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	08RJ3JZ
+2786050	Ultrasonography of Left Heart, Transesophageal	Procedure	ICD10PCS	ICD10PCS	B245ZZ4
+2788625	Ultrasonography of Bilateral Lower Extremity Arteries, Intravascular	Procedure	ICD10PCS	ICD10PCS	B44HZZ3
+4016122	Closed fracture talus, body	Condition	SNOMED	Clinical Finding	208686005
+4033864	Livedoid vasculitis	Condition	SNOMED	Clinical Finding	238762002
+4042141	Ear and auditory finding	Condition	SNOMED	Clinical Finding	118236001
+4134171	Dislocation of joint of spine	Condition	SNOMED	Clinical Finding	263013004
+4242348	Benign neoplasm of intrathoracic organs	Condition	SNOMED	Clinical Finding	92157004
+4318699	Disorder of lacrimal gland	Condition	SNOMED	Clinical Finding	95766002
+40163967	24 HR galantamine hydrobromide 16 MG Extended Release Oral Capsule [Razadyne]	Drug	RxNorm	Quant Branded Drug	860697
+40168451	Dextroamphetamine Sulfate 5 MG Oral Tablet [Dexedrine]	Drug	RxNorm	Branded Drug	884538
+40171507	24 HR Verapamil hydrochloride 180 MG Extended Release Oral Tablet [Covera]	Drug	RxNorm	Quant Branded Drug	901522
+43011898	3 ML heparin sodium, porcine 2 UNT/ML Prefilled Syringe	Drug	RxNorm	Quant Clinical Drug	1362065
+43528010	Allergy testing, any combination of percutaneous (scratch, puncture, prick) and intracutaneous (intradermal), sequential and incremental, with venoms, immediate type reaction, including test interpretation and report, specify number of tests	Measurement	CPT4	CPT4	95017
+45770827	Female genital mutilation	Condition	SNOMED	Clinical Finding	95041000119101
+45777017	{32 (Methotrexate 2.5 MG Oral Tablet [Rheumatrex]) } Pack [Rheumatrex Dose Pack 32]	Drug	RxNorm	Branded Pack	1541228
+142016	Nonvenomous insect bite of finger with infection	Condition	SNOMED	Clinical Finding	52705001
+373347	Subdural hemorrhage following injury without open intracranial wound AND with concussion	Condition	SNOMED	Clinical Finding	6666006
+378429	Rosacea conjunctivitis	Condition	SNOMED	Clinical Finding	10128002
+380944	Adenoviral pharyngoconjunctivitis	Condition	SNOMED	Clinical Finding	70385007
+437260	Transient hypersomnia	Condition	SNOMED	Clinical Finding	268653004
+438737	Acute paranoid reaction	Condition	SNOMED	Clinical Finding	268624000
+440983	Psychogenic paranoid psychosis	Condition	SNOMED	Clinical Finding	191680007
+1344358	Epirubicin Hydrochloride 2 MG/ML Injectable Solution	Drug	RxNorm	Clinical Drug	836378
+1583722	exenatide	Drug	RxNorm	Ingredient	60548
+2000133	Formation of cranial bone flap	Procedure	ICD9Proc	4-dig billing code	02.03
+2000684	Resection of one extraocular muscle	Procedure	ICD9Proc	4-dig billing code	15.13
+2001148	Alveoloplasty	Procedure	ICD9Proc	3-dig billing code	24.5
+2004407	Amputation of cervix	Procedure	ICD9Proc	3-dig billing code	67.4
+2005905	Revision of knee replacement, not otherwise specified	Procedure	ICD9Proc	4-dig billing code	81.55
+2104418	Synovectomy, metacarpophalangeal joint including intrinsic release and extensor hood reconstruction, each digit	Procedure	CPT4	CPT4	26135
+2104919	Closed treatment of greater trochanteric fracture, without manipulation	Procedure	CPT4	CPT4	27246
+2105720	Open treatment of tarsal bone fracture (except talus and calcaneus), includes internal fixation, when performed, each	Procedure	CPT4	CPT4	28465
+2106444	Laryngectomy; total, with radical neck dissection	Procedure	CPT4	CPT4	31365
+2107719	Repair blood vessel with vein graft; upper extremity	Procedure	CPT4	CPT4	35236
+2108327	Percutaneous transluminal mechanical thrombectomy, vein(s), including intraprocedural pharmacological thrombolytic injections and fluoroscopic guidance, repeat treatment on subsequent day during course of thrombolytic therapy	Procedure	CPT4	CPT4	37188
+2211354	Magnetic resonance imaging, brain, functional MRI; including test selection and administration of repetitive body part movement and/or visual stimulation, not requiring physician or psychologist administration	Procedure	CPT4	CPT4	70554
+2211637	Mechanical removal of pericatheter obstructive material (eg, fibrin sheath) from central venous device via separate venous access, radiologic supervision and interpretation	Procedure	CPT4	CPT4	75901
+2213041	Smear, primary source with interpretation; special stain for inclusion bodies or parasites (eg, malaria, coccidia, microsporidia, trypanosomes, herpes viruses)	Measurement	CPT4	CPT4	87207
+2313790	Temporary transcutaneous pacing	Procedure	CPT4	CPT4	92953
+2721955	Hearing aid, digital, monaural, itc	Device	HCPCS	HCPCS	V5255
+2733065	Occlusion of Lower Artery with Intraluminal Device, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	04LY3DZ
+2742013	Excision of Left Ethmoid Sinus, Percutaneous Endoscopic Approach	Procedure	ICD10PCS	ICD10PCS	09BV4ZZ
+2749690	Dilation of Left Hepatic Duct, Via Natural or Artificial Opening Endoscopic	Procedure	ICD10PCS	ICD10PCS	0F768ZZ
+2752296	Excision of Right Thyroid Gland Lobe, Open Approach	Procedure	ICD10PCS	ICD10PCS	0GBH0ZZ
+2753137	Resection of Lower Esophagus, Percutaneous Endoscopic Approach	Procedure	ICD10PCS	ICD10PCS	0DT34ZZ
+2755614	Release Left Abdomen Muscle, Open Approach	Procedure	ICD10PCS	ICD10PCS	0KNL0ZZ
+2756531	Insertion of Reservoir into Chest Subcutaneous Tissue and Fascia, Open Approach	Procedure	ICD10PCS	ICD10PCS	0JH60WZ
+2794457	Bed Mobility Treatment using Assistive, Adaptive, Supportive or Protective Equipment	Procedure	ICD10PCS	ICD10PCS	F07Z5FZ
+4059989	A/N care: H/O trophoblastic disease	Observation	SNOMED	Context-dependent	169585004
+4111052	Does use hearing aid	Observation	SNOMED	Clinical Finding	285055002
+4115830	Loose body in hip joint	Condition	SNOMED	Clinical Finding	202160008
+4118634	Skin grafting	Procedure	SNOMED	Procedure	304040003
+4198141	Post infarct angina	Condition	SNOMED	Clinical Finding	314116003
+4253315	Nocturnal sleep-related eating disorder	Condition	SNOMED	Clinical Finding	407666007
+19002308	Desonide 0.5 MG/ML Topical Cream [Tridesilon]	Drug	RxNorm	Branded Drug	103439
+19066496	alosetron 1 MG Oral Tablet	Drug	RxNorm	Clinical Drug	259306
+19123202	Dapsone 0.05 MG/MG Topical Gel	Drug	RxNorm	Clinical Drug	607295
+19132601	Menthol 100 MG/ML / methyl salicylate 150 MG/ML Topical Cream [Bengay Original]	Drug	RxNorm	Branded Drug	808994
+19133261	propoxyphene napsylate 100 MG Oral Tablet [Darvon-N]	Drug	RxNorm	Branded Drug	827750
+19133378	1 ML Hepatitis B Surface Antigen Vaccine 0.01 MG/ML Prefilled Syringe [Recombivax]	Drug	RxNorm	Quant Branded Drug	830245
+37116441	Diverticulitis of small intestine with perforation and abscess	Condition	SNOMED	Clinical Finding	733150001
+40172144	dexmethylphenidate hydrochloride 10 MG Extended Release Oral Capsule	Drug	RxNorm	Clinical Drug	899442
+40173468	24 HR Hydromorphone Hydrochloride 12 MG Extended Release Oral Tablet	Drug	RxNorm	Quant Clinical Drug	902729
+40180087	Promethazine Hydrochloride 50 MG	Drug	RxNorm	Clinical Drug Comp	992474
+40221811	Dextran 70 1 MG/ML / Polyethylene Glycol 400 10 MG/ML / Povidone 10 MG/ML / Tetrahydrozoline hydrochloride 0.5 MG/ML Ophthalmic Solution [Visine Advanced Relief]	Drug	RxNorm	Branded Drug	996206
+40223291	Ascorbic Acid 75 MG / Ferrous fumarate 333 MG / Folic Acid 0.5 MG / liver stomach concentrate 240 MG / Vitamin B 12 0.015 MG Oral Capsule	Drug	RxNorm	Clinical Drug	999799
+40234624	Menthol 0.16 MG/MG Topical Gel [Flexall]	Drug	RxNorm	Branded Drug	1087519
+40234732	Nystatin 100000 UNT/ML / Triamcinolone Acetonide 1 MG/ML Topical Cream [Mycolog]	Drug	RxNorm	Branded Drug	1053768
+40240371	24 HR Pramipexole dihydrochloride 3.75 MG Extended Release Oral Tablet [Mirapex]	Drug	RxNorm	Quant Branded Drug	1114487
+40243414	Atropine Sulfate 0.4 MG/ML Injectable Solution	Drug	RxNorm	Clinical Drug	1190776
+40490995	Malignant neoplasm of posterior mediastinum	Condition	SNOMED	Clinical Finding	448670003
+42800223	hydrocortisone acetate 0.02 MG/MG / Pramoxine hydrochloride 0.01 MG/MG Topical Gel [Novacort]	Drug	RxNorm	Branded Drug	1293729
+43530951	Venous complication in the puerperium	Condition	SNOMED	Clinical Finding	609497003
+44506752	riociguat	Drug	RxNorm	Ingredient	1439816
+44507846	Hydrocortisone 20 MG/ML Topical Lotion [Dermasorb HC]	Drug	RxNorm	Branded Drug	1442871
+45757789	Postpartum gestational diabetes mellitus	Condition	SNOMED	Clinical Finding	40791000119105
+46269818	Hepatic coma due to alcoholic liver failure	Condition	SNOMED	Clinical Finding	1082621000119108
+31339	Dental restoration esthetically inadequate or displeasing	Condition	SNOMED	Clinical Finding	109730006
+78009	Traumatic pneumothorax with open wound into thorax	Condition	SNOMED	Clinical Finding	22897006
+195464	Epidemic pleurodynia	Condition	SNOMED	Clinical Finding	83264000
+196019	Tuberculosis of intestines, peritoneum and mesenteric glands	Condition	SNOMED	Clinical Finding	186225008
+313833	Puerperal cerebrovascular disorder with postnatal complication	Condition	SNOMED	Clinical Finding	200333003
+376703	Disorder of pinna	Condition	SNOMED	Clinical Finding	41663005
+380322	Postvaricella encephalitis	Condition	SNOMED	Clinical Finding	186509002
+380505	Congenital cataract and lens anomalies	Condition	SNOMED	Clinical Finding	268159001
+434673	Soft tissue impingement on teeth	Condition	SNOMED	Clinical Finding	21366000
+436292	Accidental collision with stationary object	Observation	SNOMED	Clinical Finding	217897003
+438259	Umbilical hemorrhage after birth	Condition	SNOMED	Clinical Finding	82986004
+438948	Late effect of accident caused by fire	Condition	SNOMED	Clinical Finding	218251009
+442140	Neoplasm of uncertain behavior of pleura	Condition	SNOMED	Clinical Finding	95006006
+704988	Trifluoperazine 10 MG Oral Tablet	Drug	RxNorm	Clinical Drug	198323
+1335713	12 HR Disopyramide 150 MG Extended Release Oral Capsule	Drug	RxNorm	Quant Clinical Drug	636794
+1397076	valerian root extract 100 MG Oral Capsule	Drug	RxNorm	Clinical Drug	259145
+1547507	rosiglitazone 8 MG Oral Tablet [Avandia]	Drug	RxNorm	Branded Drug	261243
+1584930	Somatropin 5 MG/ML Injectable Solution	Drug	RxNorm	Clinical Drug	241975
+1718083	Soft Gelatin Methoxsalen 10 MG Oral Capsule	Drug	RxNorm	Clinical Drug	1812434
+1738669	doxycycline hyclate 20 MG Oral Tablet [Periostat]	Drug	RxNorm	Branded Drug	351988
+2000080	Revision of knee replacement, femoral component	Procedure	ICD9Proc	4-dig billing code	00.82
+2000220	Cranial or peripheral nerve graft	Procedure	ICD9Proc	3-dig billing code	04.5
+2000277	Complete substernal thyroidectomy	Procedure	ICD9Proc	4-dig billing code	06.52
+2000452	Destruction of lesion of conjunctiva	Procedure	ICD9Proc	4-dig billing code	10.32
+2002064	Resection of vessel with anastomosis, other thoracic vessels	Procedure	ICD9Proc	4-dig billing code	38.35
+2002905	Other operations on intestines	Procedure	ICD9Proc	4-dig billing code	46.99
+2006618	Insertion or replacement of multiple array (two or more) rechargeable neurostimulator pulse generator	Procedure	ICD9Proc	4-dig billing code	86.98
+2007972	Proctoclysis	Procedure	ICD9Proc	4-dig billing code	96.37
+2102495	Excision, excessive skin and subcutaneous tissue (includes lipectomy); other area	Procedure	CPT4	CPT4	15839
+2103261	Open treatment of depressed zygomatic arch fracture (eg, Gillies approach)	Procedure	CPT4	CPT4	21356
+2107173	Valvectomy, tricuspid valve, with cardiopulmonary bypass	Procedure	CPT4	CPT4	33460
+2108837	Control oropharyngeal hemorrhage, primary or secondary (eg, post-tonsillectomy); simple	Procedure	CPT4	CPT4	42960
+2109278	Repair of high imperforate anus with rectourethral or rectovaginal fistula; perineal or sacroperineal approach	Procedure	CPT4	CPT4	46740
+2109447	Excision of presacral or sacrococcygeal tumor	Procedure	CPT4	CPT4	49215
+2109669	Continent diversion, including intestine anastomosis using any segment of small and/or large intestine (Kock pouch or Camey enterocystoplasty)	Procedure	CPT4	CPT4	50825
+2110267	Resection (initial) of ovarian, tubal or primary peritoneal malignancy with bilateral salpingo-oophorectomy and omentectomy; with radical dissection for debulking (ie, radical excision or destruction, intra-abdominal or retroperitoneal tumors)	Procedure	CPT4	CPT4	58952
+2110703	Laminectomy for biopsy/excision of intraspinal neoplasm; extradural, thoracic	Procedure	CPT4	CPT4	63276
+2110819	Neuroplasty, major peripheral nerve, arm or leg, open; lumbar plexus	Procedure	CPT4	CPT4	64714
+2211621	Venography, renal, bilateral, selective, radiological supervision and interpretation	Procedure	CPT4	CPT4	75833
+2721921	Hearing aid, monaural, behind the ear	Device	HCPCS	HCPCS	V5060
+2723994	Revision of Synthetic Substitute in Cerebral Ventricle, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	00W63JZ
+2726563	Supplement Ventricular Septum with Nonautologous Tissue Substitute, Open Approach	Procedure	ICD10PCS	ICD10PCS	02UM0KZ
+2732872	Restriction of Right Internal Carotid Artery with Intraluminal Device, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	03VK3DZ
+2744873	Resection of Right Ethmoid Sinus, Percutaneous Endoscopic Approach	Procedure	ICD10PCS	ICD10PCS	09TU4ZZ
+2747244	Bypass Descending Colon to Cutaneous, Percutaneous Endoscopic Approach	Procedure	ICD10PCS	ICD10PCS	0D1M4Z4
+2748805	Dilation of Sigmoid Colon, Via Natural or Artificial Opening Endoscopic	Procedure	ICD10PCS	ICD10PCS	0D7N8ZZ
+2749422	Repair Upper Lip, Open Approach	Procedure	ICD10PCS	ICD10PCS	0CQ00ZZ
+2756539	Insertion of Defibrillator Generator into Chest Subcutaneous Tissue and Fascia, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	0JH638Z
+2763434	Excision of Left Upper Femur, Open Approach, Diagnostic	Procedure	ICD10PCS	ICD10PCS	0QB70ZX
+2768615	Insertion of Internal Fixation Device into Left Tibia, Open Approach	Procedure	ICD10PCS	ICD10PCS	0QHH04Z
+2780109	Excision of Left Fallopian Tube, Open Approach	Procedure	ICD10PCS	ICD10PCS	0UB60ZZ
+2786580	Fluoroscopy of Right Common Carotid Artery	Procedure	ICD10PCS	ICD10PCS	B313ZZZ
+2787942	Ultrasonography of Pancreas	Procedure	ICD10PCS	ICD10PCS	BF47ZZZ
+2793211	Contact Radiation of Femur	Procedure	ICD10PCS	ICD10PCS	DPY97ZZ
+4001965	Infection of multiple bones	Condition	SNOMED	Clinical Finding	203240001
+4099746	Alopecia mucinosa	Condition	SNOMED	Clinical Finding	27382006
+4119134	Thrombocytopenic purpura	Condition	SNOMED	Clinical Finding	302873008
+4175644	Sleep state misperception	Condition	SNOMED	Clinical Finding	427745001
+4247084	Enteropathic arthritis	Condition	SNOMED	Clinical Finding	9350004
+4252862	Enterostomy infection	Condition	SNOMED	Clinical Finding	409662001
+4253778	Disorder of filtering bleb	Condition	SNOMED	Clinical Finding	410724009
+4330878	Papulosquamous dermatosis	Condition	SNOMED	Clinical Finding	22585003
+19020947	ferrous sulfate 159 MG Extended Release Oral Tablet	Drug	RxNorm	Clinical Drug	198999
+19027885	Salicylic Acid 20 MG/ML / Sulfur 20 MG/ML Medicated Shampoo	Drug	RxNorm	Clinical Drug	204638
+19033286	estradiol valerate 20 MG/ML Injectable Solution [Delestrogen]	Drug	RxNorm	Branded Drug	206715
+19036927	Hydrochlorothiazide 50 MG Oral Tablet [HydroDIURIL]	Drug	RxNorm	Branded Drug	207945
+19042683	Acetaminophen 160 MG Chewable Tablet [Mapap]	Drug	RxNorm	Branded Drug	209870
+19069717	pine bark extract 30 MG Oral Capsule [Pycnogenol]	Drug	RxNorm	Branded Drug	282851
+19074841	12 HR Cefaclor 500 MG Extended Release Oral Tablet	Drug	RxNorm	Quant Clinical Drug	309043
+19102466	aprepitant 125 MG Oral Capsule	Drug	RxNorm	Clinical Drug	403811
+19121208	desloratadine 2.5 MG Disintegrating Oral Tablet	Drug	RxNorm	Clinical Drug	577080
+19124205	Sodium Chloride 0.154 MEQ/ML Irrigation Solution [Saljet]	Drug	RxNorm	Branded Drug	631504
+19127439	synthetic conjugated estrogens, B 0.9 MG Oral Tablet [Enjuvia]	Drug	RxNorm	Branded Drug	730880
+19131597	Fluoxetine 15 MG Oral Tablet	Drug	RxNorm	Clinical Drug	803293
+19132991	{12 (Ethinyl Estradiol 0.035 MG / Norethindrone 0.5 MG Oral Tablet) / 9 (Ethinyl Estradiol 0.035 MG / Norethindrone 1 MG Oral Tablet) / 7 (Inert Ingredients 1 MG Oral Tablet) } Pack	Drug	RxNorm	Clinical Pack	823777
+35604117	2 ML Clindamycin 150 MG/ML Injection	Drug	RxNorm	Quant Clinical Drug	1737244
+37116608	Open bite of pelvic region	Condition	SNOMED	Clinical Finding	733377000
+40161652	darunavir 150 MG Oral Tablet [Prezista]	Drug	RxNorm	Branded Drug	850457
+40166819	24 HR Hydrochlorothiazide 12.5 MG / metoprolol succinate 25 MG Extended Release Oral Tablet	Drug	RxNorm	Quant Clinical Drug	866461
+40171496	24 HR Trazodone Hydrochloride 300 MG Extended Release Oral Tablet [Oleptro]	Drug	RxNorm	Quant Branded Drug	898706
+40227064	Lidocaine Hydrochloride 20 MG/ML Topical Spray	Drug	RxNorm	Clinical Drug	1010769
+40229228	Atropine Sulfate 0.0194 MG / Hyoscyamine Sulfate 0.1037 MG / Phenobarbital 16.2 MG / Scopolamine Hydrobromide 0.0065 MG Oral Capsule [Donnatal]	Drug	RxNorm	Branded Drug	1046810
+42628284	Balloon dilation, ureteral stricture, including imaging guidance (eg, ultrasound and/or fluoroscopy) and all associated radiological supervision and interpretation (List separately in addition to code for primary procedure)	Procedure	CPT4	CPT4	50706
+42629040	Ciprofloxacin 3 MG/ML / Fluocinolone Acetonide 0.25 MG/ML Otic Solution [Otovel]	Drug	RxNorm	Branded Drug	1792391
+42708709	Docusate Sodium 100 MG Oral Capsule [Phillips Stool Softener]	Drug	RxNorm	Branded Drug	1248002
+42742490	Application of skin substitute graft to face, scalp, eyelids, mouth, neck, ears, orbits, genitalia, hands, feet, and/or multiple digits, total wound surface area greater than or equal to 100 sq cm; first 100 sq cm wound surface area, or 1% of body area of	Procedure	CPT4	CPT4	15277
+43012140	Mineral Oil 999 MG/ML Topical Oil	Drug	RxNorm	Clinical Drug	1364062
+43526237	Isotretinoin 10 MG Oral Capsule [Zenatane]	Drug	RxNorm	Branded Drug	1373333
+44782749	Family disruption due to extended absence of family member	Observation	SNOMED	Clinical Finding	134571000119103
+44785173	Dextromethorphan Hydrobromide 2 MG/ML / Guaifenesin 40 MG/ML / Phenylephrine Hydrochloride 1 MG/ML Oral Suspension	Drug	RxNorm	Clinical Drug	1486140
+45775471	Benzoyl Peroxide 0.05 MG/MG / clindamycin phosphate 0.012 MG/MG Topical Gel [Neuac]	Drug	RxNorm	Branded Drug	1540246
+46257446	Esophagoscopy, rigid, transoral with diverticulectomy of hypopharynx or cervical esophagus (eg, Zenker's diverticulum), with cricopharyngeal myotomy, includes use of telescope or operating microscope and repair, when performed	Procedure	CPT4	CPT4	43180
+46275159	rabies virus vaccine wistar strain PM-1503-3M (Human), Inactivated 2.5 UNT/ML Injection [Imovax]	Drug	RxNorm	Branded Drug	1658040
+22426	Congenital macrostomia	Condition	SNOMED	Clinical Finding	40159009
+78233	Old medial collateral ligament disruption	Condition	SNOMED	Clinical Finding	202109007
+134137	Osteomyelitis of multiple sites	Condition	SNOMED	Clinical Finding	91538002
+136205	Chronic osteomyelitis of upper arm	Condition	SNOMED	Clinical Finding	203185005
+136639	Primary malignant neoplasm of sphenoidal sinus	Condition	SNOMED	Clinical Finding	94067008
+136937	Benign neoplasm of endocrine gland	Condition	SNOMED	Clinical Finding	92085000
+192496	Unilateral traumatic amputation of leg below knee with complication	Observation	SNOMED	Clinical Finding	72375002
+192581	Carcinoma in situ of uterus	Condition	SNOMED	Clinical Finding	92788005
+196182	Obstructed labor caused by pelvic soft tissues - delivered	Condition	SNOMED	Clinical Finding	199769001
+374941	Retained foreign body of eyelid	Condition	SNOMED	Clinical Finding	25012008
+375838	Objective tinnitus	Condition	SNOMED	Clinical Finding	28715001
+376424	Monocular esotropia with A pattern	Condition	SNOMED	Clinical Finding	58409000
+377568	Nystagmus associated with disorder of the vestibular system	Condition	SNOMED	Clinical Finding	46888001
+432764	Intracranial hemorrhage following injury without open intracranial wound AND with prolonged loss of consciousness (more than 24 hours) without return to pre-existing level	Condition	SNOMED	Clinical Finding	1430001
+433146	Blastomycosis	Condition	SNOMED	Clinical Finding	69996000
+434672	Microgenia	Condition	SNOMED	Clinical Finding	109522008
+435219	Schizophrenia in remission	Condition	SNOMED	Clinical Finding	4926007
+439134	Acrocephalosyndactyly	Condition	SNOMED	Clinical Finding	268262006
+439704	Residual disintegrative psychoses	Condition	SNOMED	Clinical Finding	191693002
+440226	Sacrum sprain	Condition	SNOMED	Clinical Finding	209566009
+778325	Imipramine pamoate 150 MG Oral Capsule	Drug	RxNorm	Clinical Drug	835577
+919840	Arnica extract 200 MG/ML Topical Solution	Drug	RxNorm	Clinical Drug	244615
+952004	sevelamer	Drug	RxNorm	Ingredient	214824
+960953	Aloe Extract 25 MG Oral Capsule	Drug	RxNorm	Clinical Drug	359152
+963353	Glycopyrrolate	Drug	RxNorm	Ingredient	4955
+979098	Zinc Acetate 50 MG Oral Capsule	Drug	RxNorm	Clinical Drug	199995
+1326594	Pulmonary hypertension due to left heart disease	Condition	ICD10CM	5-char billing code	I27.22
+1340128	Captopril	Drug	RxNorm	Ingredient	1998
+1398056	ST. JOHN'S WORT EXTRACT 150 MG Oral Tablet	Drug	RxNorm	Clinical Drug	252712
+1510207	miglitol 50 MG Oral Tablet [Glyset]	Drug	RxNorm	Branded Drug	213486
+1510208	miglitol 100 MG Oral Tablet [Glyset]	Drug	RxNorm	Branded Drug	213487
+1585150	0.25 ML Somatropin 3.2 MG/ML Prefilled Syringe [Genotropin]	Drug	RxNorm	Quant Branded Drug	762843
+1701957	Activated Charcoal 260 MG Oral Capsule	Drug	RxNorm	Clinical Drug	237836
+1753747	Albendazole 200 MG Oral Tablet	Drug	RxNorm	Clinical Drug	199672
+2000190	Injection of anesthetic into spinal canal for analgesia	Procedure	ICD9Proc	4-dig billing code	03.91
+2000237	Removal of peripheral neurostimulator lead(s)	Procedure	ICD9Proc	4-dig billing code	04.93
+2000393	Reconstruction of eyelid involving lid margin, full-thickness	Procedure	ICD9Proc	4-dig billing code	08.73
+2000412	Biopsy of lacrimal gland	Procedure	ICD9Proc	4-dig billing code	09.11
+2000544	Other scleral fistulization with iridectomy	Procedure	ICD9Proc	4-dig billing code	12.65
+2000890	Stapedectomy with incus replacement	Procedure	ICD9Proc	4-dig billing code	19.11
+2000962	Excision of lesion of middle ear	Procedure	ICD9Proc	4-dig billing code	20.51
+2001216	Other skin graft to lip and mouth	Procedure	ICD9Proc	4-dig billing code	27.56
+2001318	Other operations on larynx	Procedure	ICD9Proc	4-dig billing code	31.98
+2002350	Autologous bone marrow transplant without purging	Procedure	ICD9Proc	4-dig billing code	41.01
+2002842	Repair of pericolostomy hernia	Procedure	ICD9Proc	4-dig billing code	46.42
+2003872	Closure of other fistula of urethra	Procedure	ICD9Proc	4-dig billing code	58.43
+2005864	Refusion of other cervical spine, posterior column, posterior technique	Procedure	ICD9Proc	4-dig billing code	81.33
+2006633	Other contrast radiogram of brain and skull	Procedure	ICD9Proc	4-dig billing code	87.02
+2007589	Spinal traction using skull device	Procedure	ICD9Proc	4-dig billing code	93.41
+2008394	Ultraviolet light therapy	Procedure	ICD9Proc	4-dig billing code	99.82
+2101037	Anesthesia for lithotripsy, extracorporeal shock wave; with water bath	Procedure	CPT4	CPT4	00872
+2103379	Division of scalenus anticus; with resection of cervical rib	Procedure	CPT4	CPT4	21705
+2104477	Excision flexor tendon, with implantation of synthetic rod for delayed tendon graft, hand or finger, each rod	Procedure	CPT4	CPT4	26390
+2104514	Tenolysis, complex, extensor tendon, finger, including forearm, each tendon	Procedure	CPT4	CPT4	26449
+2105024	Removal of foreign body, deep, thigh region or knee area	Procedure	CPT4	CPT4	27372
+2105244	Arthrotomy, ankle, including exploration, drainage, or removal of foreign body	Procedure	CPT4	CPT4	27610
+2106261	Repair fistula; oromaxillary (combine with 31030 if antrotomy is included)	Procedure	CPT4	CPT4	30580
+2107095	Repair of cardiac wound; without bypass	Procedure	CPT4	CPT4	33300
+2107599	Open brachial artery exposure to assist in the deployment of aortic or iliac endovascular prosthesis by arm incision, unilateral	Procedure	CPT4	CPT4	34834
+2108164	Therapeutic apheresis; with extracorporeal immunoadsorption and plasma reinfusion	Procedure	CPT4	CPT4	36515
+2109148	Incision and drainage of deep supralevator, pelvirectal, or retrorectal abscess	Procedure	CPT4	CPT4	45020
+2109186	Sigmoidoscopy, flexible; with decompression (for pathologic distention) (eg, volvulus, megacolon), including placement of decompression tube, when performed	Procedure	CPT4	CPT4	45337
+2109386	Anastomosis, of intrahepatic ducts and gastrointestinal tract	Procedure	CPT4	CPT4	47765
+2109822	Transurethral incision of prostate	Procedure	CPT4	CPT4	52450
+2110497	Transtemporal approach to posterior cranial fossa, jugular foramen or midline skull base, including mastoidectomy, decompression of sigmoid sinus and/or facial nerve, with or without mobilization	Procedure	CPT4	CPT4	61595
+2110517	Transcatheter permanent occlusion or embolization (eg, for tumor destruction, to achieve hemostasis, to occlude a vascular malformation), percutaneous, any method; central nervous system (intracranial, spinal cord)	Procedure	CPT4	CPT4	61624
+2110843	Excision of neuroma; cutaneous nerve, surgically identifiable	Procedure	CPT4	CPT4	64774
+2110959	Paracentesis of anterior chamber of eye (separate procedure); with removal of blood, with or without irrigation and/or air injection	Procedure	CPT4	CPT4	65815
+2111122	Repair of ectropion; excision tarsal wedge	Procedure	CPT4	CPT4	67916
+2213586	End-stage renal disease (ESRD) related services monthly, for patients 12-19 years of age to include monitoring for the adequacy of nutrition, assessment of growth and development, and counseling of parents; with 1 face-to-face visit by a physician or othe	Observation	CPT4	CPT4	90959
+2313754	Hearing aid examination and selection; binaural	Procedure	CPT4	CPT4	92591
+2314142	Central motor evoked potential study (transcranial motor stimulation); upper limbs	Procedure	CPT4	CPT4	95928
+2514471	Domiciliary or rest home visit for the evaluation and management of a new patient, which requires these 3 key components: An expanded problem focused history; An expanded problem focused examination; and Medical decision making of low complexity. Counseli	Procedure	CPT4	CPT4	99325
+2726778	Supplement Tricuspid Valve with Synthetic Substitute, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	02UJ3JZ
+2726785	Supplement Right Ventricle with Zooplastic Tissue, Open Approach	Procedure	ICD10PCS	ICD10PCS	02UK08Z
+2726804	Repair Right Pulmonary Artery, Open Approach	Procedure	ICD10PCS	ICD10PCS	02QQ0ZZ
+2726866	Replacement of Aortic Valve with Nonautologous Tissue Substitute, Open Approach	Procedure	ICD10PCS	ICD10PCS	02RF0KZ
+2728538	Extirpation of Matter from Right Internal Carotid Artery, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	03CK3ZZ
+2734529	Excision of Portal Vein, Open Approach	Procedure	ICD10PCS	ICD10PCS	06B80ZZ
+2742025	Excision of Left Sphenoid Sinus, Percutaneous Endoscopic Approach	Procedure	ICD10PCS	ICD10PCS	09BX4ZZ
+2745049	Drainage of Right Maxillary Sinus, Percutaneous Endoscopic Approach	Procedure	ICD10PCS	ICD10PCS	099Q4ZZ
+2749316	Drainage of Stomach with Drainage Device, Via Natural or Artificial Opening Endoscopic	Procedure	ICD10PCS	ICD10PCS	0D9680Z
+2750970	Extirpation of Matter from Left Hepatic Duct, Via Natural or Artificial Opening Endoscopic	Procedure	ICD10PCS	ICD10PCS	0FC68ZZ
+2753374	Resection of Left Large Intestine, Open Approach	Procedure	ICD10PCS	ICD10PCS	0DTG0ZZ
+2757450	Transfer Facial Muscle with Skin and Subcutaneous Tissue, Open Approach	Procedure	ICD10PCS	ICD10PCS	0KX10Z2
+2757917	Release Left Hip Tendon, Open Approach	Procedure	ICD10PCS	ICD10PCS	0LNK0ZZ
+2762698	Excision of Lumbar Vertebra, Percutaneous Approach, Diagnostic	Procedure	ICD10PCS	ICD10PCS	0QB03ZX
+2767774	Fusion of Thoracic Vertebral Joint with Interbody Fusion Device, Posterior Approach, Anterior Column, Open Approach	Procedure	ICD10PCS	ICD10PCS	0RG60AJ
+2773151	Removal of Synthetic Substitute from Right Shoulder Joint, Open Approach	Procedure	ICD10PCS	ICD10PCS	0RPJ0JZ
+2774089	Replacement of Left Hip Joint with Ceramic on Polyethylene Synthetic Substitute, Cemented, Open Approach	Procedure	ICD10PCS	ICD10PCS	0SRB049
+2779555	Drainage of Pericardial Cavity, Percutaneous Approach, Diagnostic	Procedure	ICD10PCS	ICD10PCS	0W9D3ZX
+2780144	Excision of Cervix, Via Natural or Artificial Opening, Diagnostic	Procedure	ICD10PCS	ICD10PCS	0UBC7ZX
+2780252	Repair Penis, Open Approach	Procedure	ICD10PCS	ICD10PCS	0VQS0ZZ
+2781143	Occlusion of Bilateral Fallopian Tubes with Extraluminal Device, Open Approach	Procedure	ICD10PCS	ICD10PCS	0UL70CZ
+2782399	Repair Right Hand, External Approach	Procedure	ICD10PCS	ICD10PCS	0XQJXZZ
+2784502	Detachment at Left 4th Toe, Complete, Open Approach	Procedure	ICD10PCS	ICD10PCS	0Y6W0Z0
+2784568	Extraction of Products of Conception, Mid Forceps, Via Natural or Artificial Opening	Procedure	ICD10PCS	ICD10PCS	10D07Z4
+2784637	Supplement Chest Wall with Synthetic Substitute, Open Approach	Procedure	ICD10PCS	ICD10PCS	0WU80JZ
+2787055	Measurement of Products of Conception, Cardiac Rhythm, External Approach	Procedure	ICD10PCS	ICD10PCS	4A0HXFZ
+2788925	Transfusion of Nonautologous Hematopoietic Stem Cells into Peripheral Vein, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS Hierarchy	30233Y1
+2793378	Planar Nuclear Medicine Imaging of Right and Left Heart using Technetium 99m (Tc-99m)	Procedure	ICD10PCS	ICD10PCS	C2161ZZ
+4003191	Closed fracture of alveolar ridge of maxilla	Condition	SNOMED	Clinical Finding	110021005
+4050834	Insect bite, nonvenomous, of breast	Condition	SNOMED	Clinical Finding	211105005
+4071202	Neonatal hypertension	Condition	SNOMED	Clinical Finding	206596003
+4091474	Malignant neoplasm of myometrium of corpus uteri	Condition	SNOMED	Clinical Finding	188193007
+4091486	Malignant neoplasm of overlapping lesion of urinary organs	Condition	SNOMED	Clinical Finding	188256008
+4109624	Embryonic cyst of broad ligament	Condition	SNOMED	Clinical Finding	253826001
+4113305	Midline fissured, notched and cleft nose	Condition	SNOMED	Clinical Finding	253735004
+4149398	Congenital renal failure	Condition	SNOMED	Clinical Finding	268854008
+4155198	Puncture wound of great toe	Condition	SNOMED	Clinical Finding	283541001
+4173459	Methylmalonic acidemia	Condition	SNOMED	Clinical Finding	42393006
+4197765	Bacterial arthritis of hip	Condition	SNOMED	Clinical Finding	431606003
+4208028	Injury of median nerve distal to forearm	Condition	SNOMED	Clinical Finding	439072001
+4212994	Extranodal NK/T-cell lymphoma, nasal type	Condition	SNOMED	Clinical Finding	414166008
+4219370	Hyperostosis interna frontalis	Condition	SNOMED	Clinical Finding	82054006
+4284702	Epidermolysis bullosa simplex	Condition	SNOMED	Clinical Finding	67144006
+4311405	Biopsy	Procedure	SNOMED	Procedure	86273004
+4330794	Alcohol intake exceeds recommended daily limit	Observation	SNOMED	Clinical Finding	429775004
+4344398	Wrist pyogenic arthritis	Condition	SNOMED	Clinical Finding	239778009
+19019135	Magnesium Aspartate 615 MG Delayed Release Oral Tablet	Drug	RxNorm	Clinical Drug	359739
+19025637	Secobarbital 100 MG Oral Capsule [Seconal Sodium]	Drug	RxNorm	Branded Drug	201625
+19027669	20 ML Zidovudine 10 MG/ML Injection	Drug	RxNorm	Quant Clinical Drug	204534
+19028907	efavirenz 200 MG Oral Capsule	Drug	RxNorm	Clinical Drug	205290
+19032995	hydroquinone 40 MG/ML Topical Cream [Melpaque HP]	Drug	RxNorm	Branded Drug	206614
+19033492	Lomustine 10 MG Oral Capsule [CeeNU]	Drug	RxNorm	Branded Drug	206794
+19040307	Lovastatin 10 MG Oral Tablet [Mevacor]	Drug	RxNorm	Branded Drug	209013
+19045723	Lactobacillus acidophilus 5000000 ORGANISMS Oral Capsule [Bacid]	Drug	RxNorm	Branded Drug	211029
+19061825	GARLIC POWDER 200 MG Oral Tablet	Drug	RxNorm	Clinical Drug	249607
+19102186	Risperidone 37.5 MG Injection	Drug	RxNorm	Clinical Drug	402011
+19133745	phytosterol esters 500 MG Oral Capsule	Drug	RxNorm	Clinical Drug	832876
+40161303	Menthol 0.03 MG/MG / methyl salicylate 0.1 MG/MG Medicated Patch [Salonpas Pain Relief Patch]	Drug	RxNorm	Branded Drug	853149
+40162658	Amitriptyline Hydrochloride 10 MG / Perphenazine 2 MG Oral Tablet	Drug	RxNorm	Clinical Drug	856706
+40169359	Acitretin 17.5 MG Oral Capsule [Soriatane]	Drug	RxNorm	Branded Drug	894861
+40169987	Morphine Sulfate 30 MG Extended Release Oral Capsule [Kadian]	Drug	RxNorm	Branded Drug	892658
+40184415	Homatropine hydrobromide 20 MG/ML Ophthalmic Solution [Isopto Homatropine]	Drug	RxNorm	Branded Drug	992749
+40185056	Methamphetamine Hydrochloride 5 MG Oral Tablet	Drug	RxNorm	Clinical Drug	977860
+40235418	Allantoin 5 MG/ML Topical Lotion	Drug	RxNorm	Clinical Drug	1087954
+40238324	Guaifenesin 50 MG/ML / Pseudoephedrine Hydrochloride 7.5 MG/ML Oral Solution [Tusnel Pediatric]	Drug	RxNorm	Branded Drug	1099636
+40239250	Monobasic potassium phosphate 0.0408 MEQ/ML Oral Solution	Drug	RxNorm	Clinical Drug	1101775
+40664657	Patient not discharged to home by post-operative day #2 following cea	Observation	HCPCS	HCPCS	G8838
+42628676	Laryngoplasty, medialization, unilateral	Procedure	CPT4	CPT4	31591
+42708584	Ascorbic Acid 60 MG / Hyaluronic Acid 20 MG Oral Capsule	Drug	RxNorm	Clinical Drug	1246831
+42708739	24 HR tramadol hydrochloride 150 MG Extended Release Oral Capsule	Drug	RxNorm	Quant Clinical Drug	1248115
+42708748	Docusate Sodium 40 MG / Ferrous fumarate 150 MG Extended Release Oral Tablet	Drug	RxNorm	Clinical Drug	1248127
+42902466	Nitroglycerin 0.2 MG/HR Transdermal System [Minitran]	Drug	RxNorm	Branded Drug	1359579
+42903277	Estradiol 0.00104 MG/HR Transdermal System [Alora]	Drug	RxNorm	Branded Drug	1360390
+43013207	{21 (Ethinyl Estradiol 0.03 MG / Levonorgestrel 0.15 MG Oral Tablet) / 7 (Inert Ingredients 1 MG Oral Tablet) } Pack [Chateal 28 Day]	Drug	RxNorm	Branded Pack	1364848
+43533373	Assistive listening device, personal blue tooth fm/dm receiver	Device	HCPCS	HCPCS	V5286
+44784856	Lutein 45 MG / zeaxanthin 1.8 MG Oral Capsule	Drug	RxNorm	Clinical Drug	1483683
+45763849	Catheter-associated urinary tract infection	Condition	SNOMED	Clinical Finding	700372006
+45767635	Closed fracture of anterior wall of acetabulum	Condition	SNOMED	Clinical Finding	705104001
+45772704	Open fracture of distal phalanx of little finger	Condition	SNOMED	Clinical Finding	704185005
+46269878	Abscess of intestine co-occurrent and due to Crohn's disease of small and large intestine	Condition	SNOMED	Clinical Finding	1085801000119106
+46271391	Fusion of thoracic spine	Procedure	SNOMED	Procedure	709504001
+46274073	Abscess of intestine co-occurrent and due to Crohn's disease of large intestine	Condition	SNOMED	Clinical Finding	1085751000119100
+46276279	diphtheria toxoid vaccine, inactivated 4 UNT/ML / tetanus toxoid vaccine, inactivated 10 UNT/ML Injection	Drug	RxNorm	Clinical Drug	1657594
+46287384	200 ML Ciprofloxacin 2 MG/ML Injection	Drug	RxNorm	Quant Clinical Drug	1665212
+72988	Pyogenic arthritis of hand	Condition	SNOMED	Clinical Finding	61112000
+78506	Kashin-Beck disease of multiple sites	Condition	SNOMED	Clinical Finding	201929006
+78621	Crushing injury of knee	Condition	SNOMED	Clinical Finding	38128008
+135654	Macrodactylia of toes	Condition	SNOMED	Clinical Finding	4136000
+141944	Acute osteomyelitis of humerus	Condition	SNOMED	Clinical Finding	203164005
+192369	Old laceration of cervix	Condition	SNOMED	Clinical Finding	65370002
+192681	Prostatic intraepithelial neoplasia	Condition	SNOMED	Clinical Finding	254901000
+193591	Meconium ileus	Condition	SNOMED	Clinical Finding	206523001
+194088	Hypertrophic elongation of cervix	Condition	SNOMED	Clinical Finding	198353000
+194989	Bilateral recurrent inguinal hernia with obstruction but no gangrene	Condition	SNOMED	Clinical Finding	73052009
+198645	Third degree burn of lower limb	Condition	SNOMED	Clinical Finding	55473001
+432556	Candidal meningitis	Condition	SNOMED	Clinical Finding	45021001
+434193	Closed traumatic dislocation of distal radioulnar joint of wrist	Condition	SNOMED	Clinical Finding	57467003
+434632	Kleptomania	Condition	SNOMED	Clinical Finding	69361009
+436072	Bipolar disorder in partial remission	Condition	SNOMED	Clinical Finding	5703000
+436407	Diffuse interstitial keratitis	Condition	SNOMED	Clinical Finding	17157001
+436859	Insect bite, nonvenomous, of shoulder and upper arm, infected	Condition	SNOMED	Clinical Finding	211220005
+436904	Herpes simplex eyelid dermatitis	Condition	SNOMED	Clinical Finding	186544000
+436906	Disease caused by rickettsiae	Condition	SNOMED	Clinical Finding	37246009
+439160	Open fracture of body of mandible	Condition	SNOMED	Clinical Finding	69425000
+439785	Moderate mixed bipolar I disorder	Condition	SNOMED	Clinical Finding	40926005
+440889	Late effect of injury to blood vessels of thorax, abdomen AND/OR pelvis	Condition	SNOMED	Clinical Finding	2053005
+440892	Toxic effect of isopropyl alcohol	Condition	SNOMED	Clinical Finding	212813006
+441087	Vulval and/or perineal hematoma during delivery - delivered	Condition	SNOMED	Clinical Finding	199944006
+442334	Synovitis AND/OR tenosynovitis associated with another disease	Condition	SNOMED	Clinical Finding	4248008
+713924	24 HR ropinirole 12 MG Extended Release Oral Tablet [Requip]	Drug	RxNorm	Quant Branded Drug	824961
+901656	Menthol	Drug	RxNorm	Ingredient	6750
+915831	isopropyl unoprostone 1.5 MG/ML Ophthalmic Solution [Eescula]	Drug	RxNorm	Branded Drug	284449
+917380	Desoximetasone 0.0025 MG/MG Topical Ointment [Topicort]	Drug	RxNorm	Branded Drug	94348
+941472	terconazole	Drug	RxNorm	Ingredient	37806
+950313	Lactase 9000 UNT Oral Tablet [Lactaid]	Drug	RxNorm	Branded Drug	795817
+993230	Calcium Carbonate 550 MG / Magnesium Hydroxide 110 MG Chewable Tablet	Drug	RxNorm	Clinical Drug	242623
+1237050	Theophylline 100 MG Oral Capsule	Drug	RxNorm	Clinical Drug	198255
+1326501	Cocaine abuse, in remission	Condition	ICD10CM	5-char billing code	F14.11
+1436678	Tamoxifen	Drug	RxNorm	Ingredient	10324
+1518135	24 HR Lovastatin 20 MG / Niacin 500 MG Extended Release Oral Tablet [Advicor]	Drug	RxNorm	Quant Branded Drug	791838
+1750728	24 HR Clarithromycin 500 MG Extended Release Oral Tablet	Drug	RxNorm	Quant Clinical Drug	359385
+1759372	Pyrantel 50 MG/ML Oral Suspension	Drug	RxNorm	Clinical Drug	312733
+1799160	Oseltamivir 45 MG Oral Capsule	Drug	RxNorm	Clinical Drug	728113
+1836950	Tetracycline 100 MG Oral Capsule	Drug	RxNorm	Clinical Drug	198249
+2000011	Implantation of chemotherapeutic agent	Procedure	ICD9Proc	4-dig billing code	00.10
+2000253	Injection of neurolytic agent into sympathetic nerve	Procedure	ICD9Proc	4-dig billing code	05.32
+2000525	Other iridoplasty	Procedure	ICD9Proc	4-dig billing code	12.39
+2000841	Endoscopic robotic assisted procedure	Procedure	ICD9Proc	4-dig billing code	17.44
+2001114	Other operations on nasal sinuses	Procedure	ICD9Proc	3-dig billing code	22.9
+2001424	Suture of laceration of diaphragm	Procedure	ICD9Proc	4-dig billing code	34.82
+2001567	Implant of single ventricular (extracorporeal) external heart assist system	Procedure	ICD9Proc	4-dig billing code	37.65
+2003251	Other incision of other bile duct	Procedure	ICD9Proc	4-dig billing code	51.59
+2004050	Open biopsy of testis	Procedure	ICD9Proc	4-dig billing code	62.12
+2004409	Transabdominal cerclage of cervix	Procedure	ICD9Proc	4-dig billing code	67.51
+2004868	Biopsy of facial bone	Procedure	ICD9Proc	4-dig billing code	76.11
+2005297	Internal fixation of bone without fracture reduction, radius and ulna	Procedure	ICD9Proc	4-dig billing code	78.53
+2005770	Other excision of joint, elbow	Procedure	ICD9Proc	4-dig billing code	80.92
+2006613	Insertion of tissue expander	Procedure	ICD9Proc	4-dig billing code	86.93
+2007803	Combined alcohol and drug detoxification	Procedure	ICD9Proc	4-dig billing code	94.68
+2008105	Removal of other device from digestive system	Procedure	ICD9Proc	4-dig billing code	97.59
+2008155	Removal of packing from trunk, not elsewhere classified	Procedure	ICD9Proc	4-dig billing code	97.85
+2008181	Removal of intraluminal foreign body from larynx without incision	Procedure	ICD9Proc	4-dig billing code	98.14
+2100895	Anesthesia for procedures on the thoracic spine and cord, via an anterior transthoracic approach; not utilizing 1 lung ventilation	Procedure	CPT4	CPT4	00625
+2101669	Anesthesia for procedures on arteries of knee and popliteal area; not otherwise specified	Procedure	CPT4	CPT4	01440
+2101715	Anesthesia for procedures on arteries of shoulder and axilla; not otherwise specified	Procedure	CPT4	CPT4	01650
+2102053	Excision, malignant lesion including margins, scalp, neck, hands, feet, genitalia; excised diameter 0.6 to 1.0 cm	Procedure	CPT4	CPT4	11621
+2102938	Application of multiplane (pins or wires in more than 1 plane), unilateral, external fixation with stereotactic computer-assisted adjustment (eg, spatial frame), including imaging; initial and subsequent alignment(s), assessment(s), and computation(s) of 	Procedure	CPT4	CPT4	20696
+2103074	Impression and custom preparation; mandibular resection prosthesis	Procedure	CPT4	CPT4	21081
+2103158	Reconstruction of mandibular rami and/or body, sagittal split; without internal rigid fixation	Procedure	CPT4	CPT4	21195
+2103172	Osteotomy, maxilla, segmental (eg, Wassmund or Schuchard)	Procedure	CPT4	CPT4	21206
+2103980	Open treatment of humeral supracondylar or transcondylar fracture, includes internal fixation, when performed; with intercondylar extension	Procedure	CPT4	CPT4	24546
+2104653	Open treatment of carpometacarpal fracture dislocation, thumb (Bennett fracture), includes internal fixation, when performed	Procedure	CPT4	CPT4	26665
+2107308	AJCC Breast Cancer Stage 0 documented (ONC)	Observation	CPT4	CPT4	3370F
+2107714	Repair blood vessel, direct; intrathoracic, with bypass	Procedure	CPT4	CPT4	35211
+2108744	Palatoplasty for cleft palate; attachment pharyngeal flap	Procedure	CPT4	CPT4	42225
+2109347	Cholecystotomy or cholecystostomy, open, with exploration, drainage, or removal of calculus (separate procedure)	Procedure	CPT4	CPT4	47480
+2109902	Destruction of lesion(s), penis (eg, condyloma, papilloma, molluscum contagiosum, herpetic vesicle), simple; cryosurgery	Procedure	CPT4	CPT4	54056
+2110016	Excision of lesion of spermatic cord (separate procedure)	Procedure	CPT4	CPT4	55520
+2110220	Laparoscopy, surgical, with vaginal hysterectomy, for uterus greater than 250 g; with removal of tube(s) and/or ovary(s)	Procedure	CPT4	CPT4	58554
+2110338	Uterine evacuation and curettage for hydatidiform mole	Procedure	CPT4	CPT4	59870
+2110389	Thymectomy, partial or total; sternal split or transthoracic approach, with radical mediastinal dissection (separate procedure)	Procedure	CPT4	CPT4	60522
+2110396	Unlisted procedure, endocrine system	Procedure	CPT4	CPT4	60699
+2110600	Replacement or revision of cerebrospinal fluid shunt, obstructed valve, or distal catheter in shunt system	Procedure	CPT4	CPT4	62230
+2110762	Injection, anesthetic agent; sciatic nerve, continuous infusion by catheter (including catheter placement)	Procedure	CPT4	CPT4	64446
+2212512	Phenylalanine (PKU), blood	Measurement	CPT4	CPT4	84030
+2313782	Assessment of tinnitus (includes pitch, loudness matching, and masking)	Procedure	CPT4	CPT4	92625
+2725039	Bypass Right Ventricle to Pulmonary Trunk with Nonautologous Tissue Substitute, Open Approach	Procedure	ICD10PCS	ICD10PCS	021K0KP
+2725202	Destruction of Right Atrium, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	02563ZZ
+2726159	Repair Aortic Valve, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	02QF3ZZ
+2726609	Supplement Left Pulmonary Artery with Zooplastic Tissue, Open Approach	Procedure	ICD10PCS	ICD10PCS	02UR08Z
+2726656	Supplement Thoracic Aorta, Descending with Autologous Tissue Substitute, Open Approach	Procedure	ICD10PCS	ICD10PCS	02UW07Z
+2727637	Bypass Left Common Carotid Artery to Left Extracranial Artery with Synthetic Substitute, Open Approach	Procedure	ICD10PCS	ICD10PCS	031J0JK
+2729539	Reposition Left Temporal Artery, Open Approach	Procedure	ICD10PCS	ICD10PCS	03ST0ZZ
+2733882	Insertion of Infusion Device into Left Basilic Vein, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	05HC33Z
+2742076	Destruction of Right Pleura, Percutaneous Endoscopic Approach	Procedure	ICD10PCS	ICD10PCS	0B5N4ZZ
+2749025	Division of Esophagogastric Junction, Percutaneous Endoscopic Approach	Procedure	ICD10PCS	ICD10PCS	0D844ZZ
+2750461	Drainage of Pancreas with Drainage Device, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	0F9G30Z
+2750466	Drainage of Pancreas, Percutaneous Endoscopic Approach	Procedure	ICD10PCS	ICD10PCS	0F9G4ZZ
+2750473	Excision of Liver, Percutaneous Endoscopic Approach	Procedure	ICD10PCS	ICD10PCS	0FB04ZZ
+2750564	Drainage of Face Skin, External Approach	Procedure	ICD10PCS	ICD10PCS	0H91XZZ
+2750729	Excision of Ampulla of Vater, Via Natural or Artificial Opening Endoscopic, Diagnostic	Procedure	ICD10PCS	ICD10PCS	0FBC8ZX
+2750819	Drainage of Left Foot Skin, External Approach	Procedure	ICD10PCS	ICD10PCS	0H9NXZZ
+2753719	Destruction of Liver, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	0F503ZZ
+2755610	Release Right Abdomen Muscle, Open Approach	Procedure	ICD10PCS	ICD10PCS	0KNK0ZZ
+2756306	Extraction of Left Foot Subcutaneous Tissue and Fascia, Open Approach	Procedure	ICD10PCS	ICD10PCS	0JDR0ZZ
+2760065	Excision of Left Temporal Bone, Open Approach	Procedure	ICD10PCS	ICD10PCS	0NB60ZZ
+2760881	Excision of Right Lower Leg Tendon, Open Approach	Procedure	ICD10PCS	ICD10PCS	0LBN0ZZ
+2766033	Excision of Thoracic Vertebral Disc, Open Approach	Procedure	ICD10PCS	ICD10PCS	0RB90ZZ
+2768215	Reposition Lumbar Vertebra with Internal Fixation Device, Open Approach	Procedure	ICD10PCS	ICD10PCS	0QS004Z
+2768682	Reposition Right Femoral Shaft with Internal Fixation Device, Open Approach	Procedure	ICD10PCS	ICD10PCS	0QS804Z
+2770309	Drainage of Right Ankle Joint, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	0S9F3ZZ
+2771712	Replacement of Left Elbow Joint with Synthetic Substitute, Open Approach	Procedure	ICD10PCS	ICD10PCS	0RRM0JZ
+2774355	Replacement of Right Hip Joint, Femoral Surface with Synthetic Substitute, Open Approach	Procedure	ICD10PCS	ICD10PCS	0SRR0JZ
+2776776	Resection of Bladder, Percutaneous Endoscopic Approach	Procedure	ICD10PCS	ICD10PCS	0TTB4ZZ
+2777821	Inspection of Pericardial Cavity, Open Approach	Procedure	ICD10PCS	ICD10PCS	0WJD0ZZ
+2780494	Resection of Right Testis, Open Approach	Procedure	ICD10PCS	ICD10PCS	0VT90ZZ
+2780609	Extirpation of Matter from Uterus, Via Natural or Artificial Opening	Procedure	ICD10PCS	ICD10PCS	0UC97ZZ
+2780646	Extraction of Endometrium, Via Natural or Artificial Opening	Procedure	ICD10PCS	ICD10PCS	0UDB7ZZ
+2781390	Release Uterine Supporting Structure, Percutaneous Endoscopic Approach	Procedure	ICD10PCS	ICD10PCS	0UN44ZZ
+2784255	Detachment at Left Lower Leg, High, Open Approach	Procedure	ICD10PCS	ICD10PCS	0Y6J0Z1
+2789572	Plain Radiography of Single Coronary Artery Bypass Graft using Other Contrast	Procedure	ICD10PCS	ICD10PCS	B202YZZ
+2791489	Magnetic Resonance Imaging (MRI) of Thoracic Spine using Other Contrast	Procedure	ICD10PCS	ICD10PCS	BR37YZZ
+2791490	Magnetic Resonance Imaging (MRI) of Thoracic Spine	Procedure	ICD10PCS	ICD10PCS	BR37ZZZ
+2794692	Feeding/Eating Treatment	Procedure	ICD10PCS	ICD10PCS	F08Z3ZZ
+2809385	Dilation of Right Femoral Artery using Drug-Coated Balloon, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	047K3Z1
+4003136	Hand and wrist flexor tendon rupture	Condition	SNOMED	Clinical Finding	202962001
+4003684	Overlapping malignant neoplasm of male breast	Condition	SNOMED	Clinical Finding	109887009
+4011654	Closed fracture axis, odontoid process	Condition	SNOMED	Clinical Finding	207897005
+4015842	Viral hepatitis carrier	Condition	SNOMED	Clinical Finding	170489004
+4028933	Adrenomedullary hyperplasia	Condition	SNOMED	Clinical Finding	237781008
+4030752	Asphyxiation by hanging	Observation	SNOMED	Clinical Finding	129674006
+4042407	Congenital occlusion of ureter	Condition	SNOMED	Clinical Finding	16619007
+4052026	Drinker of hard liquor	Observation	SNOMED	Clinical Finding	160588008
+4054877	Injury of nerves and spinal cord at thorax level	Condition	SNOMED	Clinical Finding	212357003
+4069806	Abnormal blue sclerae	Condition	SNOMED	Clinical Finding	204164000
+4092994	Intestinal strongyloidiasis	Condition	SNOMED	Clinical Finding	187174008
+4102177	Iris and ciliary body vascular disorder	Condition	SNOMED	Clinical Finding	193501009
+4107922	Old intraocular nonmagnetic foreign body in vitreous	Condition	SNOMED	Clinical Finding	193309007
+4115180	Fracture malunion - hand	Condition	SNOMED	Clinical Finding	287075005
+4115521	Post-traumatic gonarthrosis, bilateral	Condition	SNOMED	Clinical Finding	201858005
+4116731	Visuospatial agnosia	Condition	SNOMED	Clinical Finding	285758006
+4116805	Finding of measures of head circumference	Observation	SNOMED	Clinical Finding	301339005
+4154054	Born in Ghana	Observation	SNOMED	Clinical Finding	315432000
+4154061	Born in Kuwait	Observation	SNOMED	Clinical Finding	315459008
+4156115	Malignant neoplasm of endocrine gland	Condition	SNOMED	Clinical Finding	371982006
+4170460	Anal sphincter tear	Condition	SNOMED	Clinical Finding	275431006
+4195797	Bite wound of mouth	Condition	SNOMED	Clinical Finding	312655004
+4199964	Country of birth	Observation	SNOMED	Clinical Finding	315355003
+4213919	Rugby	Observation	SNOMED	Qualifier Value	415356001
+4225437	Occasional	Observation	SNOMED	Qualifier Value	84638005
+4227657	Diabetic skin ulcer	Condition	SNOMED	Clinical Finding	422183001
+4266330	Nodular fasciitis	Condition	SNOMED	Clinical Finding	400138001
+4272171	Uranostaphyloschisis	Condition	SNOMED	Clinical Finding	63567004
+4285734	Instability of joint	Condition	SNOMED	Clinical Finding	67374007
+4302652	Angioplasty of blood vessel	Procedure	SNOMED	Procedure	418285008
+4339410	Disorder of skeletal system	Condition	SNOMED	Clinical Finding	88230002
+19003680	Atenolol 0.5 MG/ML Injectable Solution	Drug	RxNorm	Clinical Drug	104308
+19008693	Benzoyl Peroxide 50 MG/ML Topical Lotion	Drug	RxNorm	Clinical Drug	106309
+19024263	Diazepam 5 MG/ML Injectable Solution [Valium]	Drug	RxNorm	Branded Drug	200938
+19025172	Methyldopa 500 MG Oral Tablet [Aldomet]	Drug	RxNorm	Branded Drug	201358
+19037833	Domperidone	Drug	RxNorm	Ingredient	3626
+19038183	Fluocinonide 0.0005 MG/MG Topical Ointment [Lidex]	Drug	RxNorm	Branded Drug	208323
+19039124	Benzoyl Peroxide 100 MG/ML Topical Lotion [Acne Medication]	Drug	RxNorm	Branded Drug	208634
+19059242	Sodium Chloride 650 MG Oral Tablet	Drug	RxNorm	Clinical Drug	244050
+19072387	Aldesleukin 22000000 UNT Injection	Drug	RxNorm	Clinical Drug	307816
+19074139	Benzoyl Peroxide 0.08 MG/MG Topical Gel	Drug	RxNorm	Clinical Drug	308697
+19076739	Doxercalciferol 0.0025 MG Oral Capsule	Drug	RxNorm	Clinical Drug	310023
+19080130	Loxapine 10 MG Oral Capsule	Drug	RxNorm	Clinical Drug	314078
+19102642	Pyrantel Pamoate 144 MG/ML Oral Suspension [Ascarel]	Drug	RxNorm	Branded Drug	404175
+19122675	Fenofibrate 160 MG Oral Tablet [Lofibra]	Drug	RxNorm	Branded Drug	603834
+19131976	Ibuprofen 100 MG Oral Tablet [Motrin]	Drug	RxNorm	Branded Drug	806013
+19133212	nebivolol 20 MG Oral Tablet	Drug	RxNorm	Clinical Drug	827073
+19133985	{25 (Prednisone 10 MG Oral Tablet) } Pack	Drug	RxNorm	Clinical Pack	834395
+35604230	imiglucerase 400 UNT Injection [Cerezyme]	Drug	RxNorm	Branded Drug	1726268
+36249107	obeticholic acid 5 MG Oral Tablet [Ocaliva]	Drug	RxNorm	Branded Drug	1798370
+40161410	Quinidine Sulfate 200 MG Oral Tablet	Drug	RxNorm	Clinical Drug	852877
+40162595	Acetaminophen 660 MG / Hydrocodone Bitartrate 10 MG Oral Tablet [Vicodin]	Drug	RxNorm	Branded Drug	856912
+40165703	Fenoprofen 400 MG Oral Capsule	Drug	RxNorm	Clinical Drug	858116
+40166818	24 HR Hydrochlorothiazide 12.5 MG / metoprolol succinate 100 MG Extended Release Oral Tablet [Dutoprol]	Drug	RxNorm	Quant Branded Drug	866455
+40168370	Glyburide 3 MG Oral Tablet [Glynase]	Drug	RxNorm	Branded Drug	881409
+40223450	Clozapine 200 MG Disintegrating Oral Tablet	Drug	RxNorm	Clinical Drug	996921
+40223888	Miconazole Nitrate 0.02 MG/MG Powder Spray [Desenex]	Drug	RxNorm	Branded Drug	998479
+40224603	Sulfacetamide Sodium 100 MG/ML / Sulfur 50 MG/ML Medicated Pad [Prascion]	Drug	RxNorm	Branded Drug	1005829
+40233213	240 ACTUAT Triamcinolone Acetonide 0.075 MG/ACTUAT Metered Dose Inhaler [Azmacort]	Drug	RxNorm	Quant Branded Drug	1085807
+40233752	Petrolatum 0.715 MG/MG Topical Ointment [Critic-Aid Clear Moisture]	Drug	RxNorm	Branded Drug	1053000
+40238073	calcium acetate 133 MG/ML Oral Solution	Drug	RxNorm	Clinical Drug	1099804
+40239545	24 HR desloratadine 5 MG / Pseudoephedrine sulfate 240 MG Extended Release Oral Tablet	Drug	RxNorm	Quant Clinical Drug	1112258
+40241020	Menthol 100 MG/ML / methyl salicylate 150 MG/ML Topical Cream [Bengay Greaseless]	Drug	RxNorm	Branded Drug	1114464
+40243816	Glycerin 2800 MG Enema [Pedia-Lax Liquid Glycerin Suppositories]	Drug	RxNorm	Branded Drug	1190433
+40481620	Infective arthritis of ankle and/or foot	Condition	SNOMED	Clinical Finding	444999002
+40756841	Excision, tumor or vascular malformation, soft tissue of hand or finger, subcutaneous; 1.5 cm or greater	Procedure	CPT4	CPT4	26111
+40757028	Endovascular repair of iliac artery bifurcation (eg, aneurysm, pseudoaneurysm, arteriovenous malformation, trauma, dissection) using bifurcated endograft from the common iliac artery into both the external and internal iliac artery, including all selectiv	Procedure	CPT4	CPT4	0254T
+42629361	25 ML doxorubicin hydrochloride liposome 2 MG/ML Injection	Drug	RxNorm	Quant Clinical Drug	1790127
+42709079	Undecylenic Acid 125 MG/ML Topical Solution	Drug	RxNorm	Clinical Drug	1251013
+42709128	Dextromethorphan Hydrobromide 2 MG/ML / Guaifenesin 20 MG/ML Oral Solution [Tusnel Diabetic]	Drug	RxNorm	Branded Drug	1251308
+42709996	Smokes tobacco daily	Observation	SNOMED	Clinical Finding	449868002
+42901852	perampanel 10 MG Oral Tablet	Drug	RxNorm	Clinical Drug	1356582
+42902703	Fluticasone propionate 0.23 MG/ACTUAT / salmeterol 0.021 MG/ACTUAT Metered Dose Inhaler	Drug	RxNorm	Clinical Drug	1359816
+43012428	12 HR Pseudoephedrine Hydrochloride 120 MG Extended Release Oral Capsule	Drug	RxNorm	Quant Clinical Drug	1367231
+43526488	1.5 ML cabazitaxel 40 MG/ML Injection [Jevtana]	Drug	RxNorm	Quant Branded Drug	1376084
+43526678	Chlorpheniramine Maleate 4 MG / Dextromethorphan Hydrobromide 30 MG Oral Tablet	Drug	RxNorm	Clinical Drug	1421985
+43527870	Bronchoscopy, rigid or flexible, including fluoroscopic guidance, when performed; with bronchial thermoplasty, 2 or more lobes	Procedure	CPT4	CPT4	31661
+44786590	Knee orthosis, adjustable knee joints (unicentric or polycentric), positional orthosis, rigid support, prefabricated, off-the shelf	Device	HCPCS	HCPCS	L1833
+44816436	Chemodenervation of trunk muscle(s); 6 or more muscles	Procedure	CPT4	CPT4	64647
+45757298	Pathological fracture of pelvis due to neoplastic disease	Condition	SNOMED	Clinical Finding	11307961000119106
+45757361	Mottled teeth	Condition	SNOMED	Clinical Finding	120541000119103
+45763788	Cicatricial ectropion of upper eyelid	Condition	SNOMED	Clinical Finding	700300002
+45774896	Phenylephrine Hydrochloride 0.0025 MG/MG / Shark liver oil 0.03 MG/MG Rectal Ointment	Drug	RxNorm	Clinical Drug	1545669
+46275127	heparin sodium, porcine 2500 UNT/ML Injection	Drug	RxNorm	Clinical Drug	1657987
+8551	UNKNOWN	Gender	Gender	Gender	U
+73609	Open fracture of clavicle	Condition	SNOMED	Clinical Finding	111637008
+73614	Closed fracture of seven ribs	Condition	SNOMED	Clinical Finding	20121009
+73854	Progressive myositis ossificans	Condition	SNOMED	Clinical Finding	82725007
+78314	Burn of thumb	Condition	SNOMED	Clinical Finding	64090007
+80553	Closed anterior dislocation of hip	Condition	SNOMED	Clinical Finding	111649009
+81939	Recurrent dislocation of joint	Condition	SNOMED	Clinical Finding	5137004
+135779	Iatrogenic thyroiditis	Condition	SNOMED	Clinical Finding	61556008
+136056	Chronic monocytic leukemia	Condition	SNOMED	Clinical Finding	188745007
+137519	Thyrotoxicosis from ectopic thyroid nodule with crisis	Condition	SNOMED	Clinical Finding	190256007
+139210	Burn erythema of back	Condition	SNOMED	Clinical Finding	9063003
+192291	Carcinoma in situ of intestinal tract	Condition	SNOMED	Clinical Finding	92617001
+192763	Injury of blood vessel	Condition	SNOMED	Clinical Finding	57662003
+193162	Carcinoma in situ of penis	Condition	SNOMED	Clinical Finding	92679008
+193344	Injury of lung with open wound into thorax	Condition	SNOMED	Clinical Finding	43842003
+194200	Laceration of kidney without open wound into abdominal cavity	Condition	SNOMED	Clinical Finding	74324004
+194307	Carcinoid tumor of intestine	Condition	SNOMED	Clinical Finding	276816003
+194598	Neoplasm of uncertain behavior of placenta	Condition	SNOMED	Clinical Finding	95005005
+199885	Acute female pelvic peritonitis	Condition	SNOMED	Clinical Finding	85051008
+200052	Primary malignant neoplasm of uterine adnexa	Condition	SNOMED	Clinical Finding	94126000
+255362	Congenital anomaly of bronchus	Condition	SNOMED	Clinical Finding	50943000
+319047	Necrosis of artery	Condition	SNOMED	Clinical Finding	7930004
+320456	Benign essential hypertension complicating pregnancy, childbirth and the puerperium - delivered with postnatal complication	Condition	SNOMED	Clinical Finding	198945003
+321367	Vascular lesions of cord - delivered	Condition	SNOMED	Clinical Finding	199900008
+373784	Acute allergic serous otitis media	Condition	SNOMED	Clinical Finding	59275002
+380412	Total ophthalmoplegia	Condition	SNOMED	Clinical Finding	78097002
+381288	Bullous retinoschisis	Condition	SNOMED	Clinical Finding	65545003
+381857	Impairment level: one eye: total impairment: other eye: not specified	Condition	SNOMED	Clinical Finding	2790002
+432600	Stress reaction causing mixed disturbance of emotion and conduct	Condition	SNOMED	Clinical Finding	192044009
+433244	Tooth loss	Condition	SNOMED	Clinical Finding	25540007
+433618	Open fracture of patella	Condition	SNOMED	Clinical Finding	111643005
+434051	Partial loss / necrosis of ossicles	Condition	SNOMED	Clinical Finding	194335001
+435411	Injury at C5-C7 level with spinal cord injury AND without bone injury	Condition	SNOMED	Clinical Finding	11807002
+435720	Adverse anesthesia outcome	Condition	SNOMED	Clinical Finding	405656000
+435855	Acute duodenal ulcer with hemorrhage AND with perforation but without obstruction	Condition	SNOMED	Clinical Finding	51847008
+436256	Open fracture of metatarsal bone	Condition	SNOMED	Clinical Finding	77551005
+437396	Closed fracture of mandible, coronoid process	Condition	SNOMED	Clinical Finding	207757002
+437401	Open fracture of tibia and fibula, shaft	Condition	SNOMED	Clinical Finding	208632002
+437446	Accidental poisoning from shellfish	Condition	SNOMED	Clinical Finding	216763006
+438744	Acute posterior multifocal placoid pigment epitheliopathy	Condition	SNOMED	Clinical Finding	89188001
+438977	Primary malignant neoplasm of ribs and/or sternum and/or clavicle	Condition	SNOMED	Clinical Finding	372107001
+440285	Malignant hyperthermia	Condition	SNOMED	Clinical Finding	405501007
+441558	Ulcerative blepharitis	Condition	SNOMED	Clinical Finding	91662004
+442530	Broken tooth injury with complication	Condition	SNOMED	Clinical Finding	210374005
+442639	Injury of colon without open wound into abdominal cavity	Condition	SNOMED	Clinical Finding	658009
+443266	Solvents -toxic effects	Condition	SNOMED	Clinical Finding	274207006
+443538	Plateau iris syndrome	Condition	SNOMED	Clinical Finding	404631002
+443592	Hyperosmolality due to uncontrolled type 1 diabetes mellitus	Condition	SNOMED	Clinical Finding	428896009
+444067	Gestation period, 42 weeks	Condition	SNOMED	Clinical Finding	36428009
+444079	Psychogenic fugue	Condition	SNOMED	Clinical Finding	3586005
+778322	Imipramine pamoate 75 MG Oral Capsule	Drug	RxNorm	Clinical Drug	835572
+778475	tizanidine 2 MG Oral Tablet [Zanaflex]	Drug	RxNorm	Branded Drug	153734
+800934	Clozapine 25 MG Disintegrating Oral Tablet	Drug	RxNorm	Clinical Drug	476179
+907457	Urea 0.45 MG/MG Topical Gel [Uramaxin]	Drug	RxNorm	Branded Drug	828275
+935418	Benzocaine 50 MG/ML / resorcinol 20 MG/ML Vaginal Cream	Drug	RxNorm	Clinical Drug	243587
+939300	Budesonide 0.032 MG/ACTUAT Nasal Spray	Drug	RxNorm	Clinical Drug	247551
+966705	sennosides, USP 8.6 MG Oral Tablet [Senna-Time]	Drug	RxNorm	Branded Drug	763296
+1103424	24 HR tramadol hydrochloride 300 MG Extended Release Oral Tablet [Ultram]	Drug	RxNorm	Quant Branded Drug	845316
+1149196	Cetirizine	Drug	RxNorm	Ingredient	20610
+1154656	Albuterol 1 MG/ML Inhalant Solution [Proventil]	Drug	RxNorm	Branded Drug	795356
+1237168	Theophylline 200 MG Extended Release Oral Capsule	Drug	RxNorm	Clinical Drug	313272
+1359550	lapatinib 250 MG Oral Tablet	Drug	RxNorm	Clinical Drug	672149
+1377141	hydroxyurea	Drug	RxNorm	Ingredient	5552
+1503526	0.2 ML lanreotide 300 MG/ML Prefilled Syringe [Somatuline]	Drug	RxNorm	Quant Branded Drug	749813
+1597796	glimepiride 2 MG / pioglitazone 30 MG Oral Tablet [Duetact]	Drug	RxNorm	Branded Drug	731463
+1718514	Lidocaine 0.04 MG/MG Medicated Patch [Lidocare]	Drug	RxNorm	Branded Drug	1858274
+1718604	3 ML Insulin Glargine 100 UNT/ML / Lixisenatide 0.033 MG/ML Pen Injector [Soliqua]	Drug	RxNorm	Quant Branded Drug	1859000
+1718711	3 ML insulin degludec 100 UNT/ML / liraglutide 3.6 MG/ML Pen Injector [Xultophy]	Drug	RxNorm	Quant Branded Drug	1860172
+1836975	Tetracycline 500 MG Oral Tablet	Drug	RxNorm	Clinical Drug	313254
+2000063	Percutaneous insertion of intracranial vascular stent(s)	Procedure	ICD9Proc	4-dig billing code	00.65
+2000166	Reopening of laminectomy site	Procedure	ICD9Proc	4-dig billing code	03.02
+2000215	Decompression of trigeminal nerve root	Procedure	ICD9Proc	4-dig billing code	04.41
+2000348	Other and unspecified operations on thymus	Procedure	ICD9Proc	4-dig billing code	07.99
+2000731	Enucleation of eyeball with synchronous implant into Tenon's capsule with attachment of muscles	Procedure	ICD9Proc	4-dig billing code	16.41
+2000811	Laparoscopic cecectomy	Procedure	ICD9Proc	4-dig billing code	17.32
+2000908	Type II tympanoplasty	Procedure	ICD9Proc	4-dig billing code	19.52
+2002123	Other excision of vessels, aorta, abdominal	Procedure	ICD9Proc	4-dig billing code	38.64
+2002126	Other excision of vessels, abdominal veins	Procedure	ICD9Proc	4-dig billing code	38.67
+2002890	Revision of anastomosis of small intestine	Procedure	ICD9Proc	4-dig billing code	46.93
+2002891	Revision of anastomosis of large intestine	Procedure	ICD9Proc	4-dig billing code	46.94
+2002969	Laparoscopic pull-through resection of rectum	Procedure	ICD9Proc	4-dig billing code	48.42
+2003306	Revision of anastomosis of biliary tract	Procedure	ICD9Proc	4-dig billing code	51.94
+2003545	Other repair of mesentery	Procedure	ICD9Proc	4-dig billing code	54.75
+2003587	Pyeloscopy	Procedure	ICD9Proc	4-dig billing code	55.22
+2003622	Removal of transplanted or rejected kidney	Procedure	ICD9Proc	4-dig billing code	55.53
+2004043	Percutaneous aspiration of tunica vaginalis	Procedure	ICD9Proc	4-dig billing code	61.91
+2005060	Biopsy of bone, humerus	Procedure	ICD9Proc	4-dig billing code	77.42
+2005157	Other partial ostectomy, tibia and fibula	Procedure	ICD9Proc	4-dig billing code	77.87
+2005278	Other repair or plastic operations on bone, femur	Procedure	ICD9Proc	4-dig billing code	78.45
+2005312	Internal fixation of bone without fracture reduction, tarsals and metatarsals	Procedure	ICD9Proc	4-dig billing code	78.58
+2005578	Open reduction of dislocation of foot and toe	Procedure	ICD9Proc	4-dig billing code	79.88
+2005672	Arthroscopy, ankle	Procedure	ICD9Proc	4-dig billing code	80.27
+2006162	Delayed suture of tendon	Procedure	ICD9Proc	4-dig billing code	83.62
+2006173	Muscle transfer or transplantation	Procedure	ICD9Proc	4-dig billing code	83.77
+2007602	Other skeletal traction	Procedure	ICD9Proc	4-dig billing code	93.44
+2007607	Application of neck support	Procedure	ICD9Proc	4-dig billing code	93.52
+2102170	Repair, intermediate, wounds of scalp, axillae, trunk and/or extremities (excluding hands and feet); over 30.0 cm	Procedure	CPT4	CPT4	12037
+2102393	Formation of direct or tubed pedicle, with or without transfer; forehead, cheeks, chin, mouth, neck, axillae, genitalia, hands or feet	Procedure	CPT4	CPT4	15574
+2102435	Dermabrasion; segmental, face	Procedure	CPT4	CPT4	15781
+2102573	Dressings and/or debridement of partial-thickness burns, initial or subsequent; medium (eg, whole face or whole extremity, or 5% to 10% total body surface area)	Procedure	CPT4	CPT4	16025
+2103474	Open treatment and/or reduction of vertebral fracture(s) and/or dislocation(s), posterior approach, 1 fractured vertebra or dislocated segment; cervical	Procedure	CPT4	CPT4	22326
+2104616	Osteoplasty, lengthening, metacarpal or phalanx	Procedure	CPT4	CPT4	26568
+2104760	Excision, tumor, soft tissue of pelvis and hip area, subcutaneous; less than 3 cm	Procedure	CPT4	CPT4	27047
+2104834	Acetabuloplasty; resection, femoral head (eg, Girdlestone procedure)	Procedure	CPT4	CPT4	27122
+2105250	Excision, tumor, soft tissue of leg or ankle area, subfascial (eg, intramuscular); less than 5 cm	Procedure	CPT4	CPT4	27619
+2105365	Prophylactic treatment (nailing, pinning, plating or wiring) with or without methylmethacrylate, tibia	Procedure	CPT4	CPT4	27745
+2107138	Repair of left ventricular outflow tract obstruction by patch enlargement of the outflow tract	Procedure	CPT4	CPT4	33414
+2107267	Repair of double outlet right ventricle with intraventricular tunnel repair; with repair of right ventricular outflow tract obstruction	Procedure	CPT4	CPT4	33612
+2107336	Repair of cor triatriatum or supravalvular mitral ring by resection of left atrial membrane	Procedure	CPT4	CPT4	33732
+2107625	Direct repair of aneurysm, pseudoaneurysm, or excision (partial or total) and graft insertion, with or without patch graft; for ruptured aneurysm, axillary-brachial artery, by arm incision	Procedure	CPT4	CPT4	35013
+2107700	Repair, acquired or traumatic arteriovenous fistula; extremities	Procedure	CPT4	CPT4	35190
+2108325	Secondary percutaneous transluminal thrombectomy (eg, nonprimary mechanical, snare basket, suction technique), noncoronary, non-intracranial, arterial or arterial bypass graft, including fluoroscopic guidance and intraprocedural pharmacological thrombolyt	Procedure	CPT4	CPT4	37186
+2108475	Limited lymphadenectomy for staging (separate procedure); retroperitoneal (aortic and/or splenic)	Procedure	CPT4	CPT4	38564
+2108637	Excision, lesion of floor of mouth	Procedure	CPT4	CPT4	41116
+2108743	Palatoplasty for cleft palate; secondary lengthening procedure	Procedure	CPT4	CPT4	42220
+2108963	Gastrectomy, total; with Roux-en-Y reconstruction	Procedure	CPT4	CPT4	43621
+2109331	Marsupialization of cyst or abscess of liver	Procedure	CPT4	CPT4	47300
+2109377	Excision of bile duct tumor, with or without primary repair of bile duct; intrahepatic	Procedure	CPT4	CPT4	47712
+2109755	Closure of cystostomy (separate procedure)	Procedure	CPT4	CPT4	51880
+2109769	Cystourethroscopy, with ureteral catheterization, with or without irrigation, instillation, or ureteropyelography, exclusive of radiologic service; with brush biopsy of ureter and/or renal pelvis	Procedure	CPT4	CPT4	52007
+2110189	Vaginal hysterectomy, for uterus greater than 250 g	Procedure	CPT4	CPT4	58290
+2110216	Laparoscopy, surgical, with vaginal hysterectomy, for uterus 250 g or less	Procedure	CPT4	CPT4	58550
+2313948	Electronic analysis of antitachycardia pacemaker system (includes electrocardiographic recording, programming of device, induction and termination of tachycardia via implanted pacemaker, and interpretation of recordings)	Procedure	CPT4	CPT4	93724
+2314028	Continuous inhalation treatment with aerosol medication for acute airway obstruction; first hour	Procedure	CPT4	CPT4	94644
+2616477	Cane, quad or three prong, includes canes of all materials, adjustable or fixed, with tips	Device	HCPCS	HCPCS	E0105
+2719470	Tlso rigidlined cust fab two	Device	HCPCS	HCPCS	L0486
+2722492	Bypass Cerebral Ventricle to Atrium with Synthetic Substitute, Open Approach	Procedure	ICD10PCS	ICD10PCS	00160J2
+2722676	Excision of Cerebral Meninges, Open Approach, Diagnostic	Procedure	ICD10PCS	ICD10PCS	00B10ZX
+2722940	Excision of Cervical Spinal Cord, Open Approach, Diagnostic	Procedure	ICD10PCS	ICD10PCS	00BW0ZX
+2723367	Inspection of Spinal Canal, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	00JU3ZZ
+2723486	Removal of Neurostimulator Lead from Brain, Open Approach	Procedure	ICD10PCS	ICD10PCS	00P00MZ
+2723504	Removal of Neurostimulator Lead from Brain, External Approach	Procedure	ICD10PCS	ICD10PCS	00P0XMZ
+2725589	Dilation of Superior Vena Cava, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	027V3ZZ
+2725722	Dilation of Thoracic Aorta, Descending with Intraluminal Device, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	027W3DZ
+2725778	Excision of Papillary Muscle, Open Approach	Procedure	ICD10PCS	ICD10PCS	02BD0ZZ
+2726057	Removal of Synthetic Substitute from Heart, Open Approach	Procedure	ICD10PCS	ICD10PCS	02PA0JZ
+2726094	Removal of Synthetic Substitute from Great Vessel, Open Approach	Procedure	ICD10PCS	ICD10PCS	02PY0JZ
+2726657	Supplement Thoracic Aorta, Descending with Zooplastic Tissue, Open Approach	Procedure	ICD10PCS	ICD10PCS	02UW08Z
+2726749	Supplement Mitral Valve with Zooplastic Tissue, Open Approach	Procedure	ICD10PCS	ICD10PCS	02UG08Z
+2728808	Occlusion of Upper Artery, Open Approach	Procedure	ICD10PCS	ICD10PCS	03LY0ZZ
+2731828	Insertion of Infusion Device into Lower Artery, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	04HY33Z
+2732532	Occlusion of Right Uterine Artery with Intraluminal Device, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	04LE3DT
+2738142	Excision of Right Axillary Lymphatic, Percutaneous Approach, Diagnostic	Procedure	ICD10PCS	ICD10PCS	07B53ZX
+2738706	Destruction of Left Retina, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	085F3ZZ
+2739105	Supplement Portal Vein with Autologous Tissue Substitute, Open Approach	Procedure	ICD10PCS	ICD10PCS	06U807Z
+2740859	Revision of Intraluminal Device in Lower Vein, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	06WY3DZ
+2742019	Excision of Right Sphenoid Sinus, Percutaneous Endoscopic Approach	Procedure	ICD10PCS	ICD10PCS	09BW4ZZ
+2743908	Excision of Right Upper Lobe Bronchus, Via Natural or Artificial Opening Endoscopic, Diagnostic	Procedure	ICD10PCS	ICD10PCS	0BB48ZX
+2744717	Supplement Right Diaphragm with Synthetic Substitute, Open Approach	Procedure	ICD10PCS	ICD10PCS	0BUR0JZ
+2746258	Drainage of Anus, Open Approach	Procedure	ICD10PCS	ICD10PCS	0D9Q0ZZ
+2746595	Release Duodenum, Open Approach	Procedure	ICD10PCS	ICD10PCS	0DN90ZZ
+2746602	Release Jejunum, Percutaneous Endoscopic Approach	Procedure	ICD10PCS	ICD10PCS	0DNA4ZZ
+2746934	Resection of Upper Tooth, Multiple, Open Approach	Procedure	ICD10PCS	ICD10PCS	0CTW0Z1
+2747388	Release Lesser Omentum, Open Approach	Procedure	ICD10PCS	ICD10PCS	0DNT0ZZ
+2747531	Excision of Greater Omentum, Open Approach, Diagnostic	Procedure	ICD10PCS	ICD10PCS	0DBS0ZX
+2747560	Extirpation of Matter from Upper Esophagus, Via Natural or Artificial Opening Endoscopic	Procedure	ICD10PCS	ICD10PCS	0DC18ZZ
+2748804	Dilation of Sigmoid Colon with Intraluminal Device, Via Natural or Artificial Opening Endoscopic	Procedure	ICD10PCS	ICD10PCS	0D7N8DZ
+2749431	Repair Soft Palate, Open Approach	Procedure	ICD10PCS	ICD10PCS	0CQ30ZZ
+2752369	Repair Jejunum, Open Approach	Procedure	ICD10PCS	ICD10PCS	0DQA0ZZ
+2753149	Resection of Stomach, Percutaneous Endoscopic Approach	Procedure	ICD10PCS	ICD10PCS	0DT64ZZ
+2754384	Excision of Right Upper Leg Muscle, Open Approach	Procedure	ICD10PCS	ICD10PCS	0KBQ0ZZ
+2754834	Supplement of Pelvic Region Subcutaneous Tissue and Fascia with Synthetic Substitute, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	0JUC3JZ
+2761406	Reattachment of Left Shoulder Tendon, Open Approach	Procedure	ICD10PCS	ICD10PCS	0LM20ZZ
+2762703	Excision of Sacrum, Open Approach	Procedure	ICD10PCS	ICD10PCS	0QB10ZZ
+2763265	Excision of Right Rib, Open Approach	Procedure	ICD10PCS	ICD10PCS	0PB10ZZ
+2769659	Removal of Internal Fixation Device from Left Upper Femur, Open Approach	Procedure	ICD10PCS	ICD10PCS	0QP704Z
+2773721	Excision of Right Ureter, Open Approach	Procedure	ICD10PCS	ICD10PCS	0TB60ZZ
+2773934	Excision of Bladder, Percutaneous Endoscopic Approach	Procedure	ICD10PCS	ICD10PCS	0TBB4ZZ
+2774088	Replacement of Left Hip Joint with Ceramic Synthetic Substitute, Open Approach	Procedure	ICD10PCS	ICD10PCS	0SRB03Z
+2775856	Supplement Right Hip Joint, Acetabular Surface with Liner, Open Approach	Procedure	ICD10PCS	ICD10PCS	0SUA09Z
+2776768	Resection of Right Ureter, Percutaneous Endoscopic Approach	Procedure	ICD10PCS	ICD10PCS	0TT64ZZ
+2778777	Change Drainage Device in Peritoneal Cavity, External Approach	Procedure	ICD10PCS	ICD10PCS	0W2GX0Z
+2779766	Drainage of Retroperitoneum with Drainage Device, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	0W9H30Z
+2780496	Resection of Left Testis, Open Approach	Procedure	ICD10PCS	ICD10PCS	0VTB0ZZ
+2780648	Extraction of Endometrium, Via Natural or Artificial Opening Endoscopic	Procedure	ICD10PCS	ICD10PCS	0UDB8ZZ
+2784258	Detachment at Right Foot, Complete, Open Approach	Procedure	ICD10PCS	ICD10PCS	0Y6M0Z0
+2786586	Fluoroscopy of Left Common Carotid Artery using Other Contrast	Procedure	ICD10PCS	ICD10PCS	B314YZZ
+2786601	Fluoroscopy of Right Internal Carotid Artery	Procedure	ICD10PCS	ICD10PCS	B316ZZZ
+2787889	Fluoroscopy of Gallbladder and Bile Ducts using Low Osmolar Contrast	Procedure	ICD10PCS	ICD10PCS	BF131ZZ
+2787975	Introduction of Electrolytic and Water Balance Substance into Products of Conception, Via Natural or Artificial Opening	Procedure	ICD10PCS	ICD10PCS	3E0E77Z
+2788074	Pheresis of Hematopoietic Stem Cells, Multiple	Procedure	ICD10PCS	ICD10PCS	6A551ZV
+2788603	Near Infrared Spectroscopy of Circulatory System, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	8E023DZ
+2788626	Ultrasonography of Bilateral Lower Extremity Arteries	Procedure	ICD10PCS	ICD10PCS	B44HZZZ
+2788962	Transfusion of Autologous Whole Blood into Central Vein, Percutaneous Approach	Procedure	ICD10PCS	ICD10PCS	30243H0
+2789170	Fluoroscopy of Superior Vena Cava	Procedure	ICD10PCS	ICD10PCS	B518ZZZ
+2794682	Grooming/Personal Hygiene Treatment using Assistive, Adaptive, Supportive or Protective Equipment	Procedure	ICD10PCS	ICD10PCS	F08Z2FZ
+4014420	Childhood or adolescent antisocial behavior	Condition	SNOMED	Clinical Finding	113164004
+4040546	Procedure on nose	Procedure	SNOMED	Procedure	118781003
+4050288	Insertion of carotid artery stent	Procedure	SNOMED	Procedure	233405004
+4064296	Prem rupture of membranes onset of labor within 24 hours	Condition	SNOMED	Clinical Finding	199660008
+4064821	Obstructed labor due to deformed pelvis	Condition	SNOMED	Clinical Finding	199761003
+4066736	Irritant contact dermatitis due to food in contact with skin	Condition	SNOMED	Clinical Finding	200854003
+4071485	Fetal or neonatal effect of cesarean section	Condition	SNOMED	Clinical Finding	206123007
+4072633	Weaning from mechanically assisted ventilation	Procedure	SNOMED	Procedure	243174005
+4093427	Kearns-Sayre syndrome	Condition	SNOMED	Clinical Finding	25792000
+4094847	Contusion of cerebrum	Condition	SNOMED	Clinical Finding	262689001
+4095993	Laceration of cerebrum	Condition	SNOMED	Clinical Finding	262691009
+4101584	Secondary sideroblastic anemia due to disease	Condition	SNOMED	Clinical Finding	191261000
+4115182	Fracture malunion - ankle and/or foot	Condition	SNOMED	Clinical Finding	287078007
+4120443	Bone marrow sampling	Procedure	SNOMED	Procedure	234326005
+4134598	Surgical removal	Procedure	SNOMED	Procedure	128303001
+4135964	Retained nonmagnetic intraocular foreign body	Condition	SNOMED	Clinical Finding	31550006
+4144078	Operation on intestine	Procedure	SNOMED	Procedure	34853001
+4146440	Closed Salter-Harris type II fracture of lower epiphysis of femur	Condition	SNOMED	Clinical Finding	427584009
+4147379	Dilation of urethra	Procedure	SNOMED	Procedure	30253003
+4149383	Obesity screening	Procedure	SNOMED	Procedure	268551005
+4153293	Congenital renal artery stenosis	Condition	SNOMED	Clinical Finding	271432005
+4172076	Drug, medicament, or biological substance in urine above reference range	Condition	SNOMED	Clinical Finding	274890007
+4174824	Congenital stricture of urinary meatus	Condition	SNOMED	Clinical Finding	48337000
+4185007	Foreign body of skin of head	Condition	SNOMED	Clinical Finding	298062005
+4198185	Plummer-Vinson syndrome	Condition	SNOMED	Clinical Finding	80126007
+4212110	Failure of exfoliation of primary tooth	Condition	SNOMED	Clinical Finding	57650002
+4225427	Sigmoid colectomy	Procedure	SNOMED	Procedure	84604002
+4236898	Hemophilia	Condition	SNOMED	Clinical Finding	90935002
+4246067	Corneal transplant	Procedure	SNOMED	Procedure	60656008
+4269075	Hereditary sideroblastic anemia	Condition	SNOMED	Clinical Finding	62677000
+4278814	Foreign body in nasal sinus	Condition	SNOMED	Clinical Finding	66050007
+4296450	Carbuncle of groin	Condition	SNOMED	Clinical Finding	76431004
+4302047	Anesthetic allergy	Observation	SNOMED	Clinical Finding	418434002
+4319474	Disorder of uveal tract	Condition	SNOMED	Clinical Finding	95678007
+4320025	Traumatic amputation of foot	Condition	SNOMED	Clinical Finding	95859009
+4344271	Lesion of ligaments of the ankle region	Condition	SNOMED	Clinical Finding	240019006
+19010557	cyclosporine, modified 100 MG/ML Oral Solution [Gengraf]	Drug	RxNorm	Branded Drug	835892
+19022859	Menthol 3 MG Oral Lozenge	Drug	RxNorm	Clinical Drug	200074
+19033493	Lomustine 40 MG Oral Capsule [CeeNU]	Drug	RxNorm	Branded Drug	206795
+19036712	royal jelly 500 MG Oral Capsule	Drug	RxNorm	Clinical Drug	252831
+19040182	Potassium Chloride 8 MEQ Extended Release Oral Tablet [Slow-K]	Drug	RxNorm	Branded Drug	208953
+19043705	Simethicone 80 MG Chewable Tablet [Maalox Anti-Gas]	Drug	RxNorm	Branded Drug	210275
+19043856	Nystatin 500000 UNT Oral Capsule [Bio-Statin]	Drug	RxNorm	Branded Drug	210390
+19046167	Acetaminophen 500 MG / butalbital 50 MG / Caffeine 40 MG Oral Capsule [Zebutal]	Drug	RxNorm	Branded Drug	211500
+19048403	Antipyrine 54 MG/ML / Benzocaine 14 MG/ML Otic Solution [Aurodex]	Drug	RxNorm	Branded Drug	214041
+19058840	Calcium Citrate 200 MG / Vitamin D 200 UNT Oral Tablet	Drug	RxNorm	Clinical Drug	725192
+19065366	Milk thistle extract 175 MG Oral Tablet	Drug	RxNorm	Clinical Drug	252707
+19074495	1 ML Calcitriol 0.002 MG/ML Injection	Drug	RxNorm	Quant Clinical Drug	308870
+19080158	Mitomycin 0.5 MG/ML Injectable Solution	Drug	RxNorm	Clinical Drug	314096
+19098242	Simethicone 125 MG Oral Capsule [Alka-Seltzer Anti-Gas]	Drug	RxNorm	Branded Drug	351602
+19102198	gatifloxacin 3 MG/ML Ophthalmic Solution [Zymar]	Drug	RxNorm	Branded Drug	402090
+19102552	Fluoxetine 25 MG / olanzapine 6 MG Oral Capsule	Drug	RxNorm	Clinical Drug	403969
+19107011	Potassium Iodide 65 MG Oral Tablet	Drug	RxNorm	Clinical Drug	430174
+19128169	Amlodipine 5 MG / atorvastatin 80 MG Oral Tablet [Caduet]	Drug	RxNorm	Branded Drug	750239
+19129330	24 HR Niacin 500 MG / Simvastatin 20 MG Extended Release Oral Tablet	Drug	RxNorm	Quant Clinical Drug	761909
+19130335	Benzoyl Peroxide 60 MG/ML Medicated Pad	Drug	RxNorm	Clinical Drug	797704
+19132275	Typhoid Vi Polysaccharide Vaccine, S typhi Ty2 strain 0.05 MG/ML Injectable Solution [Typhim VI]	Drug	RxNorm	Branded Drug	807225
+19133645	24 HR Diltiazem Hydrochloride 240 MG Extended Release Oral Capsule [Taztia]	Drug	RxNorm	Quant Branded Drug	831300
+19134029	Calcium Citrate 1430 MG / Cholecalciferol 100 UNT Oral Tablet	Drug	RxNorm	Clinical Drug	835531
+19135475	Acai Berry Extract 500 MG Oral Capsule	Drug	RxNorm	Clinical Drug	848932
+35604939	selexipag 1.2 MG Oral Tablet [Uptravi]	Drug	RxNorm	Branded Drug	1729029
+37016191	Abdominal aortic ectasia	Condition	SNOMED	Clinical Finding	142121000119101
+40161478	Salicylic Acid 0.01 MG/MG Medicated Bar Soap [Stri-Dex]	Drug	RxNorm	Branded Drug	853511
+40161520	Urea 450 MG/ML Topical Cream [Uramaxin]	Drug	RxNorm	Branded Drug	853332
+40162567	Acetaminophen 21.7 MG/ML / Hydrocodone Bitartrate 0.67 MG/ML Oral Solution [Zamicet]	Drug	RxNorm	Branded Drug	856946
+40165385	Vancomycin 100 MG/ML Oral Solution	Drug	RxNorm	Clinical Drug	860441
+40166934	Calcium Carbonate 800 MG / Famotidine 10 MG / Magnesium Hydroxide 165 MG Chewable Tablet [Tums Dual Action]	Drug	RxNorm	Branded Drug	867497
+40169318	24 HR Morphine Sulfate 45 MG Extended Release Oral Capsule	Drug	RxNorm	Quant Clinical Drug	894942
+40173826	Chlordiazepoxide Hydrochloride 5 MG Oral Capsule [Librium]	Drug	RxNorm	Branded Drug	905520
+40220639	Immunoglobulin G, Human 5000 MG Injection [Gammagard]	Drug	RxNorm	Branded Drug	1809730
+40222319	Polyethylene Glycol 400 10 MG/ML / Tetrahydrozoline hydrochloride 0.5 MG/ML Ophthalmic Solution	Drug	RxNorm	Clinical Drug	996209
+40223624	Undecylenic Acid 250 MG/ML Topical Solution [Fungi-Nail]	Drug	RxNorm	Branded Drug	998332
+40223837	Folic Acid 2.2 MG / Vitamin B 12 0.5 MG / Vitamin B6 25 MG Oral Tablet [Folcaps]	Drug	RxNorm	Branded Drug	999472
+40224482	Sulfacetamide Sodium 100 MG/ML Topical Lotion [Klaron]	Drug	RxNorm	Branded Drug	1006693
+40227019	Lidocaine Hydrochloride 10 MG/ML Injectable Solution [Xylocaine]	Drug	RxNorm	Branded Drug	1010035
+40227571	12 HR Clonidine Hydrochloride 0.2 MG Extended Release Oral Tablet	Drug	RxNorm	Quant Clinical Drug	1013937
+40231985	Atropine Sulfate 0.0582 MG / Hyoscyamine Sulfate 0.3111 MG / Phenobarbital 48.6 MG / Scopolamine Hydrobromide 0.0195 MG Extended Release Oral Tablet	Drug	RxNorm	Clinical Drug	1048147
+40234901	{2 (Benzoyl Peroxide 0.05 MG/MG Medicated Bar Soap) / 1 (170100 MG) (Benzoyl Peroxide 40 MG/ML Medicated Liquid Soap) } Pack	Drug	RxNorm	Clinical Pack	1087512
+40235220	Dextromethorphan Hydrobromide 3 MG/ML Oral Solution	Drug	RxNorm	Clinical Drug	1090496
+40239539	1 ML glatiramer acetate 20 MG/ML Prefilled Syringe	Drug	RxNorm	Quant Clinical Drug	1111641
+40240720	Fexofenadine hydrochloride 180 MG Oral Tablet [Wal-Fex]	Drug	RxNorm	Branded Drug	1116528
+40479661	Chondrocalcinosis of elbow joint	Condition	SNOMED	Clinical Finding	443001001
+40480936	Injury of extensor tendon of hand	Condition	SNOMED	Clinical Finding	441885003
+40481376	Complete tetraplegia due to lesion at C5-C7 level	Condition	SNOMED	Clinical Finding	441980007
+42627890	Intravascular ultrasound (noncoronary vessel) during diagnostic evaluation and/or therapeutic intervention, including radiological supervision and interpretation; each additional noncoronary vessel (List separately in addition to code for primary procedur	Procedure	CPT4	CPT4	37253
+42742505	Thoracotomy, with diagnostic biopsy(ies) of lung infiltrate(s) (eg, wedge, incisional), unilateral	Procedure	CPT4	CPT4	32096
+42800452	Butenafine hydrochloride 10 MG/ML Topical Cream	Drug	RxNorm	Clinical Drug	1298448
+42800773	Flurazepam Hydrochloride 30 MG Oral Capsule [Dalmane]	Drug	RxNorm	Branded Drug	1298128
+42800923	Isotretinoin 10 MG Oral Capsule [Absorica]	Drug	RxNorm	Branded Drug	1299203
+42873444	24 HR mirabegron 50 MG Extended Release Oral Tablet	Drug	RxNorm	Quant Clinical Drug	1300801
+42873502	{1 (50000 MG) (halobetasol propionate 0.0005 MG/MG Topical Ointment) / 1 (225000 MG) (Lactic acid 100 MG/ML Topical Cream) } Pack [Ultravate X Ointment]	Drug	RxNorm	Branded Pack	1301696
+42897883	Removal of Synthetic Substitute from Right Hip Joint, Femoral Surface, Open Approach	Procedure	ICD10PCS	ICD10PCS	0SPR0JZ
+43012119	Phenylephrine Hydrochloride 10 MG Disintegrating Oral Tablet [Nasop]	Drug	RxNorm	Branded Drug	1363787
+43013900	alogliptin 12.5 MG / Metformin hydrochloride 500 MG Oral Tablet [Kazano]	Drug	RxNorm	Branded Drug	1368398
+43532413	Guaifenesin 20 MG/ML Oral Solution [Wal-Tussin Chest Congestion]	Drug	RxNorm	Branded Drug	1425347
+44507780	eslicarbazepine	Drug	RxNorm	Ingredient	1482502
+44783982	Measurement of body mass index	Measurement	SNOMED	Procedure	698094009
+44784134	Non-infectious systemic inflammatory response syndrome	Condition	SNOMED	Clinical Finding	700049004
+44785208	Docusate Sodium 20 MG/ML Enema [Docusol]	Drug	RxNorm	Branded Drug	1486985
+44818276	Potassium Chloride 25 MEQ Effervescent Oral Tablet	Drug	RxNorm	Clinical Drug	1536434
+44818315	Lanolin 0.16 MG/MG / Petrolatum 0.57 MG/MG Topical Ointment [Dr. Smith's Rash and Skin]	Drug	RxNorm	Branded Drug	1536689
+45775129	60 ACTUAT olodaterol 0.0025 MG/ACTUAT Metered Dose Inhaler [Striverdi]	Drug	RxNorm	Quant Branded Drug	1546083
+45776240	Capsaicin 0.25 MG/ML Topical Cream [Icy Hot with Capsaicin]	Drug	RxNorm	Branded Drug	1541781
+46233828	Guaifenesin 40 MG/ML / Hydrocodone Bitartrate 0.5 MG/ML Oral Solution [Flowtuss]	Drug	RxNorm	Branded Drug	1650982
+46234105	golimumab 12.5 MG/ML Injection [Simponi]	Drug	RxNorm	Branded Drug	1653574
+46275912	Thiotepa 15 MG Injection	Drug	RxNorm	Clinical Drug	1660009
+26719	Chronic laryngotracheitis	Condition	SNOMED	Clinical Finding	83271005
+27017	Defective dental restoration	Condition	SNOMED	Clinical Finding	109728009
+74772	Open fracture of carpal bone	Condition	SNOMED	Clinical Finding	29014003
+75804	Congenital myotonic dystrophy	Condition	SNOMED	Clinical Finding	240104008
+77661	Congenital dislocation of one hip with subluxation of other	Condition	SNOMED	Clinical Finding	60108003
+77698	Sprain, coracoclavicular ligament	Condition	SNOMED	Clinical Finding	209412004
+80541	Closed fracture of eight OR more ribs	Condition	SNOMED	Clinical Finding	90863004
+80854	Closed fracture of capitate bone of wrist	Condition	SNOMED	Clinical Finding	90114000
+81763	Frostbite of hand	Condition	SNOMED	Clinical Finding	4763005
+132439	Unilateral incomplete cleft palate with cleft lip	Observation	SNOMED	Clinical Finding	204613000
+132491	Contusion of scapular region	Condition	SNOMED	Clinical Finding	80907003
+132772	Arthus type urticaria	Condition	SNOMED	Clinical Finding	402413008
+133593	Transverse deficiency of upper limb	Condition	SNOMED	Clinical Finding	3699000
+140046	Primary malignant neoplasm of ethmoidal sinus	Condition	SNOMED	Clinical Finding	93787005
+140520	Microstomia	Condition	SNOMED	Clinical Finding	14582003
+141404	Abnormal dermatoglyphic pattern	Condition	SNOMED	Clinical Finding	83145004
+192753	Injury of small intestine with open wound into abdominal cavity	Condition	SNOMED	Clinical Finding	210114006
+193448	Doan-Wiseman syndrome	Condition	SNOMED	Clinical Finding	58639003
+196471	Puberty bleeding	Condition	SNOMED	Clinical Finding	266602005
+197136	Injury of small intestine without open wound into abdominal cavity	Condition	SNOMED	Clinical Finding	68734002
+201719	Bladder and urethra injury with open wound into cavity	Condition	SNOMED	Clinical Finding	210215001
+261774	Respiratory tuberculosis, not confirmed bacteriologically or histologically	Condition	SNOMED	Clinical Finding	186202007
+313272	Puerperal cerebrovascular disorder with antenatal complication	Condition	SNOMED	Clinical Finding	200332008
+313608	Closed fracture of T7-T12 level with spinal cord injury	Condition	SNOMED	Clinical Finding	72513001
+372766	Open wound of head with complication	Condition	SNOMED	Clinical Finding	775008
+372891	Microcystoid retinal degeneration	Condition	SNOMED	Clinical Finding	37075008
+373412	Otitis externa due to Herpes zoster	Condition	SNOMED	Clinical Finding	36292003
+374355	Peripheral degeneration of cornea	Condition	SNOMED	Clinical Finding	89182000
+377788	General paresis - neurosyphilis	Condition	SNOMED	Clinical Finding	51928006
+378426	Abnormal innervation syndrome	Condition	SNOMED	Clinical Finding	70673006
+432290	Mild bipolar I disorder, single manic episode	Condition	SNOMED	Clinical Finding	41552001
+432598	Subchronic schizophrenia with acute exacerbations	Condition	SNOMED	Clinical Finding	111482003
+432808	Accident caused by powered hand tool	Observation	SNOMED	Clinical Finding	302980009
+433173	Congenital hypogammaglobulinemia	Condition	SNOMED	Clinical Finding	267460002
+433480	Optic disc edema due to hypotony	Condition	SNOMED	Clinical Finding	424497004
+433704	Primary malignant neoplasm of retromolar area	Condition	SNOMED	Clinical Finding	93989001
+433869	Congenital rubella syndrome	Condition	SNOMED	Clinical Finding	1857005
+435298	Farmers' lung	Condition	SNOMED	Clinical Finding	18690003
+435318	Complete miscarriage with genital tract or pelvic infection	Condition	SNOMED	Clinical Finding	198655001
+437013	Primary dental caries, pit and fissure origin	Condition	SNOMED	Clinical Finding	109575007
+437901	Disturbance of tooth formation	Condition	SNOMED	Clinical Finding	266416005
+437915	Gastrointestinal mucositis	Condition	SNOMED	Clinical Finding	95518006
+438003	Subarachnoid hemorrhage following injury without open intracranial wound AND with loss of consciousness	Condition	SNOMED	Clinical Finding	69458009
+439030	Degenerative disorder of sclera	Condition	SNOMED	Clinical Finding	43645004
+439277	Alcohol withdrawal hallucinosis	Condition	SNOMED	Clinical Finding	191476005
+439736	Focal chorioretinitis due to acquired toxoplasmosis	Condition	SNOMED	Clinical Finding	88290000
+440067	Moderate bipolar I disorder, single manic episode	Condition	SNOMED	Clinical Finding	28884001
+440634	Herpes simplex iridocyclitis	Condition	SNOMED	Clinical Finding	13608004
+440858	Cortex contusion without open intracranial wound	Condition	SNOMED	Clinical Finding	32106001
+441081	Maternal gonorrhea during pregnancy - baby not yet delivered	Condition	SNOMED	Clinical Finding	199165004
+441289	Recession of chamber angle	Condition	SNOMED	Clinical Finding	193525001
+441331	Exfoliation of teeth due to systemic disease	Condition	SNOMED	Clinical Finding	9984005
+441571	Retained old foreign body following penetrating wound of orbit	Condition	SNOMED	Clinical Finding	75199002
+442163	Hodgkin's disease, lymphocytic-histiocytic predominance of lymph nodes of head, face AND/OR neck	Condition	SNOMED	Clinical Finding	93497000
+442641	Macrotia	Condition	SNOMED	Clinical Finding	69056000
+443202	Bile duct injury without open wound into cavity	Condition	SNOMED	Clinical Finding	262812003
+443268	Open wound of abdominal wall	Condition	SNOMED	Clinical Finding	274170000
+443562	Closed dislocation of radiocarpal joint	Condition	SNOMED	Clinical Finding	429630006
+700326	Thioridazine 50 MG Oral Tablet	Drug	RxNorm	Clinical Drug	198275
+766529	Haloperidol	Drug	RxNorm	Ingredient	5093
+902286	Menthol 0.008 MG/MG / Zinc Oxide 0.05 MG/MG Topical Powder	Drug	RxNorm	Clinical Drug	616527
+903643	Tretinoin	Drug	RxNorm	Ingredient	10753
+906780	Metoclopramide	Drug	RxNorm	Ingredient	6915
+917776	Benzocaine 15 MG / Dextromethorphan 10 MG Oral Lozenge	Drug	RxNorm	Clinical Drug	359436
+918906	oxybutynin	Drug	RxNorm	Ingredient	32675
+927970	hydrocortisone acetate 10 MG/ML / Pramoxine hydrochloride 10 MG/ML Rectal Foam	Drug	RxNorm	Clinical Drug	828362
+938510	sennosides, USP 1.5 MG/ML Oral Solution	Drug	RxNorm	Clinical Drug	756179
+955372	Ethanol	Drug	RxNorm	Ingredient	448
+978053	Citric Acid 128 MG/ML / sodium citrate 98 MG/ML Oral Solution [Oracit]	Drug	RxNorm	Branded Drug	544553
+991876	Loperamide	Drug	RxNorm	Ingredient	6468
+996541	fluocinolone	Drug	RxNorm	Ingredient	25126
+1126540	Acetaminophen 325 MG / butalbital 50 MG / Caffeine 40 MG Oral Tablet [Esgic]	Drug	RxNorm	Branded Drug	211189
+1154147	Fentanyl 0.8 MG Oral Lozenge	Drug	RxNorm	Clinical Drug	313993
+1301198	Melatonin 3 MG Oral Lozenge	Drug	RxNorm	Clinical Drug	259965
+1311445	Dactinomycin 0.5 MG Injection	Drug	RxNorm	Clinical Drug	239179
+1326728	Right tubal pregnancy without intrauterine pregnancy	Condition	ICD10CM	6-char billing code	O00.101
+1330151	allyl sulfide 1500 MG Oral Capsule	Drug	RxNorm	Clinical Drug	244174
+1353268	Melatonin 3 MG / Vitamin B6 1 MG Oral Tablet	Drug	RxNorm	Clinical Drug	199171
+1383929	Isosorbide Dinitrate 2.5 MG Sublingual Tablet	Drug	RxNorm	Clinical Drug	197838
+1387426	Folate	Drug	RxNorm	Ingredient	62356
+1584952	Somatropin 8 MG/ML Injectable Solution	Drug	RxNorm	Clinical Drug	248288
+1585146	0.25 ML Somatropin 1.6 MG/ML Prefilled Syringe [Genotropin]	Drug	RxNorm	Quant Branded Drug	762836
+1592146	24 HR Lovastatin 20 MG Extended Release Oral Tablet	Drug	RxNorm	Quant Clinical Drug	433849
+1717327	Ampicillin	Drug	RxNorm	Ingredient	733
+1718701	Abuse-Deterrent 12 HR Oxycodone Hydrochloride 15 MG Extended Release Oral Tablet	Drug	RxNorm	Clinical Drug	1860154
+2000050	Implantation or replacement of transvenous lead [electrode] into left ventricular coronary venous system	Procedure	ICD9Proc	4-dig billing code	00.52
+2000159	Insertion or replacement of skull tongs or halo traction device	Procedure	ICD9Proc	4-dig billing code	02.94
+2000233	Injection of other agent, except neurolytic	Procedure	ICD9Proc	4-dig billing code	04.89
+2000808	Laparoscopic bilateral repair of inguinal hernia with graft or prosthesis, not otherwise specified	Procedure	ICD9Proc	4-dig billing code	17.24
+2001026	Biopsy of nose	Procedure	ICD9Proc	4-dig billing code	21.22
+2001157	Closed [needle] biopsy of tongue	Procedure	ICD9Proc	4-dig billing code	25.01
+2001311	Other repair and plastic operations on trachea	Procedure	ICD9Proc	4-dig billing code	31.79
+2002522	Other repair of esophagus	Procedure	ICD9Proc	4-dig billing code	42.89
+2002528	Gastrotomy	Procedure	ICD9Proc	3-dig billing code	43.0
+2002782	Intestinal anastomosis, not otherwise specified	Procedure	ICD9Proc	4-dig billing code	45.90
+2002946	Open biopsy of rectum	Procedure	ICD9Proc	4-dig billing code	48.25
+2003403	Other and open repair of direct inguinal hernia	Procedure	ICD9Proc	4-dig billing code	53.01
+2003802	Open excision or destruction of other lesion or tissue of bladder	Procedure	ICD9Proc	4-dig billing code	57.59
+2004085	Other operations on testes	Procedure	ICD9Proc	4-dig billing code	62.99
+2004789	Cesarean section of other specified type	Procedure	ICD9Proc	3-dig billing code	74.4
+2005034	Wedge osteotomy, tarsals and metatarsals	Procedure	ICD9Proc	4-dig billing code	77.28
+2005260	Limb lengthening procedures, tarsals and metatarsals	Procedure	ICD9Proc	4-dig billing code	78.38
+2005743	Synovectomy, ankle	Procedure	ICD9Proc	4-dig billing code	80.77
+2005832	Triple arthrodesis	Procedure	ICD9Proc	4-dig billing code	81.12
+2005834	Midtarsal fusion	Procedure	ICD9Proc	4-dig billing code	81.14
+2005988	Tenotomy of hand	Procedure	ICD9Proc	4-dig billing code	82.11
+2006025	Delayed suture of flexor tendon of hand	Procedure	ICD9Proc	4-dig billing code	82.42
+2006672	Other x-ray of thoracic spine	Procedure	ICD9Proc	4-dig billing code	87.23
+2006737	Other nephrotomogram	Procedure	ICD9Proc	4-dig billing code	87.72
+2100844	Anesthesia for thoracotomy procedures involving lungs, pleura, diaphragm, and mediastinum (including surgical thoracoscopy); intrathoracic procedures on the trachea and bronchi	Procedure	CPT4	CPT4	00548
+2102006	Excision of skin and subcutaneous tissue for hidradenitis, perianal, perineal, or umbilical; with simple or intermediate repair	Procedure	CPT4	CPT4	11470
+2102059	Excision, malignant lesion including margins, face, ears, eyelids, nose, lips; excised diameter 0.6 to 1.0 cm	Procedure	CPT4	CPT4	11641
+2102294	Split-thickness autograft, face, scalp, eyelids, mouth, neck, ears, orbits, genitalia, hands, feet, and/or multiple digits; each additional 100 sq cm, or each additional 1% of body area of infants and children, or part thereof (List separately in addition	Procedure	CPT4	CPT4	15121
+2102400	Forehead flap with preservation of vascular pedicle (eg, axial pattern flap, paramedian forehead flap)	Procedure	CPT4	CPT4	15731
+2102615	Destruction, malignant lesion (eg, laser surgery, electrosurgery, cryosurgery, chemosurgery, surgical curettement), scalp, neck, hands, feet, genitalia; lesion diameter 2.1 to 3.0 cm	Procedure	CPT4	CPT4	17273
+2102961	Cartilage graft; nasal septum	Procedure	CPT4	CPT4	20912
+2103017	Unlisted procedure, musculoskeletal system, general	Procedure	CPT4	CPT4	20999
+2103293	Open treatment of fracture of orbit, except blowout; with implant	Procedure	CPT4	CPT4	21407
+2103795	Unlisted procedure, shoulder	Procedure	CPT4	CPT4	23929
+2103975	Treatment of humeral shaft fracture, with insertion of intramedullary implant, with or without cerclage and/or locking screws	Procedure	CPT4	CPT4	24516
+2104697	Open treatment of interphalangeal joint dislocation, includes internal fixation, when performed, single	Procedure	CPT4	CPT4	26785
+2105166	Open treatment of femoral supracondylar or transcondylar fracture with intercondylar extension, includes internal fixation, when performed	Procedure	CPT4	CPT4	27513
+2105329	Osteotomy; tibia	Procedure	CPT4	CPT4	27705
+2105445	Arthrodesis, tibiofibular joint, proximal or distal	Procedure	CPT4	CPT4	27871
+2105611	Capsulotomy, midfoot; extensive, including posterior talotibial capsulotomy and tendon(s) lengthening (eg, resistant clubfoot deformity)	Procedure	CPT4	CPT4	28262
+2106329	Unlisted procedure, nose	Procedure	CPT4	CPT4	30999
+2106425	Nasal/sinus endoscopy, surgical; with medial or inferior orbital wall decompression	Procedure	CPT4	CPT4	31292
+2107382	Aortic suspension (aortopexy) for tracheal decompression (eg, for tracheomalacia) (separate procedure)	Procedure	CPT4	CPT4	33800
+2107521	Embolectomy or thrombectomy, with or without catheter; renal, celiac, mesentery, aortoiliac artery, by abdominal incision	Procedure	CPT4	CPT4	34151
+2108121	Exchange transfusion, blood; newborn	Procedure	CPT4	CPT4	36450
+2108295	Creation of arteriovenous fistula by other than direct arteriovenous anastomosis (separate procedure); autogenous graft	Procedure	CPT4	CPT4	36825
+2108385	Ligation, major artery (eg, post-traumatic, rupture); extremity	Procedure	CPT4	CPT4	37618
+2108643	Glossectomy; composite procedure with resection floor of mouth and mandibular resection, without radical neck dissection	Procedure	CPT4	CPT4	41150
+2108767	Excision of parotid tumor or parotid gland; lateral lobe, without nerve dissection	Procedure	CPT4	CPT4	42410
+2109037	Intestinal allotransplantation; from cadaver donor	Procedure	CPT4	CPT4	44135
+2109090	Small intestinal endoscopy, enteroscopy beyond second portion of duodenum, not including ileum; with removal of foreign body(s)	Procedure	CPT4	CPT4	44363
+2109370	Cholecystectomy with exploration of common duct	Procedure	CPT4	CPT4	47610
+2109636	Ablation, 1 or more renal tumor(s), percutaneous, unilateral, radiofrequency	Procedure	CPT4	CPT4	50592
+2109650	Injection procedure for visualization of ileal conduit and/or ureteropyelography, exclusive of radiologic service	Procedure	CPT4	CPT4	50690
+2109813	Cystourethroscopy with ureteroscopy; with treatment of intra-renal stricture (eg, balloon dilation, laser, electrocautery, and incision)	Procedure	CPT4	CPT4	52346
+2109876	Urethrolysis, transvaginal, secondary, open, including cystourethroscopy (eg, postsurgical obstruction, scarring)	Procedure	CPT4	CPT4	53500
+2109912	Amputation of penis; partial	Procedure	CPT4	CPT4	54120
