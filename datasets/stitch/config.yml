@@ -1,8 +1,10 @@
 
 # dataset: stitch
-input_dir:
-  class: Directory
-  path: /data/d2s-workspace/input/stitch
+input_dir: "input/stitch"
+
+# input_dir:
+#   class: Directory
+#   path: /data/d2s-workspace/input/stitch
 
 # R2RML params
 input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
