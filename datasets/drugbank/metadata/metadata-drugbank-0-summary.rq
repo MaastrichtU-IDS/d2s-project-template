@@ -22,18 +22,18 @@ PREFIX void-ext: <http://ldf.fi/void-ext#>
 INSERT {
 	GRAPH <?_output> {
 
-    <https://w3id.org/data2services/agent/drugbank> a dct:Agent ;
+    <https://w3id.org/d2s/agent/drugbank> a dct:Agent ;
       foaf:name "DrugBank" ;
       foaf:page <https://www.drugbank.ca/> .
       # sebastian.koehler@charite.de ?
 
     # Summary
-    <https://w3id.org/data2services/dataset/drugbank>
+    <https://w3id.org/d2s/dataset/drugbank>
       rdf:type dctypes:Dataset;
       dct:title "DrugBank" ;
       idot:preferredPrefix "drugbank" ;
       dct:description "The DrugBank database is a unique bioinformatics and cheminformatics resource that combines detailed drug data with comprehensive drug target information."@en;
-      dct:publisher <https://w3id.org/data2services/agent/drugbank> ;
+      dct:publisher <https://w3id.org/d2s/agent/drugbank> ;
       
       dct:license <http://creativecommons.org/licenses/by-nc/4.0/legalcode> ;
       # Human readable licenses terms
@@ -64,7 +64,7 @@ INSERT {
 
 
       ## Needs to be updated at new submission
-      #pav:hasCurrentVersion <https://w3id.org/data2services/dataset/drugbank/version/1> ;
+      #pav:hasCurrentVersion <https://w3id.org/d2s/dataset/drugbank/version/1> ;
   }
 } WHERE {
     BIND(NOW() AS ?now)

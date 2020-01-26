@@ -3,7 +3,7 @@ input_dir:
   class: Directory
   path: /data/d2s-workspace/input/drugbank
 
-sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/drugbank
+sparql_final_graph_uri: https://w3id.org/d2s/graph/biolink/drugbank
 
 # download-username: vincent.emonet@maastrichtuniversity.nl
 # download-password: maasitest12
@@ -18,7 +18,7 @@ sparql_tmp_service_url: "http://d2s-virtuoso.137.120.31.101.nip.io/sparql"
 sparql_tmp_triplestore_username: dba
 sparql_tmp_triplestore_password: dba
 
-sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/xml2rdf"
+sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/xml2rdf"
 
 
 # Final RDF4J server SPARQL endpoint to load the BioLink RDF

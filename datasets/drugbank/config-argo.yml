@@ -17,7 +17,7 @@ sparql-tmp-service-url: "http://localhost:7200/repositories/test-vincent"
 sparql-tmp-triplestore-username: import_user
 sparql-tmp-triplestore-password: test
 
-sparql-tmp-graph-uri: "https://w3id.org/data2services/graph/xml2rdf"
+sparql-tmp-graph-uri: "https://w3id.org/d2s/graph/xml2rdf"
 
 # Final RDF4J server SPARQL endpoint to load the BioLink RDF
 #sparql-final-triplestore-url: http://graphdb:7200
@@ -26,7 +26,7 @@ sparql-final-triplestore-url: http://graphdb.dumontierlab.com/repositories/test-
 sparql-final-triplestore-username: import_user
 sparql-final-triplestore-password: test
 
-sparql-final-graph-uri: https://w3id.org/data2services/graph/biolink/drugbank
+sparql-final-graph-uri: https://w3id.org/d2s/graph/biolink/drugbank
 
 sparql-transform-queries-path: https://github.com/MaastrichtU-IDS/d2s-transform-template/tree/master/datasets/drugbank/mappings/1
 sparql-insert-metadata-path: https://github.com/MaastrichtU-IDS/d2s-transform-template/tree/master/datasets/drugbank/metadata/1

@@ -22,7 +22,7 @@ PREFIX void-ext: <http://ldf.fi/void-ext#>
 INSERT {
 	GRAPH <?_output> {
 
-    <https://w3id.org/data2services/agent/umids> a dct:Agent ;
+    <https://w3id.org/d2s/agent/umids> a dct:Agent ;
       foaf:name "Institute of Data Science at Maastricht University" ;
       foaf:page <https://maastrichtuniversity.nl/ids> .
 
@@ -54,8 +54,8 @@ INSERT {
       # dct:license <https://opensource.org/licenses/MIT> ;
       
       # Same for creator and publisher, should it be HPO for the version?
-      # dct:creator <https://w3id.org/data2services/agent/umids> ;
-      # dct:publisher <https://w3id.org/data2services/agent/umids> ;
+      # dct:creator <https://w3id.org/d2s/agent/umids> ;
+      # dct:publisher <https://w3id.org/d2s/agent/umids> ;
   
     ### RDF Distribution description
     <?_output>
@@ -72,8 +72,8 @@ INSERT {
       pav:createdWith <https://github.com/MaastrichtU-IDS/d2s-transform-template/tree/master/mapping/drugbank> ;
 
       # Which publisher for BioLink Dataset?
-      dct:publisher <https://w3id.org/data2services/agent/umids> ; 
-      dct:creator <https://w3id.org/data2services/agent/umids> ; 
+      dct:publisher <https://w3id.org/d2s/agent/umids> ; 
+      dct:creator <https://w3id.org/d2s/agent/umids> ; 
 
       dct:source ?distributionSourceUri ;
       dct:language ?dctLanguage ;
@@ -130,7 +130,7 @@ INSERT {
   
   BIND("5.1.1"^^xsd:string AS ?pavVersion)
 
-  BIND(<https://w3id.org/data2services/dataset/drugbank> AS ?summaryUri)
+  BIND(<https://w3id.org/d2s/dataset/drugbank> AS ?summaryUri)
   BIND(<http://lexvo.org/id/iso639-3/eng> AS ?dctLanguage)
 
   # Extract RDF version from URI. Only works if using #1
