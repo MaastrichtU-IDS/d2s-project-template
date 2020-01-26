@@ -1,6 +1,6 @@
 PREFIX x2rm: <http://ids.unimaas.nl/xml2rdf/model#>
 PREFIX x2rd: <http://ids.unimaas.nl/xml2rdf/data/>
-PREFIX d2s: <https://w3id.org/data2services/vocab/>
+PREFIX d2s: <https://w3id.org/d2s/vocab/>
 PREFIX ido: <http://identifiers.org/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -118,13 +118,13 @@ INSERT {
       # e.g. unknown, yes
 
       BIND(iri(concat("https://identifiers.org/drugbankv4.target:", ?bioentityId)) AS ?bioentityUri)
-      BIND(iri(concat("https://w3id.org/data2services/data/association/drug_", ?bioentityType, ":", ?drugbankId, "_", ?bioentityId)) AS ?associationUri)
-      BIND(iri(concat("https://w3id.org/data2services/data/organism:", ?bioentityOrganism)) AS ?organismUri )
-      BIND(iri(concat("https://w3id.org/data2services/data/drug_action:", ?targetAction)) AS ?actionUri )
+      BIND(iri(concat("https://w3id.org/d2s/data/association/drug_", ?bioentityType, ":", ?drugbankId, "_", ?bioentityId)) AS ?associationUri)
+      BIND(iri(concat("https://w3id.org/d2s/data/organism:", ?bioentityOrganism)) AS ?organismUri )
+      BIND(iri(concat("https://w3id.org/d2s/data/drug_action:", ?targetAction)) AS ?actionUri )
 
       # Define polypeptide association
       BIND(iri(concat("https://identifiers.org/uniprot:", ?polypeptideId)) AS ?polypeptideUniprotUri)
-      BIND(iri(concat("https://w3id.org/data2services/data/association/drug_protein:", ?drugbankId, "_", ?polypeptideId)) AS ?polypeptideAssociationUri)
+      BIND(iri(concat("https://w3id.org/d2s/data/association/drug_protein:", ?drugbankId, "_", ?polypeptideId)) AS ?polypeptideAssociationUri)
     }
   }
 }
