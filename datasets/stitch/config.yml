@@ -1,7 +1,7 @@
 
 ## Transform CSV
 
-input_dir: "input/stitch"
+input_dir: "stitch"
 
 # input_dir:
 #   class: Directory

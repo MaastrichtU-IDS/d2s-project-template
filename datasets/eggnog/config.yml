@@ -1,8 +1,6 @@
 # input_dir: "input/eggnog"
 
-input_dir:
-  class: Directory
-  path: /data/d2s-workspace/input/eggnog
+dataset_to_process: eggnog
 
 # R2RML params
 input_data_jdbc: "jdbc:drill:drillbit=drill:31010"

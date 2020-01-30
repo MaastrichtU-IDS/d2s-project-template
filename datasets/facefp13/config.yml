@@ -1,7 +1,7 @@
 
 ## Transform CSV
 
-input_dir: "input/facefp13"
+dataset_to_process: "facefp13"
 
 # input_dir:
 #   class: Directory

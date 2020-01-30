@@ -5,8 +5,6 @@ dir_to_process:
   class: Directory
   path: ../../workspace/input/drugbank
 
-# dataset_to_process: "drugbank"
-
 sparql_final_graph_uri: https://w3id.org/d2s/graph/biolink/drugbank
 
 # download-username: vincent.emonet@maastrichtuniversity.nl

@@ -1,12 +1,8 @@
 
 ## Transform CSV
 
-input_dir: "cohd"
+dataset_to_process: "cohd"
 
-# Path to the input directory on your machine
-# input_dir:
-#   class: Directory
-#   path: /../../workspace/input/cohd
 
 sparql_final_graph_uri: "https://w3id.org/d2s/graph/biolink/cohd"
 
