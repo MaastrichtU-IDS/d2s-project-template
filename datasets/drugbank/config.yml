@@ -1,9 +1,11 @@
 ## Transform XML
 
 # Path to the input directory on your machine
-input_dir:
-  class: Directory
-  path: /data/d2s-workspace/input/drugbank
+# input_dir:
+#   class: Directory
+#   path: /data/d2s-workspace/input/drugbank
+
+dataset_to_process: "drugbank"
 
 sparql_final_graph_uri: https://w3id.org/d2s/graph/biolink/drugbank
 
