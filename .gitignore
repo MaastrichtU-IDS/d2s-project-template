@@ -1,4 +1,7 @@
+.d2sconfig
+workspace/
+
 output/
 input/
-.d2s
+
 .DS_Store

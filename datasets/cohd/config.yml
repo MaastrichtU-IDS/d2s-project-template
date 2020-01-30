@@ -1,7 +1,12 @@
 
 ## Transform CSV
 
-input_dir: "input/cohd"
+input_dir: "cohd"
+
+# Path to the input directory on your machine
+# input_dir:
+#   class: Directory
+#   path: /../../workspace/input/cohd
 
 sparql_final_graph_uri: "https://w3id.org/d2s/graph/biolink/cohd"
 
@@ -16,7 +21,8 @@ sparql_tmp_triplestore_password: "dba"
 sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/autor2rml"
 # sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/autor2rml/cohd"
 # sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/autor2rml"
-virtuoso_container_id: "d2s-cwl-workflows_virtuoso_1"
+tmp_triplestore_container_id: "d2s-cwl-workflows_virtuoso_1"
+tmp_triplestore_load_dir: "/usr/local/virtuoso-opensource/var/lib/virtuoso/db"
 
 
 # Final RDF4J server SPARQL endpoint to load the BioLink RDF
