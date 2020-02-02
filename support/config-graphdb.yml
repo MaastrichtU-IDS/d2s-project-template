@@ -24,7 +24,7 @@ sparql_final_triplestore_password: test
 
 sparql_final_graph_uri: https://w3id.org/d2s/graph/biolink/drugbank/calrissian
 
-sparql_transform_queries_path: "mappings"
+sparql_transform_queries_path: "mapping"
 sparql_insert_metadata_path: "metadata"
 
 cwl_workflow_filename: graphdb-workflow-xml.cwl

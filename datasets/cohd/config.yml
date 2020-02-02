@@ -36,7 +36,7 @@ sparql_final_triplestore_password: "password"
 # split_delimiter: ","
 # split_quote: '"'
 
-sparql_transform_queries_path: "mappings"
+sparql_transform_queries_path: "mapping"
 sparql_insert_metadata_path: "metadata"
 
 # TODO: use workflows/workflow-csv.cwl ?

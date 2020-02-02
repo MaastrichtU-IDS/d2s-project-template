@@ -34,7 +34,7 @@ split_delimiter: ","
 split_quote: '"'
 
 
-sparql_transform_queries_path: "mappings"
+sparql_transform_queries_path: "mapping"
 sparql_insert_metadata_path: "metadata"
 
 cwl_workflow_filename: workflow-csv.cwl

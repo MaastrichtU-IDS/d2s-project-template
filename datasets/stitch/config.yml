@@ -27,7 +27,7 @@ sparql_final_triplestore_password: dba
 
 sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/stitch
 
-sparql_transform_queries_path: "mappings"
+sparql_transform_queries_path: "mapping"
 sparql_insert_metadata_path: "metadata"
 
 cwl_workflow_filename: workflow-csv.cwl
