@@ -22,6 +22,7 @@ PREFIX void-ext: <http://ldf.fi/void-ext#>
 INSERT {
 	GRAPH <?_output> {
 
+    # Agent publishing the dataset distribution
     <https://w3id.org/d2s/agent/umids> a dct:Agent ;
       foaf:name "Institute of Data Science at Maastricht University" ;
       foaf:page <https://maastrichtuniversity.nl/ids> .
@@ -32,7 +33,7 @@ INSERT {
       dct:isVersionOf ?summaryUri ;
       pav:version ?pavVersion ;
 
-      dcat:distribution <?_output> ;
+      dcat:distribution <?_input> ;
       dcat:accessURL <https://graphdb.dumontierlab.com/graphs> ; 
 
       ## MAY
@@ -58,7 +59,7 @@ INSERT {
       # dct:publisher <https://w3id.org/d2s/agent/umids> ;
   
     ### RDF Distribution description
-    <?_output>
+    <?_input>
       a dcat:Distribution, void:Dataset ;
       # TODO: should we use the same pav:version as the source for RDF distribution? 
       pav:version ?pavVersion ;
@@ -66,14 +67,14 @@ INSERT {
       # # more convenient to do strafter() and extract version number
 
       # TODO: What should be data2services BioLink RDF license?
-      dct:license <http://creativecommons.org/licenses/by/3.0/> ;
-      void:exampleResource <https://identifiers.org/drugbank:DB00001> ;
+      dct:license <http://creativecommons.org/licenses/by/3.0/> ;           
+      void:exampleResource <https://identifiers.org/drugbank:DB00001> ;     
       # TODO: should we point createdWith to the SPARQL mappings?
-      pav:createdWith <https://github.com/MaastrichtU-IDS/d2s-transform-template/tree/master/datasets/drugbank/mapping> ;
+      pav:createdWith <https://github.com/MaastrichtU-IDS/d2s-transform-template/tree/master/datasets/cohd/mapping> ;  
 
       # Which publisher for BioLink Dataset?
-      dct:publisher <https://w3id.org/d2s/agent/umids> ; 
-      dct:creator <https://w3id.org/d2s/agent/umids> ; 
+      dct:publisher <https://w3id.org/d2s/agent/umids> ;  
+      dct:creator <https://w3id.org/d2s/agent/umids> ;    
 
       dct:source ?distributionSourceUri ;
       dct:language ?dctLanguage ;
@@ -127,14 +128,14 @@ INSERT {
       # idot:accessPattern "http://identifiers.org/drugbank:" ;
     }
 } WHERE {
-  
+  # Version of the source dataset
   BIND("5.1.1"^^xsd:string AS ?pavVersion)
 
   BIND(<https://w3id.org/d2s/dataset/drugbank> AS ?summaryUri)
   BIND(<http://lexvo.org/id/iso639-3/eng> AS ?dctLanguage)
 
-  # Extract RDF version from URI. Only works if using #1
-  BIND(strafter(str("?_output"), "#")  AS ?rdfPavVersion)
+  # Version of our RDF distribution version 
+  BIND("1"^^xsd:string AS ?rdfPavVersion)
   BIND(concat("N-Quads distribution of DrugBank build #", ?rdfPavVersion) AS ?rdfDctTitle)
   BIND(concat("N-Quads distribution of DrugBank build #", ?rdfPavVersion, " produced by Data2Services on NOW()") AS ?rdfDctDescription)
 
@@ -150,7 +151,7 @@ INSERT {
   }
 
   # Generates URIs from pav:version
-  BIND(iri(concat(str(?summaryUri), "version#", str(?pavVersion))) AS ?versionUri)
-  BIND(iri(concat(str(?summaryUri), "distribution/source#", str(?pavVersion))) AS ?distributionSourceUri)
+  BIND(iri(concat(str(?summaryUri), "/version#", str(?pavVersion))) AS ?versionUri)
+  BIND(iri(concat(str(?summaryUri), "/distribution/source#", str(?pavVersion))) AS ?distributionSourceUri)
   BIND(<http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/> AS ?hclsDataset)
 }

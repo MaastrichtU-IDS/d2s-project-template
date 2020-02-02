@@ -67,5 +67,5 @@ INSERT {
       #pav:hasCurrentVersion <https://w3id.org/d2s/dataset/drugbank/version/1> ;
   }
 } WHERE {
-    BIND(NOW() AS ?now)
+    # BIND(NOW() AS ?now)
 }
