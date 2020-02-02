@@ -16,7 +16,7 @@ PREFIX schemaorg: <http://schema.org/>
 PREFIX sd: <http://www.w3.org/ns/sparql-service-description#>
 PREFIX sio: <http://semanticscience.org/resource/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX void: <http://rdfs.org/ns/void/>
+PREFIX void: <http://rdfs.org/ns/void#>
 PREFIX void-ext: <http://ldf.fi/void-ext#>
 
 INSERT {
