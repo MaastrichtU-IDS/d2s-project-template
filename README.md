@@ -1,20 +1,31 @@
-### Define CWL workflows for RDF conversion
+## Define CWL workflows for RDF conversion
 
-Use this template repository to create a new repository:
+Use this template repository to create a new repository used by the [d2s client](https://pypi.org/project/d2s/). 
+
+See **[d2s.semanticscience.org](http://d2s.semanticscience.org/)** for detailed documentation to run CWL workflows to transform structured data to a target RDF knowledge graph and deploy services.
 
 ![Use template repository](support/screenshot_d2s_template.png)
+
+## Requirements
+
+- Install the [d2s client](https://pypi.org/project/d2s/)
+- Install [cwlref-runner](https://github.com/common-workflow-language/cwltool#install) to get cwl-runner to run workflows of Docker modules.
+- [Docker](https://docs.docker.com/install/) must be installed.
+
+```bash
+sudo apt install d2s cwlref-runner
+```
+
 
 Clone the created repository and add the CWL submodule:
 
 ```bash
-git clone --recursive https://github.com/MY_GIT_REPOSITORY
-cd MY_GIT_REPOSITORY/
-git submodule add --recursive https://github.com/MaastrichtU-IDS/d2s-cwl-workflows.git
+d2s init
 ```
 
-> See **[d2s.semanticscience.org](http://d2s.semanticscience.org/)** for detailed documentation on building and running CWL workflows to transform structured data to a target RDF knowledge graph.
+> Follow the prompt instructions.
 
-### Edit this template
+## Edit this template
 
 You might want to edit or modify this template: 
 
@@ -22,6 +33,7 @@ You might want to edit or modify this template:
 git clone --recursive https://github.com/MaastrichtU-IDS/d2s-transform-template.git
 ```
 
-### About
+## About
 
 We use the [Common Workflow Language](https://www.commonwl.org/) to describe workflows to transform heterogeneous structured data (CSV, TSV, RDB, XML, JSON) to a target RDF data model ([BioLink](https://biolink.github.io/biolink-model/docs/) in those examples). The user defines [SPARQL queries](https://github.com/MaastrichtU-IDS/d2s-transform-template/blob/master/mapping/pharmgkb/insert-pharmgkb.rq) to transform the generic RDF generated depending on the input data structure (AutoR2RML, xml2rdf) to the target model of his choice.
+
