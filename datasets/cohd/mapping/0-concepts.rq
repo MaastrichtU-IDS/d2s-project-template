@@ -49,7 +49,7 @@ INSERT {
 
       OPTIONAL { ?row d2s:Vocabulary_id ?Vocabulary_id . }
       # SNOMED, RxNorm, ICD9Proc, CPT4, ICD10CM, ICD10PCS, HCPCS, Gender,
-      BIND ( iri(concat("https://w3id.org/biolink/cohd/vocabulary/", ?Vocabulary_id)) AS ?vocabUri ) 
+      BIND ( iri(concat("https://w3id.org/biolink/cohd/vocabulary:", ?Vocabulary_id)) AS ?vocabUri ) 
       # TODO: exclude Gender ?
 
       BIND( iri(concat("https://w3id.org/biolink/cohd/concept_class:", 
