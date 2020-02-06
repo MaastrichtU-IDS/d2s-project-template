@@ -12,11 +12,14 @@ INSERT {
       bl:id ?Concept_id ;
       bl:name ?Concept_name ;
       bl:provided_by ?vocabUri ;
-      bl:category ?Concept_class_id ; # TODO: is it ok?
+      bl:category ?conceptClassUri ; # TODO: is it ok?
       bl:systematic_synonym ?Concept_code .
     
     ?vocabUri a bl:Provider ;
       bl:name ?Vocabulary_id .
+
+    ?conceptClassUri a bl:OntologyClass ;
+      bl:name ?Concept_class_id .
   }
 } WHERE {
   SERVICE <?_service>  {
@@ -49,7 +52,9 @@ INSERT {
       BIND ( iri(concat("https://w3id.org/biolink/cohd/vocabulary/", ?Vocabulary_id)) AS ?vocabUri ) 
       # TODO: exclude Gender ?
 
-      OPTIONAL { ?row d2s:Concept_class_id ?Concept_class_id . }
+      BIND( iri(concat("https://w3id.org/biolink/cohd/concept_class:", 
+        replace(?Concept_class_id, " ", "_"))) as ?conceptClassUri)
+      OPTIONAL { ?row d2s:Concept_class_id ?conceptClassUri . }
       # Ingredient, Procedure, Qualifier Value, Quant Branded Drug, Quant Clinical Drug...
 
       OPTIONAL { ?row d2s:Concept_code ?Concept_code . }
