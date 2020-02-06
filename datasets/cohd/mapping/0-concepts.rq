@@ -52,10 +52,10 @@ INSERT {
       BIND ( iri(concat("https://w3id.org/biolink/cohd/vocabulary:", ?Vocabulary_id)) AS ?vocabUri ) 
       # TODO: exclude Gender ?
 
+      OPTIONAL { ?row d2s:Concept_class_id ?Concept_class_id . }
+      # Ingredient, Procedure, Qualifier Value, Quant Branded Drug, Quant Clinical Drug...
       BIND( iri(concat("https://w3id.org/biolink/cohd/concept_class:", 
         replace(?Concept_class_id, " ", "_"))) as ?conceptClassUri)
-      OPTIONAL { ?row d2s:Concept_class_id ?conceptClassUri . }
-      # Ingredient, Procedure, Qualifier Value, Quant Branded Drug, Quant Clinical Drug...
 
       OPTIONAL { ?row d2s:Concept_code ?Concept_code . }
       # e.g. 64714, 75833, V5060, 00W63JZ, 02UM0KZ
