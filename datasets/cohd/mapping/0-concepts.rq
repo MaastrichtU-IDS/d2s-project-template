@@ -12,7 +12,7 @@ INSERT {
       bl:id ?Concept_id ;
       bl:name ?Concept_name ;
       bl:provided_by ?vocabUri ;
-      bl:category ?Concept_class_id ;
+      bl:category ?Concept_class_id ; # TODO: is it ok?
       bl:systematic_synonym ?Concept_code .
     
     ?vocabUri a bl:Provider ;
@@ -46,7 +46,7 @@ INSERT {
 
       OPTIONAL { ?row d2s:Vocabulary_id ?Vocabulary_id . }
       # SNOMED, RxNorm, ICD9Proc, CPT4, ICD10CM, ICD10PCS, HCPCS, Gender,
-      BIND ( iri(concat("https://w3id.org/biolink/data/vocabulary/", ?Vocabulary_id)) AS ?vocabUri ) 
+      BIND ( iri(concat("https://w3id.org/biolink/cohd/vocabulary/", ?Vocabulary_id)) AS ?vocabUri ) 
       # TODO: exclude Gender ?
 
       OPTIONAL { ?row d2s:Concept_class_id ?Concept_class_id . }

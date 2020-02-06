@@ -5,21 +5,23 @@ PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX bl: <https://w3id.org/biolink/vocab/>
 PREFIX w3idvocab: <https://w3id.org/d2s/vocab/>
+
+## See issue: https://github.com/MaastrichtU-IDS/data2services-project/issues/15
 INSERT {
   GRAPH <?_output> {  
     # Attribute the retrieved data to your model properties
-   ?Dataset_id_uri a owl:Thing ;
-      dc:identifier ?Dataset_id ;
-      rdfs:label ?Concept_id_1 ;
-      rdfs:label ?Concept_id_2 ;
-      rdfs:label ?Concept_count ;
-      rdfs:label ?Concept_prevalence ;
-      rdfs:label ?Chi_square_t ;
-      rdfs:label ?Chi_square_p ;
-      rdfs:label ?Expected_count ;
-      rdfs:label ?Ln_ratio ;
-      rdfs:label ?Rel_freq_1 ;
-      rdfs:label ?Rel_freq_2 .
+   ?associationUri a bl:Association ;
+      bl:id ?associationUri ;
+      bl:subject ?Concept_id_1 ;
+      bl:object ?Concept_id_2 ;
+      bl:has_count ?Concept_count ;
+      # bl:label ?Concept_prevalence ;
+      bl:has_confidence_level ?Chi_square_t .
+      # bl:label ?Chi_square_p ;
+      # bl:label ?Expected_count ;
+      # bl:label ?Ln_ratio ;
+      # bl:label ?Rel_freq_1 ;
+      # bl:label ?Rel_freq_2 .
   }
 } WHERE {
   SERVICE <?_service>  {
@@ -28,11 +30,16 @@ INSERT {
       ?row d2s:Dataset_id ?Dataset_id ;
         a <https://w3id.org/d2s/paired_concept_counts_associations.tsv> .
 
-      # Generate URI from ID
-      BIND ( iri(concat("https://w3id.org/d2s/data/", md5(?Dataset_id))) AS ?Dataset_id_uri )
+      ?row d2s:Concept_id_1 ?Concept_id_1 . 
+      ?row d2s:Concept_id_2 ?Concept_id_2 . 
 
-      OPTIONAL { ?row d2s:Concept_id_1 ?Concept_id_1 . }
-      OPTIONAL { ?row d2s:Concept_id_2 ?Concept_id_2 . }
+      BIND ( iri(concat("http://api.ohdsi.org/WebAPI/vocabulary/concept/", ?Concept_id_1)) AS ?uriConcept1 )
+      BIND ( iri(concat("http://api.ohdsi.org/WebAPI/vocabulary/concept/", ?Concept_id_2)) AS ?uriConcept2 )
+
+      # Generate URI from ID
+      BIND ( iri(concat("https://w3id.org/biolink/cohd/association/", 
+        concat(?Concept_id_1, "_", ?Concept_id_2))) AS ?associationUri )
+
       OPTIONAL { ?row d2s:Concept_count ?Concept_count . }
       OPTIONAL { ?row d2s:Concept_prevalence ?Concept_prevalence . }
       OPTIONAL { ?row d2s:Chi_square_t ?Chi_square_t . }
