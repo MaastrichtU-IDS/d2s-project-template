@@ -1,0 +1,58 @@
+PREFIX d2s: <https://w3id.org/d2s/model/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX w3idvocab: <https://w3id.org/d2s/vocab/>
+INSERT {
+  GRAPH <?_output> {  
+    # Attribute the retrieved data to your model properties
+    ?providerUri a bl:Provider ;
+      bl:id ?providerUri ;
+      bl:name ?providerName ;
+      bl:description ?Dataset_description ;
+      bl:synonym ?Dataset_id ;
+      bl:has_total ?patientCountInDataset ;
+      bl:creation_date ?creationDate ; 
+      bl:update_date ?updateDate .
+
+    ?sampleUri a bl:MaterialSample ;
+      bl:id ?sampleUri ;
+      bl:name ?sampleName ;
+      bl:description ?Dataset_description ;
+      bl:synonym ?Dataset_id ;
+      bl:has_total ?patientCountInDataset ;
+      bl:creation_date ?creationDate ; 
+      bl:update_date ?updateDate ;
+      bl:provided_by ?providerUri .
+  }
+} WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+
+      ?datasetRow a <https://w3id.org/d2s/dataset.tsv> ;
+        d2s:Dataset_id ?Dataset_id ;
+        d2s:Dataset_name ?Dataset_name ;
+        d2s:Dataset_description ?Dataset_description .
+
+      ?datasetRow a <https://w3id.org/d2s/patient_count.tsv> ;
+        d2s:Dataset_id ?Dataset_id ;
+        d2s:Count ?patientCountInDataset .
+
+      # Generate URI from ID
+      BIND ( iri(concat("https://w3id.org/biolink/cohd/provider/dataset:", ?Dataset_id)) AS ?providerUri )
+      BIND ( iri(concat("https://w3id.org/biolink/cohd/sample/dataset:", ?Dataset_id)) AS ?sampleUri )
+
+      BIND ( concat("COHD ", ?Dataset_name, " Sample Clinical Data") as ?providerName)
+      BIND ( concat("COHD ", ?Dataset_name, " Sample Clinical Data") as ?sampleName)
+
+      VALUES (?Dataset_id ?creationDate ?updateDate) {
+        ( "1" "2013" "2017" )
+        ( "2" "2013" "2017" ) # TODO: ask the right dates?
+        ( "3" "2013" "2017" )
+      }
+
+    }
+  }
+}

@@ -30,6 +30,11 @@ INSERT {
       ?row d2s:Dataset_id ?Dataset_id ;
         a <https://w3id.org/d2s/paired_concept_counts_associations.tsv> .
 
+      ?datasetRow a <https://w3id.org/d2s/patient_count.tsv> ;
+        d2s:Dataset_id ?Dataset_id ;
+        d2s:Count ?patientCountInDataset .
+      # BIND ( iri(concat("https://w3id.org/d2s/data/", md5(?Dataset_id))) AS ?Dataset_id_uri )
+
       ?row d2s:Concept_id_1 ?Concept_id_1 . 
       ?row d2s:Concept_id_2 ?Concept_id_2 . 
 
