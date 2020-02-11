@@ -22,8 +22,10 @@ tmp_triplestore_load_dir: "/usr/local/virtuoso-opensource/var/lib/virtuoso/db"
 
 
 # Final RDF4J server SPARQL endpoint to load the BioLink RDF
+# sparql_final_triplestore_url: "http://graphdb:7200/repositories/trek/statements"
 sparql_final_triplestore_url: "http://graphdb:7200/repositories/test/statements"
 # sparql_final_triplestore_url: "http://virtuoso:8890/sparql"
+
 sparql_tmp_service_url: "http://virtuoso:8890/sparql"
 # sparql_tmp_service_url: "http://localhost:8890/sparql"
 
