@@ -1,0 +1,47 @@
+PREFIX d2s: <https://w3id.org/d2s/model/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX w3idvocab: <https://w3id.org/d2s/vocab/>
+INSERT {
+  GRAPH <?_output> {  
+    # Attribute the retrieved data to your model properties
+   ?conceptUri bl:has_confidence_level ?confidenceUri .
+
+   ?confidenceUri a bl:ConfidenceLevel ;
+      bl:id ?confidenceUri ;
+      bl:name ?confidenceName ;
+      bl:has_count ?Concept_count ;
+      bl:has_total ?patientCountInDataset ;
+      # bl:has_quotient ?Concept_prevalence ; # TODO: use it?
+      bl:provided_by ?providerUri .
+  }
+} WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+
+      ?row a <https://w3id.org/d2s/single_concept_counts.tsv> ;
+        d2s:Dataset_id ?Dataset_id .
+
+      # Get dataset URI and count of patients in the dataset (for bl:has_total)
+      ?datasetRow a <https://w3id.org/d2s/patient_count.tsv> ;
+        d2s:Dataset_id ?Dataset_id ;
+        d2s:Count ?patientCountInDataset .
+      BIND ( iri(concat("https://w3id.org/biolink/cohd/provider/dataset:", ?Dataset_id)) AS ?providerUri )
+
+      # Generate URI from ID
+      ?row d2s:Concept_id ?Concept_id .
+      BIND ( iri(concat("http://api.ohdsi.org/WebAPI/vocabulary/concept/", ?Concept_id)) AS ?conceptUri )
+
+      ?row d2s:Concept_count ?Concept_count .
+      BIND ( concat(?Dataset_id, "_", ?Concept_id) as ?confidenceId)
+      BIND ( iri(concat("https://w3id.org/biolink/cohd/concept/confidence/", ?confidenceId)) AS ?confidenceUri )
+      BIND ( concat("Count of occurences of the concept ", ?Concept_id, " in COHD Clinical Dataset ", 
+        ?Dataset_id, " with the total count of patient in the dataset") AS ?confidenceName )
+
+      OPTIONAL { ?row d2s:Concept_prevalence ?Concept_prevalence . }
+    }
+  }
+}
