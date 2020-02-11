@@ -33,14 +33,14 @@ INSERT {
 
     ?frequencyUri a bl:FrequencyValue ;
       bl:id ?frequencyUri ;
-      bl:name ?frequencyName ;
-      bl:has_quantitative_value ?quantitativeValueUri ;
+      bl:name ?frequencyName .
+      # bl:has_quantitative_value ?quantitativeValueUri ;
       # bl:has_qualitative_value ?qualitativeValueUri ;
       # bl:has_attribute_type ?freqAttributeType ;
       .
-    ?quantitativeValueUri a bl:QuantitativeValue ;
-      bl:has_numeric_value ?numericValue ;
-      bl:has_unit ?unit .
+    ?quantitativeValueUri a bl:QuantitativeValue .
+      # bl:has_numeric_value ?numericValue ;
+      # bl:has_unit ?unit .
 
 
   }
