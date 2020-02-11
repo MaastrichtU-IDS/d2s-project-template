@@ -12,11 +12,11 @@ INSERT {
     # Attribute the retrieved data to your model properties
    ?associationUri a bl:Association ;
       bl:id ?associationUri ;
-      bl:subject ?Concept_id_1 ;
-      bl:object ?Concept_id_2 ;
+      bl:subject ?uriConcept1 ;
+      bl:object ?uriConcept2 ;
       bl:provided_by ?providerUri ;
-      bl:has_confidence_level ?confidenceLevelUri ;
-      bl:frequency_qualifier ?freqValueUri .
+      bl:has_confidence_level ?confidenceUri ;
+      bl:frequency_qualifier ?frequencyUri .
       # bl:label ?Chi_square_p ;
       # bl:label ?Expected_count ;
       # bl:label ?Concept_prevalence ;
