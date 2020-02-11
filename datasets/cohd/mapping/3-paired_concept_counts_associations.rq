@@ -37,7 +37,7 @@ INSERT {
       # bl:has_quantitative_value ?quantitativeValueUri ;
       # bl:has_qualitative_value ?qualitativeValueUri ;
       # bl:has_attribute_type ?freqAttributeType ;
-      .
+
     ?quantitativeValueUri a bl:QuantitativeValue .
       # bl:has_numeric_value ?numericValue ;
       # bl:has_unit ?unit .
