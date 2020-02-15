@@ -67,22 +67,21 @@ INSERT {
       # Generate URI from ID
       BIND ( iri(concat("https://w3id.org/biolink/cohd/association/", ?associationId)) AS ?associationUri )
 
-      OPTIONAL { 
-        ?row d2s:Concept_count ?Concept_count . 
-        BIND ( iri(concat("https://w3id.org/biolink/cohd/association/confidence/", ?associationId)) AS ?confidenceUri )
-        BIND ( concat("Count of co-occurences of the 2 concepts ", ?Concept_id_1, " ", ?Concept_id_2, " with the total count of patient in the dataset") AS ?confidenceName )
-      }
+      # Optional? Seems to not properly get the variables
+      ?row d2s:Concept_count ?Concept_count . 
+      BIND ( iri(concat("https://w3id.org/biolink/cohd/association/confidence/", ?associationId)) AS ?confidenceUri )
+      BIND ( concat("Count of co-occurences of the 2 concepts ", ?Concept_id_1, " ", ?Concept_id_2, " with the total count of patient in the dataset") AS ?confidenceName )
 
       BIND ( iri(concat("https://w3id.org/biolink/cohd/association/frequency/", ?associationId)) AS ?frequencyUri )
       BIND ( concat("Frequency of occurences of the 2 concepts ", ?Concept_id_1, " ", ?Concept_id_2, " in the population observed") AS ?frequencyName )
 
-      OPTIONAL { ?row d2s:Concept_prevalence ?Concept_prevalence . }
-      OPTIONAL { ?row d2s:Chi_square_t ?Chi_square_t . }
-      OPTIONAL { ?row d2s:Chi_square_p ?Chi_square_p . }
-      OPTIONAL { ?row d2s:Expected_count ?Expected_count . }
-      OPTIONAL { ?row d2s:Ln_ratio ?Ln_ratio . }
-      OPTIONAL { ?row d2s:Rel_freq_1 ?Rel_freq_1 . }
-      OPTIONAL { ?row d2s:Rel_freq_2 ?Rel_freq_2 . }
+      # OPTIONAL { ?row d2s:Concept_prevalence ?Concept_prevalence . }
+      # OPTIONAL { ?row d2s:Chi_square_t ?Chi_square_t . }
+      # OPTIONAL { ?row d2s:Chi_square_p ?Chi_square_p . }
+      # OPTIONAL { ?row d2s:Expected_count ?Expected_count . }
+      # OPTIONAL { ?row d2s:Ln_ratio ?Ln_ratio . }
+      # OPTIONAL { ?row d2s:Rel_freq_1 ?Rel_freq_1 . }
+      # OPTIONAL { ?row d2s:Rel_freq_2 ?Rel_freq_2 . }
     }
   }
 }
