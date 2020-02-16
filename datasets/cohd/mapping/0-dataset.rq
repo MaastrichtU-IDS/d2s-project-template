@@ -41,8 +41,8 @@ INSERT {
         d2s:Count ?patientCountInDataset .
 
       # Generate URI from ID
-      BIND ( iri(concat("https://w3id.org/biolink/cohd/provider/dataset:", ?Dataset_id)) AS ?providerUri )
-      BIND ( iri(concat("https://w3id.org/biolink/cohd/sample/dataset:", ?Dataset_id)) AS ?sampleUri )
+      BIND ( iri(concat("https://w3id.org/biolink/cohd/provider/dataset/", ?Dataset_id)) AS ?providerUri )
+      BIND ( iri(concat("https://w3id.org/biolink/cohd/sample/dataset/", ?Dataset_id)) AS ?sampleUri )
 
       BIND ( concat("COHD ", ?Dataset_name, " Sample Clinical Data") as ?providerName)
       BIND ( concat("COHD ", ?Dataset_name, " Sample Clinical Data") as ?sampleName)

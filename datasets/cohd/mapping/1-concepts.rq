@@ -16,9 +16,11 @@ INSERT {
       bl:systematic_synonym ?Concept_code .
     
     ?vocabUri a bl:Provider ;
+      bl:id ?vocabUri ;
       bl:name ?Vocabulary_id .
 
     ?conceptClassUri a bl:OntologyClass ;
+      bl:id ?conceptClassUri ;
       bl:name ?Concept_class_id .
   }
 } WHERE {
@@ -52,10 +54,10 @@ INSERT {
         ("Gender" bl:BiologicalSex )
       }
 
-      BIND ( iri(concat("https://w3id.org/biolink/cohd/vocabulary:", ?Vocabulary_id)) AS ?vocabUri ) 
+      BIND ( iri(concat("https://w3id.org/biolink/cohd/vocabulary/", md5(?Vocabulary_id))) AS ?vocabUri ) 
       # TODO: exclude Gender ?
 
-      BIND( iri(concat("https://w3id.org/biolink/cohd/concept_class:", md5(?Concept_class_id))) as ?conceptClassUri)
+      BIND( iri(concat("https://w3id.org/biolink/cohd/concept_class/", md5(?Concept_class_id))) as ?conceptClassUri)
       # Seems to cause invalid IRI:
       # BIND( iri(concat("https://w3id.org/biolink/cohd/concept_class:", replace(?Concept_class_id, " ", "_"))) as ?conceptClassUri)
 

@@ -55,7 +55,7 @@ INSERT {
       ?datasetRow a <https://w3id.org/d2s/patient_count.tsv> ;
         d2s:Dataset_id ?Dataset_id ;
         d2s:Count ?patientCountInDataset .
-      BIND ( iri(concat("https://w3id.org/biolink/cohd/provider/dataset:", ?Dataset_id)) AS ?providerUri )
+      BIND ( iri(concat("https://w3id.org/biolink/cohd/provider/dataset/", ?Dataset_id)) AS ?providerUri )
 
       ?row d2s:Concept_id_1 ?Concept_id_1 . 
       ?row d2s:Concept_id_2 ?Concept_id_2 .
