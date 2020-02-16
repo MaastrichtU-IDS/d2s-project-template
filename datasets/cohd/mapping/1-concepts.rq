@@ -25,18 +25,23 @@ INSERT {
   SERVICE <?_service>  {
     GRAPH <?_input> {
 
-      ?row d2s:Concept_id ?Concept_id ;
-        a <https://w3id.org/d2s/concepts.tsv> .
-        # a <https://w3id.org/d2s/concepts.tsv> .
+      ?row a <https://w3id.org/d2s/concepts.tsv> ;
+        d2s:Concept_id ?Concept_id ;
+        d2s:Concept_name ?Concept_name ;
+        d2s:Domain_id ?Domain_id ;
+        # Condition, Observation, Measurement, Drug, Procedure, Device, Gender
+        d2s:Vocabulary_id ?Vocabulary_id ;
+        # SNOMED, RxNorm, ICD9Proc, CPT4, ICD10CM, ICD10PCS, HCPCS, Gender,
+        d2s:Concept_class_id ?Concept_class_id ;
+        # Ingredient, Procedure, Qualifier Value, Quant Branded Drug, Quant Clinical Drug...
+        d2s:Concept_code ?Concept_code .
+        # e.g. 64714, 75833, V5060, 00W63JZ, 02UM0KZ
+
 
       # Generate URI from ID
       BIND ( iri(concat("http://api.ohdsi.org/WebAPI/vocabulary/concept/", ?Concept_id)) AS ?Concept_api_uri )
 
-      OPTIONAL { ?row d2s:Concept_name ?Concept_name . }
-
-      OPTIONAL { ?row d2s:Domain_id ?Domain_id . }
-      # Condition, Observation, Measurement, Drug, Procedure, Device, Gender
-      VALUES( ?Domain_id ?typeUri ) {
+      VALUES( str(?Domain_id) ?typeUri ) {
         ("Drug" bl:Drug )
         ("Condition" bl:Disease )
         # bl:DiseaseOrPhenotypicFeature ?
@@ -47,18 +52,11 @@ INSERT {
         ("Gender" bl:BiologicalSex )
       }
 
-      OPTIONAL { ?row d2s:Vocabulary_id ?Vocabulary_id . }
-      # SNOMED, RxNorm, ICD9Proc, CPT4, ICD10CM, ICD10PCS, HCPCS, Gender,
       BIND ( iri(concat("https://w3id.org/biolink/cohd/vocabulary:", ?Vocabulary_id)) AS ?vocabUri ) 
       # TODO: exclude Gender ?
 
-      OPTIONAL { ?row d2s:Concept_class_id ?Concept_class_id . }
-      # Ingredient, Procedure, Qualifier Value, Quant Branded Drug, Quant Clinical Drug...
-      BIND( iri(concat("https://w3id.org/biolink/cohd/concept_class:", 
-        replace(?Concept_class_id, " ", "_"))) as ?conceptClassUri)
+      BIND( iri(concat("https://w3id.org/biolink/cohd/concept_class:", replace(?Concept_class_id, " ", "_"))) as ?conceptClassUri)
 
-      OPTIONAL { ?row d2s:Concept_code ?Concept_code . }
-      # e.g. 64714, 75833, V5060, 00W63JZ, 02UM0KZ
     }
   }
 }
