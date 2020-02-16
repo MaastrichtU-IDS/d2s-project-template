@@ -55,7 +55,7 @@ INSERT {
       BIND ( iri(concat("https://w3id.org/biolink/cohd/vocabulary:", ?Vocabulary_id)) AS ?vocabUri ) 
       # TODO: exclude Gender ?
 
-      BIND( iri(concat("https://w3id.org/biolink/cohd/concept_class:", md5(?Concept_class_id)) as ?conceptClassUri)
+      BIND( iri(concat("https://w3id.org/biolink/cohd/concept_class:", md5(?Concept_class_id))) as ?conceptClassUri)
       # Seems to cause invalid IRI:
       # BIND( iri(concat("https://w3id.org/biolink/cohd/concept_class:", replace(?Concept_class_id, " ", "_"))) as ?conceptClassUri)
 
