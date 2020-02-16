@@ -52,6 +52,10 @@ INSERT {
         ("Procedure" bl:Procedure )
         ("Device" bl:Device )
         ("Gender" bl:BiologicalSex )
+        ("Race" bl:PopulationOfIndividualOrganisms )
+        ("Ethnicity" bl:PopulationOfIndividualOrganisms )
+        # TODO: add bl:in_taxon human?
+        ("Relationship" bl:Phenomenon )
       }
 
       BIND ( iri(concat("https://w3id.org/biolink/cohd/vocabulary/", md5(?Vocabulary_id))) AS ?vocabUri ) 
