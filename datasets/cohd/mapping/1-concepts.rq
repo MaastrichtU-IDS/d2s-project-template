@@ -41,7 +41,7 @@ INSERT {
       # Generate URI from ID
       BIND ( iri(concat("http://api.ohdsi.org/WebAPI/vocabulary/concept/", ?Concept_id)) AS ?Concept_api_uri )
 
-      VALUES( str(?Domain_id) ?typeUri ) {
+      VALUES( ?Domain_id ?typeUri ) {
         ("Drug" bl:Drug )
         ("Condition" bl:Disease )
         # bl:DiseaseOrPhenotypicFeature ?
