@@ -50,7 +50,7 @@ tmp_triplestore_load_dir: "/root/graphdb-import"
 sparql_transform_queries_path: "mapping"
 sparql_insert_metadata_path: "metadata"
 
-# TODO: use workflows/workflow-csv.cwl ?
+# TODO: use workflows/csv-virtuoso.cwl ?
 cwl_workflow_filename: "csv-graphdb.cwl"
 
 config_dir:

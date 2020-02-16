@@ -31,7 +31,7 @@ sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/eggnog
 sparql_transform_queries_path: "mapping"
 sparql_insert_metadata_path: "metadata"
 
-cwl_workflow_filename: workflow-csv-split.cwl
+cwl_workflow_filename: csv-virtuoso-split.cwl
 
 config_dir:
   class: Directory

@@ -27,7 +27,7 @@ sparql_final_graph_uri: https://w3id.org/d2s/graph/biolink/drugbank/calrissian
 sparql_transform_queries_path: "mapping"
 sparql_insert_metadata_path: "metadata"
 
-cwl_workflow_filename: graphdb-workflow-xml.cwl
+cwl_workflow_filename: xml-graphdb.cwl
 
 config_dir:
   class: Directory

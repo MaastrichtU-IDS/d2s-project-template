@@ -29,7 +29,7 @@ sparql_final_triplestore_password: test
 sparql_transform_queries_path: "mapping"
 sparql_insert_metadata_path: "metadata"
 
-cwl_workflow_filename: workflow-xml.cwl
+cwl_workflow_filename: xml-virtuoso.cwl
 
 config_dir:
   class: Directory

@@ -40,8 +40,8 @@ tmp_triplestore_load_dir: "/usr/local/virtuoso-opensource/var/lib/virtuoso/db"
 sparql_transform_queries_path: "mapping"
 sparql_insert_metadata_path: "metadata"
 
-# TODO: use workflows/workflow-csv.cwl ?
-cwl_workflow_filename: "workflow-csv.cwl"
+# TODO: use workflows/csv-virtuoso.cwl ?
+cwl_workflow_filename: "csv-virtuoso.cwl"
 
 config_dir:
   class: Directory
