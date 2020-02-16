@@ -6,10 +6,17 @@ dataset_to_process: "cohd"
 sparql_final_graph_uri: "https://w3id.org/biolink/graph/cohd"
 
 # Final RDF4J server SPARQL endpoint to load the BioLink RDF
-sparql_final_triplestore_url: "http://graphdb:7200/repositories/test/statements"
+# sparql_final_triplestore_url: "http://graphdb:7200/repositories/trek/statements"
+sparql_final_triplestore_url: "http://graphdb:7200/repositories/trek/statements"
 # sparql_final_triplestore_url: "http://virtuoso:8890/sparql"
 
-sparql_tmp_service_url: "http://virtuoso:8890/sparql"
+final_graphdb_url: "http://localhost:7200"
+tmp_graphdb_repository: "test"
+final_graphdb_repository: "trek"
+
+sparql_tmp_service_url: "http://localhost:7200/repositories/test"
+# sparql_tmp_service_url: "http://virtuoso:8890/sparql"
+# sparql_tmp_service_url: "http://localhost:8890/sparql"
 
 sparql_final_triplestore_username: "admin"
 sparql_final_triplestore_password: "root"
@@ -28,8 +35,11 @@ sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/autor2rml"
 # sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/autor2rml/cohd"
 # sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/autor2rml"
 
-tmp_triplestore_container_id: "d2s-cwl-workflows_virtuoso_1"
-tmp_triplestore_load_dir: "/usr/local/virtuoso-opensource/var/lib/virtuoso/db"
+# tmp_triplestore_container_id: "d2s-cwl-workflows_virtuoso_1"
+# tmp_triplestore_load_dir: "/usr/local/virtuoso-opensource/var/lib/virtuoso/db"
+tmp_triplestore_container_id: "d2s-cwl-workflows_graphdb_1"
+tmp_triplestore_load_dir: "/root/graphdb-import"
+
 
 # Split params
 # split_property: "https://w3id.org/biolink/vocab/has_participant"
@@ -41,7 +51,7 @@ sparql_transform_queries_path: "mapping"
 sparql_insert_metadata_path: "metadata"
 
 # TODO: use workflows/workflow-csv.cwl ?
-cwl_workflow_filename: "workflow-csv.cwl"
+cwl_workflow_filename: "csv-graphdb.cwl"
 
 config_dir:
   class: Directory
