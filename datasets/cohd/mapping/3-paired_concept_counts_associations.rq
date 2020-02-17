@@ -41,11 +41,11 @@ INSERT {
       # TODO: should be an URI to a bl:NamedThing
       bl:has_attribute_type <https://w3id.org/biolink/cohd/method/stats/lnratio> .
 
-    ?chiValueUri a bl:QuantitativeValue .
+    ?chiValueUri a bl:QuantityValue .
       bl:has_numeric_value ?Chi_square_t ;
       # bl:has_unit ?unit .
 
-    ?ratioValueUri a bl:QuantitativeValue .
+    ?ratioValueUri a bl:QuantityValue .
       bl:has_numeric_value ?Ln_ratio .
       # bl:has_unit ?unit .
 
