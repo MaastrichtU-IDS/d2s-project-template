@@ -54,7 +54,7 @@ INSERT {
   SERVICE <?_service>  {
     GRAPH <?_input> {
 
-      ?row a <https://w3id.org/d2s/paired_concept_counts_associations.tsv>
+      ?row a <https://w3id.org/d2s/paired_concept_counts_associations.tsv> ;
         d2s:Dataset_id ?Dataset_id ;
         d2s:Concept_id_1 ?Concept_id_1 ;
         d2s:Concept_id_2 ?Concept_id_2 ;
