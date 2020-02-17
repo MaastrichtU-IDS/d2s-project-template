@@ -15,7 +15,8 @@ INSERT {
       bl:object ?uriConcept2 ;
       bl:provided_by ?providerUri ;
       bl:has_confidence_level ?confidenceUri ;
-      bl:frequency_qualifier ?frequencyUri .
+      bl:frequency_qualifier ?chiFrequencyUri ;
+      bl:frequency_qualifier ?ratioFrequencyUri .
 
     ?confidenceUri a bl:ConfidenceLevel ;
       bl:id ?confidenceUri ;
