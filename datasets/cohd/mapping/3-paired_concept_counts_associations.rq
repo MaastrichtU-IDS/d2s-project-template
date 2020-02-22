@@ -24,8 +24,6 @@ INSERT {
     #   bl:has_count ?Concept_count ;
     #   bl:has_total ?patientCountInDataset ;
     #   bl:provided_by ?providerUri .
-
-
     # ?frequencyUri a bl:FrequencyValue ;
     #   bl:id ?frequencyUri ;
     #   bl:name ?chiFrequencyName ;
@@ -33,7 +31,6 @@ INSERT {
     #   bl:has_qualitative_value ?Chi_square_p ;
     #   # TODO: should be an URI to a bl:NamedThing
     #   bl:has_attribute_type <https://w3id.org/biolink/cohd/method/stats/chisquare> .
-
 
     ?evidenceUri a bl:EvidenceType ;
       bl:id ?evidenceUri ;
