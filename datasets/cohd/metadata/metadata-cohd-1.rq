@@ -67,8 +67,8 @@ INSERT {
       # # more convenient to do strafter() and extract version number
 
       # TODO: What should be data2services BioLink RDF license?
-      dct:license <http://creativecommons.org/licenses/by/3.0/> ;           
-      void:exampleResource <https://identifiers.org/drugbank:DB00001> ;     
+      dct:license <https://creativecommons.org/licenses/by/4.0/> ;           
+      void:exampleResource <http://api.ohdsi.org/WebAPI/vocabulary/concept/922802> ;     
       # TODO: should we point createdWith to the SPARQL mappings?
       pav:createdWith <https://github.com/MaastrichtU-IDS/d2s-transform-template/tree/master/datasets/cohd/mapping> ;  
 
@@ -102,10 +102,10 @@ INSERT {
     ### Source distribution (non-RDF) description
     ?distributionSourceUri 
       a dcat:Distribution ;
-      dct:format "application/xml" ;
+      dct:format "text/tab-separated-values" ;
       dcat:downloadURL
-        <https://www.drugbank.ca/releases/5-1-1/downloads/all-full-database> ;
-      idot:exampleIdentifier "DB00001"^^xsd:string ;
+        <https://filedn.com/ll1efYfBhLaV67ONaCyMlKh/cohd-v2.tar.gz> ;
+      idot:exampleIdentifier "http://api.ohdsi.org/WebAPI/vocabulary/concept/922802"^^xsd:string ;
 
       # TODO: should we put issues?
       
