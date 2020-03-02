@@ -1,8 +1,8 @@
 ## Define CWL workflows for RDF conversion
 
-Use this template repository to create a new repository used by the [d2s client](https://pypi.org/project/d2s/). 
+Use this template repository to create a new repository used by the [d2s Command Line Interface](https://pypi.org/project/d2s/). 
 
-See **[d2s.semanticscience.org](http://d2s.semanticscience.org/)** for detailed documentation to run CWL workflows to transform structured data to a target RDF knowledge graph and deploy services.
+See **[d2s.semanticscience.org](https://d2s.semanticscience.org/)** for detailed documentation to run CWL workflows to transform structured data to a target RDF knowledge graph and deploy services.
 
 ![Use template repository](support/screenshot_d2s_template.png)
 
@@ -17,13 +17,13 @@ sudo apt install d2s cwlref-runner
 ```
 
 
-Clone the created repository and add the CWL submodule:
+Create a project:
 
 ```bash
-d2s init
+d2s init project-folder-name
 ```
 
-> Follow the prompt instructions.
+> Follow the prompt instructions. And see the [d2s.semanticscience.org](https://d2s.semanticscience.org/docs/d2s-services) for the complete documentation.
 
 ## Edit this template
 
