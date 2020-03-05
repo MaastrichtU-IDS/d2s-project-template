@@ -51,7 +51,7 @@ INSERT {
         ("Measurement" bl:QuantityValue ) # Not sure (has_numeric_value, has_unit)
         ("Procedure" bl:Procedure )
         ("Device" bl:Device )
-        ("Gender" bl:BiologicalSex )
+        ("Gender" bl:PopulationOfIndividualOrganisms ) # bl:BiologicalSex is an Attribute
         ("Race" bl:PopulationOfIndividualOrganisms )
         ("Ethnicity" bl:PopulationOfIndividualOrganisms )
         # TODO: add bl:in_taxon human?

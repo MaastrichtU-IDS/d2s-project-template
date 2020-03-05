@@ -13,6 +13,7 @@ INSERT {
       bl:id ?associationUri ;
       bl:subject ?uriConcept1 ;
       bl:object ?uriConcept2 ;
+      bl:relation bl:related_to ;
       bl:provided_by ?providerUri ;
       bl:has_evidence ?evidenceUri .
       # bl:has_confidence_level ?confidenceUri ;
