@@ -1,9 +1,13 @@
 #!/bin/bash
 
+# Use sample hosted on GitHub, faster for testing
 wget -N https://github.com/MaastrichtU-IDS/data2services-download/raw/master/datasets/drugbank-sample/drugbank.zip
 
-# Download providing user login and password
-#curl -Lfv -o drugbank.zip -u $USERNAME:$PASSWORD https://www.drugbank.ca/releases/5-1-1/downloads/all-full-database
+# Download full DrugBank dataset providing user login and password
+#curl -Lfv -o drugbank.zip -u $USERNAME:$PASSWORD https://www.drugbank.ca/releases/5-1-5/downloads/all-full-database
+
+# Example:
+#curl -Lfv -o drugbank.zip -u vincent.emonet@maastrichtuniversity.nl:my_password https://www.drugbank.ca/releases/5-1-5/downloads/all-full-database
 
 unzip *.zip -d .
 
