@@ -6,8 +6,8 @@ dataset_to_process: "cohd"
 sparql_final_graph_uri: "https://w3id.org/biolink/graph/cohd"
 
 # Final SPARQL endpoint to load the BioLink RDF
-sparql_final_triplestore_url: "http://graphdb:7200/repositories/test/statements"
-# sparql_final_triplestore_url: "http://blazegraph:8080/bigdata/sparql"
+# sparql_final_triplestore_url: "http://graphdb:7200/repositories/test/statements"
+sparql_final_triplestore_url: "http://blazegraph:8080/bigdata/sparql"
 
 sparql_tmp_service_url: "http://virtuoso:8890/sparql"
 
