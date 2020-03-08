@@ -5,28 +5,27 @@ dir_to_process:
   class: Directory
   path: ../../workspace/input/drugbank
 
+# download-username: vincent.emonet@maastrichtuniversity.nl
+# download-password: password
+
 sparql_final_graph_uri: https://w3id.org/d2s/graph/biolink/drugbank
 
-# download-username: vincent.emonet@maastrichtuniversity.nl
-# download-password: maasitest12
+# Final SPARQL endpoint to load the BioLink RDF
+sparql_final_triplestore_url: "http://graphdb:7200/repositories/test/statements"
+# sparql_final_triplestore_url: "http://blazegraph:8080/bigdata/sparql"
 
-# tmp RDF4J server SPARQL endpoint to load generic RDF
+sparql_final_triplestore_username: "import_user"
+sparql_final_triplestore_password: "password"
+
+# tmp SPARQL endpoint to load generic RDF
 sparql_tmp_triplestore_url: "http://virtuoso:8890/sparql"
-
+sparql_tmp_service_url: "http://virtuoso:8890/sparql"
 sparql_tmp_triplestore_username: dba
 sparql_tmp_triplestore_password: dba
 
 sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/xml2rdf"
 tmp_triplestore_container_id: "d2s-cwl-workflows_virtuoso_1"
 tmp_triplestore_load_dir: "/usr/local/virtuoso-opensource/var/lib/virtuoso/db"
-
-
-# Final RDF4J server SPARQL endpoint to load the BioLink RDF
-sparql_final_triplestore_url: "http://graphdb:7200/repositories/test/statements"
-sparql_tmp_service_url: "http://virtuoso:8890/sparql"
-
-sparql_final_triplestore_username: "import_user"
-sparql_final_triplestore_password: "password"
 
 sparql_transform_queries_path: "mapping"
 sparql_insert_metadata_path: "metadata"
