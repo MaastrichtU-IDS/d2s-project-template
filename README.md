@@ -4,7 +4,7 @@ Use this template repository to create a new repository used by the [d2s Command
 
 See **[d2s.semanticscience.org](https://d2s.semanticscience.org/)** for detailed documentation to run CWL workflows to transform structured data to a target RDF knowledge graph and deploy services.
 
-![Use template repository](support/screenshot_d2s_template.png)
+![Use template repository](screenshot_d2s_template.png)
 
 ## Requirements
 
