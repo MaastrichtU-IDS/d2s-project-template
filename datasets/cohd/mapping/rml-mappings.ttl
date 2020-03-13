@@ -13,7 +13,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
 
 <MapAssociation> a rr:TriplesMap;
   rml:logicalSource [ 
-    rml:source "/mnt/data/cohd/paired_concept_counts_associations.csv";
+    rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
@@ -47,7 +47,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
 
 <MapEvidenceType> a rr:TriplesMap;    
   rml:logicalSource [ 
-    rml:source "/mnt/data/cohd/paired_concept_counts_associations.csv";
+    rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
@@ -81,7 +81,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
 
 <MapTtestResultsAttribute> a rr:TriplesMap;    
   rml:logicalSource [ 
-    rml:source "/mnt/data/cohd/paired_concept_counts_associations.csv";
+    rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
@@ -107,7 +107,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   ] .
 <MapTtestResultsAttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
-    rml:source "/mnt/data/cohd/paired_concept_counts_associations.csv";
+    rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
@@ -122,7 +122,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
 
 <MapTtestPvalueAttribute> a rr:TriplesMap;    
   rml:logicalSource [ 
-    rml:source "/mnt/data/cohd/paired_concept_counts_associations.csv";
+    rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
@@ -148,7 +148,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   ] .
 <MapTtestPvalueAttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
-    rml:source "/mnt/data/cohd/paired_concept_counts_associations.csv";
+    rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
@@ -162,7 +162,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
 
 <MapRelFreq1Attribute> a rr:TriplesMap;    
   rml:logicalSource [ 
-    rml:source "/mnt/data/cohd/paired_concept_counts_associations.csv";
+    rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
@@ -188,7 +188,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   ] .
 <MapRelFreq1AttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
-    rml:source "/mnt/data/cohd/paired_concept_counts_associations.csv";
+    rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
@@ -202,7 +202,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
 
 <MapRelFreq2Attribute> a rr:TriplesMap;    
   rml:logicalSource [ 
-    rml:source "/mnt/data/cohd/paired_concept_counts_associations.csv";
+    rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
@@ -228,7 +228,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   ] .
 <MapRelFreq2AttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
-    rml:source "/mnt/data/cohd/paired_concept_counts_associations.csv";
+    rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
@@ -242,7 +242,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
 
 <MapExpectedCountAttribute> a rr:TriplesMap;    
   rml:logicalSource [ 
-    rml:source "/mnt/data/cohd/paired_concept_counts_associations.csv";
+    rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
@@ -268,7 +268,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   ] .
 <MapExpectedCountAttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
-    rml:source "/mnt/data/cohd/paired_concept_counts_associations.csv";
+    rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
@@ -282,7 +282,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
 
 <MapLnRatioAttribute> a rr:TriplesMap;    
   rml:logicalSource [ 
-    rml:source "/mnt/data/cohd/paired_concept_counts_associations.csv";
+    rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
@@ -308,7 +308,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   ] .
 <MapLnRatioAttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
-    rml:source "/mnt/data/cohd/paired_concept_counts_associations.csv";
+    rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
