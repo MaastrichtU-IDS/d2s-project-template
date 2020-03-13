@@ -7,6 +7,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
 PREFIX w3idvocab: <https://w3id.org/d2s/vocab/>
 
 ## See issue: https://github.com/MaastrichtU-IDS/data2services-project/issues/15
+# Not executed at the moment because, not scalable on 27G TSV, using RMLStreamer
 INSERT {
   GRAPH <?_output> {  
    ?associationUri a bl:Association ;
