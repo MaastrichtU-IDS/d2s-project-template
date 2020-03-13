@@ -1,16 +1,16 @@
 #!/bin/bash
 
-########## Download files
+## Download sample COHD files from GitHub (about 15M)
 
-wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-transform-template/master/datasets/cohd/download/cohd-sample/concepts.tsv
-wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-transform-template/master/datasets/cohd/download/cohd-sample/paired_concept_counts_associations.tsv
-wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-transform-template/master/datasets/cohd/download/cohd-sample/dataset.tsv
-wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-transform-template/master/datasets/cohd/download/cohd-sample/domain_concept_counts.tsv
-wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-transform-template/master/datasets/cohd/download/cohd-sample/domain_pair_concept_counts.tsv
-wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-transform-template/master/datasets/cohd/download/cohd-sample/patient_count.tsv
-wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-transform-template/master/datasets/cohd/download/cohd-sample/single_concept_counts.tsv
+wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-scripts-repository/master/resources/cohd-sample/concepts.tsv
+wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-scripts-repository/master/resources/cohd-sample/paired_concept_counts_associations.tsv
+wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-scripts-repository/master/resources/cohd-sample/dataset.tsv
+wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-scripts-repository/master/resources/cohd-sample/domain_concept_counts.tsv
+wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-scripts-repository/master/resources/cohd-sample/domain_pair_concept_counts.tsv
+wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-scripts-repository/master/resources/cohd-sample/patient_count.tsv
+wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-scripts-repository/master/resources/cohd-sample/single_concept_counts.tsv
 
-## SIMPLE DOWNLOAD only if file as changed
+## Download full COHD data (about 7G compressed)
 # wget -N https://filedn.com/ll1efYfBhLaV67ONaCyMlKh/cohd-v2.tar.gz
 
 
