@@ -94,13 +94,13 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:name ;
-    rr:objectMap [ rr:template "t-Tests results" ]
+    rr:objectMap [ rr:template "t-Tests results of concepts {concept_id_1} and {concept_id_2} in COHD dataset concept {dataset_id}" ]
   ];
-  rr:predicateObjectMap [ 
-    rr:predicate bl:has_attribute_type; 
-    rr:objectMap [ rr:template "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C53231" ]
-    # t-Test
-  ];
+  # rr:predicateObjectMap [ 
+  #   rr:predicate bl:has_attribute_type; 
+  #   rr:objectMap [ rr:template "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C53231" ]
+  #   # t-Test
+  # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
     rr:objectMap [ rml:reference "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest/value" ]
@@ -117,7 +117,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   rr:predicateObjectMap [ 
     rr:predicate bl:has_numeric_value; 
     rr:objectMap [ rml:reference "chi_square_t" ]
-  ];
+  ] .
 
 
 <MapTtestPvalueAttribute> a rr:TriplesMap;    
@@ -135,13 +135,13 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:name ;
-    rr:objectMap [ rr:template "t-Tests p-value" ]
+    rr:objectMap [ rr:template "t-Tests p-value of concepts {concept_id_1} and {concept_id_2} in COHD dataset concept {dataset_id}" ]
   ];
-  rr:predicateObjectMap [ 
-    rr:predicate bl:has_attribute_type; 
-    rr:objectMap [ rr:template "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C53231" ]
-    # p-value
-  ];
+  # rr:predicateObjectMap [ 
+  #   rr:predicate bl:has_attribute_type; 
+  #   rr:objectMap [ rr:template "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C53231" ]
+  #   # p-value
+  # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
     rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue/value" ]
@@ -158,7 +158,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   rr:predicateObjectMap [ 
     rr:predicate bl:has_numeric_value; 
     rr:objectMap [ rml:reference "chi_square_p" ]
-  ];
+  ].
 
 <MapRelFreq1Attribute> a rr:TriplesMap;    
   rml:logicalSource [ 
@@ -175,13 +175,13 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:name ;
-    rr:objectMap [ rr:template "Relative frequency of the association subject (count of patients with the 2 concepts divided by count of patients with only one)" ]
+    rr:objectMap [ rr:template "Frequency of concept {concept_id_1} relative to concept {concept_id_2} (count of patients with the 2 concepts divided by count of patients with only one)" ]
   ];
-  rr:predicateObjectMap [ 
-    rr:predicate bl:has_attribute_type; 
-    rr:objectMap [ rr:template "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C118873" ]
-    # How often / Frequency
-  ];
+  # rr:predicateObjectMap [ 
+  #   rr:predicate bl:has_attribute_type; 
+  #   rr:objectMap [ rr:template "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C118873" ]
+  #   # How often / Frequency
+  # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
     rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency/value" ]
@@ -198,7 +198,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   rr:predicateObjectMap [ 
     rr:predicate bl:has_numeric_value; 
     rr:objectMap [ rml:reference "rel_freq_1" ]
-  ];
+  ] .
 
 <MapRelFreq2Attribute> a rr:TriplesMap;    
   rml:logicalSource [ 
@@ -215,13 +215,13 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:name ;
-    rr:objectMap [ rr:template "Relative frequency of the association object (count of patients with the 2 concepts divided by count of patients with only one)" ]
+    rr:objectMap [ rr:template "Frequency of concept {concept_id_2} relative to concept {concept_id_1} (count of patients with the 2 concepts divided by count of patients with only one)" ]
   ];
-  rr:predicateObjectMap [ 
-    rr:predicate bl:has_attribute_type; 
-    rr:objectMap [ rr:template "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C118873" ]
-    # How often / Frequency
-  ];
+  # rr:predicateObjectMap [ 
+  #   rr:predicate bl:has_attribute_type; 
+  #   rr:objectMap [ rr:template "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C118873" ]
+  #   # How often / Frequency
+  # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
     rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency/value" ]
@@ -238,7 +238,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   rr:predicateObjectMap [ 
     rr:predicate bl:has_numeric_value; 
     rr:objectMap [ rml:reference "rel_freq_2" ]
-  ];
+  ].
 
 <MapExpectedCountAttribute> a rr:TriplesMap;    
   rml:logicalSource [ 
@@ -255,13 +255,13 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:name ;
-    rr:objectMap [ rr:template "Expected count given the 2 concepts are not associated" ]
+    rr:objectMap [ rr:template "Expected count given the 2 concepts {concept_id_1} and {concept_id_2} are not associated in COHD dataset {dataset_id}" ]
   ];
-  rr:predicateObjectMap [ 
-    rr:predicate bl:has_attribute_type; 
-    rr:objectMap [ rr:template "http://semanticscience.org/resource/SIO_001021" ]
-    # Expected Value
-  ];
+  # rr:predicateObjectMap [ 
+  #   rr:predicate bl:has_attribute_type; 
+  #   rr:objectMap [ rr:template "http://semanticscience.org/resource/SIO_001021" ]
+  #   # Expected Value
+  # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
     rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count/value" ]
@@ -278,7 +278,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   rr:predicateObjectMap [ 
     rr:predicate bl:has_numeric_value; 
     rr:objectMap [ rml:reference "expected_count" ]
-  ];
+  ] .
 
 <MapLnRatioAttribute> a rr:TriplesMap;    
   rml:logicalSource [ 
@@ -295,13 +295,13 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:name ;
-    rr:objectMap [ rr:template "Log of observed patients with the concept on the expected count" ]
+    rr:objectMap [ rr:template "Log of observed patients with the concept on the expected count for concepts {concept_id_1} and {concept_id_2} in COHD dataset {dataset_id}" ]
   ];
-  rr:predicateObjectMap [ 
-    rr:predicate bl:has_attribute_type; 
-    rr:objectMap [ rr:template "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C44256" ]
-    # Ratio
-  ];
+  # rr:predicateObjectMap [ 
+  #   rr:predicate bl:has_attribute_type; 
+  #   rr:objectMap [ rr:template "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C44256" ]
+  #   # Ratio
+  # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
     rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio/value" ]
@@ -318,4 +318,4 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   rr:predicateObjectMap [ 
     rr:predicate bl:has_numeric_value; 
     rr:objectMap [ rml:reference "ln_ratio" ]
-  ];
+  ].
