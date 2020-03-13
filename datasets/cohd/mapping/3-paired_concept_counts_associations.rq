@@ -65,7 +65,7 @@ INSERT {
     ?pValueChiUri a bl:Attribute ;
       bl:id ?pValueChiUri ;
       bl:name "t-Test p-value" ;
-      bl:has_attribute_type <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C53231> ; # t-Test
+      bl:has_attribute_type <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C44185> ; # p-value
       bl:has_quantitative_value ?pValueChiValue .
     ?pValueChiValue a bl:QuantityValue ;
       bl:has_numeric_value ?Chi_square_p .
