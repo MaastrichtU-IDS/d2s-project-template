@@ -13,18 +13,15 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
 # 3	2003351	4111798	39	2.251917e-05	1.797332e+03	0.000000e+00	8.336423e-01	3.845513e+00	1.300000e+00	8.103896e-04
 
 
-<TriplesMap1> a rr:TriplesMap;
-    
+<MapAssociation> a rr:TriplesMap;
   rml:logicalSource [ 
     rml:source "/mnt/data/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
   ];
-
   rr:subjectMap [ 
     rr:template "https://w3id.org/biolink/cohd/association/{dataset_id}_{concept_id_1}_{concept_id_2}";
     rr:class bl:Association
   ];
-
   rr:predicateObjectMap [ 
     rr:predicate bl:relation; 
     rr:objectMap bl:related_to
@@ -48,4 +45,38 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   rr:predicateObjectMap [ 
     rr:predicate bl:has_evidence; 
     rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/association/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}" ]
+  ] .
+
+<MapEvidenceType> a rr:TriplesMap;    
+  rml:logicalSource [ 
+    rml:source "/mnt/data/cohd/paired_concept_counts_associations.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [ 
+    rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}";
+    rr:class bl:EvidenceType
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:name ;
+    rr:objectMap [ rr:template "Count of co-occurences of the 2 concepts {dataset_id} and {concept_id_1} in COHD dataset {concept_id_2}" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:id; 
+    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_count; 
+    rr:objectMap [ rml:reference "concept_count"; rr:datatype xsd:double ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_total; 
+    rr:objectMap [ rml:reference "rel_freq_2"; rr:datatype xsd:double ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_quotient; 
+    rr:objectMap [ rml:reference "concept_prevalence"; rr:datatype xsd:double ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:provided_by; 
+    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/provider/dataset/{dataset_id}" ]
   ] .
