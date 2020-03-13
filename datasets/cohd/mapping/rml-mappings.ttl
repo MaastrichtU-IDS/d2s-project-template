@@ -42,7 +42,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_evidence; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/association/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}" ]
+    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}" ]
   ] .
 
 <MapEvidenceType> a rr:TriplesMap;    
@@ -74,6 +74,31 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
     rr:predicate bl:has_quotient; 
     rr:objectMap [ rml:reference "concept_prevalence"; rr:datatype xsd:double ]
   ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute; 
+    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute; 
+    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute; 
+    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute; 
+    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute; 
+    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute; 
+    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue" ]
+  ];
+  
   rr:predicateObjectMap [ 
     rr:predicate bl:provided_by; 
     rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/provider/dataset/{dataset_id}" ]
