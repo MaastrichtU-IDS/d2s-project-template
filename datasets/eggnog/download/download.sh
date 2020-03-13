@@ -4,9 +4,9 @@
 
 # http://eggnogdb.embl.de/#/app/downloads
 
-wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-transform-template/master/datasets/eggnog/download/NOG.annotations.tsv.gz
+wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-scripts-repository/master/resources/eggnog-sample/NOG.annotations.tsv.gz
 
-wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-transform-template/master/datasets/eggnog/download/NOG.members.tsv.gz
+wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-scripts-repository/master/resources/eggnog-sample/NOG.members.tsv.gz
 
 find . -name "*.gz" -exec gzip -d  {} +
 

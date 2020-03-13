@@ -1,7 +1,10 @@
 #!/bin/bash
 
 # Use sample hosted on GitHub, faster for testing
-wget -N https://github.com/MaastrichtU-IDS/data2services-download/raw/master/datasets/drugbank-sample/drugbank.zip
+wget -N https://github.com/MaastrichtU-IDS/d2s-scripts-repository/raw/master/resources/drugbank-sample/drugbank.zip
+
+# See the uncompressed file here: 
+# https://github.com/MaastrichtU-IDS/d2s-scripts-repository/blob/master/resources/drugbank-sample/drugbank.xml
 
 # Download full DrugBank dataset providing user login and password
 #curl -Lfv -o drugbank.zip -u $USERNAME:$PASSWORD https://www.drugbank.ca/releases/5-1-5/downloads/all-full-database
