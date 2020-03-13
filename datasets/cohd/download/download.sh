@@ -20,7 +20,6 @@ wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-scripts-repository
 ## RENAME EXTENSION (e.g.: txt in tsv)
 # rename s/\.txt/.tsv/ *.txt
 
-
 # Convert 27G file from TSV to CSV for RML Streamer
-# sed -e 's/"/\\"/g' -e 's/\t/","/g' -e 's/^/"/' -e 's/$/"/' paired_concept_counts_associations.tsv > paired_concept_counts_associations.csv
+sed -e 's/"/\\"/g' -e 's/\t/","/g' -e 's/^/"/' -e 's/$/"/' paired_concept_counts_associations.tsv > paired_concept_counts_associations.csv
 # rm paired_concept_counts_associations.tsv
