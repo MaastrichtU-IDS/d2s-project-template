@@ -1,11 +1,10 @@
 @prefix rr: <http://www.w3.org/ns/r2rml#>
 @prefix foaf: <http://xmlns.com/foaf/0.1/>
-@prefix ex: <http://example.com/>
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 @prefix rml: <http://semweb.mmlab.be/ns/rml#>
 @prefix ql: <http://semweb.mmlab.be/ns/ql#>
 PREFIX bl: <https://w3id.org/biolink/vocab/>
-@base <http://example.com/base/>
+@base <https://w3id.org/d2s/>
 
 # dataset_id	concept_id_1	concept_id_2	concept_count	concept_prevalence	chi_square_t	chi_square_p	expected_count	ln_ratio	rel_freq_1	rel_freq_2
 # 3	2003351	4043182	39	2.251917e-05	7.670977e+02	7.687639e-169	1.915134e+00	3.013774e+00	1.300000e+00	3.527560e-04
