@@ -128,7 +128,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
-    rr:objectMap [ rml:reference "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest/value" ]
+    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest/value" ]
   ] .
 <MapTtestResultsAttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
