@@ -66,10 +66,10 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
     rr:predicate bl:has_count; 
     rr:objectMap [ rml:reference "concept_count"; rr:datatype xsd:double ]
   ];
-  rr:predicateObjectMap [ 
-    rr:predicate bl:has_total; 
-    rr:objectMap [ rml:reference "rel_freq_2"; rr:datatype xsd:double ]
-  ];
+  # rr:predicateObjectMap [ 
+  #   rr:predicate bl:has_total; 
+  #   rr:objectMap [ rml:reference "patient_count_in_dataset"; rr:datatype xsd:double ]
+  # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quotient; 
     rr:objectMap [ rml:reference "concept_prevalence"; rr:datatype xsd:double ]
