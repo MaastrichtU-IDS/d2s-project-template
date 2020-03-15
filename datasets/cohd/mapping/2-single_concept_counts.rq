@@ -29,7 +29,7 @@ INSERT {
       ?datasetRow a <https://w3id.org/d2s/patient_count.tsv> ;
         d2s:Dataset_id ?Dataset_id ;
         d2s:Count ?patientCountInDataset .
-      BIND ( iri(concat("https://w3id.org/biolink/cohd/provider/dataset/", ?Dataset_id)) AS ?providerUri )
+      BIND ( iri(concat("https://w3id.org/trek/cohd/provider/dataset/", ?Dataset_id)) AS ?providerUri )
 
       # Generate URI from ID
       ?row d2s:Concept_id ?Concept_id .
@@ -37,7 +37,7 @@ INSERT {
 
       ?row d2s:Concept_count ?Concept_count .
       BIND ( concat(?Dataset_id, "_", ?Concept_id) as ?evidenceId)
-      BIND ( iri(concat("https://w3id.org/biolink/cohd/concept/occurences/", ?evidenceId)) AS ?evidenceUri )
+      BIND ( iri(concat("https://w3id.org/trek/cohd/concept/occurences/", ?evidenceId)) AS ?evidenceUri )
       BIND ( concat("Count of occurences of the concept ", ?Concept_id, " in COHD Clinical Dataset ", 
         ?Dataset_id, " with the total count of patient in the dataset") AS ?evidenceName )
 
