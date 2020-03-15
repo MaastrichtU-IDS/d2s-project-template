@@ -21,8 +21,8 @@
     rr:class bl:Association ];
   rr:predicateObjectMap [ 
     rr:predicate bl:subject; 
-    rr:objectMap [ rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{concept_id_1}" ]];
-
+    rr:objectMap [ rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{concept_id_1}" ]
+  ];
   rr:predicateObjectMap [ 
     rr:predicate bl:relation; 
     rr:objectMap bl:related_to
@@ -118,7 +118,7 @@
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute_type; 
-    rr:objectMap cohd:attribute/ttest_results
+    rr:object <https://w3id.org/trek/cohd/attribute/ttest_results>
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
@@ -163,7 +163,7 @@
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute_type; 
-    rr:objectMap cohd:attribute/ttest_pvalue
+    rr:object <https://w3id.org/trek/cohd/attribute/ttest_pvalue>
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
@@ -207,7 +207,7 @@
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute_type; 
-    rr:objectMap rr:objectMap <https://w3id.org/trek/cohd/attribute/relfreq1>
+    rr:object <https://w3id.org/trek/cohd/attribute/relfreq1>
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
@@ -251,7 +251,7 @@
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute_type; 
-    rr:objectMap <https://w3id.org/trek/cohd/attribute/relfreq2>
+    rr:object <https://w3id.org/trek/cohd/attribute/relfreq2>
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
@@ -294,6 +294,10 @@
     rr:class bl:Attribute
   ];
   rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute_type; 
+    rr:object <https://w3id.org/trek/cohd/attribute/expected_count>
+  ];
+  rr:predicateObjectMap [ 
     rr:predicate bl:id; 
     rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count" ]
   ];
@@ -334,6 +338,10 @@
     rr:class bl:Attribute
   ];
   rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute_type; 
+    rr:object <https://w3id.org/trek/cohd/attribute/ln_ratio>
+  ];
+  rr:predicateObjectMap [ 
     rr:predicate bl:id; 
     rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio" ]
   ];
@@ -341,11 +349,6 @@
     rr:predicate bl:name ;
     rr:objectMap [ rr:template "Log of observed patients with the concept on the expected count for concepts {concept_id_1} and {concept_id_2} in COHD dataset {dataset_id}" ]
   ];
-  # rr:predicateObjectMap [ 
-  #   rr:predicate bl:has_attribute_type; 
-  #   rr:objectMap [ rr:template "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C44256" ]
-  #   # Ratio
-  # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
     rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio/value" ]
