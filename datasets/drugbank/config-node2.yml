@@ -3,7 +3,7 @@ input_dir:
   class: Directory
   path: /data/d2s-workspace/input/drugbank
 
-sparql_final_graph_uri: https://w3id.org/d2s/graph/biolink/drugbank
+sparql_final_graph_uri: https://w3id.org/trek/graph/drugbank
 
 # download-username: vincent.emonet@maastrichtuniversity.nl
 # download-password: maasitest12

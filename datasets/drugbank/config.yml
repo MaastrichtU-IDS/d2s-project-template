@@ -8,7 +8,7 @@ dir_to_process:
 # download-username: vincent.emonet@maastrichtuniversity.nl
 # download-password: password
 
-sparql_final_graph_uri: https://w3id.org/d2s/graph/biolink/drugbank
+sparql_final_graph_uri: https://w3id.org/trek/graph/drugbank
 
 # Final SPARQL endpoint to load the BioLink RDF
 sparql_final_triplestore_url: "http://graphdb:7200/repositories/demo/statements"

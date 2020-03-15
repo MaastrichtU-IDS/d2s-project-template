@@ -23,17 +23,17 @@ INSERT {
 	GRAPH <?_output> {
 
     # Agent publishing the dataset
-    <https://w3id.org/d2s/agent/cohd> a dct:Agent ;
+    <https://w3id.org/trek/agent/cohd> a dct:Agent ;
       foaf:name "Columbia Open Health Data" ;
       foaf:page <http://cohd.io/> .     
 
     # Summary
-    <https://w3id.org/d2s/dataset/cohd>      
+    <https://w3id.org/trek/dataset/cohd>      
       rdf:type dctypes:Dataset;
       dct:title "COHD Clinical Data" ;                                
       idot:preferredPrefix "cohd" ;                     
       dct:description "Occurences and co-occurences of concepts in FDA reports analysis (disease, drug, protein, procedure, etc)."@en;   
-      dct:publisher <https://w3id.org/d2s/agent/cohd> ;      
+      dct:publisher <https://w3id.org/trek/agent/cohd> ;      
       
       dct:license <https://creativecommons.org/licenses/by/4.0/> ;   
       # Human readable licenses terms
@@ -66,7 +66,7 @@ INSERT {
 
 
       ## Needs to be updated at new submission
-      #pav:hasCurrentVersion <https://w3id.org/d2s/dataset/drugbank/version/1> ;
+      #pav:hasCurrentVersion <https://w3id.org/trek/dataset/drugbank/version/1> ;
   }
 } WHERE {
     # BIND(NOW() AS ?now)

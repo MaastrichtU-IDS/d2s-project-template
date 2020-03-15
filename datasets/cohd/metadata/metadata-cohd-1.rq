@@ -23,7 +23,7 @@ INSERT {
 	GRAPH <?_output> {
 
     # Agent publishing the dataset distribution
-    <https://w3id.org/d2s/agent/umids> a dct:Agent ;
+    <https://w3id.org/trek/agent/umids> a dct:Agent ;
       foaf:name "Institute of Data Science at Maastricht University" ;
       foaf:page <https://maastrichtuniversity.nl/ids> .
 
@@ -55,8 +55,8 @@ INSERT {
       # dct:license <https://opensource.org/licenses/MIT> ;
       
       # Same for creator and publisher, should it be HPO for the version?
-      # dct:creator <https://w3id.org/d2s/agent/umids> ;
-      # dct:publisher <https://w3id.org/d2s/agent/umids> ;
+      # dct:creator <https://w3id.org/trek/agent/umids> ;
+      # dct:publisher <https://w3id.org/trek/agent/umids> ;
   
     ### RDF Distribution description
     <?_input>
@@ -73,8 +73,8 @@ INSERT {
       pav:createdWith <https://github.com/MaastrichtU-IDS/d2s-transform-template/tree/master/datasets/cohd/mapping> ;  
 
       # Which publisher for BioLink Dataset?
-      dct:publisher <https://w3id.org/d2s/agent/umids> ;  
-      dct:creator <https://w3id.org/d2s/agent/umids> ;    
+      dct:publisher <https://w3id.org/trek/agent/umids> ;  
+      dct:creator <https://w3id.org/trek/agent/umids> ;    
 
       dct:source ?distributionSourceUri ;
       dct:language ?dctLanguage ;
@@ -131,7 +131,7 @@ INSERT {
   # Version of the source dataset
   BIND("1"^^xsd:string AS ?pavVersion)
 
-  BIND(<https://w3id.org/d2s/dataset/cohd> AS ?summaryUri)
+  BIND(<https://w3id.org/trek/dataset/cohd> AS ?summaryUri)
   BIND(<http://lexvo.org/id/iso639-3/eng> AS ?dctLanguage)
 
   # Version of our RDF distribution version 

@@ -3,7 +3,7 @@
 
 dataset_to_process: "cohd"
 
-sparql_final_graph_uri: "https://w3id.org/biolink/graph/cohd"
+sparql_final_graph_uri: "https://w3id.org/trek/graph/cohd"
 
 # Final SPARQL endpoint to load the BioLink RDF
 sparql_final_triplestore_url: "http://graphdb:7200/repositories/demo/statements"
