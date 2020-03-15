@@ -118,7 +118,7 @@
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute_type; 
-    rr:objectMap cohd:attribute/ttest_results ]
+    rr:objectMap cohd:attribute/ttest_results
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
@@ -163,7 +163,7 @@
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute_type; 
-    rr:objectMap cohd:attribute/ttest_pvalue ]
+    rr:objectMap cohd:attribute/ttest_pvalue
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
@@ -206,6 +206,10 @@
     rr:class bl:Attribute
   ];
   rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute_type; 
+    rr:objectMap cohd:attribute/relfreq1
+  ];
+  rr:predicateObjectMap [ 
     rr:predicate bl:id; 
     rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency" ]
   ];
@@ -244,6 +248,10 @@
   rr:subjectMap [ 
     rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency";
     rr:class bl:Attribute
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute_type; 
+    rr:objectMap cohd:attribute/relfreq2
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
