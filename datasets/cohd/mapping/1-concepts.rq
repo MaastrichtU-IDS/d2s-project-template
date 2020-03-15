@@ -6,11 +6,19 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX bl: <https://w3id.org/biolink/vocab/>
 PREFIX w3idvocab: <https://w3id.org/d2s/vocab/>
 INSERT {
-  GRAPH <?_output> {  
-    # Attribute the retrieved data to your model properties
-   ?Concept_api_uri a ?typeUri ;
+  GRAPH <https://w3id.org/biolink/graph/cohd> {  
+   ?Concept_api_uri a bl:Drug ;
       bl:id ?Concept_id ;
-      bl:name ?Concept_name ;
+      bl:name ?Concept_name . }
+} WHERE {
+  SERVICE <http://temporary-triplestore>  {
+      ?row a <https://w3id.org/d2s/concepts.tsv> ;
+        d2s:Concept_id ?Concept_id ;
+        d2s:Concept_name ?Concept_name .
+      BIND ( iri(concat("http://api.ohdsi.org/WebAPI/vocabulary/concept/", 
+                        ?Concept_id)) AS ?Concept_api_uri )
+  
+
       bl:provided_by ?vocabUri ;
       bl:category ?conceptClassUri ; # TODO: is it ok?
       bl:systematic_synonym ?Concept_code .

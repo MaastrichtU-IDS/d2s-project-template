@@ -14,19 +14,21 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
 <MapAssociation> a rr:TriplesMap;
   rml:logicalSource [ 
     rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
-    rml:referenceFormulation ql:CSV
-  ];
+    rml:referenceFormulation ql:CSV ];
   rr:subjectMap [ 
-    rr:template "https://w3id.org/biolink/cohd/association/{dataset_id}_{concept_id_1}_{concept_id_2}";
-    rr:class bl:Association
-  ];
+    rr:template "https://w3id.org/d2s/cohd/association/{dataset_id}_{concept_id_1}_{concept_id_2}";
+    rr:class bl:Association ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:subject; 
+    rr:objectMap [ rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{concept_id_1}" ]];
+
   rr:predicateObjectMap [ 
     rr:predicate bl:relation; 
     rr:objectMap bl:related_to
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/association/{dataset_id}_{concept_id_1}_{concept_id_2}" ]
+    rr:objectMap [ rr:template "https://w3id.org/d2s/cohd/association/{dataset_id}_{concept_id_1}_{concept_id_2}" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:subject; 
