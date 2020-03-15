@@ -3,8 +3,9 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 @prefix rml: <http://semweb.mmlab.be/ns/rml#>
 @prefix ql: <http://semweb.mmlab.be/ns/ql#>
-PREFIX bl: <https://w3id.org/biolink/vocab/>
-@base <https://w3id.org/d2s/>
+@prefix bl: <https://w3id.org/biolink/vocab/>
+@prefix cohd: <https://w3id.org/trek/cohd/>
+@base <https://w3id.org/trek/cohd/>
 
 # dataset_id	concept_id_1	concept_id_2	concept_count	concept_prevalence	chi_square_t	chi_square_p	expected_count	ln_ratio	rel_freq_1	rel_freq_2
 # 3	2003351	4043182	39	2.251917e-05	7.670977e+02	7.687639e-169	1.915134e+00	3.013774e+00	1.300000e+00	3.527560e-04
@@ -16,7 +17,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
     rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV ];
   rr:subjectMap [ 
-    rr:template "https://w3id.org/d2s/cohd/association/{dataset_id}_{concept_id_1}_{concept_id_2}";
+    rr:template "https://w3id.org/trek/cohd/association/{dataset_id}_{concept_id_1}_{concept_id_2}";
     rr:class bl:Association ];
   rr:predicateObjectMap [ 
     rr:predicate bl:subject; 
@@ -28,7 +29,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
-    rr:objectMap [ rr:template "https://w3id.org/d2s/cohd/association/{dataset_id}_{concept_id_1}_{concept_id_2}" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/association/{dataset_id}_{concept_id_1}_{concept_id_2}" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:subject; 
@@ -40,11 +41,11 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:provided_by; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/provider/dataset/{dataset_id}" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/provider/dataset/{dataset_id}" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_evidence; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}" ]
   ] .
 
 <MapEvidenceType> a rr:TriplesMap;    
@@ -53,7 +54,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
-    rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}";
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}";
     rr:class bl:EvidenceType
   ];
   rr:predicateObjectMap [ 
@@ -62,7 +63,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_count; 
@@ -78,32 +79,32 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue" ]
   ];
   
   rr:predicateObjectMap [ 
     rr:predicate bl:provided_by; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/provider/dataset/{dataset_id}" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/provider/dataset/{dataset_id}" ]
   ] .
 
 <MapTtestResultsAttribute> a rr:TriplesMap;    
@@ -112,12 +113,16 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
-    rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest";
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest";
     rr:class bl:Attribute
   ];
   rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute_type; 
+    rr:objectMap cohd:attribute/ttest_results ]
+  ];
+  rr:predicateObjectMap [ 
     rr:predicate bl:id; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:name ;
@@ -130,7 +135,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest/value" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest/value" ]
   ] .
 <MapTtestResultsAttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
@@ -138,7 +143,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
-    rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest/value";
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest/value";
     rr:class bl:QuantityValue
   ];
   rr:predicateObjectMap [ 
@@ -153,12 +158,16 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
-    rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue";
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue";
     rr:class bl:Attribute
   ];
   rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute_type; 
+    rr:objectMap cohd:attribute/ttest_pvalue ]
+  ];
+  rr:predicateObjectMap [ 
     rr:predicate bl:id; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:name ;
@@ -171,7 +180,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue/value" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue/value" ]
   ] .
 <MapTtestPvalueAttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
@@ -179,7 +188,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
-    rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue/value";
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue/value";
     rr:class bl:QuantityValue
   ];
   rr:predicateObjectMap [ 
@@ -193,12 +202,12 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
-    rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency";
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency";
     rr:class bl:Attribute
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:name ;
@@ -211,7 +220,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency/value" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency/value" ]
   ] .
 <MapRelFreq1AttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
@@ -219,7 +228,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
-    rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency/value";
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency/value";
     rr:class bl:QuantityValue
   ];
   rr:predicateObjectMap [ 
@@ -233,12 +242,12 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
-    rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency";
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency";
     rr:class bl:Attribute
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:name ;
@@ -251,7 +260,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency/value" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency/value" ]
   ] .
 <MapRelFreq2AttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
@@ -259,7 +268,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
-    rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency/value";
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency/value";
     rr:class bl:QuantityValue
   ];
   rr:predicateObjectMap [ 
@@ -273,12 +282,12 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
-    rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count";
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count";
     rr:class bl:Attribute
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:name ;
@@ -291,7 +300,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count/value" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count/value" ]
   ] .
 <MapExpectedCountAttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
@@ -299,7 +308,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
-    rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count/value";
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count/value";
     rr:class bl:QuantityValue
   ];
   rr:predicateObjectMap [ 
@@ -313,12 +322,12 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
-    rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio";
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio";
     rr:class bl:Attribute
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:name ;
@@ -331,7 +340,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
   # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
-    rr:objectMap [ rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio/value" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio/value" ]
   ] .
 <MapLnRatioAttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
@@ -339,7 +348,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
     rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [ 
-    rr:template "https://w3id.org/biolink/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio/value";
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio/value";
     rr:class bl:QuantityValue
   ];
   rr:predicateObjectMap [ 
