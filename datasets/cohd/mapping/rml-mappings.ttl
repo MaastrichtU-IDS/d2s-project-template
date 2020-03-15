@@ -207,7 +207,7 @@
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute_type; 
-    rr:objectMap cohd:attribute/relfreq1
+    rr:objectMap rr:objectMap <https://w3id.org/trek/cohd/attribute/relfreq1>
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
@@ -251,7 +251,7 @@
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute_type; 
-    rr:objectMap cohd:attribute/relfreq2
+    rr:objectMap <https://w3id.org/trek/cohd/attribute/relfreq2>
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
