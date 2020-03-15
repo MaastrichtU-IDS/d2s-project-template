@@ -119,6 +119,7 @@
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute_type; 
     rr:object <https://w3id.org/trek/cohd/attribute/ttest_results>
+    # Use T-test? http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C53231
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
@@ -128,11 +129,6 @@
     rr:predicate bl:name ;
     rr:objectMap [ rr:template "t-Tests results of concepts {concept_id_1} and {concept_id_2} in COHD dataset concept {dataset_id}" ]
   ];
-  # rr:predicateObjectMap [ 
-  #   rr:predicate bl:has_attribute_type; 
-  #   rr:objectMap [ rr:template "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C53231" ]
-  #   # t-Test
-  # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
     rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest/value" ]
@@ -164,6 +160,7 @@
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute_type; 
     rr:object <https://w3id.org/trek/cohd/attribute/ttest_pvalue>
+    # Use p-value? http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C53231
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
@@ -173,11 +170,6 @@
     rr:predicate bl:name ;
     rr:objectMap [ rr:template "t-Tests p-value of concepts {concept_id_1} and {concept_id_2} in COHD dataset concept {dataset_id}" ]
   ];
-  # rr:predicateObjectMap [ 
-  #   rr:predicate bl:has_attribute_type; 
-  #   rr:objectMap [ rr:template "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C53231" ]
-  #   # p-value
-  # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
     rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue/value" ]
@@ -208,6 +200,7 @@
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute_type; 
     rr:object <https://w3id.org/trek/cohd/attribute/relfreq1>
+    # Use How often / Frequency? http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C118873
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
@@ -217,11 +210,6 @@
     rr:predicate bl:name ;
     rr:objectMap [ rr:template "Frequency of concept {concept_id_1} relative to concept {concept_id_2} (count of patients with the 2 concepts divided by count of patients with only one)" ]
   ];
-  # rr:predicateObjectMap [ 
-  #   rr:predicate bl:has_attribute_type; 
-  #   rr:objectMap [ rr:template "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C118873" ]
-  #   # How often / Frequency
-  # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
     rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency/value" ]
@@ -252,6 +240,7 @@
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute_type; 
     rr:object <https://w3id.org/trek/cohd/attribute/relfreq2>
+    # Use How often / Frequency? http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C118873
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
@@ -261,11 +250,6 @@
     rr:predicate bl:name ;
     rr:objectMap [ rr:template "Frequency of concept {concept_id_2} relative to concept {concept_id_1} (count of patients with the 2 concepts divided by count of patients with only one)" ]
   ];
-  # rr:predicateObjectMap [ 
-  #   rr:predicate bl:has_attribute_type; 
-  #   rr:objectMap [ rr:template "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C118873" ]
-  #   # How often / Frequency
-  # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
     rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency/value" ]
@@ -296,6 +280,7 @@
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute_type; 
     rr:object <https://w3id.org/trek/cohd/attribute/expected_count>
+    # Use Expected Value? http://semanticscience.org/resource/SIO_001021
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
@@ -305,11 +290,6 @@
     rr:predicate bl:name ;
     rr:objectMap [ rr:template "Expected count given the 2 concepts {concept_id_1} and {concept_id_2} are not associated in COHD dataset {dataset_id}" ]
   ];
-  # rr:predicateObjectMap [ 
-  #   rr:predicate bl:has_attribute_type; 
-  #   rr:objectMap [ rr:template "http://semanticscience.org/resource/SIO_001021" ]
-  #   # Expected Value
-  # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
     rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count/value" ]
