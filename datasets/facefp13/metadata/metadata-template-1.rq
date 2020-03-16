@@ -79,9 +79,9 @@ INSERT {
       dct:language ?dctLanguage ;
       void:vocabulary <https://w3id.org/biolink/vocab/> ;
 
-      dcat:accessURL <http://graphdb.dumontierlab.com/graphs> ;
-      dcat:downloadURL <http://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements> ;
-      void:dataDump <http://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements> ;
+      dcat:accessURL <https://graphdb.dumontierlab.com/graphs> ;
+      dcat:downloadURL <https://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements> ;
+      void:dataDump <https://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements> ;
       dcat:mediaType "application/n-quads" ;
 
       dct:title ?rdfDctTitle ;
