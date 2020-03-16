@@ -34,7 +34,7 @@ INSERT {
       pav:version ?pavVersion ;
 
       dcat:distribution <?_input> ;
-      dcat:accessURL <https://graphdb.dumontierlab.com/graphs> ; 
+      dcat:accessURL <http://graphdb.dumontierlab.com/graphs> ; 
 
       ## MAY
       # dct:references <IRI> ; # Supporting material as web pages and documents (use cito for publications)
@@ -80,9 +80,9 @@ INSERT {
       dct:language ?dctLanguage ;
       void:vocabulary <https://w3id.org/biolink/vocab/> ;
 
-      dcat:accessURL <https://graphdb.dumontierlab.com/graphs> ;
-      dcat:downloadURL <https://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements> ;
-      void:dataDump <https://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements> ;
+      dcat:accessURL <http://graphdb.dumontierlab.com/graphs> ;
+      dcat:downloadURL <http://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements> ;
+      void:dataDump <http://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements> ;
       dcat:mediaType "application/n-quads" ;
 
       dct:title ?rdfDctTitle ;

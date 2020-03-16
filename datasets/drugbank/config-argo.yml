@@ -10,7 +10,7 @@ download-password: password
 # tmp RDF4J server SPARQL endpoint to load generic RDF
 #sparql-tmp-triplestore-url: http://graphdb:7200
 #sparql-tmp-triplestore-url: http://node000002.cluster.ids.unimaas.nl/
-sparql-tmp-triplestore-url: https://graphdb.dumontierlab.com/repositories/test-vincent
+sparql-tmp-triplestore-url: http://graphdb.dumontierlab.com/repositories/test-vincent
 # sparql-tmp-triplestore-repository: "public"
 # sparql-tmp-service-url: "repository:public"
 sparql-tmp-service-url: "http://localhost:7200/repositories/test-vincent"
@@ -22,7 +22,7 @@ sparql-tmp-graph-uri: "https://w3id.org/d2s/graph/xml2rdf"
 # Final RDF4J server SPARQL endpoint to load the BioLink RDF
 #sparql-final-triplestore-url: http://graphdb:7200
 # sparql-final-triplestore-url: http://node000002.cluster.ids.unimaas.nl/
-sparql-final-triplestore-url: https://graphdb.dumontierlab.com/repositories/test-vincent/statements
+sparql-final-triplestore-url: http://graphdb.dumontierlab.com/repositories/test-vincent/statements
 sparql-final-triplestore-username: import_user
 sparql-final-triplestore-password: test
 

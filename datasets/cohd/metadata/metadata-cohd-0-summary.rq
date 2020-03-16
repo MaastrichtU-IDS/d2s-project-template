@@ -53,7 +53,7 @@ INSERT {
       # dct:accrualPeriodicity freq:annual ; 
       # frequency of update: annual baseline is released in December of each year
 
-      void:sparqlEndpoint "https://graphdb.dumontierlab.com/repositories/trek" .
+      void:sparqlEndpoint "http://graphdb.dumontierlab.com/repositories/trek" .
 
       ## MAY
       # dct:references <IRI> ; # Supporting material as web pages and documents (use cito for publications)
