@@ -14,6 +14,8 @@ wget -N https://github.com/MaastrichtU-IDS/d2s-scripts-repository/raw/master/res
 
 unzip *.zip -d .
 
+mv "full database.xml" "drugbank_database.xml"
+
 # Unzip all files in subdir with name of the zip file
 # find . -name "*.zip" | while read filename; do unzip -o -d "`dirname "$filename"`/${filename%.*}" "$filename"; done;
 echo "content of dir"
