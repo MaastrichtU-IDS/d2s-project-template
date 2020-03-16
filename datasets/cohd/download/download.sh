@@ -24,5 +24,5 @@ wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-scripts-repository
 sed -e 's/"/\\"/g' -e 's/\t/","/g' -e 's/^/"/' -e 's/$/"/'  -e 's/\r//' paired_concept_counts_associations.tsv > paired_concept_counts_associations.csv
 # rm paired_concept_counts_associations.tsv
 
-# Make sure right permissions
+# Make sure right permissions are set properly
 chmod 777 *
