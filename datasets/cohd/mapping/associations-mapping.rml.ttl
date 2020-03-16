@@ -1,18 +1,18 @@
-@prefix rr: <http://www.w3.org/ns/r2rml#>
-@prefix foaf: <http://xmlns.com/foaf/0.1/>
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#>
-@prefix rml: <http://semweb.mmlab.be/ns/rml#>
-@prefix ql: <http://semweb.mmlab.be/ns/ql#>
-@prefix bl: <https://w3id.org/biolink/vocab/>
-@prefix cohd: <https://w3id.org/trek/cohd/>
-@base <https://w3id.org/trek/cohd/>
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix bl: <https://w3id.org/biolink/vocab/> .
+@prefix cohd: <https://w3id.org/trek/cohd/> .
+@base <https://w3id.org/trek/cohd/> .
 
 # dataset_id	concept_id_1	concept_id_2	concept_count	concept_prevalence	chi_square_t	chi_square_p	expected_count	ln_ratio	rel_freq_1	rel_freq_2
 # 3	2003351	4043182	39	2.251917e-05	7.670977e+02	7.687639e-169	1.915134e+00	3.013774e+00	1.300000e+00	3.527560e-04
 # 3	2003351	4078442	39	2.251917e-05	1.292931e+03	3.884704e-283	1.152185e+00	3.521902e+00	1.300000e+00	5.863427e-04
 # 3	2003351	4111798	39	2.251917e-05	1.797332e+03	0.000000e+00	8.336423e-01	3.845513e+00	1.300000e+00	8.103896e-04
 
-<MapAssociation> a rr:TriplesMap;
+<#MapAssociation> a rr:TriplesMap;
   rml:logicalSource [ 
     rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV ];
@@ -48,7 +48,7 @@
     rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}" ]
   ] .
 
-<MapEvidenceType> a rr:TriplesMap;    
+<#MapEvidenceType> a rr:TriplesMap;    
   rml:logicalSource [ 
     rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
@@ -107,7 +107,7 @@
     rr:objectMap [ rr:template "https://w3id.org/trek/cohd/provider/dataset/{dataset_id}" ]
   ] .
 
-<MapConceptCountAttribute> a rr:TriplesMap;    
+<#MapConceptCountAttribute> a rr:TriplesMap;    
   rml:logicalSource [ 
     rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
@@ -133,7 +133,7 @@
     rr:predicate bl:has_quantitative_value; 
     rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_count/value" ]
   ] .
-<MapConceptCountAttributeValue> a rr:TriplesMap;    
+<#MapConceptCountAttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
     rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
@@ -147,7 +147,7 @@
     rr:objectMap [ rml:reference "concept_count" ]
   ] .
 
-<MapConceptPrevalenceAttribute> a rr:TriplesMap;    
+<#MapConceptPrevalenceAttribute> a rr:TriplesMap;    
   rml:logicalSource [ 
     rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
@@ -173,7 +173,7 @@
     rr:predicate bl:has_quantitative_value; 
     rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_prevalence/value" ]
   ] .
-<MapConceptPrevalenceAttributeValue> a rr:TriplesMap;    
+<#MapConceptPrevalenceAttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
     rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
@@ -187,7 +187,7 @@
     rr:objectMap [ rml:reference "concept_prevalence" ]
   ] .
 
-<MapTtestResultsAttribute> a rr:TriplesMap;    
+<#MapTtestResultsAttribute> a rr:TriplesMap;    
   rml:logicalSource [ 
     rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
@@ -213,7 +213,7 @@
     rr:predicate bl:has_quantitative_value; 
     rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest/value" ]
   ] .
-<MapTtestResultsAttributeValue> a rr:TriplesMap;    
+<#MapTtestResultsAttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
     rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
@@ -228,7 +228,7 @@
   ] .
 
 
-<MapTtestPvalueAttribute> a rr:TriplesMap;    
+<#MapTtestPvalueAttribute> a rr:TriplesMap;    
   rml:logicalSource [ 
     rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
@@ -254,7 +254,7 @@
     rr:predicate bl:has_quantitative_value; 
     rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue/value" ]
   ] .
-<MapTtestPvalueAttributeValue> a rr:TriplesMap;    
+<#MapTtestPvalueAttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
     rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
@@ -268,7 +268,7 @@
     rr:objectMap [ rml:reference "chi_square_p" ]
   ].
 
-<MapRelFreq1Attribute> a rr:TriplesMap;    
+<#MapRelFreq1Attribute> a rr:TriplesMap;    
   rml:logicalSource [ 
     rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
@@ -294,7 +294,7 @@
     rr:predicate bl:has_quantitative_value; 
     rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency/value" ]
   ] .
-<MapRelFreq1AttributeValue> a rr:TriplesMap;    
+<#MapRelFreq1AttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
     rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
@@ -308,7 +308,7 @@
     rr:objectMap [ rml:reference "rel_freq_1" ]
   ] .
 
-<MapRelFreq2Attribute> a rr:TriplesMap;    
+<#MapRelFreq2Attribute> a rr:TriplesMap;    
   rml:logicalSource [ 
     rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
@@ -334,7 +334,7 @@
     rr:predicate bl:has_quantitative_value; 
     rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency/value" ]
   ] .
-<MapRelFreq2AttributeValue> a rr:TriplesMap;    
+<#MapRelFreq2AttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
     rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
@@ -348,7 +348,7 @@
     rr:objectMap [ rml:reference "rel_freq_2" ]
   ].
 
-<MapExpectedCountAttribute> a rr:TriplesMap;    
+<#MapExpectedCountAttribute> a rr:TriplesMap;    
   rml:logicalSource [ 
     rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
@@ -374,7 +374,7 @@
     rr:predicate bl:has_quantitative_value; 
     rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count/value" ]
   ] .
-<MapExpectedCountAttributeValue> a rr:TriplesMap;    
+<#MapExpectedCountAttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
     rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
@@ -388,7 +388,7 @@
     rr:objectMap [ rml:reference "expected_count" ]
   ] .
 
-<MapLnRatioAttribute> a rr:TriplesMap;    
+<#MapLnRatioAttribute> a rr:TriplesMap;    
   rml:logicalSource [ 
     rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
@@ -413,7 +413,7 @@
     rr:predicate bl:has_quantitative_value; 
     rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio/value" ]
   ] .
-<MapLnRatioAttributeValue> a rr:TriplesMap;    
+<#MapLnRatioAttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
     rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV
