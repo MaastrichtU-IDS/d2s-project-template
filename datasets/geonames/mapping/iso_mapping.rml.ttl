@@ -1,0 +1,32 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dbr: <http://dbpedia.org/resource/> .
+@prefix dbp: <http://dbpedia.org/property/> .
+@prefix gn: <http://www.geonames.org/ontology#> .
+@prefix wb: <http://data.worldbank.org/> .
+@base <http://dbpedia.org/resource/> .
+
+# To map GeoNames and DrugBank countries the simplest and most efficient solution 
+# is to import an additional file to map ISO2 and ISO3
+<#CountriesMapIso>
+  a rr:TriplesMap ;
+
+  rml:logicalSource [
+    rml:source "/mnt/workspace/input/geonames/map-country-iso2-iso3.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+
+  rr:subjectMap [ rr:template "http://worldbank.org/country/{ISO2}" ;
+    rr:class gn:Country ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate owl:sameAs ;
+    rr:objectMap [ rr:template "http://geonames.org/country/{ISO3}" ]
+  ] .
