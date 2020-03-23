@@ -17,7 +17,9 @@
 <#WorldBankMapGdpEntries> 
   a rr:TriplesMap;
   rml:logicalSource [
-    rml:source "/mnt/workspace/input/worldbank/dataset-worldbank-gdp-full.xml";
+    # Switch between sample and full XML file
+    rml:source "/mnt/workspace/input/worldbank/dataset-worldbank-gdp.xml";
+    # rml:source "/mnt/workspace/input/worldbank/dataset-worldbank-gdp-full.xml";
     rml:referenceFormulation ql:XPath ;
     rml:iterator "/Root/data/record"
   ];
@@ -28,10 +30,15 @@
 
   # Link to the country URI
   rr:predicateObjectMap [ 
-    rr:predicate dc:identifier ;
+    rr:predicate dbo:country ;
     rr:objectMap [ rml:reference "country/@key" ]
   ] ;
 
+  # Source dataset, here NY.GDP.MKTP.CD
+  rr:predicateObjectMap [ 
+    rr:predicate dc:source ;
+    rr:objectMap [ rml:reference "field/@key" ]
+  ] ;
 
   # Make it a date type (gregorian year)
   rr:predicateObjectMap [ 
@@ -48,7 +55,9 @@
 <#WorldBankMapGdpCountries> 
   a rr:TriplesMap;
   rml:logicalSource [
-    rml:source "/mnt/workspace/input/worldbank/dataset-worldbank-gdp-full.xml";
+    # Switch between sample and full XML file
+    rml:source "/mnt/workspace/input/worldbank/dataset-worldbank-gdp.xml";
+    # rml:source "/mnt/workspace/input/worldbank/dataset-worldbank-gdp-full.xml";
     rml:referenceFormulation ql:XPath ;
     rml:iterator "/Root/data/record"
   ];

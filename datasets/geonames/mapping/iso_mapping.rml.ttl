@@ -23,10 +23,10 @@
     rml:referenceFormulation ql:CSV
   ];
 
-  rr:subjectMap [ rr:template "http://worldbank.org/country/{ISO}" ;
+  rr:subjectMap [ rr:template "http://geonames.org/country/{ISO}" ;
     rr:class gn:Country ];
 
   rr:predicateObjectMap [ 
     rr:predicate owl:sameAs ;
-    rr:objectMap [ rr:template "http://geonames.org/country/{ISO3}" ]
+    rr:objectMap [ rr:template "http://worldbank.org/country/{ISO3}" ]
   ] .
