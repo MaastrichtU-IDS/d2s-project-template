@@ -92,10 +92,6 @@
     rr:objectMap [ rml:reference "Phone" ]
   ] ;
   rr:predicateObjectMap [ 
-    rr:predicate gn:postal_code_format ;
-    rr:objectMap [ rml:reference "Postal Code Format" ]
-  ] ;
-  rr:predicateObjectMap [ 
     rr:predicate gn:neighbours ;
     rr:objectMap [ rml:reference "neighbours" ]
   ] .
@@ -114,4 +110,4 @@
   rr:predicateObjectMap [ 
     rr:predicate rdfs:label ;
     rr:objectMap [ rml:reference "Continent" ]
-  ] ;
+  ] .
