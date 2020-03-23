@@ -34,7 +34,7 @@ INSERT {
       pav:version ?pavVersion ;
 
       dcat:distribution <?_input> ;
-      dcat:accessURL <http://graphdb.dumontierlab.com/graphs> ; 
+      dcat:accessURL <https://graphdb.dumontierlab.com/graphs> ; 
 
       ## MAY
       # dct:references <IRI> ; # Supporting material as web pages and documents (use cito for publications)
@@ -68,7 +68,7 @@ INSERT {
 
       # TODO: What should be data2services BioLink RDF license?
       dct:license <http://creativecommons.org/licenses/by-nc/4.0/legalcode> ;           
-      void:exampleResource <https://identifiers.org/drugbank:DB00001> ;     
+      void:exampleResource <http://geonames.org/country/FR> ;     
       # TODO: should we point createdWith to the SPARQL mappings? Or d2s-cli URL?
       pav:createdWith <https://github.com/MaastrichtU-IDS/d2s-cwl-workflows/tree/master/support/template/dataset/mapping> ;  
 
@@ -80,9 +80,9 @@ INSERT {
       dct:language ?dctLanguage ;
       void:vocabulary <https://w3id.org/biolink/vocab/> ;
 
-      dcat:accessURL <http://graphdb.dumontierlab.com/graphs> ;
-      dcat:downloadURL <http://graphdb.dumontierlab.com/repositories/geoeconomics/statements> ;
-      void:dataDump <http://graphdb.dumontierlab.com/repositories/geoeconomics/statements> ;
+      dcat:accessURL <https://graphdb.dumontierlab.com/graphs> ;
+      dcat:downloadURL <https://graphdb.dumontierlab.com/repositories/geoeconomics/statements> ;
+      void:dataDump <https://graphdb.dumontierlab.com/repositories/geoeconomics/statements> ;
       dcat:mediaType "application/n-quads" ;
 
       dct:title ?rdfDctTitle ;
@@ -125,7 +125,7 @@ INSERT {
 
       # MAY
       # pav:previousVersion <IRI> ;
-      # idot:accessPattern "http://identifiers.org/drugbank:" ;
+      # idot:accessPattern "http://geonames.org/country/[A-Z][A-Z]" ;
     }
 } WHERE {
   # Version of the source dataset
