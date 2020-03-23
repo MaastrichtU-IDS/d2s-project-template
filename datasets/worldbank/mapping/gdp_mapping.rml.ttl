@@ -31,7 +31,7 @@
   # Link to the country URI
   rr:predicateObjectMap [ 
     rr:predicate dbo:country ;
-    rr:objectMap [ rml:reference "country/@key" ]
+    rr:objectMap [ rr:template "http://worldbank.org/country/{country/@key}" ]
   ] ;
 
   # Source dataset, here NY.GDP.MKTP.CD

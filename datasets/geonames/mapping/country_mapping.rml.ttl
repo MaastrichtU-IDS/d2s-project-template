@@ -96,10 +96,6 @@
     rr:objectMap [ rml:reference "Postal Code Format" ]
   ] ;
   rr:predicateObjectMap [ 
-    rr:predicate gn:postal_code_regex ;
-    rr:objectMap [ rml:reference "Postal Code Regex" ]
-  ] ;
-  rr:predicateObjectMap [ 
     rr:predicate gn:neighbours ;
     rr:objectMap [ rml:reference "neighbours" ]
   ] .
