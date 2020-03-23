@@ -81,8 +81,8 @@ INSERT {
       void:vocabulary <https://w3id.org/biolink/vocab/> ;
 
       dcat:accessURL <http://graphdb.dumontierlab.com/graphs> ;
-      dcat:downloadURL <http://graphdb.dumontierlab.com/repositories/ids-kg-course/statements> ;
-      void:dataDump <http://graphdb.dumontierlab.com/repositories/ids-kg-course/statements> ;
+      dcat:downloadURL <http://graphdb.dumontierlab.com/repositories/geoeconomics/statements> ;
+      void:dataDump <http://graphdb.dumontierlab.com/repositories/geoeconomics/statements> ;
       dcat:mediaType "application/n-quads" ;
 
       dct:title ?rdfDctTitle ;

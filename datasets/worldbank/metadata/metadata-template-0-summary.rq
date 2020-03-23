@@ -54,7 +54,7 @@ INSERT {
       # dct:accrualPeriodicity freq:annual ; 
       # frequency of update: annual baseline is released in December of each year
 
-      void:sparqlEndpoint "http://graphdb.dumontierlab.com/repositories/ids-kg-course" .
+      void:sparqlEndpoint "http://graphdb.dumontierlab.com/repositories/geoeconomics" .
 
       ## MAY
       # dct:references <IRI> ; # Supporting material as web pages and documents (use cito for publications)

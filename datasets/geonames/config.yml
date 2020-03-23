@@ -9,8 +9,8 @@ dataset_to_process: "geonames"
 sparql_final_graph_uri: "https://w3id.org/d2s/graph/geonames"
 
 # Final RDF4J server SPARQL endpoint to load the generated RDF
-sparql_final_triplestore_url: "http://graphdb:7200/repositories/ids-kg-course/statements"
-#sparql_final_triplestore_url: "http://graphdb.dumontierlab.com/repositories/ids-kg-course/statements"
+sparql_final_triplestore_url: "http://graphdb:7200/repositories/geoeconomics/statements"
+#sparql_final_triplestore_url: "http://graphdb.dumontierlab.com/repositories/geoeconomics/statements"
 
 sparql_final_triplestore_username: "dba"
 sparql_final_triplestore_password: "dba"

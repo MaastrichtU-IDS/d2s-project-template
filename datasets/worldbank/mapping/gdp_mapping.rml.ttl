@@ -18,8 +18,8 @@
   a rr:TriplesMap;
   rml:logicalSource [
     # Switch between sample and full XML file
-    rml:source "/mnt/workspace/input/worldbank/dataset-worldbank-gdp.xml";
-    # rml:source "/mnt/workspace/input/worldbank/dataset-worldbank-gdp-full.xml";
+    # rml:source "/mnt/workspace/input/worldbank/dataset-worldbank-gdp.xml";
+    rml:source "/mnt/workspace/input/worldbank/dataset-worldbank-gdp-full.xml";
     rml:referenceFormulation ql:XPath ;
     rml:iterator "/Root/data/record"
   ];
@@ -56,8 +56,8 @@
   a rr:TriplesMap;
   rml:logicalSource [
     # Switch between sample and full XML file
-    rml:source "/mnt/workspace/input/worldbank/dataset-worldbank-gdp.xml";
-    # rml:source "/mnt/workspace/input/worldbank/dataset-worldbank-gdp-full.xml";
+    # rml:source "/mnt/workspace/input/worldbank/dataset-worldbank-gdp.xml";
+    rml:source "/mnt/workspace/input/worldbank/dataset-worldbank-gdp-full.xml";
     rml:referenceFormulation ql:XPath ;
     rml:iterator "/Root/data/record"
   ];
