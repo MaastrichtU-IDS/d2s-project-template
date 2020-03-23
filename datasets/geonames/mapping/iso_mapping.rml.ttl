@@ -14,7 +14,7 @@
 @base <http://dbpedia.org/resource/> .
 
 # To map GeoNames and DrugBank countries the simplest and most efficient solution 
-# is to import an additional file to map ISO2 and ISO3
+# is to import an additional file to map ISO (2) and ISO3
 <#CountriesMapIso>
   a rr:TriplesMap ;
 
@@ -23,7 +23,7 @@
     rml:referenceFormulation ql:CSV
   ];
 
-  rr:subjectMap [ rr:template "http://worldbank.org/country/{ISO2}" ;
+  rr:subjectMap [ rr:template "http://worldbank.org/country/{ISO}" ;
     rr:class gn:Country ];
 
   rr:predicateObjectMap [ 

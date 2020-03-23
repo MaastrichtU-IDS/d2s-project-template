@@ -22,7 +22,7 @@
     rml:referenceFormulation ql:CSV
   ];
 
-  rr:subjectMap [ rr:template "http://geonames.org/country/{ISO3}" ;
+  rr:subjectMap [ rr:template "http://geonames.org/country/{ISO}" ;
     rr:class gn:Country ];
 
   rr:predicateObjectMap [ 
@@ -30,17 +30,17 @@
     rr:objectMap [ rml:reference "Country" ]
   ] ;
 
-  # using standard dc:identifier for ISO3
+  # using standard dc:identifier for ISO code
   rr:predicateObjectMap [ 
     rr:predicate dc:identifier ;
-    rr:objectMap [ rml:reference "ISO3" ] # Then use LIMES to join on this property
+    rr:objectMap [ rml:reference "ISO" ] # Then use LIMES to join on this property
   ] ;
 
   # Using DB ontology for the rest
   # The GeoNames ontology is not expressive enough to express those relations
   rr:predicateObjectMap [ 
     rr:predicate dbo:iso31661Code ;
-    rr:objectMap [ rml:reference "ISO-Numeric" ]
+    rr:objectMap [ rml:reference "ISO-Numeric" ; rr:datatype xsd:integer ]
   ] ;
   rr:predicateObjectMap [ 
     rr:predicate dbo:alternativeName ;
