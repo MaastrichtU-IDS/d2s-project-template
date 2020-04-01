@@ -2,6 +2,10 @@
 
 GRAPHDB_TRIPLESTORE="http://localhost:7200"
 GRAPHDB_REPOSITORY="monarch-initiative"
+
+GRAPHDB_USERNAME="import_user"
+GRAPHDB_PASSWORD="password"
+
 WORKDIR="/data/graphdb-import/emonet/monarch"
 # WORKDIR="mkdir -p input/dipper"
 
@@ -19,7 +23,7 @@ do
   wget -N https://archive.monarchinitiative.org/latest/rdf/${var}
 
   # Import to GraphDB
-  curl -X POST -u admin:root --header 'Content-Type: application/json' --header 'Accept: application/json' -d "{
+  curl -X POST -u $GRAPHDB_USERNAME:$GRAPHDB_PASSWORD --header 'Content-Type: application/json' --header 'Accept: application/json' -d "{
     'fileNames': [
       '$WORKDIR/${var}'
     ],
