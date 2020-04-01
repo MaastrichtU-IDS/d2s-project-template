@@ -1,5 +1,6 @@
 #!/bin/bash
 
+GRAPHDB_TRIPLESTORE="http://localhost:7200"
 GRAPHDB_REPOSITORY="monarch-initiative"
 WORKDIR="/data/graphdb-import/emonet/monarch"
 # WORKDIR="mkdir -p input/dipper"
@@ -25,5 +26,5 @@ do
     'importSettings': {
         'context': 'https://w3id.org/d2s/dipper/graph/${var}'
       }
-  }" 'http://graphdb.dumontierlab.com/rest/data/import/server/$GRAPHDB_REPOSITORY'
+  }" "$GRAPHDB_TRIPLESTORE/rest/data/import/server/$GRAPHDB_REPOSITORY"
 done
