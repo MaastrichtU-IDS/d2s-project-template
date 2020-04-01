@@ -1,0 +1,428 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix bl: <https://w3id.org/biolink/vocab/> .
+@prefix cohd: <https://w3id.org/trek/cohd/> .
+@base <https://w3id.org/trek/cohd/> .
+
+# dataset_id	concept_id_1	concept_id_2	concept_count	concept_prevalence	chi_square_t	chi_square_p	expected_count	ln_ratio	rel_freq_1	rel_freq_2
+# 3	2003351	4043182	39	2.251917e-05	7.670977e+02	7.687639e-169	1.915134e+00	3.013774e+00	1.300000e+00	3.527560e-04
+# 3	2003351	4078442	39	2.251917e-05	1.292931e+03	3.884704e-283	1.152185e+00	3.521902e+00	1.300000e+00	5.863427e-04
+# 3	2003351	4111798	39	2.251917e-05	1.797332e+03	0.000000e+00	8.336423e-01	3.845513e+00	1.300000e+00	8.103896e-04
+
+<#MapAssociation> a rr:TriplesMap;
+  rml:logicalSource [ 
+    rml:source "/mnt/workspace/input/monarch/paired_concept_counts_associations.csv";
+    rml:referenceFormulation ql:CSV ];
+  rr:subjectMap [ 
+    rr:template "https://w3id.org/trek/cohd/association/{dataset_id}_{concept_id_1}_{concept_id_2}";
+    rr:class bl:Association ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:subject; 
+    rr:objectMap [ rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{concept_id_1}" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:relation; 
+    rr:objectMap bl:related_to
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:id; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/association/{dataset_id}_{concept_id_1}_{concept_id_2}" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:subject; 
+    rr:objectMap [ rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{concept_id_1}" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:object; 
+    rr:objectMap [ rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{concept_id_2}" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:provided_by; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/provider/dataset/{dataset_id}" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_evidence; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}" ]
+  ] .
+
+<#MapEvidenceType> a rr:TriplesMap;    
+  rml:logicalSource [ 
+    rml:source "/mnt/workspace/input/monarch/paired_concept_counts_associations.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [ 
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}";
+    rr:class bl:EvidenceType
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:name ;
+    rr:objectMap [ rr:template "Count of co-occurences of the 2 concepts {dataset_id} and {concept_id_1} in COHD dataset {concept_id_2}" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:id; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_count; 
+    rr:objectMap [ rml:reference "concept_count"; rr:datatype xsd:double ]
+  ];
+  # rr:predicateObjectMap [ 
+  #   rr:predicate bl:has_total; 
+  #   rr:objectMap [ rml:reference "patient_count_in_dataset"; rr:datatype xsd:double ]
+  # ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_quotient; 
+    rr:objectMap [ rml:reference "concept_prevalence"; rr:datatype xsd:double ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue" ]
+  ];
+  
+  rr:predicateObjectMap [ 
+    rr:predicate bl:provided_by; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/provider/dataset/{dataset_id}" ]
+  ] .
+
+<#MapConceptCountAttribute> a rr:TriplesMap;    
+  rml:logicalSource [ 
+    rml:source "/mnt/workspace/input/monarch/paired_concept_counts_associations.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [ 
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_count";
+    rr:class bl:Attribute
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute_type; 
+    rr:object <https://w3id.org/trek/cohd/attribute/concept_count>
+    # Use Count? http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25463
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:id; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_count" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:name ;
+    rr:objectMap [ rr:template "Count of co-occurences of concepts {concept_id_1} and {concept_id_2} in COHD dataset concept {dataset_id}" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_quantitative_value; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_count/value" ]
+  ] .
+<#MapConceptCountAttributeValue> a rr:TriplesMap;    
+  rml:logicalSource [ 
+    rml:source "/mnt/workspace/input/monarch/paired_concept_counts_associations.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [ 
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_count/value";
+    rr:class bl:QuantityValue
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_numeric_value; 
+    rr:objectMap [ rml:reference "concept_count" ]
+  ] .
+
+<#MapConceptPrevalenceAttribute> a rr:TriplesMap;    
+  rml:logicalSource [ 
+    rml:source "/mnt/workspace/input/monarch/paired_concept_counts_associations.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [ 
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_prevalence";
+    rr:class bl:Attribute
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute_type; 
+    rr:object <https://w3id.org/trek/cohd/attribute/concept_prevalence>
+    # Use Prevalence? http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17010
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:id; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_prevalence" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:name ;
+    rr:objectMap [ rr:template "Prevalence of co-occurences of concepts {concept_id_1} and {concept_id_2} in COHD dataset concept {dataset_id}" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_quantitative_value; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_prevalence/value" ]
+  ] .
+<#MapConceptPrevalenceAttributeValue> a rr:TriplesMap;    
+  rml:logicalSource [ 
+    rml:source "/mnt/workspace/input/monarch/paired_concept_counts_associations.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [ 
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_prevalence/value";
+    rr:class bl:QuantityValue
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_numeric_value; 
+    rr:objectMap [ rml:reference "concept_prevalence" ]
+  ] .
+
+<#MapTtestResultsAttribute> a rr:TriplesMap;    
+  rml:logicalSource [ 
+    rml:source "/mnt/workspace/input/monarch/paired_concept_counts_associations.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [ 
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest";
+    rr:class bl:Attribute
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute_type; 
+    rr:object <https://w3id.org/trek/cohd/attribute/ttest_results>
+    # Use T-test? http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C53231
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:id; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:name ;
+    rr:objectMap [ rr:template "t-Tests results of concepts {concept_id_1} and {concept_id_2} in COHD dataset concept {dataset_id}" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_quantitative_value; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest/value" ]
+  ] .
+<#MapTtestResultsAttributeValue> a rr:TriplesMap;    
+  rml:logicalSource [ 
+    rml:source "/mnt/workspace/input/monarch/paired_concept_counts_associations.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [ 
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest/value";
+    rr:class bl:QuantityValue
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_numeric_value; 
+    rr:objectMap [ rml:reference "chi_square_t" ]
+  ] .
+
+
+<#MapTtestPvalueAttribute> a rr:TriplesMap;    
+  rml:logicalSource [ 
+    rml:source "/mnt/workspace/input/monarch/paired_concept_counts_associations.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [ 
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue";
+    rr:class bl:Attribute
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute_type; 
+    rr:object <https://w3id.org/trek/cohd/attribute/ttest_pvalue>
+    # Use p-value? http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C53231
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:id; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:name ;
+    rr:objectMap [ rr:template "t-Tests p-value of concepts {concept_id_1} and {concept_id_2} in COHD dataset concept {dataset_id}" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_quantitative_value; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue/value" ]
+  ] .
+<#MapTtestPvalueAttributeValue> a rr:TriplesMap;    
+  rml:logicalSource [ 
+    rml:source "/mnt/workspace/input/monarch/paired_concept_counts_associations.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [ 
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue/value";
+    rr:class bl:QuantityValue
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_numeric_value; 
+    rr:objectMap [ rml:reference "chi_square_p" ]
+  ].
+
+<#MapRelFreq1Attribute> a rr:TriplesMap;    
+  rml:logicalSource [ 
+    rml:source "/mnt/workspace/input/monarch/paired_concept_counts_associations.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [ 
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency";
+    rr:class bl:Attribute
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute_type; 
+    rr:object <https://w3id.org/trek/cohd/attribute/relfreq1>
+    # Use How often / Frequency? http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C118873
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:id; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:name ;
+    rr:objectMap [ rr:template "Frequency of concept {concept_id_1} relative to concept {concept_id_2} (count of patients with the 2 concepts divided by count of patients with only one)" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_quantitative_value; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency/value" ]
+  ] .
+<#MapRelFreq1AttributeValue> a rr:TriplesMap;    
+  rml:logicalSource [ 
+    rml:source "/mnt/workspace/input/monarch/paired_concept_counts_associations.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [ 
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency/value";
+    rr:class bl:QuantityValue
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_numeric_value; 
+    rr:objectMap [ rml:reference "rel_freq_1" ]
+  ] .
+
+<#MapRelFreq2Attribute> a rr:TriplesMap;    
+  rml:logicalSource [ 
+    rml:source "/mnt/workspace/input/monarch/paired_concept_counts_associations.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [ 
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency";
+    rr:class bl:Attribute
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute_type; 
+    rr:object <https://w3id.org/trek/cohd/attribute/relfreq2>
+    # Use How often / Frequency? http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C118873
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:id; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:name ;
+    rr:objectMap [ rr:template "Frequency of concept {concept_id_2} relative to concept {concept_id_1} (count of patients with the 2 concepts divided by count of patients with only one)" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_quantitative_value; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency/value" ]
+  ] .
+<#MapRelFreq2AttributeValue> a rr:TriplesMap;    
+  rml:logicalSource [ 
+    rml:source "/mnt/workspace/input/monarch/paired_concept_counts_associations.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [ 
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency/value";
+    rr:class bl:QuantityValue
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_numeric_value; 
+    rr:objectMap [ rml:reference "rel_freq_2" ]
+  ].
+
+<#MapExpectedCountAttribute> a rr:TriplesMap;    
+  rml:logicalSource [ 
+    rml:source "/mnt/workspace/input/monarch/paired_concept_counts_associations.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [ 
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count";
+    rr:class bl:Attribute
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute_type; 
+    rr:object <https://w3id.org/trek/cohd/attribute/expected_count>
+    # Use Expected Value? http://semanticscience.org/resource/SIO_001021
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:id; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:name ;
+    rr:objectMap [ rr:template "Expected count given the 2 concepts {concept_id_1} and {concept_id_2} are not associated in COHD dataset {dataset_id}" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_quantitative_value; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count/value" ]
+  ] .
+<#MapExpectedCountAttributeValue> a rr:TriplesMap;    
+  rml:logicalSource [ 
+    rml:source "/mnt/workspace/input/monarch/paired_concept_counts_associations.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [ 
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count/value";
+    rr:class bl:QuantityValue
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_numeric_value; 
+    rr:objectMap [ rml:reference "expected_count" ]
+  ] .
+
+<#MapLnRatioAttribute> a rr:TriplesMap;    
+  rml:logicalSource [ 
+    rml:source "/mnt/workspace/input/monarch/paired_concept_counts_associations.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [ 
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio";
+    rr:class bl:Attribute
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_attribute_type; 
+    rr:object <https://w3id.org/trek/cohd/attribute/ln_ratio>
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:id; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:name ;
+    rr:objectMap [ rr:template "Log of observed patients with the concept on the expected count for concepts {concept_id_1} and {concept_id_2} in COHD dataset {dataset_id}" ]
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_quantitative_value; 
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio/value" ]
+  ] .
+<#MapLnRatioAttributeValue> a rr:TriplesMap;    
+  rml:logicalSource [ 
+    rml:source "/mnt/workspace/input/monarch/paired_concept_counts_associations.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [ 
+    rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio/value";
+    rr:class bl:QuantityValue
+  ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:has_numeric_value; 
+    rr:objectMap [ rml:reference "ln_ratio" ]
+  ].

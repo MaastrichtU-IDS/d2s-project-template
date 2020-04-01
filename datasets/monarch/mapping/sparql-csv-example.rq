@@ -1,0 +1,48 @@
+PREFIX d2s: <https://w3id.org/d2s/model/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX w3idvocab: <https://w3id.org/d2s/vocab/>
+INSERT {
+  GRAPH <?_output> {  
+    # Attribute the retrieved data to your model properties
+   ?row a d2s:Thing ;
+      dc:identifier ?Chemical ;
+      rdfs:label ?Protein ;
+      rdfs:label ?Experimental ;
+      rdfs:label ?Prediction ;
+      rdfs:label ?Database ;
+      rdfs:label ?Textmining ;
+      rdfs:label ?Combined_score .
+  }
+} WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+
+      ?row a ?type .
+
+      OPTIONAL { 
+        ?row d2s:Chemical ?Chemical . 
+        # Generate URI from ID
+        BIND ( iri(concat("https://w3id.org/d2s/data/", md5(?Chemical))) AS ?Chemical_uri )
+      }
+      OPTIONAL { ?row d2s:Protein ?Protein . }
+      OPTIONAL { ?row d2s:Experimental ?Experimental . }
+      OPTIONAL { ?row d2s:Prediction ?Prediction . }
+      OPTIONAL { 
+        ?row d2s:Database ?Database . 
+        # Match on multiple values
+        VALUES( ?Database ?identifiersUri ) {
+          ("drugbank" <https://identifiers.org/drugbank/> )
+          ("chembl" <https://identifiers.org/chembl/> )
+          ("chebi" <https://identifiers.org/chebi/> )
+        }
+      }
+
+      OPTIONAL { ?row d2s:Textmining ?Textmining . }
+      OPTIONAL { ?row d2s:Combined_score ?Combined_score . }
+    }
+  }
+}
