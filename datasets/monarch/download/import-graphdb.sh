@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GRAPHDB_TRIPLESTORE="http://localhost:7200"
+GRAPHDB_TRIPLESTORE="https://graphdb.dumontierlab.com"
 GRAPHDB_REPOSITORY="monarch-initiative"
 
 GRAPHDB_USERNAME="import_user"
