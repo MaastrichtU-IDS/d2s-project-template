@@ -13,6 +13,27 @@
 @prefix wb: <http://data.worldbank.org/> .
 @base <http://dbpedia.org/resource/> .
 
+### Using Split function with YARRRML:
+# prefixes:
+#   grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
+#   ex: "http://example.com/"
+
+# mappings:
+#   person:
+#     sources:
+#       - ['source_1.csv~csv']
+#     s: http://example.com/$(ISO)
+#     po:
+#       - [a, foaf:Person]
+#       - [ex:name, $(neighbours)]
+#       - p: ex:neighbours
+#         o:
+#             function: grel:string_split
+#             parameters:
+#                 - [grel:valueParameter, $(neighbours)]
+#                 - [grel:p_string_sep, "|"]
+#             language: en
+        
 
 <#TriplesMapGeonames>
   a rr:TriplesMap ;
