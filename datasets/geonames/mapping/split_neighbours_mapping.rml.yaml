@@ -17,7 +17,7 @@ mappings:
             parameters:
                 - [grel:p_string_sep, "|"]
                 - [grel:valueParameter, $(neighbours)]
-            # language: en
+            language: en
 
 ### Using to lower case (working)
 
@@ -27,7 +27,7 @@ mappings:
 #   gn: "http://www.geonames.org/ontology#"
 
 # mappings:
-#   neighbours:
+#   lowerneighbours:
 #     sources:
 #       - ['source_1.csv~csv']
 #     s: http://www.geonames.org/ontology#$(ISO)
