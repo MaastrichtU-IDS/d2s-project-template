@@ -17,13 +17,12 @@ map:om_0 a rr:ObjectMap;
     rr:termType rr:IRI.
 map:om_1 a <http://semweb.mmlab.be/ns/fnml#FunctionTermMap>;
     rr:termType rr:Literal;
-    rr:language "en";
     <http://semweb.mmlab.be/ns/fnml#functionValue> map:fn_0.
 map:om_2 a rr:ObjectMap;
-    rml:reference "neighbours";
+    rr:constant "|";
     rr:termType rr:Literal.
 map:om_3 a rr:ObjectMap;
-    rr:constant "|";
+    rml:reference "neighbours";
     rr:termType rr:Literal.
 map:omexec_0 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_split";
     rr:termType rr:IRI.
@@ -32,9 +31,9 @@ map:pm_0 a rr:PredicateMap;
 map:pm_1 a rr:PredicateMap;
     rr:constant <http://www.geonames.org/ontology#neighbours>.
 map:pm_2 a rr:PredicateMap;
-    rr:constant <http://users.ugent.be/~bjdmeest/function/grel.ttl#valueParameter>.
-map:pm_3 a rr:PredicateMap;
     rr:constant <http://users.ugent.be/~bjdmeest/function/grel.ttl#p_string_sep>.
+map:pm_3 a rr:PredicateMap;
+    rr:constant <http://users.ugent.be/~bjdmeest/function/grel.ttl#valueParameter>.
 map:pmexec_0 rr:constant <https://w3id.org/function/ontology#executes>.
 map:pom_0 a rr:PredicateObjectMap;
     rr:predicateMap map:pm_0;

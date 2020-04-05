@@ -7,8 +7,7 @@ prefixes:
 mappings:
   neighbours:
     sources:
-      - ['source_1.csv~csv']
-    #   - ['/mnt/workspace/input/geonames/dataset-geonames-countryInfo.csv~csv']
+      - ['/mnt/workspace/input/geonames/dataset-geonames-countryInfo.csv~csv']
     s: http://www.geonames.org/ontology#$(ISO)
     po:
       - [a, gn:Country]
@@ -16,9 +15,9 @@ mappings:
         o:
             function: grel:string_split
             parameters:
-                - [grel:valueParameter, $(neighbours)]
                 - [grel:p_string_sep, "|"]
-            language: en
+                - [grel:valueParameter, $(neighbours)]
+            # language: en
 
 ### Using to lower case (working)
 
