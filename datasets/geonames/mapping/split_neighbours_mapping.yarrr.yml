@@ -15,7 +15,7 @@ mappings:
         o:
             function: grel:string_split
             parameters:
-                - [grel:p_string_sep, "|"]
+                - [grel:p_string_sep, "\|"]
                 - [grel:valueParameter, $(neighbours)]
             language: en
 
