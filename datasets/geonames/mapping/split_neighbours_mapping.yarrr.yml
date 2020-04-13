@@ -40,4 +40,3 @@ mappings:
 #             parameters:
 #                 - [grel:valueParameter, $(neighbours)]
 #             language: en
-
