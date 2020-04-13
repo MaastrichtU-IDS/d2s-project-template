@@ -1,0 +1,24 @@
+PREFIX d2s: <https://w3id.org/d2s/model/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX w3idvocab: <https://w3id.org/d2s/vocab/>
+INSERT {
+  GRAPH <?_output> {
+    # http://idlab.github.io/covid19#datasetVersion9
+    ?meshUri owl:sameAs ?mesh2020Uri .
+  }
+}
+WHERE {
+  # SERVICE <?_service>  {
+    GRAPH <?_input> {
+      # https://w3id.org/d2s/graph/mesh
+      ?mesh2020Uri a []  .
+      FILTER(strstarts(str(?mesh2020Uri), "http://id.nlm.nih.gov/mesh/2020/"))
+      BIND(uri(replace(str(?mesh2020Uri), "http://id.nlm.nih.gov/mesh/2020/", "https://id.nlm.nih.gov/mesh/")) as ?meshUri)
+    }
+  # }
+}
+

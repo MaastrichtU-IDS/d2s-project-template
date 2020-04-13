@@ -1,0 +1,76 @@
+PREFIX ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX cito: <http://purl.org/spar/cito/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dctypes: <http://purl.org/dc/dcmitype/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX freq: <http://purl.org/cld/freq/>
+PREFIX idot: <http://identifiers.org/idot/>
+PREFIX lexvo: <http://lexvo.org/ontology#>
+PREFIX pav: <http://purl.org/pav/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schemaorg: <http://schema.org/>
+PREFIX sd: <http://www.w3.org/ns/sparql-service-description#>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX void-ext: <http://ldf.fi/void-ext#>
+
+INSERT {
+	GRAPH <?_output> {
+
+    # Agent publishing the dataset
+    ?publisherUri a dct:Agent ;
+      foaf:name ?publisherName ;
+      foaf:page <https://www.nih.gov/> .     
+
+    # Summary
+    <https://w3id.org/d2s/dataset/mesh>      
+      rdf:type dctypes:Dataset;
+      dct:title "MeSH vocabulary" ;
+      idot:preferredPrefix "mesh" ;                     
+      dct:description "The Medical Subject Headings (MeSH) thesaurus is a controlled and hierarchically-organized vocabulary produced by the National Library of Medicine. It is used for indexing, cataloging, and searching of biomedical and health-related information. MeSH includes the subject headings appearing in MEDLINE/PubMed, the NLM Catalog, and other NLM databases."@en;   
+      dct:publisher ?publisherUri ;      
+      
+      # dct:license <http://creativecommons.org/licenses/by-nc/4.0/legalcode> ;   
+      # Human readable licenses terms
+      dct:rights """Source: U.S. National Library of Medicine."""@en ;
+
+      # The homepage of the dataset
+      foaf:page <http://d2s.semanticscience.org/> ;                 
+      # schemaorg:logo <http://d2s.semanticscience.org/img/d2s-logo.png> ;   
+      
+      dcat:accessURL <https://www.drugbank.ca/releases/latest> ;    
+      # Specify the directory containing the file(s) of interest (not the direct file URL)
+
+      dct:references <https://www.nlm.nih.gov/copyright.html> ; 
+      # dcat:keyword "drugs" , "chemicals", "drug interactions" ;     
+      # dcat:theme ncit:C48807 , ncit:C54708 ;                     
+      # Chemical, drug interaction
+
+      # dct:accrualPeriodicity freq:annual ; 
+      # frequency of update: annual baseline is released in December of each year
+
+      void:sparqlEndpoint "https://graphdb.dumontierlab.com/repositories/covid-kg" .
+
+      ## MAY
+      # dct:references <IRI> ; # Supporting material as web pages and documents (use cito for publications)
+      # cito:citesAsAuthority <IRI> ; # publications about the dataset
+      # rdfs:seeAlso <http://compbio.charite.de/jenkins/job/hpo.annotations.monthly/> ;
+
+      # dct:hasPart <IRI> ; # if the dataset has multiple different parts (e.g. one for Drugs, one for Phenotypes)
+      # dct:alternative "Alternative label for dataset" ;
+      # idot:alternatePrefix "alternative_prefix";
+
+
+      ## Needs to be updated at new submission
+      #pav:hasCurrentVersion <https://w3id.org/d2s/dataset/drugbank/version/1> ;
+  }
+} WHERE {
+    BIND(NOW() AS ?now)
+    BIND ( "National Institute of Health" as ?publisherName)
+    BIND ( iri(concat("https://w3id.org/d2s/agent/", md5(?publisherName))) AS ?publisherUri )
+}
