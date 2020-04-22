@@ -25,7 +25,7 @@ sparql_tmp_triplestore_username: dba
 sparql_tmp_triplestore_password: dba
 
 sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/xml2rdf"
-tmp_triplestore_container_id: "d2s-cwl-workflows_tmp-virtuoso_1"
+tmp_triplestore_container_id: "d2s-tmp-virtuoso"
 tmp_triplestore_load_dir: "/usr/local/virtuoso-opensource/var/lib/virtuoso/db"
 
 sparql_transform_queries_path: "mapping"

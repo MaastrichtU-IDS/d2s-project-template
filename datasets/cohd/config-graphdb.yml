@@ -35,9 +35,9 @@ sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/autor2rml"
 # sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/autor2rml/cohd"
 # sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/autor2rml"
 
-# tmp_triplestore_container_id: "d2s-cwl-workflows_virtuoso_1"
+# tmp_triplestore_container_id: "d2s-virtuoso"
 # tmp_triplestore_load_dir: "/usr/local/virtuoso-opensource/var/lib/virtuoso/db"
-tmp_triplestore_container_id: "d2s-cwl-workflows_graphdb_1"
+tmp_triplestore_container_id: "d2s-graphdb"
 tmp_triplestore_load_dir: "/root/graphdb-import"
 
 

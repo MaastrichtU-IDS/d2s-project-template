@@ -27,7 +27,7 @@ sparql_tmp_triplestore_password: "dba"
 
 sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/autor2rml"
 # sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/xml2rdf"
-tmp_triplestore_container_id: "d2s-cwl-workflows_virtuoso_1"
+tmp_triplestore_container_id: "d2s-virtuoso"
 tmp_triplestore_load_dir: "/usr/local/virtuoso-opensource/var/lib/virtuoso/db"
 
 # Split params
