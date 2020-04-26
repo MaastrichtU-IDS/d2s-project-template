@@ -34,7 +34,7 @@ git clone --recursive https://github.com/MaastrichtU-IDS/d2s-transform-template.
 
 ## Update submodules
 
-You might want to update the `d2s-cwl-workflows` submodule to get the latest updates for the docker deployments definitions:
+You might want to update the `d2s-core` submodule to get the latest updates for the docker deployments definitions:
 
 ```shell
 ./update_submodules.sh

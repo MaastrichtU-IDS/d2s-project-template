@@ -39,4 +39,4 @@ config_dir:
 
 cwl_dir:
   class: Directory
-  path: ../../d2s-cwl-workflows
+  path: ../../d2s-core/cwl

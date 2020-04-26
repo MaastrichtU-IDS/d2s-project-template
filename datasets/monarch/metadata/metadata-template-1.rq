@@ -70,7 +70,7 @@ INSERT {
       dct:license <https://creativecommons.org/licenses/by/3.0/legalcode> ;           
       void:exampleResource <https://identifiers.org/drugbank:DB00001> ;     
       # TODO: should we point createdWith to the SPARQL mappings? Or d2s-cli URL?
-      pav:createdWith <https://github.com/MaastrichtU-IDS/d2s-cwl-workflows/tree/master/support/template/dataset/mapping> ;  
+      pav:createdWith <https://github.com/MaastrichtU-IDS/d2s-core/tree/master/support/template/dataset/mapping> ;  
 
       # Which publisher for RDF BioLink Dataset? IDS by default
       dct:publisher ?rdfPublisherUri ;  
