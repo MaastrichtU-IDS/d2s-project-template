@@ -1,29 +1,28 @@
 ## Define CWL workflows for RDF conversion
 
-Use this template repository to create a new repository used by the [d2s Command Line Interface](https://pypi.org/project/d2s/). 
+Click on the **Use this template** button to **create a new repository used by the [d2s Command Line Interface](https://pypi.org/project/d2s/) tool**. 
 
 See **[d2s.semanticscience.org](https://d2s.semanticscience.org/)** for detailed documentation to run CWL workflows to transform structured data to a target RDF knowledge graph and deploy services.
 
-![Use template repository](screenshot_d2s_template.png)
-
 ## Requirements
 
-- Install the [d2s client](https://pypi.org/project/d2s/)
-- Install [cwlref-runner](https://github.com/common-workflow-language/cwltool#install) to get cwl-runner to run workflows of Docker modules.
-- [Docker](https://docs.docker.com/install/) must be installed.
+* [Docker](https://docs.docker.com/install/): see the [d2s Docker installation documentation](https://d2s.semanticscience.org/docs/d2s-installation#install-docker) for quick install on various systems.
 
-```bash
-sudo apt install d2s cwlref-runner
-```
+- `pip` install the [d2s client](https://pypi.org/project/d2s/) and [cwlref-runner](https://github.com/common-workflow-language/cwltool#install) (run workflows of Docker containers) withon Python 3.6+
 
+  ```bash
+  sudo apt install d2s cwlref-runner
+  ```
 
-Create a project:
+## Create  a project
+
+Follow the prompt instructions to create a project in the provided folder:
 
 ```bash
 d2s init project-folder-name
 ```
 
-> Follow the prompt instructions. And see the [d2s.semanticscience.org](https://d2s.semanticscience.org/docs/d2s-services) for the complete documentation.
+> See the [d2s.semanticscience.org](https://d2s.semanticscience.org/docs/d2s-services) for the complete documentation.
 
 ## Edit this template
 
@@ -43,5 +42,11 @@ You might want to update the `d2s-cwl-workflows` submodule to get the latest upd
 
 ## About
 
-We use the [Common Workflow Language](https://www.commonwl.org/) to describe workflows to transform heterogeneous structured data (CSV, TSV, RDB, XML, JSON) to a target RDF data model ([BioLink](https://biolink.github.io/biolink-model/docs/) in those examples). The user defines [SPARQL queries](https://github.com/MaastrichtU-IDS/d2s-transform-template/blob/master/mapping/pharmgkb/insert-pharmgkb.rq) to transform the generic RDF generated depending on the input data structure (AutoR2RML, xml2rdf) to the target model of his choice.
+We use the [Common Workflow Language](https://www.commonwl.org/) to describe workflows to transform heterogeneous structured data (CSV, TSV, RDB, XML, JSON) to a target RDF data model ([BioLink](https://biolink.github.io/biolink-model/docs/) in those examples). 
 
+The user can transform the input data as RDF using various solutions:
+
+* RML mappings
+* CWL workflows executing [SPARQL queries](https://github.com/MaastrichtU-IDS/d2s-transform-template/blob/master/datasets/cohd/mapping/1-concepts.rq) to transform the generic RDF generated depending on the input data structure ([AutoR2RML](https://github.com/MaastrichtU-IDS/AutoR2RML), [xml2rdf](https://github.com/MaastrichtU-IDS/xml2rdf)) to the target model of his choice. See [documentation to run CWL workflows](https://d2s.semanticscience.org/docs/d2s-run)
+* [BioThings Studio](https://d2s.semanticscience.org/docs/d2s-biothings) (web UI and API)
+* DOCKET multiomics provider (Python notebooks and Nextflow)
