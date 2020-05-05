@@ -29,7 +29,7 @@ d2s init project-folder-name
 You might want to edit or modify this template: 
 
 ```bash
-git clone --recursive https://github.com/MaastrichtU-IDS/d2s-transform-template.git
+git clone --recursive https://github.com/MaastrichtU-IDS/d2s-project-template.git
 ```
 
 ## Update submodules
@@ -47,6 +47,6 @@ We use the [Common Workflow Language](https://www.commonwl.org/) to describe wor
 The user can transform the input data as RDF using various solutions:
 
 * RML mappings
-* CWL workflows executing [SPARQL queries](https://github.com/MaastrichtU-IDS/d2s-transform-template/blob/master/datasets/cohd/mapping/1-concepts.rq) to transform the generic RDF generated depending on the input data structure ([AutoR2RML](https://github.com/MaastrichtU-IDS/AutoR2RML), [xml2rdf](https://github.com/MaastrichtU-IDS/xml2rdf)) to the target model of his choice. See [documentation to run CWL workflows](https://d2s.semanticscience.org/docs/d2s-run)
+* CWL workflows executing [SPARQL queries](https://github.com/MaastrichtU-IDS/d2s-project-template/blob/master/datasets/cohd/mapping/1-concepts.rq) to transform the generic RDF generated depending on the input data structure ([AutoR2RML](https://github.com/MaastrichtU-IDS/AutoR2RML), [xml2rdf](https://github.com/MaastrichtU-IDS/xml2rdf)) to the target model of his choice. See [documentation to run CWL workflows](https://d2s.semanticscience.org/docs/d2s-run)
 * [BioThings Studio](https://d2s.semanticscience.org/docs/d2s-biothings) (web UI and API)
 * DOCKET multiomics provider (Python notebooks and Nextflow)
