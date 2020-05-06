@@ -112,6 +112,7 @@ INSERT {
             ( "enzyme" UNDEF bl:affects_activity_of )
             ( "transporter" UNDEF bl:affects_transport_of )
             ( "carrier" UNDEF bl:affects_transport_of )
+            ( UNDEF UNDEF bl:related_to )
         }
       }
       # OPTIONAL{ ?targetObj x2rm:child_name [ x2rm:hasValue ?bioentityKnownAction ] . }
