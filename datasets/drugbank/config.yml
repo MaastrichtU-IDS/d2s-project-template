@@ -1,6 +1,6 @@
 
-## For Tabular files workflows
-# dataset_to_process: "drugbank"
+## For Tabular files workflows and compute HCLS stats
+dataset_to_process: "drugbank"
 
 ## For XML workflows
 dir_to_process:
