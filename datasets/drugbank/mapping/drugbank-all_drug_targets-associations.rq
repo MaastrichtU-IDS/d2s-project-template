@@ -83,7 +83,10 @@ INSERT {
 .
 
       OPTIONAL{ ?targetObj x2rm:child_name [ x2rm:hasValue ?bioentityName ] . }
-      OPTIONAL{ ?targetObj x2rm:child_organism [ x2rm:hasValue ?bioentityOrganism ] . }
+      OPTIONAL{ 
+        ?targetObj x2rm:child_organism [ x2rm:hasValue ?bioentityOrganism ] . 
+        BIND(iri(concat("https://w3id.org/d2s/data/organism:", SHA1(?bioentityOrganism))) AS ?organismUri )
+      }
       # e.g. Human
       OPTIONAL{ ?targetObj x2rm:child_actions [ 
           x2rm:child_action [ x2rm:hasValue ?targetAction ] 
@@ -126,11 +129,9 @@ INSERT {
 
       FILTER (?bioentityType != "")
       FILTER (?targetAction != "")
-      FILTER (?bioentityOrganism != "")
 
       BIND(iri(concat("https://identifiers.org/drugbankv4.target:", ?bioentityId)) AS ?bioentityUri)
       BIND(iri(concat("https://w3id.org/d2s/data/association/drug_", ?bioentityType, ":", ?drugbankId, "_", ?bioentityId)) AS ?associationUri)
-      BIND(iri(concat("https://w3id.org/d2s/data/organism:", SHA1(?bioentityOrganism))) AS ?organismUri )
       BIND(iri(concat("https://w3id.org/d2s/data/drug_action:", ?targetAction)) AS ?actionUri )
 
       # Define polypeptide association
