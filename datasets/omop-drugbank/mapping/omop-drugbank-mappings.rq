@@ -7,8 +7,16 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
 PREFIX w3idvocab: <https://w3id.org/d2s/vocab/>
 INSERT {
   GRAPH <?_output> {  
-   ?drugbank_uri bl:same_as ?omop_uri ;
+    ?drugbank_uri a bl:Drug ;
+      bl:id ?drugbankId ;
+      bl:same_as ?omop_uri ;
       bl:same_as ?rxnorm_uri .
+
+    ?rxnorm_uri a bl:Drug ;
+      bl:id ?rxcui .
+
+    ?omop_uri a bl:Drug ;
+      bl:id ?omopId .
   }
 } WHERE {
   SERVICE <?_service>  {
