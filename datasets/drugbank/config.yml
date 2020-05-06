@@ -1,11 +1,11 @@
 
 ## For Tabular files workflows
-dataset_to_process: "drugbank"
+# dataset_to_process: "drugbank"
 
 ## For XML workflows
-# dir_to_process:
-#   class: Directory
-#   path: ../../workspace/input/drugbank
+dir_to_process:
+  class: Directory
+  path: ../../workspace/input/drugbank
 
 sparql_final_graph_uri: "https://w3id.org/d2s/graph/drugbank"
 
