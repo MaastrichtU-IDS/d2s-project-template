@@ -2,7 +2,7 @@
 ## For Tabular files workflows
 dataset_to_process: "omop-drugbank"
 
-sparql_final_graph_uri: "https://w3id.org/d2s/graph/omop-drugbank"
+sparql_final_graph_uri: "https://w3id.org/trek/graph/omop-drugbank"
 
 # Final SPARQL endpoint to load the BioLink RDF
 # Add /statements for RDF4J server like GraphDB
