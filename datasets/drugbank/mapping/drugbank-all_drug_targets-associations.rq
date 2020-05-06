@@ -52,6 +52,7 @@ INSERT {
         ("enzyme" x2rm:drugbank.drug.enzymes.enzyme )
         ("carrier" x2rm:drugbank.drug.carriers.carrier )
         ("transporter" x2rm:drugbank.drug.transporters.transporter )
+        ("related_to" UNDEF )
       }
       # amino-acid-sequence or gene-sequence?
       # Not on the Drug articles, no way to represent it properly in BioLink
