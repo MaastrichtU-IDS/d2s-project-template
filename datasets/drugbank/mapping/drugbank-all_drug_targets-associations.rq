@@ -126,6 +126,7 @@ INSERT {
 
       FILTER (?bioentityType != "")
       FILTER (?targetAction != "")
+      FILTER (?bioentityOrganism != "")
 
       BIND(iri(concat("https://identifiers.org/drugbankv4.target:", ?bioentityId)) AS ?bioentityUri)
       BIND(iri(concat("https://w3id.org/d2s/data/association/drug_", ?bioentityType, ":", ?drugbankId, "_", ?bioentityId)) AS ?associationUri)
