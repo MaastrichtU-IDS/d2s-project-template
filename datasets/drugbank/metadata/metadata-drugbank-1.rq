@@ -22,9 +22,9 @@ PREFIX void-ext: <http://ldf.fi/void-ext#>
 INSERT {
 	GRAPH <?_output> {
 
-    # Agent publishing the dataset distribution
-    <https://w3id.org/d2s/agent/umids> a dct:Agent ;
-      foaf:name "Institute of Data Science at Maastricht University" ;
+    # Agent publishing the RDF distribution
+    ?rdfPublisherUri a dct:Agent ;
+      foaf:name ?rdfPublisherName ;
       foaf:page <https://maastrichtuniversity.nl/ids> .
 
     # Version
@@ -43,8 +43,8 @@ INSERT {
       
       dct:title ?dctTitle ;
       dct:description ?dctDescription ;
-      dct:license ?dctLicense ;
-      dct:publisher ?dctPublisher ;
+      dct:license ?sourceLicense ;
+      dct:publisher ?sourcePublisher ;
       idot:preferredPrefix ?idotPreferredPrefix ;
       dct:language ?dctLanguage ;
 
@@ -67,22 +67,25 @@ INSERT {
       # # more convenient to do strafter() and extract version number
 
       # TODO: What should be data2services BioLink RDF license?
-      dct:license <http://creativecommons.org/licenses/by/3.0/> ;           
-      void:exampleResource <https://identifiers.org/drugbank:DB00001> ;     
-      # TODO: should we point createdWith to the SPARQL mappings?
-      pav:createdWith <https://github.com/MaastrichtU-IDS/d2s-project-template/tree/master/datasets/cohd/mapping> ;  
+      dct:license <http://creativecommons.org/licenses/by-nc/4.0/legalcode> ;           
 
-      # Which publisher for BioLink Dataset?
-      dct:publisher <https://w3id.org/d2s/agent/umids> ;  
-      dct:creator <https://w3id.org/d2s/agent/umids> ;    
+      void:exampleResource <https://identifiers.org/drugbank:DB00001> ;     
+
+      # TODO: should we point createdWith to the SPARQL mappings? Or d2s-cli URL?
+      pav:createdWith <https://d2s.semanticscience.org/> ;  
+
+      # Which publisher for RDF BioLink Dataset? IDS by default
+      dct:publisher ?rdfPublisherUri ;  
+      dct:creator ?rdfPublisherUri ;    
 
       dct:source ?distributionSourceUri ;
       dct:language ?dctLanguage ;
       void:vocabulary <https://w3id.org/biolink/vocab/> ;
 
-      dcat:accessURL <https://graphdb.dumontierlab.com/graphs> ;
-      dcat:downloadURL <https://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements> ;
-      void:dataDump <https://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements> ;
+      # TODO: Use dcat:accessURL to specify a directory containing the file(s) of interest.
+      dcat:accessURL <https://graphdb.dumontierlab.com/repositories/trek> ;
+      dcat:downloadURL <http://download.137.120.31.102.nip.io/#/rdf-releases/drugbank> ;
+      void:dataDump <https://graphdb.dumontierlab.com/repositories/trek> ;
       dcat:mediaType "application/n-quads" ;
 
       dct:title ?rdfDctTitle ;
@@ -103,21 +106,21 @@ INSERT {
     ?distributionSourceUri 
       a dcat:Distribution ;
       dct:format "application/xml" ;
-      dcat:downloadURL
-        <https://www.drugbank.ca/releases/5-1-1/downloads/all-full-database> ;
+      dcat:downloadURL <https://www.drugbank.ca/releases/5-1-6/downloads/all-full-database> ;
+      
       idot:exampleIdentifier "DB00001"^^xsd:string ;
 
       # TODO: should we put issues?
       
       # TODO: Same publisher as source?
-      dct:publisher ?dctPublisher ;
-      dct:creator ?dctPublisher ;
+      dct:publisher ?sourcePublisher ;
+      dct:creator ?sourcePublisher ;
       pav:version ?pavVersion ;
 
       dct:title ?dctTitle ;
       dct:description ?dctDescription ;
       dct:rights ?dctRights ;
-      dct:license ?dctLicense ;
+      dct:license ?sourceLicense ;
       idot:preferredPrefix ?idotPreferredPrefix ;
       pav:retrievedOn ?now ;
       dct:language ?dctLanguage ;
@@ -129,7 +132,7 @@ INSERT {
     }
 } WHERE {
   # Version of the source dataset
-  BIND("5.1.1"^^xsd:string AS ?pavVersion)
+  BIND("1"^^xsd:string AS ?pavVersion)
 
   BIND(<https://w3id.org/d2s/dataset/drugbank> AS ?summaryUri)
   BIND(<http://lexvo.org/id/iso639-3/eng> AS ?dctLanguage)
@@ -144,8 +147,8 @@ INSERT {
   OPTIONAL {
     ?summaryUri dct:title ?dctTitle ;
       dct:description ?dctDescription ;
-      dct:license ?dctLicense ;
-      dct:publisher ?dctPublisher ;
+      dct:license ?sourceLicense ;
+      dct:publisher ?sourcePublisher ;
       idot:preferredPrefix ?idotPreferredPrefix ;
       idot:alternatePrefix ?idotAlternatePrefix .
   }
@@ -154,4 +157,7 @@ INSERT {
   BIND(iri(concat(str(?summaryUri), "/version#", str(?pavVersion))) AS ?versionUri)
   BIND(iri(concat(str(?summaryUri), "/distribution/source#", str(?pavVersion))) AS ?distributionSourceUri)
   BIND(<http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/> AS ?hclsDataset)
+
+  BIND ( "Institute of Data Science at Maastricht University" as ?rdfPublisherName)
+  BIND ( iri(concat("https://w3id.org/d2s/agent/", md5(?rdfPublisherName))) AS ?rdfPublisherUri )
 }

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+USERNAME="vincent.emonet@maastrichtuniversity.nl"
+PASSWORD="password"
+
 # Use sample hosted on GitHub, faster for testing
 wget -N https://github.com/MaastrichtU-IDS/d2s-scripts-repository/raw/master/resources/drugbank-sample/drugbank.zip
 
@@ -7,10 +10,10 @@ wget -N https://github.com/MaastrichtU-IDS/d2s-scripts-repository/raw/master/res
 # https://github.com/MaastrichtU-IDS/d2s-scripts-repository/blob/master/resources/drugbank-sample/drugbank.xml
 
 # Download full DrugBank dataset providing user login and password
-#curl -Lfv -o drugbank.zip -u $USERNAME:$PASSWORD https://www.drugbank.ca/releases/5-1-5/downloads/all-full-database
+#curl -Lfv -o drugbank.zip -u $USERNAME:$PASSWORD https://www.drugbank.ca/releases/5-1-6/downloads/all-full-database
 
-# Example:
-#curl -Lfv -o drugbank.zip -u vincent.emonet@maastrichtuniversity.nl:my_password https://www.drugbank.ca/releases/5-1-5/downloads/all-full-database
+# Download OMOP to DrugBank mappings
+wget -N https://github.com/OHDSI/KnowledgeBase/blob/master/LAERTES/terminology-mappings/RxNORM-to-UNII-PreferredName-To-DrugBank/rxnorm-drugbank-omop-mapping-CLEANED.tsv
 
 unzip *.zip -d .
 

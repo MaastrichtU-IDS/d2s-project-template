@@ -1,37 +1,51 @@
-## Transform XML
 
-# Path to the input directory on your machine
-dir_to_process:
-  class: Directory
-  path: ../../workspace/input/drugbank
+## For Tabular files workflows
+dataset_to_process: "drugbank"
 
-# download-username: vincent.emonet@maastrichtuniversity.nl
-# download-password: password
+## For XML workflows
+# dir_to_process:
+#   class: Directory
+#   path: ../../workspace/input/drugbank
 
-sparql_final_graph_uri: https://w3id.org/trek/graph/drugbank
+sparql_final_graph_uri: "https://w3id.org/d2s/graph/drugbank"
+
 
 # Final SPARQL endpoint to load the BioLink RDF
-sparql_final_triplestore_url: "http://graphdb:7200/repositories/demo/statements"
-# sparql_final_triplestore_url: "http://virtuoso:8890/sparql"
-# sparql_final_triplestore_url: "http://blazegraph:8080/bigdata/sparql"
+# Add /statements for RDF4J server like GraphDB
+sparql_final_triplestore_url: "https://graphdb.dumontierlab.com/repositories/trek/statements"
+# sparql_final_triplestore_url: "http://graphdb:7200/repositories/demo/statements"
 
-sparql_final_triplestore_username: "dba"
+sparql_final_triplestore_username: "import_user"
 sparql_final_triplestore_password: "dba"
 
-# tmp SPARQL endpoint to load generic RDF
-sparql_tmp_service_url: "http://tmp-virtuoso:8890/sparql"
-sparql_tmp_triplestore_url: "http://tmp-virtuoso:8890/sparql"
-sparql_tmp_triplestore_username: dba
-sparql_tmp_triplestore_password: dba
+# R2RML params
+input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
 
+# Temporary triplestore (e.g. Virtuoso). TODO: improve
+sparql_tmp_service_url: "http://tmp-virtuoso:8890/sparql"
+# sparql_tmp_service_url: "http://blazegraph:8082/bigdata/sparql"
+
+sparql_tmp_triplestore_url: "http://tmp-virtuoso:8890/sparql"
+# sparql_tmp_triplestore_url: "http://blazegraph:8082/bigdata/sparql"
+sparql_tmp_triplestore_username: "dba"
+sparql_tmp_triplestore_password: "dba"
+
+# sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/drugbank"
 sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/xml2rdf"
+
 tmp_triplestore_container_id: "d2s-tmp-virtuoso"
 tmp_triplestore_load_dir: "/usr/local/virtuoso-opensource/var/lib/virtuoso/db"
+
+# Split params
+# split_property: "https://w3id.org/biolink/vocab/has_participant"
+# split_class: "https://w3id.org/biolink/vocab/GeneGrouping"
+# split_delimiter: ","
+# split_quote: '"'
 
 sparql_transform_queries_path: "mapping"
 sparql_insert_metadata_path: "metadata"
 
-cwl_workflow_filename: "xml-virtuoso.cwl"
+cwl_workflow_filename: "virtuoso.cwl"
 
 config_dir:
   class: Directory
@@ -39,4 +53,4 @@ config_dir:
 
 cwl_dir:
   class: Directory
-  path: ../../d2s-core/cwl
+  path: ../../d2s-core
