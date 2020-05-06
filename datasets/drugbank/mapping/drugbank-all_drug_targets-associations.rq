@@ -123,16 +123,15 @@ INSERT {
             ( "carrier" UNDEF bl:affects_transport_of )
             ( UNDEF UNDEF bl:related_to )
         }
+        BIND(iri(concat("https://w3id.org/d2s/data/drug_action:", SHA1(?targetAction))) AS ?actionUri )
       }
       # OPTIONAL{ ?targetObj x2rm:child_name [ x2rm:hasValue ?bioentityKnownAction ] . }
       # e.g. unknown, yes
 
       FILTER (?bioentityType != "")
-      FILTER (?targetAction != "")
 
       BIND(iri(concat("https://identifiers.org/drugbankv4.target:", ?bioentityId)) AS ?bioentityUri)
       BIND(iri(concat("https://w3id.org/d2s/data/association/drug_", ?bioentityType, ":", ?drugbankId, "_", ?bioentityId)) AS ?associationUri)
-      BIND(iri(concat("https://w3id.org/d2s/data/drug_action:", ?targetAction)) AS ?actionUri )
 
       # Define polypeptide association
       BIND(iri(concat("https://identifiers.org/uniprot:", ?polypeptideId)) AS ?polypeptideUniprotUri)
