@@ -119,7 +119,7 @@ INSERT {
 
       BIND(iri(concat("https://identifiers.org/drugbankv4.target:", ?bioentityId)) AS ?bioentityUri)
       BIND(iri(concat("https://w3id.org/d2s/data/association/drug_", ?bioentityType, ":", ?drugbankId, "_", ?bioentityId)) AS ?associationUri)
-      BIND(iri(concat("https://w3id.org/d2s/data/organism:", ?bioentityOrganism)) AS ?organismUri )
+      BIND(iri(concat("https://w3id.org/d2s/data/organism:", SHA1(?bioentityOrganism))) AS ?organismUri )
       BIND(iri(concat("https://w3id.org/d2s/data/drug_action:", ?targetAction)) AS ?actionUri )
 
       # Define polypeptide association
