@@ -15,9 +15,9 @@ INSERT {
     GRAPH <?_input> {
 
       ?row a <https://w3id.org/d2s/rxnorm-drugbank-omop-mapping-CLEANED.tsv> ;
-        d2s:rxcui ?rxcui ;
-        d2s:conceptId ?omopId ;
-        d2s:drugBank ?drugbankId .
+        d2s:Rxcui ?rxcui ;
+        d2s:Conceptid ?omopId ;
+        d2s:Drugbank ?drugbankId .
 
       # Generate URI from ID
       BIND ( iri(concat("https://identifiers.org/drugbank:", ?drugbankId)) AS ?drugbank_uri )
