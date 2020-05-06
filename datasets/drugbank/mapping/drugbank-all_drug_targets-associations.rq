@@ -124,6 +124,8 @@ INSERT {
       # OPTIONAL{ ?targetObj x2rm:child_name [ x2rm:hasValue ?bioentityKnownAction ] . }
       # e.g. unknown, yes
 
+      FILTER (?bioentityType != "")
+
       BIND(iri(concat("https://identifiers.org/drugbankv4.target:", ?bioentityId)) AS ?bioentityUri)
       BIND(iri(concat("https://w3id.org/d2s/data/association/drug_", ?bioentityType, ":", ?drugbankId, "_", ?bioentityId)) AS ?associationUri)
       BIND(iri(concat("https://w3id.org/d2s/data/organism:", SHA1(?bioentityOrganism))) AS ?organismUri )
