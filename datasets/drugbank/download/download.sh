@@ -6,9 +6,6 @@ PASSWORD="password"
 # Download full DrugBank dataset providing user login and password
 curl -Lfv -o drugbank.zip -u $USERNAME:$PASSWORD https://www.drugbank.ca/releases/5-1-6/downloads/all-full-database
 
-# Download OMOP to DrugBank mappings
-wget -N https://github.com/OHDSI/KnowledgeBase/blob/master/LAERTES/terminology-mappings/RxNORM-to-UNII-PreferredName-To-DrugBank/rxnorm-drugbank-omop-mapping-CLEANED.tsv
-
 # Use DrugBank XML sample hosted on GitHub, faster for testing
 # wget -N https://github.com/MaastrichtU-IDS/d2s-scripts-repository/raw/master/resources/drugbank-sample/drugbank.zip
 # See the uncompressed file here: 

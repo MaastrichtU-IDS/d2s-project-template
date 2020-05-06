@@ -1,14 +1,8 @@
 
 ## For Tabular files workflows
-# dataset_to_process: "drugbank"
+dataset_to_process: "omop-drugbank"
 
-## For XML workflows
-dir_to_process:
-  class: Directory
-  path: ../../workspace/input/drugbank
-
-sparql_final_graph_uri: "https://w3id.org/trek/graph/drugbank"
-
+sparql_final_graph_uri: "https://w3id.org/d2s/graph/omop-drugbank"
 
 # Final SPARQL endpoint to load the BioLink RDF
 # Add /statements for RDF4J server like GraphDB
@@ -30,8 +24,8 @@ sparql_tmp_triplestore_url: "http://tmp-virtuoso:8890/sparql"
 sparql_tmp_triplestore_username: "dba"
 sparql_tmp_triplestore_password: "dba"
 
-# sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/drugbank"
-sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/xml2rdf"
+sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/autor2rml"
+# sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/omop-drugbank"
 
 tmp_triplestore_container_id: "d2s-tmp-virtuoso"
 tmp_triplestore_load_dir: "/usr/local/virtuoso-opensource/var/lib/virtuoso/db"
@@ -45,7 +39,7 @@ tmp_triplestore_load_dir: "/usr/local/virtuoso-opensource/var/lib/virtuoso/db"
 sparql_transform_queries_path: "mapping"
 sparql_insert_metadata_path: "metadata"
 
-cwl_workflow_filename: "xml-virtuoso.cwl"
+cwl_workflow_filename: "csv-virtuoso.cwl"
 
 config_dir:
   class: Directory
