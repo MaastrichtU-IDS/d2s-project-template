@@ -21,7 +21,7 @@
   rml:logicalSource [
     # For RMLStreamer
     # rml:source "/mnt/workspace/input/geonames/map-country-iso2-iso3.csv";
-    rml:source "map-country-iso2-iso3.csv";
+    rml:source "input/map-country-iso2-iso3.csv";
     rml:referenceFormulation ql:CSV
   ];
 

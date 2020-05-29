@@ -41,7 +41,7 @@
   rml:logicalSource [
     # For RMLStreamer
     # rml:source "/mnt/workspace/input/geonames/dataset-geonames-countryInfo.csv";
-    rml:source "dataset-geonames-countryInfo.csv";
+    rml:source "input/dataset-geonames-countryInfo.csv";
     rml:referenceFormulation ql:CSV
   ];
 

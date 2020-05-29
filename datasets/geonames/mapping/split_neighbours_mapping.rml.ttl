@@ -54,5 +54,5 @@ map:s_0 a rr:SubjectMap;
 map:source_0 a rml:LogicalSource;
     # For RMLStreamer
     # rml:source "/mnt/workspace/input/geonames/dataset-geonames-countryInfo.csv";
-    rml:source "dataset-geonames-countryInfo.csv";
+    rml:source "input/dataset-geonames-countryInfo.csv";
     rml:referenceFormulation ql:CSV.
