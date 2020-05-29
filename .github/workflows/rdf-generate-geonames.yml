@@ -22,7 +22,7 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    - uses: actions/rmlmapper-java@v4.8.0
+    - uses: vemonet/rmlmapper-java@v4.8.0
       with:
         mapping: datasets/geonames/mapping/country_mapping.rml.ttl
         output: rdf_output.nq
