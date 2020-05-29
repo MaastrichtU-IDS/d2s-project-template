@@ -123,7 +123,8 @@
   a rr:TriplesMap ;
 
   rml:logicalSource [
-    rml:source "/mnt/workspace/input/geonames/dataset-geonames-countryInfo.csv";
+    # rml:source "/mnt/workspace/input/geonames/dataset-geonames-countryInfo.csv";
+    rml:source "input/dataset-geonames-countryInfo.csv";
     rml:referenceFormulation ql:CSV
   ];
 
