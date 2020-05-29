@@ -52,5 +52,7 @@ map:pomexec_0 rr:predicateMap map:pmexec_0;
 map:s_0 a rr:SubjectMap;
     rr:template "http://www.geonames.org/ontology#{ISO}".
 map:source_0 a rml:LogicalSource;
-    rml:source "/mnt/workspace/input/geonames/dataset-geonames-countryInfo.csv";
+    # For RMLStreamer
+    # rml:source "/mnt/workspace/input/geonames/dataset-geonames-countryInfo.csv";
+    rml:source "dataset-geonames-countryInfo.csv";
     rml:referenceFormulation ql:CSV.

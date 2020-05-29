@@ -39,7 +39,9 @@
   a rr:TriplesMap ;
 
   rml:logicalSource [
-    rml:source "/mnt/workspace/input/geonames/dataset-geonames-countryInfo.csv";
+    # For RMLStreamer
+    # rml:source "/mnt/workspace/input/geonames/dataset-geonames-countryInfo.csv";
+    rml:source "dataset-geonames-countryInfo.csv";
     rml:referenceFormulation ql:CSV
   ];
 
