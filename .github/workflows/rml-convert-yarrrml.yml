@@ -11,19 +11,8 @@ on:
     branches: [ master ]
 
 jobs:
-  download-input:
-    runs-on: ubuntu-latest
-    steps: 
-    - name: Download CSV
-      run: |
-        wget https://raw.githubusercontent.com/MaastrichtU-IDS/UM_KEN4256_KnowledgeGraphs/master/dataset-geonames-countryInfo.csv
-    - name: Upload CSV input artifact
-      uses: actions/upload-artifact@v1
-      with:
-        name: input
-        path: dataset-geonames-countryInfo.csv
 
-  generate-rdf:
+  generate-rml:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -32,12 +21,7 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    - name: Get CSV input artifact
-      uses: actions/download-artifact@v1
-      with:
-        name: input
-
-    - uses: vemonet/rmlmapper-java@4.8
+    - uses: vemonet/yarrrml-parser@v1.1
       with:
         input: datasets/geonames/mapping/split_neighbours_mapping.yarrr.yml
         output: datasets/geonames/mapping/split_neighbours_mapping.rml.ttl
