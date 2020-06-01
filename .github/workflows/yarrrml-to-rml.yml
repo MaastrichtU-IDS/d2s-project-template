@@ -26,12 +26,12 @@ jobs:
         input: datasets/geonames/mapping/split_neighbours_mapping.yarrr.yml
         output: datasets/geonames/mapping/split_neighbours_mapping.rml.ttl
 
-    - name: push
-      uses: github-actions-x/commit@v2.6
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        push-branch: 'master'
-        commit-message: 'Convert YARRRML mappings to RML'
+    - name: Commit and push
+      run: |
+        git config --global user.name 'Vincent Emonet'
+        git config --global user.email 'vincent.emonet@maastrichtuniversity.nl'
+        git commit -am "Convert YARRRML mappings to RML"
+        git push
 
     - name: Upload RML output artifact
       uses: actions/upload-artifact@v1
