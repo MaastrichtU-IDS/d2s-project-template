@@ -1,9 +1,5 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Generate GeoNames RDF using RML
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push:
     branches: [ master ]
@@ -24,12 +20,9 @@ jobs:
         path: dataset-geonames-countryInfo.csv
 
   generate-rdf:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
     - name: Get CSV input artifact
@@ -47,3 +40,33 @@ jobs:
       with:
         name: rdf_output
         path: rdf_output.nq
+
+  upload-rdf:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Get RDF output artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: rdf_output
+
+    - name: Connect to VPN
+      run: |
+        apt-get install -y openconnect network-manager-openconnect
+        echo '${{ secrets.VPN_PASSWORD }}' | openconnect --passwd-on-stdin --authgroup ${{ secrets.VPN_GROUP }} --user ${{ secrets.VPN_USER }} ${{ secrets.VPN_URL }}
+
+    - name: Copy file via SCP
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.SERVER_URL }}
+        username: ${{ secrets.SERVER_USER }}
+        port: ${{ secrets.SERVER_PORT }}
+        key: ${{ secrets.GITHUB_KEY }}
+        source: "rdf_output.nq"
+        target: "/data/graphdb-import"
+    
+    - name: Start GraphDB import
+      run: |
+        curl -X POST -u ${{ secrets.GRAPHDB_USER }}:${{ secrets.GRAPHDB_PASSWORD }} --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"fileNames": ["rdf_output.nq"]}' '${{ secrets.GRAPHDB_URL }}/rest/data/import/server/geoeconomics'"
