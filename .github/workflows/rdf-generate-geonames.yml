@@ -69,7 +69,7 @@ jobs:
         username: ${{ secrets.SERVER_USER }}
         # port: ${{ secrets.SERVER_PORT }}
         key: ${{ secrets.SERVER_KEY }}
-        source: "rdf_output.nq"
+        source: "rdf-output/rdf_output.nq"
         target: "/data/graphdb-import"
       # ${{needs.generate-rdf.outputs.rdf_output}}
     
