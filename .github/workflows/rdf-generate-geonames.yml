@@ -57,23 +57,28 @@ jobs:
       with:
         name: rdf-output
 
-    - name: Connect to VPN
+    - name: Upload file to GraphDB server
       run: |
-        sudo apt-get install -y openconnect network-manager-openconnect
-        echo '${{ secrets.VPN_PASSWORD }}' | sudo openconnect --passwd-on-stdin --no-xmlpost --non-inter --background --authgroup ${{ secrets.VPN_GROUP }} --user ${{ secrets.VPN_USER }} ${{ secrets.VPN_URL }}
-        sleep 10
+        curl -Ffile=@rdf-output/rdf_output.nq 'http://upload.137.120.31.102.nip.io/upload?token=${{ secrets.GRAPHDB_UPLOAD_TOKEN }}'
 
-    - name: Copy file via SCP
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.SERVER_URL }}
-        username: ${{ secrets.SERVER_USER }}
-        port: 22
-        key: ${{ secrets.SERVER_KEY }}
-        source: "rdf-output/rdf_output.nq"
-        target: "/data/graphdb-import"
-      # ${{needs.generate-rdf.outputs.rdf_output}}
-    
     - name: Start GraphDB import
       run: |
-        curl -X POST -u ${{ secrets.GRAPHDB_USER }}:${{ secrets.GRAPHDB_PASSWORD }} --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"fileNames": ["rdf_output.nq"]}' '${{ secrets.GRAPHDB_URL }}/rest/data/import/server/test-vincent'"
+        curl -X POST -u ${{ secrets.GRAPHDB_USER }}:${{ secrets.GRAPHDB_PASSWORD }} --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"fileNames": ["upload/rdf_output.nq"]}' '${{ secrets.GRAPHDB_URL }}/rest/data/import/server/test-vincent'"
+
+    # - name: Connect to VPN
+    #   run: |
+    #     sudo apt-get install -y openconnect network-manager-openconnect
+    #     echo '${{ secrets.VPN_PASSWORD }}' | sudo openconnect --passwd-on-stdin --no-xmlpost --non-inter --background --authgroup ${{ secrets.VPN_GROUP }} --user ${{ secrets.VPN_USER }} ${{ secrets.VPN_URL }}
+    #     sleep 10
+
+    # - name: Copy file via SCP
+    #   uses: appleboy/scp-action@master
+    #   with:
+    #     host: ${{ secrets.SERVER_URL }}
+    #     username: ${{ secrets.SERVER_USER }}
+    #     port: 22
+    #     key: ${{ secrets.SERVER_KEY }}
+    #     source: "rdf-output/rdf_output.nq"
+    #     target: "/data/graphdb-import"
+      # ${{needs.generate-rdf.outputs.rdf_output}}
+    
