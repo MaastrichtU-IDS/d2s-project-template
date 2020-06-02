@@ -61,6 +61,7 @@ jobs:
       run: |
         sudo apt-get install -y openconnect network-manager-openconnect
         echo '${{ secrets.VPN_PASSWORD }}' | sudo openconnect --passwd-on-stdin --no-xmlpost --non-inter --background --authgroup ${{ secrets.VPN_GROUP }} --user ${{ secrets.VPN_USER }} ${{ secrets.VPN_URL }}
+        sleep 10
 
     - name: Copy file via SCP
       uses: appleboy/scp-action@master
