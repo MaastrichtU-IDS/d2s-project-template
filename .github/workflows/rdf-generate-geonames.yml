@@ -69,15 +69,27 @@ jobs:
 
     # Add step to wait for GraphDB import to end
 
-    # - uses: MaastrichtU-IDS/d2s-sparql-operations@master
-    #   with:
-    #     file: https://github.com/MaastrichtU-IDS/d2s-scripts-repository/tree/master/sparql/compute-hcls-stats
-    #     endpoint: https://graphdb.dumontierlab.com/repositories/test-vincent/statements
-    #     user: ${{ secrets.GRAPHDB_USER }}
-    #     password: ${{ secrets.GRAPHDB_PASSWORD }}
-    #     inputvar: https://w3id.org/d2s/graph/geonames
-    #     outputvar: https://w3id.org/d2s/metadata
+    - uses: MaastrichtU-IDS/d2s-sparql-operations@master
+      with:
+        file: https://github.com/MaastrichtU-IDS/d2s-scripts-repository/tree/master/sparql/compute-hcls-stats
+        endpoint: https://graphdb.dumontierlab.com/repositories/test-vincent/statements
+        user: ${{ secrets.GRAPHDB_USER }}
+        password: ${{ secrets.GRAPHDB_PASSWORD }}
+        inputvar: https://w3id.org/d2s/graph/geonames
+        outputvar: https://w3id.org/d2s/metadata
         ## Optional: servicevar: http://localhost:7200/repositories/test-vincent
+
+    - name: Run RDF to HDT
+      run: docker run rdfhdt/hdt-cpp rdf2hdt rdf-output/rdf-geonames.nt rdf-geonames.hdt
+      # runs:
+        # using: 'docker'
+        # image: docker://user/repo:version
+
+    - name: Upload HDT output artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: hdt-output
+        path: rdf-geonames.hdt
 
     # - name: Connect to VPN
     #   run: |
