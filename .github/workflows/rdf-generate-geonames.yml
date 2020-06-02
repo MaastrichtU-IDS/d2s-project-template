@@ -63,7 +63,7 @@ jobs:
 
     - name: Start GraphDB import
       run: |
-        curl -X POST -u ${{ secrets.GRAPHDB_USER }}:${{ secrets.GRAPHDB_PASSWORD }} --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"fileNames": ["upload/rdf_output.nt"]}' '${{ secrets.GRAPHDB_URL }}/rest/data/import/server/test-vincent'
+        curl -X POST -u ${{ secrets.GRAPHDB_USER }}:${{ secrets.GRAPHDB_PASSWORD }} --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"fileNames": ["upload/rdf_output.nt"]}' 'https://graphdb.dumontierlab.com/rest/data/import/server/test-vincent'
 
     # - name: Connect to VPN
     #   run: |
