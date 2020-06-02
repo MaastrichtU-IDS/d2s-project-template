@@ -36,14 +36,14 @@ jobs:
     - uses: vemonet/rmlmapper-java@4.8
       with:
         mapping: datasets/geonames/mapping/country_mapping.rml.ttl
-        output: rdf_output.nq
+        output: rdf_output.nt
 
     - name: Upload RDF output artifact
       id: stepupload
       uses: actions/upload-artifact@v1
       with:
         name: rdf-output
-        path: rdf_output.nq
+        path: rdf_output.nt
 
   upload-rdf:
     runs-on: ubuntu-latest
@@ -59,11 +59,11 @@ jobs:
 
     - name: Upload file to GraphDB server
       run: |
-        curl -Ffile=@rdf-output/rdf_output.nq 'http://upload.137.120.31.102.nip.io/upload?token=${{ secrets.GRAPHDB_UPLOAD_TOKEN }}'
+        curl -Ffile=@rdf-output/rdf_output.nt 'http://upload.137.120.31.102.nip.io/upload?token=${{ secrets.GRAPHDB_UPLOAD_TOKEN }}'
 
     - name: Start GraphDB import
       run: |
-        curl -X POST -u ${{ secrets.GRAPHDB_USER }}:${{ secrets.GRAPHDB_PASSWORD }} --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"fileNames": ["upload/rdf_output.nq"]}' '${{ secrets.GRAPHDB_URL }}/rest/data/import/server/test-vincent'
+        curl -X POST -u ${{ secrets.GRAPHDB_USER }}:${{ secrets.GRAPHDB_PASSWORD }} --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"fileNames": ["upload/rdf_output.nt"]}' '${{ secrets.GRAPHDB_URL }}/rest/data/import/server/test-vincent'
 
     # - name: Connect to VPN
     #   run: |
