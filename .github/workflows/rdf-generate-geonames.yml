@@ -38,7 +38,7 @@ jobs:
     - name: Upload RDF output artifact
       uses: actions/upload-artifact@v1
       with:
-        name: rdf-output
+        name: rdfoutput
         path: rdf_output.nq
 
   upload-rdf:
@@ -50,7 +50,7 @@ jobs:
     - name: Get RDF output artifact
       uses: actions/download-artifact@v1
       with:
-        name: rdf-output
+        name: rdfoutput
 
     - name: Connect to VPN
       run: |
