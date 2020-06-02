@@ -22,8 +22,8 @@ jobs:
   generate-rdf:
     runs-on: ubuntu-latest
     needs: download-input
-    # outputs:
-    #   output1: ${{ steps.step1.outputs.test }}
+    outputs:
+      rdf-output: ${{ steps.stepupload.outputs.rdf_output }}
     #   output2: ${{ steps.step2.outputs.test }}
 
     steps:
@@ -40,9 +40,10 @@ jobs:
         output: rdf_output.nq
 
     - name: Upload RDF output artifact
+      id: stepupload
       uses: actions/upload-artifact@v1
       with:
-        name: rdfoutput
+        name: rdf-output
         path: rdf_output.nq
 
   upload-rdf:
@@ -55,12 +56,12 @@ jobs:
     - name: Get RDF output artifact
       uses: actions/download-artifact@v1
       with:
-        name: rdfoutput
+        name: rdf-output
 
     - name: Connect to VPN
       run: |
-        apt-get install -y openconnect network-manager-openconnect
-        echo '${{ secrets.VPN_PASSWORD }}' | openconnect --passwd-on-stdin --authgroup ${{ secrets.VPN_GROUP }} --user ${{ secrets.VPN_USER }} ${{ secrets.VPN_URL }}
+        sudo apt-get install -y openconnect network-manager-openconnect
+        echo '${{ secrets.VPN_PASSWORD }}' | sudo openconnect --passwd-on-stdin --authgroup ${{ secrets.VPN_GROUP }} --user ${{ secrets.VPN_USER }} ${{ secrets.VPN_URL }}
 
     - name: Copy file via SCP
       uses: appleboy/scp-action@master
@@ -71,6 +72,7 @@ jobs:
         key: ${{ secrets.GITHUB_KEY }}
         source: "rdf_output.nq"
         target: "/data/graphdb-import"
+      # ${{needs.generate-rdf.outputs.rdf_output}}
     
     - name: Start GraphDB import
       run: |
