@@ -79,13 +79,13 @@ jobs:
         outputvar: https://w3id.org/d2s/metadata
         servicevar: http://localhost:7200/repositories/test-vincent
 
-    - name: Run RDF to HDT
-      run: docker run rdfhdt/hdt-cpp rdf2hdt rdf-output/rdf-geonames.nt hdt-geonames.hdt
+    # - name: Run RDF to HDT
+    #   run: docker run rdfhdt/hdt-cpp rdf2hdt rdf-output/rdf-geonames.nt hdt-geonames.hdt
 
-    # - uses: vemonet/rdfhdt-action@master
-    #   with:
-    #     input: rdf-output/rdf-geonames.nt
-    #     output: hdt-geonames.hdt
+    - uses: vemonet/rdfhdt-action@master
+      with:
+        input: rdf-output/rdf-geonames.nt
+        output: hdt-geonames.hdt
 
     - name: Upload HDT output artifact
       uses: actions/upload-artifact@v1
