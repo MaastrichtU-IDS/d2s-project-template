@@ -69,7 +69,8 @@ jobs:
 
     # Add step to wait for GraphDB import to end
 
-    - uses: MaastrichtU-IDS/d2s-sparql-operations@master
+    - name: Compute and insert HCLS descriptive metadata
+      uses: MaastrichtU-IDS/d2s-sparql-operations@master
       with:
         file: https://github.com/MaastrichtU-IDS/d2s-scripts-repository/tree/master/sparql/compute-hcls-stats
         endpoint: https://graphdb.dumontierlab.com/repositories/test-vincent/statements
@@ -82,7 +83,8 @@ jobs:
     # - name: Run RDF to HDT
     #   run: docker run rdfhdt/hdt-cpp rdf2hdt rdf-output/rdf-geonames.nt hdt-geonames.hdt
 
-    - uses: vemonet/rdfhdt-action@master
+    - name: Run RDF to HDT
+      uses: vemonet/rdfhdt-action@master
       with:
         input: rdf-output/rdf-geonames.nt
         output: hdt-geonames.hdt
