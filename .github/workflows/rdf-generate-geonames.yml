@@ -3,8 +3,8 @@ name: Generate GeoNames RDF using RML
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    paths:
+    - 'datasets/geonames/mapping/country_mapping.rml.ttl'
 
 # TODO: use workflow variables for graph URI and SPARQL endpoint URL
 
