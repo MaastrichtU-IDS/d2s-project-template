@@ -10,7 +10,8 @@ on:
 
 jobs:
   download-input:
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, ARM64, node2]
     steps: 
     - name: Download CSV
       run: |
@@ -22,7 +23,8 @@ jobs:
         path: dataset-geonames-countryInfo.csv
 
   generate-rdf:
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, ARM64, node2]
     needs: download-input
     outputs:
       rdf-output: ${{ steps.stepupload.outputs.rdf_output }}
@@ -48,7 +50,8 @@ jobs:
         path: rdf-geonames.nt
 
   upload-rdf:
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, ARM64, node2]
     needs: generate-rdf
     
     steps:
