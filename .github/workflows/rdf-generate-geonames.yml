@@ -75,15 +75,18 @@ jobs:
         endpoint: https://graphdb.dumontierlab.com/repositories/test-vincent/statements
         user: ${{ secrets.GRAPHDB_USER }}
         password: ${{ secrets.GRAPHDB_PASSWORD }}
-        inputvar: https://w3id.org/d2s/graph/geonames
-        outputvar: https://w3id.org/d2s/metadata
-        ## Optional: servicevar: http://localhost:7200/repositories/test-vincent
+        args: "--var-input https://w3id.org/d2s/graph/geonames --var-output https://w3id.org/d2s/metadata"
+        # inputvar: https://w3id.org/d2s/graph/geonames
+        # outputvar: https://w3id.org/d2s/metadata
+        # servicevar: http://localhost:7200/repositories/test-vincent
 
     - name: Run RDF to HDT
       run: docker run rdfhdt/hdt-cpp rdf2hdt rdf-output/rdf-geonames.nt rdf-geonames.hdt
-      # runs:
-        # using: 'docker'
-        # image: docker://user/repo:version
+
+    # - uses: vemonet/rdfhdt-action@master
+    #   with:
+    #     input: rdf-output/rdf-geonames.nt
+    #     output: rdf-geonames.hdt
 
     - name: Upload HDT output artifact
       uses: actions/upload-artifact@v1
