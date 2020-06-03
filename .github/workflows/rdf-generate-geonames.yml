@@ -70,7 +70,8 @@ jobs:
       run: |
         curl -X POST -u ${{ secrets.GRAPHDB_USER }}:${{ secrets.GRAPHDB_PASSWORD }} --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"fileNames": ["upload/rdf-geonames.nt"], "importSettings": {"context": "https://w3id.org/d2s/graph/geonames"}}' 'https://graphdb.dumontierlab.com/rest/data/import/server/test-vincent'
 
-    # Add step to wait for GraphDB import to end
+    # Add step to manage versioning (delete previous graph, load new graph, generate metadata)
+    # TODO: Add step to wait for GraphDB import to end
 
     - name: Compute and insert HCLS descriptive metadata
       uses: MaastrichtU-IDS/d2s-sparql-operations@master
