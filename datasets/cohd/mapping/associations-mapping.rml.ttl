@@ -26,6 +26,7 @@
   rr:predicateObjectMap [ 
     rr:predicate bl:relation; 
     rr:objectMap bl:related_to
+    # This could be: rr:objectMap bl:correlated_with (but then domain range is DiseaseOrPhenotypicFeature -> 0..* MolecularEntity)
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
