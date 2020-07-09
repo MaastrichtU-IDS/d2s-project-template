@@ -1,6 +1,7 @@
 name: Generate GeoNames RDF using RML
 
 on:
+  workflow_dispatch:
   push:
     branches: [ master ]
     paths:
