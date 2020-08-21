@@ -18,35 +18,43 @@
     rml:referenceFormulation ql:CSV ];
   rr:subjectMap [ 
     rr:template "https://w3id.org/trek/cohd/association/{dataset_id}_{concept_id_1}_{concept_id_2}";
-    rr:class bl:Association ];
+    rr:class bl:Association ;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ] 
+  ];
   rr:predicateObjectMap [ 
     rr:predicate bl:subject; 
-    rr:objectMap [ rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{concept_id_1}" ]
+    rr:objectMap [ rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{concept_id_1}" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:relation; 
-    rr:objectMap bl:related_to
-    # This could be: rr:objectMap bl:correlated_with (but then domain range is DiseaseOrPhenotypicFeature -> 0..* MolecularEntity)
+    rr:objectMap bl:correlated_with;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/association/{dataset_id}_{concept_id_1}_{concept_id_2}" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/association/{dataset_id}_{concept_id_1}_{concept_id_2}" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:subject; 
-    rr:objectMap [ rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{concept_id_1}" ]
+    rr:objectMap [ rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{concept_id_1}" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:object; 
-    rr:objectMap [ rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{concept_id_2}" ]
+    rr:objectMap [ rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{concept_id_2}" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:provided_by; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/provider/dataset/{dataset_id}" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/provider/dataset/{dataset_id}" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_evidence; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ] .
 
 <#MapEvidenceType> a rr:TriplesMap;    
@@ -56,56 +64,69 @@
   ];
   rr:subjectMap [ 
     rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}";
-    rr:class bl:EvidenceType
+    rr:class bl:EvidenceType ;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:name ;
-    rr:objectMap [ rr:template "Count of co-occurences of the 2 concepts {dataset_id} and {concept_id_1} in COHD dataset {concept_id_2}" ]
+    rr:objectMap [ rr:template "Count of co-occurences of the 2 concepts {dataset_id} and {concept_id_1} in COHD dataset {concept_id_2}" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_count; 
-    rr:objectMap [ rml:reference "concept_count"; rr:datatype xsd:double ]
+    rr:objectMap [ rml:reference "concept_count"; rr:datatype xsd:double ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   # rr:predicateObjectMap [ 
   #   rr:predicate bl:has_total; 
-  #   rr:objectMap [ rml:reference "patient_count_in_dataset"; rr:datatype xsd:double ]
+  #   rr:objectMap [ rml:reference "patient_count_in_dataset"; rr:datatype xsd:double ];
+  #   rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quotient; 
-    rr:objectMap [ rml:reference "concept_prevalence"; rr:datatype xsd:double ]
+    rr:objectMap [ rml:reference "concept_prevalence"; rr:datatype xsd:double ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   
   rr:predicateObjectMap [ 
     rr:predicate bl:provided_by; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/provider/dataset/{dataset_id}" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/provider/dataset/{dataset_id}" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ] .
 
 <#MapConceptCountAttribute> a rr:TriplesMap;    
@@ -115,24 +136,29 @@
   ];
   rr:subjectMap [ 
     rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_count";
-    rr:class bl:Attribute
+    rr:class bl:Attribute;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute_type; 
-    rr:object <https://w3id.org/trek/cohd/attribute/concept_count>
+    rr:object <https://w3id.org/trek/cohd/attribute/concept_count>;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
     # Use Count? http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25463
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_count" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_count" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:name ;
-    rr:objectMap [ rr:template "Count of co-occurences of concepts {concept_id_1} and {concept_id_2} in COHD dataset concept {dataset_id}" ]
+    rr:objectMap [ rr:template "Count of co-occurences of concepts {concept_id_1} and {concept_id_2} in COHD dataset concept {dataset_id}" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_count/value" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_count/value" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ] .
 <#MapConceptCountAttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
@@ -141,11 +167,13 @@
   ];
   rr:subjectMap [ 
     rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_count/value";
-    rr:class bl:QuantityValue
+    rr:class bl:QuantityValue;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_numeric_value; 
-    rr:objectMap [ rml:reference "concept_count" ]
+    rr:objectMap [ rml:reference "concept_count" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ] .
 
 <#MapConceptPrevalenceAttribute> a rr:TriplesMap;    
@@ -155,24 +183,29 @@
   ];
   rr:subjectMap [ 
     rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_prevalence";
-    rr:class bl:Attribute
+    rr:class bl:Attribute;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute_type; 
-    rr:object <https://w3id.org/trek/cohd/attribute/concept_prevalence>
+    rr:object <https://w3id.org/trek/cohd/attribute/concept_prevalence>;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
     # Use Prevalence? http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17010
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_prevalence" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_prevalence" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:name ;
-    rr:objectMap [ rr:template "Prevalence of co-occurences of concepts {concept_id_1} and {concept_id_2} in COHD dataset concept {dataset_id}" ]
+    rr:objectMap [ rr:template "Prevalence of co-occurences of concepts {concept_id_1} and {concept_id_2} in COHD dataset concept {dataset_id}" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_prevalence/value" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_prevalence/value" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ] .
 <#MapConceptPrevalenceAttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
@@ -181,11 +214,13 @@
   ];
   rr:subjectMap [ 
     rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/concept_prevalence/value";
-    rr:class bl:QuantityValue
+    rr:class bl:QuantityValue;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_numeric_value; 
-    rr:objectMap [ rml:reference "concept_prevalence" ]
+    rr:objectMap [ rml:reference "concept_prevalence" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ] .
 
 <#MapTtestResultsAttribute> a rr:TriplesMap;    
@@ -195,24 +230,29 @@
   ];
   rr:subjectMap [ 
     rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest";
-    rr:class bl:Attribute
+    rr:class bl:Attribute;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute_type; 
-    rr:object <https://w3id.org/trek/cohd/attribute/ttest_results>
+    rr:object <https://w3id.org/trek/cohd/attribute/ttest_results>;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
     # Use T-test? http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C53231
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:name ;
-    rr:objectMap [ rr:template "t-Tests results of concepts {concept_id_1} and {concept_id_2} in COHD dataset concept {dataset_id}" ]
+    rr:objectMap [ rr:template "t-Tests results of concepts {concept_id_1} and {concept_id_2} in COHD dataset concept {dataset_id}" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest/value" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest/value" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ] .
 <#MapTtestResultsAttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
@@ -221,11 +261,13 @@
   ];
   rr:subjectMap [ 
     rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest/value";
-    rr:class bl:QuantityValue
+    rr:class bl:QuantityValue;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_numeric_value; 
-    rr:objectMap [ rml:reference "chi_square_t" ]
+    rr:objectMap [ rml:reference "chi_square_t" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ] .
 
 
@@ -236,24 +278,29 @@
   ];
   rr:subjectMap [ 
     rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue";
-    rr:class bl:Attribute
+    rr:class bl:Attribute;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute_type; 
-    rr:object <https://w3id.org/trek/cohd/attribute/ttest_pvalue>
+    rr:object <https://w3id.org/trek/cohd/attribute/ttest_pvalue>;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
     # Use p-value? http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C53231
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:name ;
-    rr:objectMap [ rr:template "t-Tests p-value of concepts {concept_id_1} and {concept_id_2} in COHD dataset concept {dataset_id}" ]
+    rr:objectMap [ rr:template "t-Tests p-value of concepts {concept_id_1} and {concept_id_2} in COHD dataset concept {dataset_id}" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue/value" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue/value" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ] .
 <#MapTtestPvalueAttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
@@ -262,11 +309,13 @@
   ];
   rr:subjectMap [ 
     rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/pvalue/value";
-    rr:class bl:QuantityValue
+    rr:class bl:QuantityValue;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_numeric_value; 
-    rr:objectMap [ rml:reference "chi_square_p" ]
+    rr:objectMap [ rml:reference "chi_square_p" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ].
 
 <#MapRelFreq1Attribute> a rr:TriplesMap;    
@@ -276,24 +325,29 @@
   ];
   rr:subjectMap [ 
     rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency";
-    rr:class bl:Attribute
+    rr:class bl:Attribute;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute_type; 
-    rr:object <https://w3id.org/trek/cohd/attribute/relfreq1>
+    rr:object <https://w3id.org/trek/cohd/attribute/relfreq1>;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
     # Use How often / Frequency? http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C118873
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:name ;
-    rr:objectMap [ rr:template "Frequency of concept {concept_id_1} relative to concept {concept_id_2} (count of patients with the 2 concepts divided by count of patients with only one)" ]
+    rr:objectMap [ rr:template "Frequency of concept {concept_id_1} relative to concept {concept_id_2} (count of patients with the 2 concepts divided by count of patients with only one)" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency/value" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency/value" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ] .
 <#MapRelFreq1AttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
@@ -302,11 +356,13 @@
   ];
   rr:subjectMap [ 
     rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/subject_relative_frequency/value";
-    rr:class bl:QuantityValue
+    rr:class bl:QuantityValue;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_numeric_value; 
-    rr:objectMap [ rml:reference "rel_freq_1" ]
+    rr:objectMap [ rml:reference "rel_freq_1" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ] .
 
 <#MapRelFreq2Attribute> a rr:TriplesMap;    
@@ -316,24 +372,29 @@
   ];
   rr:subjectMap [ 
     rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency";
-    rr:class bl:Attribute
+    rr:class bl:Attribute;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute_type; 
-    rr:object <https://w3id.org/trek/cohd/attribute/relfreq2>
+    rr:object <https://w3id.org/trek/cohd/attribute/relfreq2>;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
     # Use How often / Frequency? http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C118873
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:name ;
-    rr:objectMap [ rr:template "Frequency of concept {concept_id_2} relative to concept {concept_id_1} (count of patients with the 2 concepts divided by count of patients with only one)" ]
+    rr:objectMap [ rr:template "Frequency of concept {concept_id_2} relative to concept {concept_id_1} (count of patients with the 2 concepts divided by count of patients with only one)" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency/value" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency/value" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ] .
 <#MapRelFreq2AttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
@@ -342,11 +403,13 @@
   ];
   rr:subjectMap [ 
     rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/object_relative_frequency/value";
-    rr:class bl:QuantityValue
+    rr:class bl:QuantityValue;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_numeric_value; 
-    rr:objectMap [ rml:reference "rel_freq_2" ]
+    rr:objectMap [ rml:reference "rel_freq_2" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ].
 
 <#MapExpectedCountAttribute> a rr:TriplesMap;    
@@ -356,11 +419,13 @@
   ];
   rr:subjectMap [ 
     rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count";
-    rr:class bl:Attribute
+    rr:class bl:Attribute;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute_type; 
-    rr:object <https://w3id.org/trek/cohd/attribute/expected_count>
+    rr:object <https://w3id.org/trek/cohd/attribute/expected_count>;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
     # Use Expected Value? http://semanticscience.org/resource/SIO_001021
   ];
   rr:predicateObjectMap [ 
@@ -369,11 +434,13 @@
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:name ;
-    rr:objectMap [ rr:template "Expected count given the 2 concepts {concept_id_1} and {concept_id_2} are not associated in COHD dataset {dataset_id}" ]
+    rr:objectMap [ rr:template "Expected count given the 2 concepts {concept_id_1} and {concept_id_2} are not associated in COHD dataset {dataset_id}" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count/value" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count/value" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ] .
 <#MapExpectedCountAttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
@@ -382,11 +449,13 @@
   ];
   rr:subjectMap [ 
     rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/expected_count/value";
-    rr:class bl:QuantityValue
+    rr:class bl:QuantityValue;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_numeric_value; 
-    rr:objectMap [ rml:reference "expected_count" ]
+    rr:objectMap [ rml:reference "expected_count" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ] .
 
 <#MapLnRatioAttribute> a rr:TriplesMap;    
@@ -396,23 +465,28 @@
   ];
   rr:subjectMap [ 
     rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio";
-    rr:class bl:Attribute
+    rr:class bl:Attribute;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_attribute_type; 
-    rr:object <https://w3id.org/trek/cohd/attribute/ln_ratio>
+    rr:object <https://w3id.org/trek/cohd/attribute/ln_ratio>;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:id; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:name ;
-    rr:objectMap [ rr:template "Log of observed patients with the concept on the expected count for concepts {concept_id_1} and {concept_id_2} in COHD dataset {dataset_id}" ]
+    rr:objectMap [ rr:template "Log of observed patients with the concept on the expected count for concepts {concept_id_1} and {concept_id_2} in COHD dataset {dataset_id}" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_quantitative_value; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio/value" ]
+    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ln_ratio/value" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ] .
 <#MapLnRatioAttributeValue> a rr:TriplesMap;    
   rml:logicalSource [ 
@@ -425,5 +499,6 @@
   ];
   rr:predicateObjectMap [ 
     rr:predicate bl:has_numeric_value; 
-    rr:objectMap [ rml:reference "ln_ratio" ]
+    rr:objectMap [ rml:reference "ln_ratio" ];
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ].
