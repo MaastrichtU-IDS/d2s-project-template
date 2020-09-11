@@ -1,0 +1,169 @@
+# PREFIX d2sgeneric: <http://data2services/data/emonet/ncats/preppi/preppi_final600.tsv/>
+# PREFIX d2smodel: <http://data2services/model/>
+PREFIX d2smodel: <https://w3id.org/d2s/model/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX w3idvocab: <https://w3id.org/d2s/vocab/>
+INSERT
+{
+  GRAPH <?_output> {  
+   ?uniprotUri1 a bl:Protein . 
+   ?uniprotUri2 a bl:Protein . 
+
+   ?interactionUri a bl:PairwiseGeneToGeneInteraction ;
+            bl:relation bl:interacts_with ;
+            bl:gene_to_gene_association_subject ?uniprotUri1 ;
+            bl:gene_to_gene_association_object ?uniprotUri2 ;
+            bl:has_confidence_level ?ConfidenceLevelStrScoreUri ;
+            bl:has_confidence_level ?ConfidenceLevelProtpepScoreUri ;
+            bl:has_confidence_level ?ConfidenceLevelStrMaxScoreUri ;
+            bl:has_confidence_level ?ConfidenceLevelRedScoreUri ;
+            bl:has_confidence_level ?ConfidenceLevelOrtScoreUri ;
+            bl:has_confidence_level ?ConfidenceLevelPhyScoreUri ;
+            bl:has_confidence_level ?ConfidenceLevelCoexpScoreUri ;
+            bl:has_confidence_level ?ConfidenceLevelGoScoreUri ;
+            bl:has_confidence_level ?ConfidenceLevelExpScoreUri ;
+            bl:has_confidence_level ?ConfidenceLevelFinalScoreUri .
+
+    ?ConfidenceLevelStrScoreUri a bl:ConfidenceLevel ;
+            bl:id ?ConfidenceLevelStrScoreString ;
+            bl:name "Str score" ;
+            bl:category <https://w3id.org/data2services/data/confidence_score/str_score> ;
+            bl:node_property ?str_score .
+
+    ?ConfidenceLevelProtpepScoreUri a bl:ConfidenceLevel ;
+            bl:id ?ConfidenceLevelProtpepScoreString ;
+            bl:name "Protpep score" ;
+            bl:category <https://w3id.org/data2services/data/confidence_score/protpep_score> ;
+            bl:node_property ?protpep_score .
+
+    ?ConfidenceLevelStrMaxScoreUri a bl:ConfidenceLevel ;
+            bl:id ?ConfidenceLevelStrMaxScoreString ;
+            bl:name "Str Max score" ;
+            bl:category <https://w3id.org/data2services/data/confidence_score/str_max_score> ;
+            bl:node_property ?str_max_score .
+
+    ?ConfidenceLevelRedScoreUri a bl:ConfidenceLevel ;
+            bl:id ?ConfidenceLevelRedScoreString ;
+            bl:name "Red score" ;
+            bl:category <https://w3id.org/data2services/data/confidence_score/red_score> ;
+            bl:node_property ?red_score .
+
+    ?ConfidenceLevelOrtScoreUri a bl:ConfidenceLevel ;
+            bl:id ?ConfidenceLevelOrtScoreString ;
+            bl:name "Ort score" ;
+            bl:category <https://w3id.org/data2services/data/confidence_score/ort_score> ;
+            bl:node_property ?ort_score .
+
+    ?ConfidenceLevelPhyScoreUri a bl:ConfidenceLevel ;
+            bl:id ?ConfidenceLevelPhyScoreString ;
+            bl:name "Phy score" ;
+            bl:category <https://w3id.org/data2services/data/confidence_score/phy_score> ;
+            bl:node_property ?phy_score .
+
+    ?ConfidenceLevelCoexpScoreUri a bl:ConfidenceLevel ;
+            bl:id ?ConfidenceLevelCoexpScoreString ;
+            bl:name "Coexp score" ;
+            bl:category <https://w3id.org/data2services/data/confidence_score/coexp_score> ;
+            bl:node_property ?coexp_score .
+
+    ?ConfidenceLevelGoScoreUri a bl:ConfidenceLevel ;
+            bl:id ?ConfidenceLevelGoScoreString ;
+            bl:name "Go score" ;
+            bl:category <https://w3id.org/data2services/data/confidence_score/go_score> ;
+            bl:node_property ?go_score .
+
+    ?ConfidenceLevelTotalScoreUri a bl:ConfidenceLevel ;
+            bl:id ?ConfidenceLevelTotalScoreString ;
+            bl:name "Total score" ;
+            bl:category <https://w3id.org/data2services/data/confidence_score/total_score> ;
+            bl:node_property ?total_score .
+
+    ?ConfidenceLevelExpScoreUri a bl:ConfidenceLevel ;
+            bl:id ?ConfidenceLevelExpScoreString ;
+            bl:name "Exp score" ;
+            bl:category <https://w3id.org/data2services/data/confidence_score/exp_score> ;
+            bl:node_property ?exp_score .
+
+    ?ConfidenceLevelFinalScoreUri a bl:ConfidenceLevel ;
+            bl:id ?ConfidenceLevelFinalScoreString ;
+            bl:name "Final score" ;
+            bl:category <https://w3id.org/data2services/data/confidence_score/final_score> ;
+            bl:node_property ?final_score .
+
+ }
+}
+WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+      ?s d2smodel:Prot1 ?prot1 .
+      ?s d2smodel:Prot2 ?prot2 .
+
+      BIND( iri(concat("http://identifiers.org/uniprot/", ?prot1 ) ) AS ?uniprotUri1 )
+      BIND( iri(concat("http://identifiers.org/uniprot/", ?prot2 ) ) AS ?uniprotUri2 )
+      BIND( iri(concat("https://w3id.org/data2services/data/protein/interaction/", concat(?prot1, ?prot2) ) ) AS ?interactionUri )
+
+       OPTIONAL { 
+         ?s d2smodel:Str_score ?str_score .
+         BIND( iri(concat(str(?interactionUri), "/str_score")) AS ?ConfidenceLevelStrScoreUri)
+         BIND( str(?ConfidenceLevelStrScoreUri) AS ?ConfidenceLevelStrScoreString)
+       } OPTIONAL {
+         ?s d2smodel:Protpep_score ?protpep_score .
+         BIND( iri(concat(str(?interactionUri), "/protpep_score")) AS ?ConfidenceLevelProtpepScoreUri)
+         BIND( str(?ConfidenceLevelProtpepScoreUri) AS ?ConfidenceLevelProtpepScoreString)
+       } OPTIONAL { 
+         ?s d2smodel:Str_max_score ?str_max_score .
+         BIND( iri(concat(str(?interactionUri), "/str_max_score")) AS ?ConfidenceLevelStrMaxScoreUri)
+         BIND( str(?ConfidenceLevelStrMaxScoreUri) AS ?ConfidenceLevelStrMaxScoreString)
+       } OPTIONAL { 
+         ?s d2smodel:Red_score ?red_score .
+         BIND( iri(concat(str(?interactionUri), "/red_score")) AS ?ConfidenceLevelRedScoreUri)
+         BIND( str(?ConfidenceLevelRedScoreUri) AS ?ConfidenceLevelRedScoreString)
+       } OPTIONAL { 
+         ?s d2smodel:Ort_score ?ort_score .
+         BIND( iri(concat(str(?interactionUri), "/ort_score")) AS ?ConfidenceLevelOrtScoreUri)
+         BIND( str(?ConfidenceLevelOrtScoreUri) AS ?ConfidenceLevelOrtScoreString)
+       } OPTIONAL {
+         ?s d2smodel:Phy_score ?phy_score .
+         BIND( iri(concat(str(?interactionUri), "/phy_score")) AS ?ConfidenceLevelPhyScoreUri)
+         BIND( str(?ConfidenceLevelPhyScoreUri) AS ?ConfidenceLevelPhyScoreString)
+       } OPTIONAL {
+         ?s d2smodel:Coexp_score ?coexp_score .
+         BIND( iri(concat(str(?interactionUri), "/coexp_score")) AS ?ConfidenceLevelCoexpScoreUri)
+         BIND( str(?ConfidenceLevelCoexpScoreUri) AS ?ConfidenceLevelCoexpScoreString)
+       } OPTIONAL {
+         ?s d2smodel:Go_score ?go_score .
+         BIND( iri(concat(str(?interactionUri), "/go_score")) AS ?ConfidenceLevelGoScoreUri)
+         BIND( str(?ConfidenceLevelGoScoreUri) AS ?ConfidenceLevelGoScoreString)
+       } OPTIONAL {
+         ?s d2smodel:Total_score ?total_score .
+         BIND( iri(concat(str(?interactionUri), "/total_score")) AS ?ConfidenceLevelTotalScoreUri)
+         BIND( str(?ConfidenceLevelTotalScoreUri) AS ?ConfidenceLevelTotalScoreString)
+
+       } OPTIONAL {
+         ?s d2smodel:Dbs ?dbs . # array separated by ,
+
+       } OPTIONAL {
+         ?s d2smodel:Pubs ?pubs . # array
+         BIND( if( contains(?pubs, "|"),
+              iri(concat("http://identifiers.org/", strbefore(?pubs, "|") ) ) ,
+              iri(concat("http://identifiers.org/", ?pubs) ) ) 
+         AS ?pubsUri )
+       
+       } OPTIONAL {
+         ?s d2smodel:Exp_score ?exp_score .
+         BIND( iri(concat(str(?interactionUri), "/exp_score")) AS ?ConfidenceLevelExpScoreUri)
+       } OPTIONAL {
+         ?s d2smodel:Final_score ?final_score .
+         BIND( iri(concat(str(?interactionUri), "/final_score")) AS ?ConfidenceLevelFinalScoreUri)
+
+  }
+
+  # Avoid taking the first row with columns labels
+  FILTER( ?prot1 != "prot1") 
+}
+}
+}

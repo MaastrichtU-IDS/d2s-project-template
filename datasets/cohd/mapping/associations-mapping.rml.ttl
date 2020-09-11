@@ -22,16 +22,6 @@
     rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ] 
   ];
   rr:predicateObjectMap [ 
-    rr:predicate bl:subject; 
-    rr:objectMap [ rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{concept_id_1}" ];
-    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
-  ];
-  rr:predicateObjectMap [ 
-    rr:predicate bl:relation; 
-    rr:objectMap bl:correlated_with;
-    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
-  ];
-  rr:predicateObjectMap [ 
     rr:predicate bl:id; 
     rr:objectMap [ rr:template "https://w3id.org/trek/cohd/association/{dataset_id}_{concept_id_1}_{concept_id_2}" ];
     rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
@@ -41,6 +31,16 @@
     rr:objectMap [ rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{concept_id_1}" ];
     rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
+  rr:predicateObjectMap [ 
+    rr:predicate bl:relation; 
+    rr:objectMap bl:correlated_with;
+    rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
+  ];
+  # rr:predicateObjectMap [ 
+  #   rr:predicate bl:subject; 
+  #   rr:objectMap [ rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{concept_id_1}" ];
+  #   rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
+  # ];
   rr:predicateObjectMap [ 
     rr:predicate bl:object; 
     rr:objectMap [ rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{concept_id_2}" ];
@@ -113,8 +113,8 @@
     rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
-    rr:predicate bl:has_attribute; 
-    rr:objectMap [ rr:template "https://w3id.org/trek/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/ttest" ];
+    rr:predicate bl:chi_squared_statistic; 
+    rr:objectMap [ rml:reference "concept_prevalence"; rr:datatype xsd:double ];
     rr:graphMap [ rr:constant "https://w3id.org/trek/graph/cohd" ]
   ];
   rr:predicateObjectMap [ 
