@@ -1,0 +1,70 @@
+PREFIX d2s: <https://w3id.org/d2s/model/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX w3idvocab: <https://w3id.org/d2s/vocab/>
+INSERT {
+  GRAPH <?_output> {  
+    # Attribute the retrieved data to your model properties
+   ?Concept_api_uri a ?typeUri ;
+      bl:id ?Concept_id ;
+      bl:name ?Concept_name ;
+      bl:provided_by ?vocabUri ;
+      bl:category ?conceptClassUri ; # TODO: is it ok?
+      bl:systematic_synonym ?Concept_code .
+    
+    ?vocabUri a bl:Provider ;
+      bl:id ?vocabUri ;
+      bl:name ?Vocabulary_id .
+
+    ?conceptClassUri a bl:OntologyClass ;
+      bl:id ?conceptClassUri ;
+      bl:name ?Concept_class_id .
+  }
+} WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+
+      ?row a <https://w3id.org/d2s/concepts.tsv> ;
+        d2s:Concept_id ?Concept_id ;
+        d2s:Concept_name ?Concept_name ;
+        d2s:Domain_id ?Domain_id ;
+        # Condition, Observation, Measurement, Drug, Procedure, Device, Gender
+        d2s:Vocabulary_id ?Vocabulary_id ;
+        # SNOMED, RxNorm, ICD9Proc, CPT4, ICD10CM, ICD10PCS, HCPCS, Gender,
+        d2s:Concept_class_id ?Concept_class_id ;
+        # Ingredient, Procedure, Qualifier Value, Quant Branded Drug, Quant Clinical Drug...
+        d2s:Concept_code ?Concept_code .
+        # e.g. 64714, 75833, V5060, 00W63JZ, 02UM0KZ
+
+
+      # Generate URI from ID
+      BIND ( iri(concat("http://api.ohdsi.org/WebAPI/vocabulary/concept/", ?Concept_id)) AS ?Concept_api_uri )
+
+      VALUES( ?Domain_id ?typeUri ) {
+        ("Drug" bl:Drug )
+        ("Condition" bl:Disease )
+        # bl:DiseaseOrPhenotypicFeature ?
+        ("Observation" bl:ActivityAndBehavior ) # Not sure
+        ("Measurement" bl:QuantityValue ) # Not sure (has_numeric_value, has_unit)
+        ("Procedure" bl:Procedure )
+        ("Device" bl:Device )
+        ("Gender" bl:PopulationOfIndividualOrganisms ) # bl:BiologicalSex is an Attribute
+        ("Race" bl:PopulationOfIndividualOrganisms )
+        ("Ethnicity" bl:PopulationOfIndividualOrganisms )
+        # TODO: add bl:in_taxon human?
+        ("Relationship" bl:Phenomenon )
+      }
+
+      BIND ( iri(concat("https://w3id.org/trek/cohd/vocabulary/", md5(?Vocabulary_id))) AS ?vocabUri ) 
+      # TODO: exclude Gender ?
+
+      BIND( iri(concat("https://w3id.org/trek/cohd/concept_class/", md5(?Concept_class_id))) as ?conceptClassUri)
+      # Seems to cause invalid IRI:
+      # BIND( iri(concat("https://w3id.org/trek/cohd/concept_class:", replace(?Concept_class_id, " ", "_"))) as ?conceptClassUri)
+
+    }
+  }
+}

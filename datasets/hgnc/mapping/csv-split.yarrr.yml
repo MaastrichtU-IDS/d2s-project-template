@@ -1,0 +1,42 @@
+### Using Split function with YARRRML: https://rml.io/yarrrml/matey/
+prefixes:
+  grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
+  rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+  gn: "http://www.geonames.org/ontology#"
+
+mappings:
+  neighbours:
+    sources:
+      - ['/mnt/workspace/input/geonames/dataset-geonames-countryInfo.csv~csv']
+    s: http://www.geonames.org/ontology#$(ISO)
+    po:
+      - [a, gn:Country]
+      - p: gn:neighbours
+        o:
+            function: grel:string_split
+            parameters:
+                - [grel:p_string_sep, "\|"]
+                - [grel:valueParameter, $(neighbours)]
+            language: en
+
+### Using to lower case (working)
+
+# prefixes:
+#   grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
+#   rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+#   gn: "http://www.geonames.org/ontology#"
+
+# mappings:
+#   lowerneighbours:
+#     sources:
+#       - ['source_1.csv~csv']
+#     s: http://www.geonames.org/ontology#$(ISO)
+#     po:
+#       - [a, gn:Country]
+#       - [rdfs:label, $(neighbours)]
+#       - p: gn:neighbours
+#         o:
+#             function: grel:toLowerCase
+#             parameters:
+#                 - [grel:valueParameter, $(neighbours)]
+#             language: en

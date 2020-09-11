@@ -1,0 +1,163 @@
+PREFIX ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX cito: <http://purl.org/spar/cito/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dctypes: <http://purl.org/dc/dcmitype/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX freq: <http://purl.org/cld/freq/>
+PREFIX idot: <http://identifiers.org/idot/>
+PREFIX lexvo: <http://lexvo.org/ontology#>
+PREFIX pav: <http://purl.org/pav/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schemaorg: <http://schema.org/>
+PREFIX sd: <http://www.w3.org/ns/sparql-service-description#>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX void-ext: <http://ldf.fi/void-ext#>
+
+INSERT {
+	GRAPH <?_output> {
+
+    # Agent publishing the RDF distribution
+    ?rdfPublisherUri a dct:Agent ;
+      foaf:name ?rdfPublisherName ;
+      foaf:page <https://maastrichtuniversity.nl/ids> .
+
+    # Version
+    ?versionUri
+      a dctypes:Dataset ;
+      dct:isVersionOf ?summaryUri ;
+      pav:version ?pavVersion ;
+
+      dcat:distribution <?_input> ;
+      # dcat:accessURL <https://graphdb.dumontierlab.com/graphs> ; 
+
+      ## MAY
+      # dct:references <IRI> ; # Supporting material as web pages and documents (use cito for publications)
+      # cito:citesAsAuthority <IRI> ; # publications about the dataset
+      # rdfs:seeAlso <IRI> ;
+      
+      dct:title ?dctTitle ;
+      dct:description ?dctDescription ;
+      dct:license ?sourceLicense ;
+      dct:publisher ?sourcePublisher ;
+      idot:preferredPrefix ?idotPreferredPrefix ;
+      dct:language ?dctLanguage ;
+
+      # TODO: should we put the date of the source release?
+      dct:issued ?now .
+
+      # TODO: should we have a different license than the summary?
+      # dct:license <https://opensource.org/licenses/MIT> ;
+      
+      # Same for creator and publisher, should it be HPO for the version?
+      # dct:creator <https://w3id.org/d2s/agent/umids> ;
+      # dct:publisher <https://w3id.org/d2s/agent/umids> ;
+  
+    ### RDF Distribution description
+    <?_input>
+      a dcat:Distribution, void:Dataset ;
+      # TODO: should we use the same pav:version as the source for RDF distribution? 
+      pav:version ?pavVersion ;
+      # TODO: and should we use the version in RDF distribution URI? After / or # ?
+      # # more convenient to do strafter() and extract version number
+
+      # TODO: What should be data2services BioLink RDF license?
+      dct:license <https://www.ebi.ac.uk/about/terms-of-use/> ;           
+
+      # void:exampleResource <https://identifiers.org/drugbank:DB00001> ;     
+
+      # TODO: should we point createdWith to the SPARQL mappings? Or d2s-cli URL?
+      pav:createdWith <https://d2s.semanticscience.org/> ;  
+
+      # Which publisher for RDF BioLink Dataset? IDS by default
+      dct:publisher ?rdfPublisherUri ;  
+      dct:creator ?rdfPublisherUri ;    
+
+      dct:source ?distributionSourceUri ;
+      dct:language ?dctLanguage ;
+      void:vocabulary <https://w3id.org/biolink/vocab/> ;
+
+      # TODO: Use dcat:accessURL to specify a directory containing the file(s) of interest.
+      dcat:accessURL <https://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements> ;
+      dcat:downloadURL <http://download.137.120.31.102.nip.io/#/> ;
+      void:dataDump <https://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements> ;
+      dcat:mediaType "application/n-quads" ;
+
+      dct:title ?rdfDctTitle ;
+      dct:description ?rdfDctDistribution ;
+      dct:conformsTo ?hclsDataset ;
+      idot:preferredPrefix ?idotPreferredPrefix ;
+      dct:created ?now .
+
+      # MAY
+      # pav:previousVersion <IRI> ;
+      # idot:accessIdentifierPattern "^http://www.ebi.ac.uk/chembl/compound/inspect/CHEMBL\\d+" ;
+      # idot:identifierPattern "CHEMBL\\d+"^^xsd:string ;
+      # void:uriRegexPattern "http://rdf.ebi.ac.uk/resource/chembl/target/CHEMBL\\d+" ;
+      # idot:accessPattern "http://identifiers.org/chembl.compound/";
+      # idot:exampleIdentifier "CHEMBL_TC_4803"^^xsd:string ;
+      
+    ### Source distribution (non-RDF) description
+    ?distributionSourceUri 
+      a dcat:Distribution ;
+      dct:format "text/csv" ;
+      dcat:downloadURL <ftp://ftp.ebi.ac.uk/pub/databases/genenames/hgnc/tsv/hgnc_complete_set.txt> ;
+      
+      # idot:exampleIdentifier "DB00001"^^xsd:string ;
+
+      # TODO: should we put issues?
+      
+      # TODO: Same publisher as source?
+      dct:publisher ?sourcePublisher ;
+      dct:creator ?sourcePublisher ;
+      pav:version ?pavVersion ;
+
+      dct:title ?dctTitle ;
+      dct:description ?dctDescription ;
+      dct:rights ?dctRights ;
+      dct:license ?sourceLicense ;
+      idot:preferredPrefix ?idotPreferredPrefix ;
+      pav:retrievedOn ?now ;
+      dct:language ?dctLanguage ;
+      dct:conformsTo ?hclsDataset .
+
+      # MAY
+      # pav:previousVersion <IRI> ;
+      # idot:accessPattern "http://identifiers.org/drugbank:" ;
+    }
+} WHERE {
+  # Version of the source dataset
+  BIND("1"^^xsd:string AS ?pavVersion)
+
+  BIND(<https://w3id.org/d2s/dataset/hgnc> AS ?summaryUri)
+  BIND(<http://lexvo.org/id/iso639-3/eng> AS ?dctLanguage)
+
+  # Version of our RDF distribution version 
+  BIND("1"^^xsd:string AS ?rdfPavVersion)
+  BIND(concat("N-Quads distribution of HUGO Gene Nomenclature Committee build #", ?rdfPavVersion) AS ?rdfDctTitle)
+  BIND(concat("N-Quads distribution of HUGO Gene Nomenclature Committee build #", ?rdfPavVersion, " produced by Data2Services on NOW()") AS ?rdfDctDescription)
+
+  BIND(NOW() AS ?now)
+  # Get generic informations from summary
+  OPTIONAL {
+    ?summaryUri dct:title ?dctTitle ;
+      dct:description ?dctDescription ;
+      dct:license ?sourceLicense ;
+      dct:publisher ?sourcePublisher ;
+      idot:preferredPrefix ?idotPreferredPrefix ;
+      idot:alternatePrefix ?idotAlternatePrefix .
+  }
+
+  # Generates URIs from pav:version
+  BIND(iri(concat(str(?summaryUri), "/version#", str(?pavVersion))) AS ?versionUri)
+  BIND(iri(concat(str(?summaryUri), "/distribution/source#", str(?pavVersion))) AS ?distributionSourceUri)
+  BIND(<http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/> AS ?hclsDataset)
+
+  BIND ( "Institute of Data Science at Maastricht University" as ?rdfPublisherName)
+  BIND ( iri(concat("https://w3id.org/d2s/agent/", md5(?rdfPublisherName))) AS ?rdfPublisherUri )
+}
