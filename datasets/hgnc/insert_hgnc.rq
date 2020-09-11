@@ -1,0 +1,374 @@
+PREFIX d2sgeneric: <http://data2services/data/hgnc/hgnc_complete_set.tsv/>
+PREFIX d2smodel: <http://data2services/model/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
+INSERT
+{
+  GRAPH <?_output> {
+
+    ## TODO: use ?geneSymbolUri as main URI for gene?
+
+    ?hgncUri a bl:Gene ;
+      bl:id ?hgncUriId ;
+      bl:name ?Name ;
+      bl:same_as ?geneSymbolUri ;
+      bl:systematic_synonym ?geneSymbol ;
+      bl:synonym ?singleAlias_name ;
+      w3idvocab:Status ?Status . # Use bl:ConfidenceLevel (Level of confidence in a statement)? Values: "Approved", "Symbol Withdrawn", "Entry Withdrawn"
+
+    ?hgncUri bl:category ?Locus_type .
+    # Could it be bl:category? Values: "RNA, long non-coding", "gene with protein product", "pseudogene", "virus integration site"
+    ?hgncUri bl:category ?Locus_group .
+    # Almost same as Locus_type. Values: "non-coding RNA", "protein-coding gene", "pseudogene", "other"
+
+    #?hgncUri bl:GenomicSequenceLocalization ?
+    # Should we use https://biolink.github.io/biolink-model/docs/located_in.html ?
+
+    ?hgncUri bl:update_date ?DateModified .
+
+    ?hgncUri bl:same_as ?EntrezIdUri ; # https://www.ncbi.nlm.nih.gov/gene/1047
+      bl:same_as ?EnsemblGeneUri ; # http://identifiers.org/ensembl/ENSG00000153132
+      bl:same_as ?OmimIdUri ; # http://identifiers.org/mim/601858
+      bl:same_as ?AccessionNumbersUri ; # https://www.ncbi.nlm.nih.gov/nuccore/D86322
+      bl:same_as ?EnsemblIdSuppliedByEnsemblUri .
+
+    # https://biolink.github.io/biolink-model/docs/TranscriptToGeneRelationship.html
+    ?refseqAssociationUri a bl:TranscriptToGeneRelationship ;
+      bl:id ?refseqAssociationUriId ;
+      bl:transcript_to_gene_relationship_subject ?RefseqAccessionUri ;
+      bl:transcript_to_gene_relationship_object ?hgncUri ;
+      bl:relation bl:expresses .
+
+    ?RefseqAccessionUri a bl:Transcript ;
+      bl:id ?RefseqAccessionUriId . # https://www.ncbi.nlm.nih.gov/nuccore/NM_004362
+
+    # https://biolink.github.io/biolink-model/docs/has_gene_product.html
+    ?hgncUri bl:has_gene_product ?UniprotIdsUri .
+
+    ?UniprotIdsUri a bl:Protein ;
+      bl:id ?UniprotIdsUriId .
+
+    # https://biolink.github.io/biolink-model/docs/GeneToGeneHomologyAssociation.html
+    ?mgiAssociationUri a bl:GeneToGeneHomologyAssociation ;
+            bl:id ?mgiAssociationUriId ;
+            bl:relation bl:homologous_to ;
+            bl:gene_to_gene_association_subject ?hgncUri ;
+            bl:gene_to_gene_association_object ?MouseGenomeDatabaseIdUri .
+
+    ?suppliedMgiAssociationUri a bl:GeneToGeneHomologyAssociation ;
+            bl:id ?suppliedMgiAssociationUriId ;
+            bl:relation bl:homologous_to ;
+            bl:gene_to_gene_association_subject ?hgncUri ;
+            bl:gene_to_gene_association_object ?MouseGenomeDatabaseIdSuppliedByMgiUri .
+
+    ?rgdAssociationUri a bl:GeneToGeneHomologyAssociation ;
+            bl:id ?rgdAssociationUriId ;
+            bl:relation bl:homologous_to ;
+            bl:gene_to_gene_association_subject ?hgncUri ;
+            bl:gene_to_gene_association_object ?RgdIdUri .
+
+
+    ?hgncUri bl:located_in ?GenomicSequenceLocalizationUri ;
+      bl:located_in ?CcdsIdUri . # TODO: atm it generates http://identifiers.org/ccds/CCDS7241 but this does not resolve. It would need to be http://identifiers.org/ccds/CCDS7241.1
+
+    ?GenomicSequenceLocalizationUri a bl:GenomicSequenceLocalization ;
+      bl:id ?GenomicSequenceLocalizationUriId ;
+      bl:genomic_sequence_localization_subject ?hgncUri ;
+      bl:genomic_sequence_localization_object ?LocationUri .
+
+    ?LocationUri a bl:GenomicEntity ;
+      bl:id ?LocationUriId ;
+      bl:Name ?Location ;
+      bl:category "chromosome" .
+
+
+    # Publication
+    ?hgncUri bl:publications ?PubmedIdUri .
+    ?PubmedIdUri a bl:Publication ;
+      bl:id ?Pubmed_id ;
+      bl:iri ?PubmedIdUri ;
+      bl:relates_to ?hgncUri .
+
+    ?hgncUri bl:filler ?GeneFamilyUri .
+    ?GeneFamilyUri a <https://w3id.org/data2services/model/GeneFamily> ;
+      bl:id ?GeneFamilyUriId ;
+      bl:subClassOf bl:Attribute ;
+      bl:name ?Gene_family .
+
+    # Use bl:ConfidenceLevel? (Level of confidence in a statement) Values: "Approved", "Symbol Withdrawn", "Entry Withdrawn"
+    ?hgncUri bl:filler ?StatusUri .
+    ?StatusUri a <https://w3id.org/data2services/model/Status> ;
+          rdfs:subClassOf bl:Attribute ;
+          bl:Name ?Status .
+
+ }
+}
+WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+      ?s d2sgeneric:Hgnc_id ?Hgnc_id .
+       OPTIONAL { 
+         ?s d2sgeneric:Name ?Name .
+       
+       } OPTIONAL {
+         ?s d2sgeneric:Symbol ?geneSymbol .
+         BIND( iri(concat("https://identifiers.org/hgnc.symbol:", ?geneSymbol)) AS ?geneSymbolUri)
+       
+       } OPTIONAL { 
+         ?s d2sgeneric:Status ?Status .
+         BIND ( iri(concat("https://w3id.org/data2services/model/status/", REPLACE(?Status, " ", "", "i")) ) AS ?StatusUri )
+       
+       } OPTIONAL { 
+         ?s d2sgeneric:Locus_type ?Locus_type .
+       
+       } OPTIONAL { 
+         ?s d2sgeneric:Locus_group ?Locus_group .
+       
+       } OPTIONAL {
+         ?s d2sgeneric:Alias_symbol ?Alias_symbol . # array
+         BIND( if( contains(?Alias_symbol, "|"),
+              strbefore(?Alias_symbol, "|") ,
+              ?Alias_symbol )
+         AS ?singleAlias_symbol )
+       
+       } OPTIONAL {
+         ?s d2sgeneric:Alias_name ?Alias_name . # array
+         BIND( if( contains(?Alias_name, "|"),
+              strbefore(?Alias_name, "|") ,
+              ?Alias_name )
+         AS ?singleAlias_name )
+
+       } OPTIONAL {
+         ?s d2sgeneric:Prev_symbol ?Prev_symbol . # array
+         BIND( if( contains(?Prev_symbol, "|"),
+              strbefore(?Prev_symbol, "|") ,
+              ?Prev_symbol )
+         AS ?singlePrev_symbol )
+       
+       } OPTIONAL {
+         ?s d2sgeneric:Prev_name ?Prev_name . # array
+
+       } OPTIONAL {
+         ?s d2sgeneric:Gene_family ?Gene_family . # array
+         BIND( if( contains(?Gene_family, "|"),
+              iri(concat("https://data2services/model/gene-family/", md5(strbefore(?Gene_family, "|")) ) ) ,
+              iri(concat("https://data2services/model/gene-family/", md5(?Gene_family) ) ) ) 
+         AS ?GeneFamilyUri ) # TODO: not good for URI
+         BIND ( str(?GeneFamilyUri) AS ?GeneFamilyUriId )
+
+       } OPTIONAL {
+         ?s d2sgeneric:Gene_family_id ?Gene_family_id . # array
+         # TODO: Generate URI fropm this one instead of using md5?!
+       
+       } OPTIONAL {
+         ?s d2sgeneric:Synonyms ?Synonyms .
+       
+       } OPTIONAL {
+         ?s d2sgeneric:NameSynonyms ?NameSynonyms .
+       
+       } OPTIONAL {
+         # TODO: also do Location_sortable? WHY this if statement???
+         ?s d2sgeneric:Location ?Location .
+         BIND( if( contains(?Location, " "),
+              iri("") ,
+              iri(concat("https://w3id.org/data2services/model/sequence-localization/", md5(concat(?Hgnc_id, ?Location))))
+              ) 
+         AS ?GenomicSequenceLocalizationUri )
+         BIND ( str(?GenomicSequenceLocalizationUri) AS ?GenomicSequenceLocalizationUriId )
+
+         BIND( if( contains(?Location, " "),
+              iri("") ,
+              iri(concat("https://w3id.org/data2services/model/chromosome/", ?Location) )
+              ) 
+         AS ?LocationUri )
+         BIND ( str(?LocationUri) AS ?LocationUriId )
+
+         #FILTER NOT EXISTS { contains(?Location, " ")  }
+
+         #BIND( iri(concat("https://w3id.org/data2services/model/sequence-localization/", md5(concat(?Hgnc_id, ?Location)))) AS ?GenomicSequenceLocalizationUri )
+
+         #BIND( iri(concat("https://w3id.org/data2services/model/chromosome/", ?Location) ) AS ?LocationUri )
+       
+       } OPTIONAL {
+         ?s d2sgeneric:Date_approved_reserved ?Date_approved_reserved . # Format: 2009-07-20
+
+       } OPTIONAL {
+         ?s d2sgeneric:Date_symbol_changed ?Date_symbol_changed . # Format: 2009-07-20
+
+       } OPTIONAL {
+         ?s d2sgeneric:Date_name_changed ?Date_name_changed . # Format: 2009-07-20
+
+       } OPTIONAL {
+         ?s d2sgeneric:Date_modified ?Date_modified . # Format: 2009-07-20
+       
+       } OPTIONAL {
+         ?s d2sgeneric:Entrez_id ?Entrez_id .
+         BIND( iri(concat("https://www.ncbi.nlm.nih.gov/gene/", ?Entrez_id) ) AS ?EntrezIdUri )
+
+       } OPTIONAL {
+         ?s d2sgeneric:Ensembl_gene_id ?Ensembl_gene_id .
+         BIND( iri(concat("http://identifiers.org/ensembl/", ?Ensembl_gene_id) ) AS ?EnsemblGeneIdUri )
+
+       } OPTIONAL {
+         ?s d2sgeneric:Vega_id ?Vega_id .
+
+       } OPTIONAL {
+         ?s d2sgeneric:Ucsc_id ?Ucsc_id .
+
+       } OPTIONAL { 
+         ?s d2sgeneric:Ena ?Ena .
+         BIND( if( contains(?Ena, "|"),
+              strbefore(?Ena, "|") ,
+              ?Ena )
+         AS ?singleEna )
+
+       } OPTIONAL {
+         ?s d2sgeneric:Refseq_accession ?Refseq_accession .
+         BIND( if( contains(?Refseq_accession, "|"),
+              iri(concat("https://www.ncbi.nlm.nih.gov/nuccore/", strbefore(?Refseq_accession, "|") ) ) ,
+              iri(concat("https://www.ncbi.nlm.nih.gov/nuccore/", ?Refseq_accession ) ) ) 
+         AS ?RefseqAccessionUri )
+         BIND ( str(RefseqAccessionUri) AS ?RefseqAccessionUriId)
+         BIND ( iri(concat("https://w3id.org/data2services/model/association/transcript/", md5(concat(?Hgnc_id, ?Refseq_accession)))) AS ?refseqAssociationUri )
+         BIND ( str(refseqAssociationUri) AS ?refseqAssociationUriId)
+
+       } OPTIONAL {
+         ?s d2sgeneric:Ccds_id ?Ccds_id .
+
+         BIND( if( contains(?Ccds_id, "|"),
+                iri(concat("http://identifiers.org/ccds/", strbefore(?Ccds_id, "|") ) ) ,
+                iri(concat("http://identifiers.org/ccds/", ?Ccds_id ) ) )
+         AS ?CcdsIdUri )
+
+       } OPTIONAL {
+         ?s d2sgeneric:Uniprot_ids ?Uniprot_ids .
+         # If there is a comma we take only the first iteration.
+         # TODO: also take the STRAFTER?
+         BIND( if( contains(?Uniprot_ids, "|"),
+              iri(concat("http://identifiers.org/uniprot/", strbefore(?Uniprot_ids, "|") ) ) ,
+              iri(concat("http://identifiers.org/uniprot/", ?Uniprot_ids ) ) ) 
+         AS ?UniprotIdsUri )
+         BIND(str(?UniprotIdsUri) AS ?UniprotIdsUriId)
+
+
+       } OPTIONAL {
+         ?s d2sgeneric:Pubmed_id ?Pubmed_id .
+         BIND( if( contains(?Pubmed_id, "|"),
+              iri(concat("http://identifiers.org/pubmed/", strbefore(?Pubmed_id, "|") ) ) ,
+              iri(concat("http://identifiers.org/pubmed/", ?Pubmed_id ) ) ) 
+         AS ?PubmedIdUri )
+
+       } OPTIONAL {
+         ?s d2sgeneric:Mgd_id ?Mgd_id .
+         BIND( if( contains(?Mgd_id, "|"),
+              iri(concat("http://identifiers.org/", strbefore(?Mgd_id, "|") ) ) ,
+              iri(concat("http://identifiers.org/", ?Mgd_id ) ) ) 
+         AS ?MouseGenomeDatabaseIdUri )
+         BIND ( iri(concat("https://w3id.org/data2services/model/association/homology/", md5(concat(?Hgnc_id, ?Mgd_id)))) AS ?mgiAssociationUri )
+         BIND ( str(?mgiAssociationUri) AS ?mgiAssociationUriId )
+
+       } OPTIONAL {
+         ?s d2sgeneric:Rgd_id ?Rgd_id .
+         BIND( if( contains(?Rgd_id, "|"),
+              iri(concat("http://identifiers.org/", strbefore(?Rgd_id, "|") ) ) ,
+              iri(concat("http://identifiers.org/", ?Rgd_id ) ) ) 
+         AS ?RgdIdUri )
+         BIND ( iri(concat("https://w3id.org/data2services/model/association/homology/", md5(concat(?Hgnc_id, ?Rgd_id)))) AS ?rgdAssociationUri )
+         BIND ( str(?rgdAssociationUri) AS ?rgdAssociationUriId )
+
+       } OPTIONAL {
+         ?s d2sgeneric:Lsdb ?Lsdb .
+         BIND( if( contains(?Lsdb, "|"),
+              iri(concat("http://identifiers.org/", strafter(?Lsdb, "|") ) ) ,
+              iri(concat("http://identifiers.org/", ?Lsdb ) ) ) 
+         AS ?LsdbUri ) # TODO: LRG_359|http://ftp.ebi.ac.uk/pub/databases/lrgex/LRG_359.xml
+
+       
+       } OPTIONAL {
+         ?s d2sgeneric:Cosmic ?Cosmic .
+
+       } OPTIONAL {
+         ?s d2sgeneric:Omim_id ?Omim_id .
+         # TODO: also take the STRAFTER?
+         BIND( if( contains(?Omim_id, "|"),
+              iri(concat("http://identifiers.org/mim/", strbefore(?Omim_id, "|") ) ) ,
+              iri(concat("http://identifiers.org/mim/", ?Omim_id ) ) ) 
+         AS ?OmimIdUri )
+
+       } OPTIONAL {
+         ?s d2sgeneric:Mirbase ?Mirbase .
+         # TODO: identifiers.org/mirbase:MI0000651
+         BIND( iri(concat("http://identifiers.org/mirbase/", ?Mirbase ) ) 
+         AS ?MirbaseUri )
+
+       } OPTIONAL {
+         ?s d2sgeneric:Homeodb ?Homeodb .
+         # TODO: 8553
+
+       } OPTIONAL {
+         ?s d2sgeneric:Snornabase ?Snornabase .
+         # Not really interesting DB https://www-snorna.biotoul.fr/plus.php?id=U8 (SR0000002)
+
+       } OPTIONAL {
+         ?s d2sgeneric:Bioparadigms_slc ?Bioparadigms_slc . # TODO: SLC49A1
+       
+       } OPTIONAL {
+         ?s d2sgeneric:Orphanet ?Orphanet . # TODO: 246647
+
+       } OPTIONAL {
+         ?s d2sgeneric:PseudogeneOrg ?PseudogeneOrg . # TODO: PGOHUM00000291221
+
+       } OPTIONAL {
+         ?s d2sgeneric:Horde_id ?Horde_id . # TODO: OR1A1
+
+       } OPTIONAL {
+         ?s d2sgeneric:Merops ?Merops . # TODO: I43.950
+
+       } OPTIONAL {
+         ?s d2sgeneric:Imgt ?Imgt . # TODO: IGHA2
+
+       } OPTIONAL {
+         ?s d2sgeneric:Iuphar ?Iuphar . # TODO: objectId:763
+
+       } OPTIONAL {
+         ?s d2sgeneric:Kznf_gene_catalog ?Kznf_gene_catalog . # TODO: 1226
+
+       } OPTIONAL {
+         ?s d2sgeneric:MamitTrnadb ?MamitTrnadb . # TODO: 13
+
+       } OPTIONAL {
+         ?s d2sgeneric:Cd ?Cd . # TODO: CD243
+
+
+       } OPTIONAL {
+         ?s d2sgeneric:Lncrnadb ?Lncrnadb . # TODO: AFAP1AS
+
+       } OPTIONAL {
+         ?s d2sgeneric:Enzyme_id ?Enzyme_id . # array TODO: 6.2.1.16
+         BIND( if( contains(?Enzyme_id, "|"),
+              iri(concat("http://identifiers.org/ec-code/", strbefore(?Enzyme_id, "|") ) ) ,
+              iri(concat("http://identifiers.org/ec-code/", ?Enzyme_id ) ) ) 
+         AS ?EnzymeIdsUri )
+
+       } OPTIONAL {
+         ?s d2sgeneric:Intermediate_filament_db ?Intermediate_filament_db . # TODO: HGNC:1040
+
+       } OPTIONAL {
+         ?s d2sgeneric:Rna_central_ids ?Rna_central_ids . # TODO: URS00007E4F6E
+         BIND( iri(concat("https://rnacentral.org/rna/", ?Rna_central_ids) ) AS ?RnaCentralIdsUri )
+       }
+
+  BIND ( iri(concat("http://identifiers.org/", ?Hgnc_id)) AS ?hgncUri )
+  BIND ( str(?Hgnc_id) AS ?hgncUriId )
+
+
+  # Avoid taking the first row with columns labels
+  #FILTER( !contains(?Hgnc_id, "hgnc_id") )
+  FILTER( ?Hgnc_id != "hgnc_id") 
+}
+}
+}

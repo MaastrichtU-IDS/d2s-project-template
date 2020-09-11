@@ -1,0 +1,97 @@
+PREFIX d2sgeneric: <http://data2services/data/emonet/string/9606.protein.actions.v10.5.tsv/>
+PREFIX d2smodel: <http://data2services/model/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
+INSERT
+{
+  GRAPH <?_output> {  
+    ?uriProtSource a bl:Protein ;
+      bl:id ?uriProtSourceId ;
+      bl:same_as ?uriSameasSourceId .
+    ?uriProtTarget a bl:Protein ;
+      bl:id ?uriProtTargetId ;
+      bl:same_as ?uriSameasTargetId .
+
+    # https://biolink.github.io/biolink-model/docs/GeneToGeneHomologyAssociation.html
+    ?associationUri a bl:PairwiseGeneToGeneInteraction ;
+      bl:pairwise_gene_to_gene_interaction_relation ?relationUri ; # activate etc
+      bl:gene_to_gene_association_subject ?uriProtSource ;
+      bl:gene_to_gene_association_object ?uriProtTarget ;
+      bl:has_confidence_level ?ConfidenceLevelUri .
+    # Also use? https://biolink.github.io/biolink-model/docs/interacting_molecules_category.html
+
+    # TODO: improve this?
+    ?ConfidenceLevelUri a bl:ConfidenceLevel ;
+      bl:id "score" ;
+      bl:name "Score" ;
+      bl:node_property ?score .
+
+    # Direct relations
+    #?uriProtSource ?relationUri ?uriProtTarget .
+ }
+}
+WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+      # Transform https://stringdb-static.org/download/protein.actions.v10.5/9606.protein.actions.v10.5.txt.gz
+
+      ?s d2smodel:A_is_acting ?aIsActing . # f or t. 
+      # the directionality of the action if applicable (t gives that item_id_a is acting upon item_id_b)
+      # but f doesn't mean that b is acting on a. Sometimes it is just that directionality is not know (eg: binding)
+
+      ?s d2smodel:Item_id_a ?protA . #(9606.ENSP00000357615)
+      ?s d2smodel:Item_id_b ?protB .
+
+      BIND( if( ?aIsActing="t",
+              ?protA ,
+              ?protB)
+         AS ?protSource )
+
+      BIND( if( ?aIsActing="t",
+              ?protB ,
+              ?protA)
+         AS ?protTarget )
+
+      BIND ( iri(concat("https://w3id.org/data2services/data/string/interaction/", md5(concat(?protSource, ?protTarget)) )) AS ?associationUri )
+
+      OPTIONAL { 
+        ?s d2smodel:Mode ?mode . # type of interaction: activation, inhibition, reaction, binding, expression, catalysis, ptmod (post-translational modifications)
+      } OPTIONAL { 
+        ?s d2smodel:Action ?action . # Not used at the moment. The effect of the action ("inhibition", "activation"). Only filled for activation and inhibition modes
+      } OPTIONAL {
+        ?s d2smodel:Score ?score . # 0 to 1000
+        BIND ( iri(concat("https://w3id.org/data2services/data/string/interaction/", md5(concat(?protSource, ?protTarget)), "/score" )) AS ?ConfidenceLevelUri )
+      } OPTIONAL {
+        ?s d2smodel:Is_directional ?isDirectional . # f or t. We only use A_is_acting at the moment
+      }
+
+      BIND( iri(concat("http://identifiers.org/ensembl:", strafter(?protSource, ".")) ) AS ?uriProtSource )
+      BIND( concat("ensembl:", strafter(?protSource, ".")) AS ?uriProtSourceId)
+      BIND( iri(concat("http://ensembl.org/id/", strafter(?protSource, "."))) AS ?uriSameasSourceId)
+      BIND( iri(concat("http://identifiers.org/ensembl:", strafter(?protTarget, ".")) ) AS ?uriProtTarget )
+      BIND( concat("ensembl:", strafter(?protTarget, ".")) AS ?uriProtTargetId)
+      BIND( iri(concat("http://ensembl.org/id/", strafter(?protTarget, "."))) AS ?uriSameasTargetId)
+
+      VALUES (?filterMode ?relationUri) {
+        ( "activation" bl:increases_activity_of )
+        ( "inhibition" bl:decreases_activity_of )
+        ( "catalysis" bl:increases_activity_of )
+        ( "expression" bl:affects_expression_of )
+        ( "reaction" bl:molecularly_interacts_with )
+        ( "binding" bl:molecularly_interacts_with )
+        ( "ptmod" bl:affects_molecular_modification_of )
+        #(UNDEF bl:interacts_with) # TODO: take also interaction when mode not defined
+      }
+      FILTER (sameTerm(LCASE(?filterMode), ?mode))
+
+
+      # Avoid taking the first row with columns labels
+      FILTER( ?protA != "item_id_a")
+
+}
+}
+}

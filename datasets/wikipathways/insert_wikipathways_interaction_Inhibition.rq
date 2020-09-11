@@ -1,0 +1,43 @@
+PREFIX d2sgeneric: <http://data2services/data/hgnc/hgnc_complete_set.tsv/>
+PREFIX d2smodel: <http://data2services/model/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
+PREFIX oban: <http://purl.org/oban/>
+PREFIX wp: <http://vocabularies.wikipathways.org/wp#>
+INSERT
+{
+  GRAPH <?_output> {  
+
+    ?directedInteraction a bl:GeneToThingAssociation ; # GeneProduct/Metabolite to GeneProduct association
+          bl:id ?directedInteractionId ;
+          bl:gene_to_thing_association_subject ?source ; # GeneProduct or Metabolite (bl:ChemicalSubstance)
+          bl:relation bl:decreases_activity_of ;
+          bl:gene_to_thing_association_object ?target ; # GeneProduct (or Interaction?)
+          bl:publications ?citation ;
+          bl:part_of ?isPartOf . # Interaction in this pathway
+
+ }
+}
+WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+
+      # Inhibition: A process in which one biological entity  restrains, blocks, or suppresses another biological entity or interaction
+
+      ?directedInteraction a wp:Inhibition ;
+          wp:source ?source ;
+          wp:target ?target ;
+          dct:isPartOf ?isPartOf .
+      BIND( str(?directedInteraction) AS ?directedInteractionId)
+
+      OPTIONAL {
+        ?directedInteraction dct:bibliographicCitation ?citation .
+      }
+
+}
+}
+}

@@ -1,0 +1,92 @@
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX up: <http://purl.uniprot.org/core/> 
+PREFIX uniprot: <http://identifiers.org/uniprot/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+INSERT {
+  GRAPH <?_output> {  
+    ?protIdoUri a bl:Protein ;
+      bl:id ?protCurie ;
+      bl:name ?label ; 
+      bl:same_as ?uniprotUri ;
+      bl:same_as ?protIdoSameAs ;
+      bl:creation_date ?created ;
+      bl:in_taxon ?organism .
+
+    ?goAssociation a bl:GeneToGoTermAssociation ;
+      bl:gene_to_go_term_association_subject ?protIdoUri ;
+      bl:gene_to_go_term_association_object ?classifiedWith ;
+      bl:relation bl:category . # Good relation?
+
+    ?classifiedWith a bl:GeneOntologyClass .
+      #bl:name ?goTermLabel .
+
+    #?taxon a bl:OrganismTaxon . # Get all Organisms in a different query 
+
+    #?citationPubmedUri a bl:Publication ; # no way to link anything else than an association to a publication
+    #  bl:id ?citationId .
+  }
+}
+WHERE {
+  # Select proteins in our graph to only get their infos
+  #SELECT ?uniprotUri WHERE {
+  #  ?uniprotUri a bl:Protein .
+  #  FILTER(strstarts(str(?uniprotUri), "http://identifiers.org/uniprot/"))
+  #}
+  
+
+  SERVICE <https://sparql.uniprot.org>  {
+    {
+      SELECT * WHERE {
+        # 233.686.171 proteins
+        ?uniprotUri a up:Protein ;
+          rdfs:label ?label ;
+          up:organism ?organism .
+
+        # Only take human proteins
+        FILTER( ?organism = <http://purl.uniprot.org/taxonomy/9606> )
+
+        # TODO: add proteome? http://purl.uniprot.org/proteomes/UP000005640#Chromosome%204
+
+        OPTIONAL {
+          ?uniprotUri up:created ?created . # "2017-05-10"xsd:date
+
+        } OPTIONAL {
+          ?uniprotUri up:classifiedWith ?classifiedWith . # GO terms or keywords. http://purl.obolibrary.org/obo/GO_0005198 or  http://purl.uniprot.org/keywords/9998
+
+          #BIND( if(strstarts(str(?classifiedWith), "http://purl.obolibrary.org/obo/"),
+          #  <http://www.w3.org/2000/01/rdf-schema#label>,
+          #  <http://www.w3.org/2004/02/skos/core#prefLabel>) AS ?goTermLabelProperty )
+          #?classifiedWith ?goTermLabelProperty ?goTermLabel .
+        } 
+
+        #OPTIONAL {
+          # no way to link anything else than an association to a PUBLICATION
+          #?uniprotUri up:citation ?citation . # http://purl.uniprot.org/citations/28193549
+          # https://sparql.uniprot.org/sparql/?format=html&query=SELECT+*+WHERE+%7B%0D%0A++%3Chttp%3A%2F%2Fpurl.uniprot.org%2Fcitations%2F28193549%3E+%3Fp+%3Fo+.%0D%0A++%7D
+          #?citation dc:identifier ?citationId ;
+          #  foaf:primaryTopicOf ?citationPubmedUri .
+        #} OPTIONAL {
+          # No way to define it in BioLink
+          #?uniprotUri up:existence ?existence . # http://purl.uniprot.org/core/Predicted_Existence
+        #} OPTIONAL {
+          # Not really interesting, sometimes nice rdfs:label
+          #?uniprotUri up:annotation ?annotation . #  http://purl.uniprot.org/uniprot/A0A1S6KF75#SIP4FA1E2F7247E4C4D
+        #} OPTIONAL {
+          #?uniprotUri up:attribution ?attribution . # http://purl.uniprot.org/uniprot/A0A1S6KF75#attribution-89E8704FA38C40532B5F76EAA9B9162B
+          # up:source http://purl.uniprot.org/embl-cds/AQT01831.1
+          # up:evidence http://purl.obolibrary.org/obo/ECO_0000313
+        #} OPTIONAL {
+        #  ?uniprotUri up:version ?uniprotVersion .
+        
+      } #LIMIT 1000
+    }
+  }
+  BIND ( replace(str(?uniprotUri), "http://purl.uniprot.org/uniprot/", "") AS ?protId )
+  BIND ( concat("uniprot:", ?protId) AS ?protCurie )
+  BIND ( iri(concat("http://identifiers.org/uniprot:", ?protId)) AS ?protIdoUri )
+  BIND ( iri(concat("http://identifiers.org/uniprot/", ?protId)) AS ?protIdoSameAs )
+  BIND ( iri(concat("https://w3id.org/data2services/data/association/uniprot/go-term/", md5(concat(str(?protIdoUri), str(?classifiedWith))))) AS ?goAssociation )
+}

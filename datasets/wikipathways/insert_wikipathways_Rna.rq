@@ -1,0 +1,81 @@
+PREFIX d2sgeneric: <http://data2services/data/hgnc/hgnc_complete_set.tsv/>
+PREFIX d2smodel: <http://data2services/model/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
+PREFIX oban: <http://purl.org/oban/>
+PREFIX wp: <http://vocabularies.wikipathways.org/wp#>
+
+INSERT
+{
+  GRAPH <?_output> {  
+    ?dataNode a bl:Transcript ;
+          dc:identifier ?id ;
+          bl:id ?dataNodeId ;
+          bl:name ?label ;
+          bl:part_of ?isPartOf ;
+          #bl:same_as ?xrefUniprot ; # TODO: GeneToGeneProductRelationship has_gene_product
+          bl:same_as ?xrefNcbigene ;
+          #bl:same_as ?xrefChebi ;
+          #bl:same_as ?xrefPubchem ;
+          bl:same_as ?xrefWikidata ;
+          #bl:same_as ?xrefHmdb ;
+          #bl:same_as ?xrefChemspider
+          .
+
+    ?directedInteraction a bl:TranscriptToGeneRelationship ; # GeneProduct to Interaction association
+          bl:id ?directedInteractionId ;
+          bl:transcript_to_gene_relationship_subject ?dataNode ; # GeneProduct
+          bl:relation bl:produces ; # TODO: Right relation?
+          bl:transcript_to_gene_relationship_object ?xrefHgnc .
+
+    ?xrefHgnc a bl:Gene ;
+        bl:id ?xrefHgncString .
+
+    #?directedInteraction a bl:GeneToGeneProductRelationship ; # TODO: How to link RNA and gene product?
+    #      bl:id ?directedInteractionId ;
+    #      bl:gene_to_gene_product_relationship_subject ?dataNode ;
+    #      bl:gene_to_gene_product_relationship_relation bl:has_gene_product ;
+    #      bl:gene_to_gene_product_relationship_object ?xrefUniprot .
+    #?xrefUniprotId a bl:Protein .
+ }
+}
+WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+      ?dataNode a wp:Rna .
+      BIND (str(?dataNode) AS ?dataNodeId)
+
+      OPTIONAL {
+          ?dataNode dc:identifier ?id .
+      } OPTIONAL {
+          ?dataNode rdfs:label ?label .
+      } OPTIONAL {
+          ?dataNode dct:isPartOf ?isPartOf .
+      } OPTIONAL {
+          ?dataNode dct:bibliographicCitation ?citations .
+      } OPTIONAL {
+          ?dataNode wp:bdbUniprot ?xrefUniprot .
+          BIND (str(?xrefUniprot) AS ?xrefUniprotId)
+      } OPTIONAL {
+          ?dataNode wp:bdbEntrezGene ?xrefNcbigene .
+      } OPTIONAL {
+          ?dataNode wp:bdbHgncSymbol ?xrefHgnc .
+          BIND (str(?xrefHgnc) AS ?xrefHgncString)
+      } OPTIONAL {
+          ?dataNode wp:bdbChEBI ?xrefChebi .
+      } OPTIONAL {
+          ?dataNode wp:bdbPubChem ?xrefPubchem .
+      } OPTIONAL {
+          ?dataNode wp:bdbWikidata ?xrefWikidata .
+      } OPTIONAL {
+          ?dataNode wp:bdbHmdb ?xrefHmdb .
+      } OPTIONAL {
+          ?dataNode wp:bdbChemspider ?xrefChemspider .
+      }
+    }
+  }
+}

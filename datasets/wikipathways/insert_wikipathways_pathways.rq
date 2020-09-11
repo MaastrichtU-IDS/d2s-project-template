@@ -1,0 +1,49 @@
+PREFIX d2sgeneric: <http://data2services/data/hgnc/hgnc_complete_set.tsv/>
+PREFIX d2smodel: <http://data2services/model/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
+PREFIX oban: <http://purl.org/oban/>
+PREFIX wp: <http://vocabularies.wikipathways.org/wp#>
+INSERT
+{
+  GRAPH <?_output> {  
+    # See https://graphdb.dumontierlab.com/resource?uri=https:%2F%2Fmonarchinitiative.org%2FMONARCH_0005916c58ab2315
+
+    ?pathwayUri a bl:Pathway ;
+          #<http://purl.obolibrary.org/obo/NCBITaxon_9606> link using https://biolink.github.io/biolink-model/docs/AnatomicalEntityToAnatomicalEntityPartOfAssociation.html ?
+          bl:name ?pathwayName ;
+          bl:id ?pathwayUriId
+          dc:identifier ?pathwayId ;
+          bl:description ?pathwayDescription ;
+          bl:in_taxon ?pathwayOrganism . # or part_of?
+          #bl:publications ?pathwayReferences .
+
+    ?pathwayOrganism a bl:OrganismTaxon .
+ }
+}
+WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+      ?pathwayUri a wp:Pathway .
+      BIND (str(?pathwayUri) AS ?pathwayUriId)
+      # https://graphdb.dumontierlab.com/resource?uri=http:%2F%2Fidentifiers.org%2Fwikipathways%2FWP107_r89328
+
+      OPTIONAL {
+        ?pathwayUri dct:references ?pathwayReferences .
+      } OPTIONAL {
+        ?pathwayUri dc:title ?pathwayName .
+      } OPTIONAL {
+        ?pathwayUri dct:identifier ?pathwayId .
+      } OPTIONAL {
+        ?pathwayUri dct:description ?pathwayDescription .
+      } OPTIONAL {
+        ?pathwayUri wp:organism ?pathwayOrganism .
+      }
+
+}
+}
+}

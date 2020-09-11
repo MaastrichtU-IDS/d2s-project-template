@@ -1,0 +1,43 @@
+PREFIX d2sgeneric: <http://data2services/data/hgnc/hgnc_complete_set.tsv/>
+PREFIX d2smodel: <http://data2services/model/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
+PREFIX oban: <http://purl.org/oban/>
+PREFIX wp: <http://vocabularies.wikipathways.org/wp#>
+INSERT
+{
+  GRAPH <?_output> {  
+
+    ?directedInteraction a bl:GeneToGeneAssociation ; # GeneProduct to Interaction association
+          bl:id ?directedInteractionId ;
+          bl:gene_to_gene_association_subject ?source ; # GeneProduct
+          bl:relation bl:affects_expression_of ;
+          bl:gene_to_gene_association_object ?target ; # GeneProduct
+          bl:part_of ?isPartOf ; # Interaction in this pathway
+          bl:publications ?citation .
+
+ }
+}
+WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+
+      # TranscriptionTranslation: An interaction in which the source entity regulates or influences in the transcription or translation of a target entity. Also referred to as a Template Reaction.
+
+      ?directedInteraction a wp:TranscriptionTranslation ;
+          wp:source ?source ;
+          wp:target ?target ;
+          dct:isPartOf ?isPartOf .
+      BIND( str(?directedInteraction) AS ?directedInteractionId)
+
+      OPTIONAL {
+        ?directedInteraction dct:bibliographicCitation ?citation .
+      }
+
+}
+}
+}

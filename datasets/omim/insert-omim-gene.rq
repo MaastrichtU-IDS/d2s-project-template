@@ -1,0 +1,48 @@
+PREFIX d2smodel: <http://data2services/model/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
+INSERT
+{
+  GRAPH <?_output> {
+    ?omimUri a bl:Gene ;
+      bl:id ?omimCurie ;
+      bl:same_as ?uriNcbi , 
+        ?uriEnsembl,
+        ?uriHgnc .
+
+    ?uriNcbi a bl:Gene .
+    ?uriEnsembl a bl:Gene .
+    ?uriHgnc a bl:Gene .
+ }
+}
+WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+      ?s d2smodel:Mim_number ?omim_id .
+      ?s d2smodel:Mim_entry_type ?Mim_entry_type .
+      #gene phenotype (predominantly phenotypes) moved/removed gene/phenotype
+      FILTER (?Mim_entry_type = "gene" || ?Mim_entry_type = "gene/phenotype")
+      
+      OPTIONAL { 
+        ?s d2smodel:Entrez_gene_id_ncbi ?idNcbi .
+        BIND ( iri(concat("http://identifiers.org/ncbigene/", ?idNcbi) ) AS ?uriNcbi )
+      } OPTIONAL {
+        ?s d2smodel:Ensembl_gene_id_ensembl ?idEnsembl .
+        BIND ( iri(concat("http://identifiers.org/ensembl/", ?idEnsembl) ) AS ?uriEnsembl )
+      } OPTIONAL { 
+        ?s d2smodel:Approved_gene_symbol_hgnc ?symbolHgnc .
+        BIND ( iri(concat("http://identifiers.org/hgnc.symbol/", ?symbolHgnc) ) AS ?uriHgnc )
+      }
+
+      BIND ( iri(concat("http://identifiers.org/omim/", ?omim_id)) AS ?omimUri )
+      BIND ( concat("omim:", ?omim_id) AS ?omimCurie )
+
+      # Avoid taking the first row with columns labels
+      FILTER( ?omim_id != "Omim_id") 
+    }
+  }
+}

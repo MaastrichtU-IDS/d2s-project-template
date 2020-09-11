@@ -1,0 +1,48 @@
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX up: <http://purl.uniprot.org/core/> 
+PREFIX uniprot: <http://identifiers.org/uniprot/>
+INSERT {
+    GRAPH <?_output> { # https://w3id.org/data2services/graph/biolink/uniprot
+        ?taxonUri a bl:OrganismTaxon ;
+            #bl:id ?taxonomyUriStr ;
+            bl:name ?label ;
+            bl:synonym ?synonym ;
+            rdfs:subClassOf ?subClassOf .
+
+        #?subClassOfUri a bl:OrganismTaxon ;
+        #    bl:id ?subClassOfUriStr ;
+        #    bl:name ?labelSubClassOf .
+    }
+}
+WHERE {
+
+  #SELECT ?taxonomyUri ?uniprotUri WHERE {
+  #  ?taxonomyUri a bl:OrganismTaxon .
+  #  FILTER(strstarts(str(?taxonomyUri), "http://identifiers.org/taxonomy/"))
+  #  BIND(iri(replace(str(?taxonomyUri), "http://identifiers.org/taxonomy/", "http://purl.uniprot.org/taxonomy/")) AS ?uniprotUri)
+  #}
+
+  SERVICE <https://sparql.uniprot.org>  {
+    {
+      SELECT * WHERE {
+        # 2.363.344 taxons
+        ?taxonUri a up:Taxon . # http://purl.uniprot.org/taxonomy/1003157
+
+        OPTIONAL {
+          ?taxonUri up:scientificName ?label .
+        } OPTIONAL {
+          ?taxonUri up:otherName ?synonym .
+        } OPTIONAL {
+          ?taxonUri rdfs:subClassOf ?subClassOf .
+        }
+
+        #OPTIONAL {
+        #  ?taxonUri up:rank ?rank . # http://purl.uniprot.org/core/Species
+        #} OPTIONAL {
+        #  ?taxonUri up:partOfLineage ?partOfLineage . # "false"xsd:boolean
+        #}
+      } #LIMIT 10000
+    }
+  }
+}

@@ -14,8 +14,8 @@ wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-scripts-repository
 # wget -N https://filedn.com/ll1efYfBhLaV67ONaCyMlKh/cohd-v2.tar.gz
 
 
-# UNTAR recursively all files in actual dir
-# find . -name "*.tar.gz" -exec tar -xzvf {} \;
+# UNTAR recursively all files in current dir
+# tar -xzvf *.tar.gz
 
 ## RENAME EXTENSION (e.g.: txt in tsv)
 # rename s/\.txt/.tsv/ *.txt
