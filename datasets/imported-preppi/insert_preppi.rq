@@ -7,6 +7,7 @@ PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX bl: <https://w3id.org/biolink/vocab/>
 PREFIX w3idvocab: <https://w3id.org/d2s/vocab/>
+# https://honiglab.c2b2.columbia.edu/PrePPI/ref/preppi_final600.txt.tar.gz
 INSERT
 {
   GRAPH <?_output> {  

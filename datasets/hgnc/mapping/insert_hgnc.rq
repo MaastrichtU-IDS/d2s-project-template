@@ -19,7 +19,7 @@ INSERT
       bl:same_as ?geneSymbolUri ;
       bl:systematic_synonym ?geneSymbol ;
       bl:synonym ?singleAlias_name ;
-      w3idvocab:Status ?Status . # Use bl:ConfidenceLevel (Level of confidence in a statement)? Values: "Approved", "Symbol Withdrawn", "Entry Withdrawn"
+      w3idvocab:status ?Status . # Use bl:ConfidenceLevel (Level of confidence in a statement)? Values: "Approved", "Symbol Withdrawn", "Entry Withdrawn"
 
     ?hgncUri bl:category ?Locus_type .
     # Could it be bl:category? Values: "RNA, long non-coding", "gene with protein product", "pseudogene", "virus integration site"
@@ -32,8 +32,8 @@ INSERT
     ?hgncUri bl:update_date ?DateModified .
 
     ?hgncUri bl:same_as ?EntrezIdUri ; # https://www.ncbi.nlm.nih.gov/gene/1047
-      bl:same_as ?EnsemblGeneUri ; # http://identifiers.org/ensembl/ENSG00000153132
-      bl:same_as ?OmimIdUri ; # http://identifiers.org/mim/601858
+      bl:same_as ?EnsemblGeneUri ; # https://identifiers.org/ensembl/ENSG00000153132
+      bl:same_as ?OmimIdUri ; # https://identifiers.org/mim/601858
       bl:same_as ?AccessionNumbersUri ; # https://www.ncbi.nlm.nih.gov/nuccore/D86322
       bl:same_as ?EnsemblIdSuppliedByEnsemblUri .
 
@@ -74,7 +74,7 @@ INSERT
 
 
     ?hgncUri bl:located_in ?GenomicSequenceLocalizationUri ;
-      bl:located_in ?CcdsIdUri . # TODO: atm it generates http://identifiers.org/ccds/CCDS7241 but this does not resolve. It would need to be http://identifiers.org/ccds/CCDS7241.1
+      bl:located_in ?CcdsIdUri . # TODO: atm it generates https://identifiers.org/ccds/CCDS7241 but this does not resolve. It would need to be https://identifiers.org/ccds/CCDS7241.1
 
     ?GenomicSequenceLocalizationUri a bl:GenomicSequenceLocalization ;
       bl:id ?GenomicSequenceLocalizationUriId ;
@@ -212,7 +212,7 @@ WHERE {
 
        } OPTIONAL {
          ?s d2sgeneric:Ensembl_gene_id ?Ensembl_gene_id .
-         BIND( iri(concat("http://identifiers.org/ensembl/", ?Ensembl_gene_id) ) AS ?EnsemblGeneIdUri )
+         BIND( iri(concat("https://identifiers.org/ensembl/", ?Ensembl_gene_id) ) AS ?EnsemblGeneIdUri )
 
        } OPTIONAL {
          ?s d2sgeneric:Vega_id ?Vega_id .
@@ -241,8 +241,8 @@ WHERE {
          ?s d2sgeneric:Ccds_id ?Ccds_id .
 
          BIND( if( contains(?Ccds_id, "|"),
-                iri(concat("http://identifiers.org/ccds/", strbefore(?Ccds_id, "|") ) ) ,
-                iri(concat("http://identifiers.org/ccds/", ?Ccds_id ) ) )
+                iri(concat("https://identifiers.org/ccds/", strbefore(?Ccds_id, "|") ) ) ,
+                iri(concat("https://identifiers.org/ccds/", ?Ccds_id ) ) )
          AS ?CcdsIdUri )
 
        } OPTIONAL {
@@ -250,8 +250,8 @@ WHERE {
          # If there is a comma we take only the first iteration.
          # TODO: also take the STRAFTER?
          BIND( if( contains(?Uniprot_ids, "|"),
-              iri(concat("http://identifiers.org/uniprot/", strbefore(?Uniprot_ids, "|") ) ) ,
-              iri(concat("http://identifiers.org/uniprot/", ?Uniprot_ids ) ) ) 
+              iri(concat("https://identifiers.org/uniprot/", strbefore(?Uniprot_ids, "|") ) ) ,
+              iri(concat("https://identifiers.org/uniprot/", ?Uniprot_ids ) ) ) 
          AS ?UniprotIdsUri )
          BIND(str(?UniprotIdsUri) AS ?UniprotIdsUriId)
 
@@ -259,15 +259,15 @@ WHERE {
        } OPTIONAL {
          ?s d2sgeneric:Pubmed_id ?Pubmed_id .
          BIND( if( contains(?Pubmed_id, "|"),
-              iri(concat("http://identifiers.org/pubmed/", strbefore(?Pubmed_id, "|") ) ) ,
-              iri(concat("http://identifiers.org/pubmed/", ?Pubmed_id ) ) ) 
+              iri(concat("https://identifiers.org/pubmed/", strbefore(?Pubmed_id, "|") ) ) ,
+              iri(concat("https://identifiers.org/pubmed/", ?Pubmed_id ) ) ) 
          AS ?PubmedIdUri )
 
        } OPTIONAL {
          ?s d2sgeneric:Mgd_id ?Mgd_id .
          BIND( if( contains(?Mgd_id, "|"),
-              iri(concat("http://identifiers.org/", strbefore(?Mgd_id, "|") ) ) ,
-              iri(concat("http://identifiers.org/", ?Mgd_id ) ) ) 
+              iri(concat("https://identifiers.org/", strbefore(?Mgd_id, "|") ) ) ,
+              iri(concat("https://identifiers.org/", ?Mgd_id ) ) ) 
          AS ?MouseGenomeDatabaseIdUri )
          BIND ( iri(concat("https://w3id.org/d2s/model/association/homology/", md5(concat(?Hgnc_id, ?Mgd_id)))) AS ?mgiAssociationUri )
          BIND ( str(?mgiAssociationUri) AS ?mgiAssociationUriId )
@@ -275,8 +275,8 @@ WHERE {
        } OPTIONAL {
          ?s d2sgeneric:Rgd_id ?Rgd_id .
          BIND( if( contains(?Rgd_id, "|"),
-              iri(concat("http://identifiers.org/", strbefore(?Rgd_id, "|") ) ) ,
-              iri(concat("http://identifiers.org/", ?Rgd_id ) ) ) 
+              iri(concat("https://identifiers.org/", strbefore(?Rgd_id, "|") ) ) ,
+              iri(concat("https://identifiers.org/", ?Rgd_id ) ) ) 
          AS ?RgdIdUri )
          BIND ( iri(concat("https://w3id.org/d2s/model/association/homology/", md5(concat(?Hgnc_id, ?Rgd_id)))) AS ?rgdAssociationUri )
          BIND ( str(?rgdAssociationUri) AS ?rgdAssociationUriId )
@@ -284,8 +284,8 @@ WHERE {
        } OPTIONAL {
          ?s d2sgeneric:Lsdb ?Lsdb .
          BIND( if( contains(?Lsdb, "|"),
-              iri(concat("http://identifiers.org/", strafter(?Lsdb, "|") ) ) ,
-              iri(concat("http://identifiers.org/", ?Lsdb ) ) ) 
+              iri(concat("https://identifiers.org/", strafter(?Lsdb, "|") ) ) ,
+              iri(concat("https://identifiers.org/", ?Lsdb ) ) ) 
          AS ?LsdbUri ) # TODO: LRG_359|http://ftp.ebi.ac.uk/pub/databases/lrgex/LRG_359.xml
 
        
@@ -296,14 +296,14 @@ WHERE {
          ?s d2sgeneric:Omim_id ?Omim_id .
          # TODO: also take the STRAFTER?
          BIND( if( contains(?Omim_id, "|"),
-              iri(concat("http://identifiers.org/mim/", strbefore(?Omim_id, "|") ) ) ,
-              iri(concat("http://identifiers.org/mim/", ?Omim_id ) ) ) 
+              iri(concat("https://identifiers.org/mim/", strbefore(?Omim_id, "|") ) ) ,
+              iri(concat("https://identifiers.org/mim/", ?Omim_id ) ) ) 
          AS ?OmimIdUri )
 
        } OPTIONAL {
          ?s d2sgeneric:Mirbase ?Mirbase .
          # TODO: identifiers.org/mirbase:MI0000651
-         BIND( iri(concat("http://identifiers.org/mirbase/", ?Mirbase ) ) 
+         BIND( iri(concat("https://identifiers.org/mirbase/", ?Mirbase ) ) 
          AS ?MirbaseUri )
 
        } OPTIONAL {
@@ -351,8 +351,8 @@ WHERE {
        } OPTIONAL {
          ?s d2sgeneric:Enzyme_id ?Enzyme_id . # array TODO: 6.2.1.16
          BIND( if( contains(?Enzyme_id, "|"),
-              iri(concat("http://identifiers.org/ec-code/", strbefore(?Enzyme_id, "|") ) ) ,
-              iri(concat("http://identifiers.org/ec-code/", ?Enzyme_id ) ) ) 
+              iri(concat("https://identifiers.org/ec-code/", strbefore(?Enzyme_id, "|") ) ) ,
+              iri(concat("https://identifiers.org/ec-code/", ?Enzyme_id ) ) ) 
          AS ?EnzymeIdsUri )
 
        } OPTIONAL {
@@ -363,7 +363,7 @@ WHERE {
          BIND( iri(concat("https://rnacentral.org/rna/", ?Rna_central_ids) ) AS ?RnaCentralIdsUri )
        }
 
-  BIND ( iri(concat("http://identifiers.org/", ?Hgnc_id)) AS ?hgncUri )
+  BIND ( iri(concat("https://identifiers.org/", ?Hgnc_id)) AS ?hgncUri )
   BIND ( str(?Hgnc_id) AS ?hgncUriId )
 
 
