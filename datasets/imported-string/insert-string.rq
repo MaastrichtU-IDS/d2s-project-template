@@ -1,5 +1,5 @@
 PREFIX d2sgeneric: <http://data2services/data/emonet/string/9606.protein.actions.v10.5.tsv/>
-PREFIX d2smodel: <http://data2services/model/>
+PREFIX d2smodel: <https://w3id.org/d2s/model/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
@@ -37,7 +37,7 @@ INSERT
 WHERE {
   SERVICE <?_service>  {
     GRAPH <?_input> {
-      # Transform https://stringdb-static.org/download/protein.actions.v10.5/9606.protein.actions.v10.5.txt.gz
+      # Transform https://stringdb-static.org/download/protein.actions.v11.0.txt.gz
 
       ?s d2smodel:A_is_acting ?aIsActing . # f or t. 
       # the directionality of the action if applicable (t gives that item_id_a is acting upon item_id_b)
@@ -69,10 +69,10 @@ WHERE {
         ?s d2smodel:Is_directional ?isDirectional . # f or t. We only use A_is_acting at the moment
       }
 
-      BIND( iri(concat("http://identifiers.org/ensembl:", strafter(?protSource, ".")) ) AS ?uriProtSource )
+      BIND( iri(concat("https://identifiers.org/ensembl:", strafter(?protSource, ".")) ) AS ?uriProtSource )
       BIND( concat("ensembl:", strafter(?protSource, ".")) AS ?uriProtSourceId)
       BIND( iri(concat("http://ensembl.org/id/", strafter(?protSource, "."))) AS ?uriSameasSourceId)
-      BIND( iri(concat("http://identifiers.org/ensembl:", strafter(?protTarget, ".")) ) AS ?uriProtTarget )
+      BIND( iri(concat("https://identifiers.org/ensembl:", strafter(?protTarget, ".")) ) AS ?uriProtTarget )
       BIND( concat("ensembl:", strafter(?protTarget, ".")) AS ?uriProtTargetId)
       BIND( iri(concat("http://ensembl.org/id/", strafter(?protTarget, "."))) AS ?uriSameasTargetId)
 
@@ -87,11 +87,6 @@ WHERE {
         #(UNDEF bl:interacts_with) # TODO: take also interaction when mode not defined
       }
       FILTER (sameTerm(LCASE(?filterMode), ?mode))
-
-
-      # Avoid taking the first row with columns labels
-      FILTER( ?protA != "item_id_a")
-
 }
 }
 }

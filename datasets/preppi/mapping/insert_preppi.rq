@@ -163,9 +163,6 @@ WHERE {
          BIND( iri(concat(str(?interactionUri), "/final_score")) AS ?ConfidenceLevelFinalScoreUri)
 
   }
-
-  # Avoid taking the first row with columns labels
-  FILTER( ?prot1 != "prot1") 
 }
 }
 }
