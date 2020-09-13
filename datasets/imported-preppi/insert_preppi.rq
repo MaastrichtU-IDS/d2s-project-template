@@ -10,11 +10,12 @@ PREFIX w3idvocab: <https://w3id.org/d2s/vocab/>
 # https://honiglab.c2b2.columbia.edu/PrePPI/ref/preppi_final600.txt.tar.gz
 INSERT
 {
-  GRAPH <?_output> {  
+  GRAPH <?_output> {
    ?uniprotUri1 a bl:Protein . 
    ?uniprotUri2 a bl:Protein . 
 
    ?interactionUri a bl:PairwiseGeneToGeneInteraction ;
+            bl:provided_by <?_output> ; 
             bl:relation bl:interacts_with ;
             bl:gene_to_gene_association_subject ?uniprotUri1 ;
             bl:gene_to_gene_association_object ?uniprotUri2 ;
@@ -32,67 +33,67 @@ INSERT
     ?ConfidenceLevelStrScoreUri a bl:ConfidenceLevel ;
             bl:id ?ConfidenceLevelStrScoreString ;
             bl:name "Str score" ;
-            bl:category <https://w3id.org/d2s/data/confidence_score/str_score> ;
+            bl:category <https://w3id.org/d2s/data/preppi/str_score> ;
             bl:node_property ?str_score .
 
     ?ConfidenceLevelProtpepScoreUri a bl:ConfidenceLevel ;
             bl:id ?ConfidenceLevelProtpepScoreString ;
             bl:name "Protpep score" ;
-            bl:category <https://w3id.org/d2s/data/confidence_score/protpep_score> ;
+            bl:category <https://w3id.org/d2s/data/preppi/protpep_score> ;
             bl:node_property ?protpep_score .
 
     ?ConfidenceLevelStrMaxScoreUri a bl:ConfidenceLevel ;
             bl:id ?ConfidenceLevelStrMaxScoreString ;
             bl:name "Str Max score" ;
-            bl:category <https://w3id.org/d2s/data/confidence_score/str_max_score> ;
+            bl:category <https://w3id.org/d2s/data/preppi/str_max_score> ;
             bl:node_property ?str_max_score .
 
     ?ConfidenceLevelRedScoreUri a bl:ConfidenceLevel ;
             bl:id ?ConfidenceLevelRedScoreString ;
             bl:name "Red score" ;
-            bl:category <https://w3id.org/d2s/data/confidence_score/red_score> ;
+            bl:category <https://w3id.org/d2s/data/preppi/red_score> ;
             bl:node_property ?red_score .
 
     ?ConfidenceLevelOrtScoreUri a bl:ConfidenceLevel ;
             bl:id ?ConfidenceLevelOrtScoreString ;
             bl:name "Ort score" ;
-            bl:category <https://w3id.org/d2s/data/confidence_score/ort_score> ;
+            bl:category <https://w3id.org/d2s/data/preppi/ort_score> ;
             bl:node_property ?ort_score .
 
     ?ConfidenceLevelPhyScoreUri a bl:ConfidenceLevel ;
             bl:id ?ConfidenceLevelPhyScoreString ;
             bl:name "Phy score" ;
-            bl:category <https://w3id.org/d2s/data/confidence_score/phy_score> ;
+            bl:category <https://w3id.org/d2s/data/preppi/phy_score> ;
             bl:node_property ?phy_score .
 
     ?ConfidenceLevelCoexpScoreUri a bl:ConfidenceLevel ;
             bl:id ?ConfidenceLevelCoexpScoreString ;
             bl:name "Coexp score" ;
-            bl:category <https://w3id.org/d2s/data/confidence_score/coexp_score> ;
+            bl:category <https://w3id.org/d2s/data/preppi/coexp_score> ;
             bl:node_property ?coexp_score .
 
     ?ConfidenceLevelGoScoreUri a bl:ConfidenceLevel ;
             bl:id ?ConfidenceLevelGoScoreString ;
             bl:name "Go score" ;
-            bl:category <https://w3id.org/d2s/data/confidence_score/go_score> ;
+            bl:category <https://w3id.org/d2s/data/preppi/go_score> ;
             bl:node_property ?go_score .
 
     ?ConfidenceLevelTotalScoreUri a bl:ConfidenceLevel ;
             bl:id ?ConfidenceLevelTotalScoreString ;
             bl:name "Total score" ;
-            bl:category <https://w3id.org/d2s/data/confidence_score/total_score> ;
+            bl:category <https://w3id.org/d2s/data/preppi/total_score> ;
             bl:node_property ?total_score .
 
     ?ConfidenceLevelExpScoreUri a bl:ConfidenceLevel ;
             bl:id ?ConfidenceLevelExpScoreString ;
             bl:name "Exp score" ;
-            bl:category <https://w3id.org/d2s/data/confidence_score/exp_score> ;
+            bl:category <https://w3id.org/d2s/data/preppi/exp_score> ;
             bl:node_property ?exp_score .
 
     ?ConfidenceLevelFinalScoreUri a bl:ConfidenceLevel ;
             bl:id ?ConfidenceLevelFinalScoreString ;
             bl:name "Final score" ;
-            bl:category <https://w3id.org/d2s/data/confidence_score/final_score> ;
+            bl:category <https://w3id.org/d2s/data/preppi/final_score> ;
             bl:node_property ?final_score .
 
  }
@@ -103,9 +104,9 @@ WHERE {
       ?s d2smodel:Prot1 ?prot1 .
       ?s d2smodel:Prot2 ?prot2 .
 
-      BIND( iri(concat("http://identifiers.org/uniprot/", ?prot1 ) ) AS ?uniprotUri1 )
-      BIND( iri(concat("http://identifiers.org/uniprot/", ?prot2 ) ) AS ?uniprotUri2 )
-      BIND( iri(concat("https://w3id.org/d2s/data/protein/interaction/", concat(?prot1, ?prot2) ) ) AS ?interactionUri )
+      BIND( iri(concat("https://identifiers.org/uniprot/", ?prot1 ) ) AS ?uniprotUri1 )
+      BIND( iri(concat("https://identifiers.org/uniprot/", ?prot2 ) ) AS ?uniprotUri2 )
+      BIND( iri(concat("https://w3id.org/d2s/data/preppi/interaction/", concat(?prot1, ?prot2) ) ) AS ?interactionUri )
 
        OPTIONAL { 
          ?s d2smodel:Str_score ?str_score .
@@ -150,8 +151,8 @@ WHERE {
        } OPTIONAL {
          ?s d2smodel:Pubs ?pubs . # array
          BIND( if( contains(?pubs, "|"),
-              iri(concat("http://identifiers.org/", strbefore(?pubs, "|") ) ) ,
-              iri(concat("http://identifiers.org/", ?pubs) ) ) 
+              iri(concat("https://identifiers.org/", strbefore(?pubs, "|") ) ) ,
+              iri(concat("https://identifiers.org/", ?pubs) ) ) 
          AS ?pubsUri )
        
        } OPTIONAL {

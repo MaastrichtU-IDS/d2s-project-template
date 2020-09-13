@@ -156,8 +156,8 @@ WHERE {
        } OPTIONAL {
          ?s d2sgeneric:Gene_family ?Gene_family . # array
          BIND( if( contains(?Gene_family, "|"),
-              iri(concat("https://data2services/model/gene-family/", md5(strbefore(?Gene_family, "|")) ) ) ,
-              iri(concat("https://data2services/model/gene-family/", md5(?Gene_family) ) ) ) 
+              iri(concat("https://w3id.org/d2s/model/gene-family/", md5(strbefore(?Gene_family, "|")) ) ) ,
+              iri(concat("https://w3id.org/d2s/model/gene-family/", md5(?Gene_family) ) ) ) 
          AS ?GeneFamilyUri ) # TODO: not good for URI
          BIND ( str(?GeneFamilyUri) AS ?GeneFamilyUriId )
 
@@ -212,7 +212,7 @@ WHERE {
 
        } OPTIONAL {
          ?s d2sgeneric:Ensembl_gene_id ?Ensembl_gene_id .
-         BIND( iri(concat("https://identifiers.org/ensembl/", ?Ensembl_gene_id) ) AS ?EnsemblGeneIdUri )
+         BIND( iri(concat("https://identifiers.org/ensembl:", ?Ensembl_gene_id) ) AS ?EnsemblGeneIdUri )
 
        } OPTIONAL {
          ?s d2sgeneric:Vega_id ?Vega_id .
@@ -230,8 +230,8 @@ WHERE {
        } OPTIONAL {
          ?s d2sgeneric:Refseq_accession ?Refseq_accession .
          BIND( if( contains(?Refseq_accession, "|"),
-              iri(concat("https://www.ncbi.nlm.nih.gov/nuccore/", strbefore(?Refseq_accession, "|") ) ) ,
-              iri(concat("https://www.ncbi.nlm.nih.gov/nuccore/", ?Refseq_accession ) ) ) 
+              iri(concat("https://www.ncbi.nlm.nih.gov/nuccore:", strbefore(?Refseq_accession, "|") ) ) ,
+              iri(concat("https://www.ncbi.nlm.nih.gov/nuccore:", ?Refseq_accession ) ) ) 
          AS ?RefseqAccessionUri )
          BIND ( str(RefseqAccessionUri) AS ?RefseqAccessionUriId)
          BIND ( iri(concat("https://w3id.org/d2s/model/association/transcript/", md5(concat(?Hgnc_id, ?Refseq_accession)))) AS ?refseqAssociationUri )
@@ -241,8 +241,8 @@ WHERE {
          ?s d2sgeneric:Ccds_id ?Ccds_id .
 
          BIND( if( contains(?Ccds_id, "|"),
-                iri(concat("https://identifiers.org/ccds/", strbefore(?Ccds_id, "|") ) ) ,
-                iri(concat("https://identifiers.org/ccds/", ?Ccds_id ) ) )
+                iri(concat("https://identifiers.org/ccds:", strbefore(?Ccds_id, "|") ) ) ,
+                iri(concat("https://identifiers.org/ccds:", ?Ccds_id ) ) )
          AS ?CcdsIdUri )
 
        } OPTIONAL {
@@ -250,8 +250,8 @@ WHERE {
          # If there is a comma we take only the first iteration.
          # TODO: also take the STRAFTER?
          BIND( if( contains(?Uniprot_ids, "|"),
-              iri(concat("https://identifiers.org/uniprot/", strbefore(?Uniprot_ids, "|") ) ) ,
-              iri(concat("https://identifiers.org/uniprot/", ?Uniprot_ids ) ) ) 
+              iri(concat("https://identifiers.org/uniprot:", strbefore(?Uniprot_ids, "|") ) ) ,
+              iri(concat("https://identifiers.org/uniprot:", ?Uniprot_ids ) ) ) 
          AS ?UniprotIdsUri )
          BIND(str(?UniprotIdsUri) AS ?UniprotIdsUriId)
 
@@ -259,8 +259,8 @@ WHERE {
        } OPTIONAL {
          ?s d2sgeneric:Pubmed_id ?Pubmed_id .
          BIND( if( contains(?Pubmed_id, "|"),
-              iri(concat("https://identifiers.org/pubmed/", strbefore(?Pubmed_id, "|") ) ) ,
-              iri(concat("https://identifiers.org/pubmed/", ?Pubmed_id ) ) ) 
+              iri(concat("https://identifiers.org/pubmed:", strbefore(?Pubmed_id, "|") ) ) ,
+              iri(concat("https://identifiers.org/pubmed:", ?Pubmed_id ) ) ) 
          AS ?PubmedIdUri )
 
        } OPTIONAL {
