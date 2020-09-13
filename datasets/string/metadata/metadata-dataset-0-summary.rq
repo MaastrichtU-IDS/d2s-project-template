@@ -25,14 +25,14 @@ INSERT {
     # Agent publishing the dataset
     ?publisherUri a dct:Agent ;
       foaf:name ?publisherName ;
-      foaf:page <https://systemsbiology.columbia.edu/center-for-computational-biology-and-bioinformatics-c2b2> .     
+      foaf:page <https://www.embl.de/> .     
 
     # Summary
-    <https://w3id.org/d2s/dataset/preppi>      
+    <https://w3id.org/d2s/dataset/string>      
       rdf:type dctypes:Dataset;
-      dct:title "PrePPI" ;
-      idot:preferredPrefix "preppi" ;                     
-      dct:description "A structure-informed database of Predicted Protein–Protein Interactions. PrePPI is a database that combines predicted and experimentally determined protein–protein interactions (PPIs) using a Bayesian framework. Predicted interactions are assigned probabilities of being correct, which are derived from calculated likelihood ratios (LRs) by combining structural, functional, evolutionary and expression information, with the most important contribution coming from structure"@en;   
+      dct:title "STRING protein interactions" ;
+      idot:preferredPrefix "string" ;                     
+      dct:description "Protein-Protein Interaction Networks. STRING is a database of known and predicted protein-protein interactions. The interactions include direct (physical) and indirect (functional) associations; they stem from computational prediction, from knowledge transfer between organisms, and from interactions aggregated from other (primary) databases."@en;   
       dct:publisher ?publisherUri ;      
       
       dct:license <http://creativecommons.org/licenses/by-nc/4.0/legalcode> ;   
@@ -40,13 +40,13 @@ INSERT {
       # dct:rights """Rights."""@en ;
 
       # The homepage of the dataset
-      foaf:page <https://bhapp.c2b2.columbia.edu/PrePPI/> ;                 
+      foaf:page <https://stringdb-static.org> ;                 
       # schemaorg:logo <http://d2s.semanticscience.org/img/d2s-logo.png> ;   
       
-      dcat:accessURL <https://bhapp.c2b2.columbia.edu/PrePPI/> ;    
+      dcat:accessURL <https://string-db.org/cgi/download.pl> ;    
       # Specify the directory containing the file(s) of interest (not the direct file URL)
 
-      dct:references <https://pubmed.ncbi.nlm.nih.gov/23193263> ; 
+      dct:references <https://doi.org/10.1093/nar/gky1131> ; 
       dcat:keyword "protein" ;     
       dcat:theme <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17021> ;                     
       # ncit:C48807 Chemical, ncit:C54708 drug interaction
@@ -71,6 +71,6 @@ INSERT {
   }
 } WHERE {
     BIND(NOW() AS ?now)
-    BIND ( "Center for Computational Biology and Bioinformatics (C2B2) at Columbia University" as ?publisherName)
+    BIND ( "EMBL European Molecular Biology Laboratory" as ?publisherName)
     BIND ( iri(concat("https://w3id.org/d2s/agent/", md5(?publisherName))) AS ?publisherUri )
 }

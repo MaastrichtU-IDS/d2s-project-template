@@ -1,12 +1,12 @@
 
-dataset_to_process: "preppi"
+dataset_to_process: "string"
 
 ## For XML workflows
 # dir_to_process:
 #   class: Directory
-#   path: ../../workspace/input/preppi
+#   path: ../../workspace/input/string
 
-sparql_final_graph_uri: "https://w3id.org/d2s/graph/preppi"
+sparql_final_graph_uri: "https://w3id.org/d2s/graph/string"
 
 
 # Final SPARQL endpoint to load the BioLink RDF

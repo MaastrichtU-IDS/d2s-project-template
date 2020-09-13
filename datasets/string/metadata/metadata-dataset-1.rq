@@ -106,7 +106,7 @@ INSERT {
     ?distributionSourceUri 
       a dcat:Distribution ;
       dct:format "text/tab-separated-values" ;
-      dcat:downloadURL <https://honiglab.c2b2.columbia.edu/PrePPI/ref/preppi_final600.txt.tar.gz> ;
+      dcat:downloadURL <https://stringdb-static.org/download/protein.actions.v11.0.txt.gz> ;
       
       # idot:exampleIdentifier "DB00001"^^xsd:string ;
 
@@ -134,13 +134,13 @@ INSERT {
   # Version of the source dataset
   BIND("1"^^xsd:string AS ?pavVersion)
 
-  BIND(<https://w3id.org/d2s/dataset/preppi> AS ?summaryUri)
+  BIND(<https://w3id.org/d2s/dataset/string> AS ?summaryUri)
   BIND(<http://lexvo.org/id/iso639-3/eng> AS ?dctLanguage)
 
   # Version of our RDF distribution version 
   BIND("1"^^xsd:string AS ?rdfPavVersion)
-  BIND(concat("N-Quads distribution of PrePPI build #", ?rdfPavVersion) AS ?rdfDctTitle)
-  BIND(concat("N-Quads distribution of PrePPI build #", ?rdfPavVersion, " produced by Data2Services on NOW()") AS ?rdfDctDescription)
+  BIND(concat("N-Quads distribution of STRING protein interactions build #", ?rdfPavVersion) AS ?rdfDctTitle)
+  BIND(concat("N-Quads distribution of STRING protein interactions build #", ?rdfPavVersion, " produced by Data2Services on NOW()") AS ?rdfDctDescription)
 
   BIND(NOW() AS ?now)
   # Get generic informations from summary

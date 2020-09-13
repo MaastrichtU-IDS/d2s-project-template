@@ -1,4 +1,3 @@
-PREFIX d2sgeneric: <http://data2services/data/emonet/string/9606.protein.actions.v10.5.tsv/>
 PREFIX d2smodel: <https://w3id.org/d2s/model/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>

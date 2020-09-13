@@ -231,11 +231,11 @@ WHERE {
          ?s d2sgeneric:Refseq_accession ?Refseq_accession .
          BIND( if( contains(?Refseq_accession, "|"),
               iri(concat("https://www.ncbi.nlm.nih.gov/nuccore:", strbefore(?Refseq_accession, "|") ) ) ,
-              iri(concat("https://www.ncbi.nlm.nih.gov/nuccore:", ?Refseq_accession ) ) ) 
+              iri(concat("https://www.ncbi.nlm.nih.gov/nuccore:", ?Refseq_accession ) ) )
          AS ?RefseqAccessionUri )
-         BIND ( str(RefseqAccessionUri) AS ?RefseqAccessionUriId)
+         BIND ( str(?RefseqAccessionUri) AS ?RefseqAccessionUriId)
          BIND ( iri(concat("https://w3id.org/d2s/model/association/transcript/", md5(concat(?Hgnc_id, ?Refseq_accession)))) AS ?refseqAssociationUri )
-         BIND ( str(refseqAssociationUri) AS ?refseqAssociationUriId)
+         BIND ( str(?refseqAssociationUri) AS ?refseqAssociationUriId)
 
        } OPTIONAL {
          ?s d2sgeneric:Ccds_id ?Ccds_id .
