@@ -23,37 +23,38 @@ INSERT {
 	GRAPH <?_output> {
 
     # Agent publishing the dataset
-    <https://w3id.org/trek/agent/cohd> a dct:Agent ;
-      foaf:name "Honig Lab at Columbia University" ;
-      foaf:page <http://honig.c2b2.columbia.edu/> .     
+    ?publisherUri a dct:Agent ;
+      foaf:name ?publisherName ;
+      foaf:page <https://systemsbiology.columbia.edu/center-for-computational-biology-and-bioinformatics-c2b2> .     
 
     # Summary
-    <https://w3id.org/trek/dataset/cohd>      
+    <https://w3id.org/d2s/dataset/preppi>      
       rdf:type dctypes:Dataset;
-      dct:title "COHD Clinical Data" ;                                
-      idot:preferredPrefix "cohd" ;                     
-      dct:description "Occurences and co-occurences of concepts in FDA reports analysis (disease, drug, protein, procedure, etc)."@en;   
-      dct:publisher <https://w3id.org/trek/agent/cohd> ;      
+      dct:title "PrePPI" ;
+      idot:preferredPrefix "preppi" ;                     
+      dct:description "A structure-informed database of Predicted Protein–Protein Interactions. PrePPI is a database that combines predicted and experimentally determined protein–protein interactions (PPIs) using a Bayesian framework. Predicted interactions are assigned probabilities of being correct, which are derived from calculated likelihood ratios (LRs) by combining structural, functional, evolutionary and expression information, with the most important contribution coming from structure"@en;   
+      dct:publisher ?publisherUri ;      
       
-      dct:license <https://creativecommons.org/licenses/by/4.0/> ;   
+      dct:license <http://creativecommons.org/licenses/by-nc/4.0/legalcode> ;   
       # Human readable licenses terms
       # dct:rights """Rights."""@en ;
 
-      foaf:page <http://d2s.semanticscience.org/> ;                 
+      # The homepage of the dataset
+      foaf:page <https://bhapp.c2b2.columbia.edu/PrePPI/> ;                 
       # schemaorg:logo <http://d2s.semanticscience.org/img/d2s-logo.png> ;   
       
-      dcat:accessURL <https://figshare.com/collections/Columbia_Open_Health_Data_a_database_of_EHR_prevalence_and_co-occurrence_of_conditions_drugs_and_procedures/4151252> ;    
+      dcat:accessURL <https://bhapp.c2b2.columbia.edu/PrePPI/> ;    
       # Specify the directory containing the file(s) of interest (not the direct file URL)
 
-      # dct:references <https://www.drugbank.ca/legal/terms_of_use> ; 
-      dcat:keyword "reports" , "associations", "drug interactions" ;     
-      dcat:theme ncit:C48807 , ncit:C54708 ;                     
-      # Chemical, drug interaction
+      dct:references <https://pubmed.ncbi.nlm.nih.gov/23193263> ; 
+      dcat:keyword "protein" ;     
+      dcat:theme <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17021> ;                     
+      # ncit:C48807 Chemical, ncit:C54708 drug interaction
 
       # dct:accrualPeriodicity freq:annual ; 
       # frequency of update: annual baseline is released in December of each year
 
-      void:sparqlEndpoint "https://graphdb.dumontierlab.com/repositories/trek" .
+      void:sparqlEndpoint "https://graphdb.dumontierlab.com/repositories/ncats-red-kg" .
 
       ## MAY
       # dct:references <IRI> ; # Supporting material as web pages and documents (use cito for publications)
@@ -66,8 +67,10 @@ INSERT {
 
 
       ## Needs to be updated at new submission
-      #pav:hasCurrentVersion <https://w3id.org/trek/dataset/drugbank/version/1> ;
+      #pav:hasCurrentVersion <https://w3id.org/d2s/dataset/drugbank/version/1> ;
   }
 } WHERE {
-    # BIND(NOW() AS ?now)
+    BIND(NOW() AS ?now)
+    BIND ( "Center for Computational Biology and Bioinformatics (C2B2) at Columbia University" as ?publisherName)
+    BIND ( iri(concat("https://w3id.org/d2s/agent/", md5(?publisherName))) AS ?publisherUri )
 }
