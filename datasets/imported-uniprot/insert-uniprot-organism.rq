@@ -3,7 +3,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX up: <http://purl.uniprot.org/core/> 
 PREFIX uniprot: <http://identifiers.org/uniprot/>
 INSERT {
-    GRAPH <?_output> { # https://w3id.org/data2services/graph/biolink/uniprot
+    GRAPH <?_output> { # https://w3id.org/d2s/graph/biolink/uniprot
         ?taxonUri a bl:OrganismTaxon ;
             #bl:id ?taxonomyUriStr ;
             bl:name ?label ;

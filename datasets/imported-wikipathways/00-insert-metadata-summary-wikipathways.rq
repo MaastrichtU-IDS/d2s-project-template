@@ -25,7 +25,7 @@ PREFIX void-ext: <http://ldf.fi/void-ext#>
 PREFIX bl: <http://bioentity.io/vocab/>
 PREFIX dqv: <http://www.w3.org/ns/dqv#>
 PREFIX hcls: <http://www.w3.org/hcls#>
-PREFIX d2sdata: <https://w3id.org/data2services/data/>
+PREFIX d2sdata: <https://w3id.org/d2s/data/>
 
 
 # Complete example at https://www.w3.org/TR/hcls-dataset/#appendix_1
@@ -81,7 +81,7 @@ WHERE
     ##### User input
 
     ### MUST
-    BIND(<https://w3id.org/data2services/dataset/wikipathways/> AS ?summaryUri)  # user input
+    BIND(<https://w3id.org/d2s/dataset/wikipathways/> AS ?summaryUri)  # user input
     # Careful, ido uses it as void:uriSpace for a dcat:CatalogRecord
     
     BIND("WikiPathways"@en AS ?dctTitle) # user input
@@ -90,7 +90,7 @@ WHERE
     # Use https://orcid.org/ for researchers when possible or generate a new agent URI (like here)
     BIND("WikiPathways" AS ?dctPublisherName) # Optional, to store publisher name in our graph if the URI already resolves
     BIND(<https://wikipathways.org/> AS ?dctPublisherPage) # Optional, to store publisher info in our graph if the URI already resolves
-    BIND(iri(concat("https://w3id.org/data2services/agent/", md5(?dctPublisherName))) AS ?dctPublisher)
+    BIND(iri(concat("https://w3id.org/d2s/agent/", md5(?dctPublisherName))) AS ?dctPublisher)
 
     BIND("wikipathways" AS ?idotPreferredPrefix) # Usually a May but required for data2services since it used as source ID to generate the graph URI.
 
@@ -114,5 +114,5 @@ WHERE
     #VALUES (?dctHasPart) { ( :chembl17_rdf_molecule_dataset ) ( :chembl17_rdf_target_dataset ) } # uri array of distributions
     #BIND("chembldb" AS ?idotAlternatePrefix) # string
 
-    #BIND(iri("https://w3id.org/data2services/dataset/drugbank/version#1") AS ?pavHasCurrentVersion)  # We will automatically generate it, atm only using isVersionOf in the version item
+    #BIND(iri("https://w3id.org/d2s/dataset/drugbank/version#1") AS ?pavHasCurrentVersion)  # We will automatically generate it, atm only using isVersionOf in the version item
 }

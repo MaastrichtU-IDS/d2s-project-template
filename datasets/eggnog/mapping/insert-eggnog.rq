@@ -29,7 +29,7 @@ WHERE {
 
       ?s d2smodel:Groupname ?GroupName .
 
-      BIND ( iri(concat("https://w3id.org/data2services/data/eggnog/group/", ?GroupName)) AS ?groupUri )
+      BIND ( iri(concat("https://w3id.org/d2s/data/eggnog/group/", ?GroupName)) AS ?groupUri )
 
       OPTIONAL {
         ?s d2smodel:Consensusfunctionaldescription ?description .

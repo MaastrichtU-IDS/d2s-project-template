@@ -88,5 +88,5 @@ WHERE {
   BIND ( concat("uniprot:", ?protId) AS ?protCurie )
   BIND ( iri(concat("http://identifiers.org/uniprot:", ?protId)) AS ?protIdoUri )
   BIND ( iri(concat("http://identifiers.org/uniprot/", ?protId)) AS ?protIdoSameAs )
-  BIND ( iri(concat("https://w3id.org/data2services/data/association/uniprot/go-term/", md5(concat(str(?protIdoUri), str(?classifiedWith))))) AS ?goAssociation )
+  BIND ( iri(concat("https://w3id.org/d2s/data/association/uniprot/go-term/", md5(concat(str(?protIdoUri), str(?classifiedWith))))) AS ?goAssociation )
 }

@@ -5,7 +5,7 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX bl: <https://w3id.org/biolink/vocab/>
-PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
+PREFIX w3idvocab: <https://w3id.org/d2s/vocab/>
 INSERT
 {
   GRAPH <?_output> {  
@@ -56,7 +56,7 @@ WHERE {
               ?protA)
          AS ?protTarget )
 
-      BIND ( iri(concat("https://w3id.org/data2services/data/string/interaction/", md5(concat(?protSource, ?protTarget)) )) AS ?associationUri )
+      BIND ( iri(concat("https://w3id.org/d2s/data/string/interaction/", md5(concat(?protSource, ?protTarget)) )) AS ?associationUri )
 
       OPTIONAL { 
         ?s d2smodel:Mode ?mode . # type of interaction: activation, inhibition, reaction, binding, expression, catalysis, ptmod (post-translational modifications)
@@ -64,7 +64,7 @@ WHERE {
         ?s d2smodel:Action ?action . # Not used at the moment. The effect of the action ("inhibition", "activation"). Only filled for activation and inhibition modes
       } OPTIONAL {
         ?s d2smodel:Score ?score . # 0 to 1000
-        BIND ( iri(concat("https://w3id.org/data2services/data/string/interaction/", md5(concat(?protSource, ?protTarget)), "/score" )) AS ?ConfidenceLevelUri )
+        BIND ( iri(concat("https://w3id.org/d2s/data/string/interaction/", md5(concat(?protSource, ?protTarget)), "/score" )) AS ?ConfidenceLevelUri )
       } OPTIONAL {
         ?s d2smodel:Is_directional ?isDirectional . # f or t. We only use A_is_acting at the moment
       }

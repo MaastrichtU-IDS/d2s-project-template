@@ -14,7 +14,7 @@ PREFIX go_vocabulary: <http://bio2rdf.org/go_vocabulary:>
 PREFIX goa_vocabulary: <http://bio2rdf.org/goa_vocabulary:> 
 PREFIX bio2rdf_vocabulary: <http://bio2rdf.org/bio2rdf_vocabulary:> 
 PREFIX fb_vocabulary: <http://bio2rdf.org/fb_vocabulary:> 
-PREFIX d2s: <https://w3id.org/data2services/model/>
+PREFIX d2s: <https://w3id.org/d2s/model/>
 
 INSERT
 {
@@ -29,7 +29,7 @@ INSERT
 WHERE {
     GRAPH <?_input> {
       ?row d2s:Subject ?Subject ;
-        a <https://w3id.org/data2services/train.tsv> .
+        a <https://w3id.org/d2s/train.tsv> .
 
       # Generate URI from ID
 

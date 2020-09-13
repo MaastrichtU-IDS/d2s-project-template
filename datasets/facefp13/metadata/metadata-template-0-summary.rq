@@ -22,17 +22,17 @@ PREFIX void-ext: <http://ldf.fi/void-ext#>
 INSERT {
 	GRAPH <?_output> {
 
-    <https://w3id.org/data2services/agent/umids> a dct:Agent ;
+    <https://w3id.org/d2s/agent/umids> a dct:Agent ;
       foaf:name "Institute of Data Science at Maastricht University" ;
       foaf:page <https://maastrichtuniversity.nl/ids> .
 
     # Summary
-    <https://w3id.org/data2services/dataset/$facefp13>
+    <https://w3id.org/d2s/dataset/$facefp13>
       rdf:type dctypes:Dataset;
       dct:title "facefp13" ;
       idot:preferredPrefix "facefp13" ;
       dct:description "facefp13 dataset to bootstrap a workflow."@en;
-      dct:publisher <https://w3id.org/data2services/agent/umids> ;
+      dct:publisher <https://w3id.org/d2s/agent/umids> ;
       
       dct:license <http://creativecommons.org/licenses/by-nc/4.0/legalcode> ;
       # Human readable licenses terms
@@ -63,7 +63,7 @@ INSERT {
 
 
       ## Needs to be updated at new submission
-      #pav:hasCurrentVersion <https://w3id.org/data2services/dataset/drugbank/version/1> ;
+      #pav:hasCurrentVersion <https://w3id.org/d2s/dataset/drugbank/version/1> ;
   }
 } WHERE {
     BIND(NOW() AS ?now)

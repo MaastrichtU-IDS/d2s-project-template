@@ -23,7 +23,7 @@ PREFIX void-ext: <http://ldf.fi/void-ext#>
 PREFIX bl: <https://w3id.org/biolink/vocab/>
 PREFIX dqv: <http://www.w3.org/ns/dqv#>
 PREFIX hcls: <http://www.w3.org/hcls#>
-PREFIX d2sdata: <https://w3id.org/data2services/data/>
+PREFIX d2sdata: <https://w3id.org/d2s/data/>
 
 
 # Complete example at https://www.w3.org/TR/hcls-dataset/#appendix_1
@@ -230,12 +230,12 @@ INSERT {
 }
 WHERE 
 {
-    BIND(<https://w3id.org/data2services/dataset/preppi/> AS ?summaryUri) # user input. Careful, for drugbank ido uses it as void:uriSpace for a dcat:CatalogRecord
+    BIND(<https://w3id.org/d2s/dataset/preppi/> AS ?summaryUri) # user input. Careful, for drugbank ido uses it as void:uriSpace for a dcat:CatalogRecord
     BIND("1.0"^^xsd:string AS ?pavVersion) # Increment it from the latest version? Or user input
     BIND("1.0"^^xsd:string AS ?pavVersionRdf) # Increment it from the latest version? Or user input
 
     # Define the graph (A landing page, feed, SPARQL endpoint or other type of resource that gives access to the distribution of the dataset)
-    BIND(iri("https://w3id.org/data2services/graph/biolink/preppi") AS ?dcatAccessURL) # May. uri
+    BIND(iri("https://w3id.org/d2s/graph/biolink/preppi") AS ?dcatAccessURL) # May. uri
 
     OPTIONAL {
       ?summaryUri dct:title ?dctTitle ;
@@ -263,10 +263,10 @@ WHERE
     # Use https://orcid.org/ for researchers when possible or generate a new agent URI (like here)
     #BIND("DrugBank" AS ?dctPublisherName) # Optional if external URI, to store publisher name in our graph if the URI already resolves
     #BIND(<https://www.drugbank.ca/> AS ?dctPublisherPage) # Optional, to store publisher info in our graph if the URI already resolves
-    #BIND(iri(concat("https://w3id.org/data2services/agent/", md5(?dctPublisherName))) AS ?dctPublisher) # Get from summary. But let the possibility to redefine it for a dataset
+    #BIND(iri(concat("https://w3id.org/d2s/agent/", md5(?dctPublisherName))) AS ?dctPublisher) # Get from summary. But let the possibility to redefine it for a dataset
 
     #BIND("HUGO Gene Nomenclature Committee at the European Bioinformatics Institute" AS ?dctCreatorName) # Optional if external URI, to store creator name in our graph if the URI already resolves
-    #BIND(iri(concat("https://w3id.org/data2services/agent/", md5(?dctCreatorName))) AS ?dctCreator)
+    #BIND(iri(concat("https://w3id.org/d2s/agent/", md5(?dctCreatorName))) AS ?dctCreator)
 
     #BIND(iri("http://creativecommons.org/licenses/by-sa/3.0/") AS ?dctLicense) # Get from summary. But let the possibility to redefine it for a dataset
 
@@ -281,10 +281,10 @@ WHERE
     VALUES (?dctFormatRdf) { ( <http://www.w3.org/ns/formats/Turtle> ) ( "application/n-quads" ) ( "application/rdf+xml" ) ( "application/n3" ) ( "application/ld+json" ) ( "text/turtle" ) }
     BIND("Institute of Data Science at Maastricht University" AS ?dctPublisherNameRdf) # Optional if external URI, to store publisher name in our graph if the URI already resolves
     BIND(<https://www.maastrichtuniversity.nl/research/institute-data-science> AS ?dctPublisherPageRdf) # Optional, to store publisher info in our graph if the URI already resolves
-    BIND(iri(concat("https://w3id.org/data2services/agent/", md5(?dctPublisherNameRdf))) AS ?dctPublisherRdf)
+    BIND(iri(concat("https://w3id.org/d2s/agent/", md5(?dctPublisherNameRdf))) AS ?dctPublisherRdf)
 
     BIND("Institute of Data Science at Maastricht University" AS ?dctCreatorNameRdf) # Optional if external URI, to store creator name in our graph if the URI already resolves
-    BIND(iri(concat("https://w3id.org/data2services/agent/", md5(?dctCreatorNameRdf))) AS ?dctCreatorRdf)
+    BIND(iri(concat("https://w3id.org/d2s/agent/", md5(?dctCreatorNameRdf))) AS ?dctCreatorRdf)
 
 
     ##############
@@ -353,8 +353,8 @@ WHERE
     #VALUES (?idotAccessPatternSource) { ( "http://bio2rdf.org/chembl ) ( "http://identifiers.org/chembl.compound/" ) } # array
 
     ## RDF distribution
-    BIND(<https://w3id.org/data2services/data/protein/interaction/Q96P20O00220> AS ?voidExampleResourceRdf) # TODO: automate?
-    BIND(<https://w3id.org/data2services/data/protein/interaction/Q96P20O00220> AS ?sioHasDataItem)
+    BIND(<https://w3id.org/d2s/data/protein/interaction/Q96P20O00220> AS ?voidExampleResourceRdf) # TODO: automate?
+    BIND(<https://w3id.org/d2s/data/protein/interaction/Q96P20O00220> AS ?sioHasDataItem)
     #VALUES (?voidSubset) { ( :chembl17_rdf_molecule_dataset ) ( :chembl17_rdf_target_dataset ) } # uri array of distributions
     #BIND("CHEMBL\\d+"^^xsd:string AS ?idotIdentifierPatternRdf)
     #VALUES (?idotAccessPatternRdf) { ( "http://bio2rdf.org/chembl ) ( "http://identifiers.org/chembl.compound/" ) } # array

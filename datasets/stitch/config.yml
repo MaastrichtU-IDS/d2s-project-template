@@ -16,7 +16,7 @@ sparql_tmp_service_url: "http://localhost:8890/sparql"
 sparql_tmp_triplestore_username: dba
 sparql_tmp_triplestore_password: dba
 
-sparql_tmp_graph_uri: "https://w3id.org/data2services/graph/autor2rml"
+sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/autor2rml"
 virtuoso_container_id: "d2s-virtuoso"
 
 
@@ -25,7 +25,7 @@ sparql_final_triplestore_url: "http://virtuoso:8890/sparql"
 sparql_final_triplestore_username: dba
 sparql_final_triplestore_password: dba
 
-sparql_final_graph_uri: https://w3id.org/data2services/graph/biolink/stitch
+sparql_final_graph_uri: https://w3id.org/d2s/graph/biolink/stitch
 
 sparql_transform_queries_path: "mapping"
 sparql_insert_metadata_path: "metadata"
