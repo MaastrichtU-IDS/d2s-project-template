@@ -44,9 +44,6 @@ WHERE {
       } OPTIONAL {
         ?s d2smodel:Proteinids ?ProteinIDs . # Should be splitted before
       }
-
-      # Avoid taking the first row with columns labels
-      FILTER( ?TaxonomicLevel != "TaxonomicLevel")
     }
   # }
 }

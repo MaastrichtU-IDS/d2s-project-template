@@ -4,6 +4,11 @@ dataset_to_process: eggnog
 
 sparql_final_graph_uri: https://w3id.org/d2s/graph/eggnog
 
+# Final RDF4J server SPARQL endpoint to load the BioLink RDF
+sparql_final_triplestore_url: "https://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements"
+sparql_final_triplestore_username: import_user
+sparql_final_triplestore_password: dba
+
 # R2RML params
 input_data_jdbc: "jdbc:drill:drillbit=drill:31010"
 
@@ -14,19 +19,13 @@ split_delimiter: ","
 split_quote: '"'
 
 # tmp RDF4J server SPARQL endpoint to load generic RDF
-sparql_tmp_triplestore_url: "http://virtuoso:8890/sparql"
+sparql_tmp_triplestore_url: "http://tmp-virtuoso:8890/sparql"
 sparql_tmp_service_url: "http://localhost:8890/sparql"
 sparql_tmp_triplestore_username: dba
 sparql_tmp_triplestore_password: dba
 
 sparql_tmp_graph_uri: "https://w3id.org/d2s/graph/autor2rml"
 virtuoso_container_id: "d2s-virtuoso"
-
-
-# Final RDF4J server SPARQL endpoint to load the BioLink RDF
-sparql_final_triplestore_url: "http://virtuoso:8890/sparql"
-sparql_final_triplestore_username: dba
-sparql_final_triplestore_password: dba
 
 sparql_transform_queries_path: "mapping"
 sparql_insert_metadata_path: "metadata"

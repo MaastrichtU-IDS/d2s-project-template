@@ -5,6 +5,9 @@ PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX bl: <https://w3id.org/biolink/vocab/>
 PREFIX w3idvocab: <https://w3id.org/d2s/vocab/>
+# http://www.interactome-atlas.org/download
+# http://www.interactome-atlas.org/data/HuRI.tsv
+# 2M, add columns: Ensembl_gene_id_a and Ensembl_gene_id_b
 INSERT
 {
   GRAPH <?_output> {  
@@ -17,9 +20,10 @@ INSERT
     ?associationUri a bl:PairwiseGeneToGeneInteraction  ;
       # bl:pairwise_interaction_association_id identifier for the interaction. This may come from an interaction database such as IMEX.
       # bl:interacting_molecules_category
-      bl:pairwise_gene_to_gene_interaction_relation bl:interacts_with ;
-      bl:gene_to_gene_association_subject ?protUriA ;
-      bl:gene_to_gene_association_object ?protUriB .
+      bl:relation bl:interacts_with ;
+      bl:subject ?protUriA ;
+      bl:object ?protUriB ;
+      bl:provided_by <?_output> .
 
     #?highScoreUri a bl:RelationshipQuantifier ;
     #        bl:id "zScoreHighGpcrExpression" ;
@@ -50,9 +54,9 @@ WHERE {
       ?s d2smodel:Ensembl_gene_id_a ?geneIdA .
       ?s d2smodel:Ensembl_gene_id_b ?geneIdB .
 
-      BIND( iri(concat("http://identifiers.org/ensembl/", ?geneIdA ) ) AS ?protUriA )
+      BIND( iri(concat("https://identifiers.org/ensembl:", ?geneIdA ) ) AS ?protUriA )
       BIND( concat("ensembl:", ?geneIdA ) AS ?curieA )
-      BIND( iri(concat("http://identifiers.org/ensembl/", ?geneIdB ) ) AS ?protUriB )
+      BIND( iri(concat("https://identifiers.org/ensembl:", ?geneIdB ) ) AS ?protUriB )
       BIND( concat("ensembl:", ?geneIdB ) AS ?curieB )
 
       BIND( iri(concat("https://w3id.org/d2s/data/protein/interaction/", md5(concat(?geneIdA, ?geneIdB)) ) ) AS ?associationUri )
@@ -70,8 +74,6 @@ WHERE {
       #?s d2smodel:in_assay_v2 ?in_assay_v2 .
       #?s d2smodel:in_assay_v3 ?in_assay_v3 .
 
-  # Avoid taking the first row with columns labels
-  FILTER( ?Ensembl_gene_id_a != "Ensembl_gene_id_a") 
 }
 }
 }

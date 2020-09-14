@@ -18,6 +18,7 @@ INSERT {
     ?goAssociation a bl:GeneToGoTermAssociation ;
       bl:gene_to_go_term_association_subject ?protIdoUri ;
       bl:gene_to_go_term_association_object ?classifiedWith ;
+      bl:provided_by <?_output> ;
       bl:relation bl:category . # Good relation?
 
     ?classifiedWith a bl:GeneOntologyClass .

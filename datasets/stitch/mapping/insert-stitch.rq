@@ -18,8 +18,8 @@ INSERT
       bl:relation bl:affects_activity_of ;
       bl:subject ?chemical1Uri ;
       bl:object ?chemical2Uri ;
+      bl:provided_by <?_output> ;
       bl:has_confidence_level ?ConfidenceLevelUri .
-    
     ?ConfidenceLevelUri a bl:ConfidenceLevel ;
       bl:id "text mining score" ;
       bl:name "Text mining score" ;
@@ -28,7 +28,7 @@ INSERT
  }
 }
 WHERE {
-  # SERVICE <?_service>  {
+  SERVICE <?_service>  {
     GRAPH <?_input> {
       # Transform https://stringdb-static.org/download/protein.actions.v10.5/9606.protein.actions.v10.5.txt.gz
 
@@ -46,5 +46,5 @@ WHERE {
       BIND ( iri(concat(str(?associationUri), "/confidence")) AS ?ConfidenceLevelUri )
 
     }
-  # }
+  }
 }
