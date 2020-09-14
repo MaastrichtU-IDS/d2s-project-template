@@ -1,5 +1,4 @@
-PREFIX d2sgeneric: <http://data2services/data/hgnc/hgnc_complete_set.tsv/>
-PREFIX d2smodel: <http://data2services/model/>
+PREFIX d2smodel: <https://w3id.org/d2s/model/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
@@ -111,50 +110,50 @@ INSERT
 WHERE {
   SERVICE <?_service>  {
     GRAPH <?_input> {
-      ?s d2sgeneric:Hgnc_id ?Hgnc_id .
+      ?s d2smodel:Hgnc_id ?Hgnc_id .
        OPTIONAL { 
-         ?s d2sgeneric:Name ?Name .
+         ?s d2smodel:Name ?Name .
        
        } OPTIONAL {
-         ?s d2sgeneric:Symbol ?geneSymbol .
+         ?s d2smodel:Symbol ?geneSymbol .
          BIND( iri(concat("https://identifiers.org/hgnc.symbol:", ?geneSymbol)) AS ?geneSymbolUri)
        
        } OPTIONAL { 
-         ?s d2sgeneric:Status ?Status .
+         ?s d2smodel:Status ?Status .
          BIND ( iri(concat("https://w3id.org/d2s/model/status/", REPLACE(?Status, " ", "", "i")) ) AS ?StatusUri )
        
        } OPTIONAL { 
-         ?s d2sgeneric:Locus_type ?Locus_type .
+         ?s d2smodel:Locus_type ?Locus_type .
        
        } OPTIONAL { 
-         ?s d2sgeneric:Locus_group ?Locus_group .
+         ?s d2smodel:Locus_group ?Locus_group .
        
        } OPTIONAL {
-         ?s d2sgeneric:Alias_symbol ?Alias_symbol . # array
+         ?s d2smodel:Alias_symbol ?Alias_symbol . # array
          BIND( if( contains(?Alias_symbol, "|"),
               strbefore(?Alias_symbol, "|") ,
               ?Alias_symbol )
          AS ?singleAlias_symbol )
        
        } OPTIONAL {
-         ?s d2sgeneric:Alias_name ?Alias_name . # array
+         ?s d2smodel:Alias_name ?Alias_name . # array
          BIND( if( contains(?Alias_name, "|"),
               strbefore(?Alias_name, "|") ,
               ?Alias_name )
          AS ?singleAlias_name )
 
        } OPTIONAL {
-         ?s d2sgeneric:Prev_symbol ?Prev_symbol . # array
+         ?s d2smodel:Prev_symbol ?Prev_symbol . # array
          BIND( if( contains(?Prev_symbol, "|"),
               strbefore(?Prev_symbol, "|") ,
               ?Prev_symbol )
          AS ?singlePrev_symbol )
        
        } OPTIONAL {
-         ?s d2sgeneric:Prev_name ?Prev_name . # array
+         ?s d2smodel:Prev_name ?Prev_name . # array
 
        } OPTIONAL {
-         ?s d2sgeneric:Gene_family ?Gene_family . # array
+         ?s d2smodel:Gene_family ?Gene_family . # array
          BIND( if( contains(?Gene_family, "|"),
               iri(concat("https://w3id.org/d2s/model/gene-family/", md5(strbefore(?Gene_family, "|")) ) ) ,
               iri(concat("https://w3id.org/d2s/model/gene-family/", md5(?Gene_family) ) ) ) 
@@ -162,18 +161,18 @@ WHERE {
          BIND ( str(?GeneFamilyUri) AS ?GeneFamilyUriId )
 
        } OPTIONAL {
-         ?s d2sgeneric:Gene_family_id ?Gene_family_id . # array
+         ?s d2smodel:Gene_family_id ?Gene_family_id . # array
          # TODO: Generate URI fropm this one instead of using md5?!
        
        } OPTIONAL {
-         ?s d2sgeneric:Synonyms ?Synonyms .
+         ?s d2smodel:Synonyms ?Synonyms .
        
        } OPTIONAL {
-         ?s d2sgeneric:NameSynonyms ?NameSynonyms .
+         ?s d2smodel:NameSynonyms ?NameSynonyms .
        
        } OPTIONAL {
          # TODO: also do Location_sortable? WHY this if statement???
-         ?s d2sgeneric:Location ?Location .
+         ?s d2smodel:Location ?Location .
          BIND( if( contains(?Location, " "),
               iri("") ,
               iri(concat("https://w3id.org/d2s/model/sequence-localization/", md5(concat(?Hgnc_id, ?Location))))
@@ -195,40 +194,40 @@ WHERE {
          #BIND( iri(concat("https://w3id.org/d2s/model/chromosome/", ?Location) ) AS ?LocationUri )
        
        } OPTIONAL {
-         ?s d2sgeneric:Date_approved_reserved ?Date_approved_reserved . # Format: 2009-07-20
+         ?s d2smodel:Date_approved_reserved ?Date_approved_reserved . # Format: 2009-07-20
 
        } OPTIONAL {
-         ?s d2sgeneric:Date_symbol_changed ?Date_symbol_changed . # Format: 2009-07-20
+         ?s d2smodel:Date_symbol_changed ?Date_symbol_changed . # Format: 2009-07-20
 
        } OPTIONAL {
-         ?s d2sgeneric:Date_name_changed ?Date_name_changed . # Format: 2009-07-20
+         ?s d2smodel:Date_name_changed ?Date_name_changed . # Format: 2009-07-20
 
        } OPTIONAL {
-         ?s d2sgeneric:Date_modified ?Date_modified . # Format: 2009-07-20
+         ?s d2smodel:Date_modified ?Date_modified . # Format: 2009-07-20
        
        } OPTIONAL {
-         ?s d2sgeneric:Entrez_id ?Entrez_id .
+         ?s d2smodel:Entrez_id ?Entrez_id .
          BIND( iri(concat("https://www.ncbi.nlm.nih.gov/gene/", ?Entrez_id) ) AS ?EntrezIdUri )
 
        } OPTIONAL {
-         ?s d2sgeneric:Ensembl_gene_id ?Ensembl_gene_id .
+         ?s d2smodel:Ensembl_gene_id ?Ensembl_gene_id .
          BIND( iri(concat("https://identifiers.org/ensembl:", ?Ensembl_gene_id) ) AS ?EnsemblGeneIdUri )
 
        } OPTIONAL {
-         ?s d2sgeneric:Vega_id ?Vega_id .
+         ?s d2smodel:Vega_id ?Vega_id .
 
        } OPTIONAL {
-         ?s d2sgeneric:Ucsc_id ?Ucsc_id .
+         ?s d2smodel:Ucsc_id ?Ucsc_id .
 
        } OPTIONAL { 
-         ?s d2sgeneric:Ena ?Ena .
+         ?s d2smodel:Ena ?Ena .
          BIND( if( contains(?Ena, "|"),
               strbefore(?Ena, "|") ,
               ?Ena )
          AS ?singleEna )
 
        } OPTIONAL {
-         ?s d2sgeneric:Refseq_accession ?Refseq_accession .
+         ?s d2smodel:Refseq_accession ?Refseq_accession .
          BIND( if( contains(?Refseq_accession, "|"),
               iri(concat("https://www.ncbi.nlm.nih.gov/nuccore:", strbefore(?Refseq_accession, "|") ) ) ,
               iri(concat("https://www.ncbi.nlm.nih.gov/nuccore:", ?Refseq_accession ) ) )
@@ -238,7 +237,7 @@ WHERE {
          BIND ( str(?refseqAssociationUri) AS ?refseqAssociationUriId)
 
        } OPTIONAL {
-         ?s d2sgeneric:Ccds_id ?Ccds_id .
+         ?s d2smodel:Ccds_id ?Ccds_id .
 
          BIND( if( contains(?Ccds_id, "|"),
                 iri(concat("https://identifiers.org/ccds:", strbefore(?Ccds_id, "|") ) ) ,
@@ -246,7 +245,7 @@ WHERE {
          AS ?CcdsIdUri )
 
        } OPTIONAL {
-         ?s d2sgeneric:Uniprot_ids ?Uniprot_ids .
+         ?s d2smodel:Uniprot_ids ?Uniprot_ids .
          # If there is a comma we take only the first iteration.
          # TODO: also take the STRAFTER?
          BIND( if( contains(?Uniprot_ids, "|"),
@@ -257,14 +256,14 @@ WHERE {
 
 
        } OPTIONAL {
-         ?s d2sgeneric:Pubmed_id ?Pubmed_id .
+         ?s d2smodel:Pubmed_id ?Pubmed_id .
          BIND( if( contains(?Pubmed_id, "|"),
               iri(concat("https://identifiers.org/pubmed:", strbefore(?Pubmed_id, "|") ) ) ,
               iri(concat("https://identifiers.org/pubmed:", ?Pubmed_id ) ) ) 
          AS ?PubmedIdUri )
 
        } OPTIONAL {
-         ?s d2sgeneric:Mgd_id ?Mgd_id .
+         ?s d2smodel:Mgd_id ?Mgd_id .
          BIND( if( contains(?Mgd_id, "|"),
               iri(concat("https://identifiers.org/", strbefore(?Mgd_id, "|") ) ) ,
               iri(concat("https://identifiers.org/", ?Mgd_id ) ) ) 
@@ -273,7 +272,7 @@ WHERE {
          BIND ( str(?mgiAssociationUri) AS ?mgiAssociationUriId )
 
        } OPTIONAL {
-         ?s d2sgeneric:Rgd_id ?Rgd_id .
+         ?s d2smodel:Rgd_id ?Rgd_id .
          BIND( if( contains(?Rgd_id, "|"),
               iri(concat("https://identifiers.org/", strbefore(?Rgd_id, "|") ) ) ,
               iri(concat("https://identifiers.org/", ?Rgd_id ) ) ) 
@@ -282,7 +281,7 @@ WHERE {
          BIND ( str(?rgdAssociationUri) AS ?rgdAssociationUriId )
 
        } OPTIONAL {
-         ?s d2sgeneric:Lsdb ?Lsdb .
+         ?s d2smodel:Lsdb ?Lsdb .
          BIND( if( contains(?Lsdb, "|"),
               iri(concat("https://identifiers.org/", strafter(?Lsdb, "|") ) ) ,
               iri(concat("https://identifiers.org/", ?Lsdb ) ) ) 
@@ -290,10 +289,10 @@ WHERE {
 
        
        } OPTIONAL {
-         ?s d2sgeneric:Cosmic ?Cosmic .
+         ?s d2smodel:Cosmic ?Cosmic .
 
        } OPTIONAL {
-         ?s d2sgeneric:Omim_id ?Omim_id .
+         ?s d2smodel:Omim_id ?Omim_id .
          # TODO: also take the STRAFTER?
          BIND( if( contains(?Omim_id, "|"),
               iri(concat("https://identifiers.org/mim/", strbefore(?Omim_id, "|") ) ) ,
@@ -301,65 +300,65 @@ WHERE {
          AS ?OmimIdUri )
 
        } OPTIONAL {
-         ?s d2sgeneric:Mirbase ?Mirbase .
+         ?s d2smodel:Mirbase ?Mirbase .
          # TODO: identifiers.org/mirbase:MI0000651
          BIND( iri(concat("https://identifiers.org/mirbase/", ?Mirbase ) ) 
          AS ?MirbaseUri )
 
        } OPTIONAL {
-         ?s d2sgeneric:Homeodb ?Homeodb .
+         ?s d2smodel:Homeodb ?Homeodb .
          # TODO: 8553
 
        } OPTIONAL {
-         ?s d2sgeneric:Snornabase ?Snornabase .
+         ?s d2smodel:Snornabase ?Snornabase .
          # Not really interesting DB https://www-snorna.biotoul.fr/plus.php?id=U8 (SR0000002)
 
        } OPTIONAL {
-         ?s d2sgeneric:Bioparadigms_slc ?Bioparadigms_slc . # TODO: SLC49A1
+         ?s d2smodel:Bioparadigms_slc ?Bioparadigms_slc . # TODO: SLC49A1
        
        } OPTIONAL {
-         ?s d2sgeneric:Orphanet ?Orphanet . # TODO: 246647
+         ?s d2smodel:Orphanet ?Orphanet . # TODO: 246647
 
        } OPTIONAL {
-         ?s d2sgeneric:PseudogeneOrg ?PseudogeneOrg . # TODO: PGOHUM00000291221
+         ?s d2smodel:PseudogeneOrg ?PseudogeneOrg . # TODO: PGOHUM00000291221
 
        } OPTIONAL {
-         ?s d2sgeneric:Horde_id ?Horde_id . # TODO: OR1A1
+         ?s d2smodel:Horde_id ?Horde_id . # TODO: OR1A1
 
        } OPTIONAL {
-         ?s d2sgeneric:Merops ?Merops . # TODO: I43.950
+         ?s d2smodel:Merops ?Merops . # TODO: I43.950
 
        } OPTIONAL {
-         ?s d2sgeneric:Imgt ?Imgt . # TODO: IGHA2
+         ?s d2smodel:Imgt ?Imgt . # TODO: IGHA2
 
        } OPTIONAL {
-         ?s d2sgeneric:Iuphar ?Iuphar . # TODO: objectId:763
+         ?s d2smodel:Iuphar ?Iuphar . # TODO: objectId:763
 
        } OPTIONAL {
-         ?s d2sgeneric:Kznf_gene_catalog ?Kznf_gene_catalog . # TODO: 1226
+         ?s d2smodel:Kznf_gene_catalog ?Kznf_gene_catalog . # TODO: 1226
 
        } OPTIONAL {
-         ?s d2sgeneric:MamitTrnadb ?MamitTrnadb . # TODO: 13
+         ?s d2smodel:MamitTrnadb ?MamitTrnadb . # TODO: 13
 
        } OPTIONAL {
-         ?s d2sgeneric:Cd ?Cd . # TODO: CD243
+         ?s d2smodel:Cd ?Cd . # TODO: CD243
 
 
        } OPTIONAL {
-         ?s d2sgeneric:Lncrnadb ?Lncrnadb . # TODO: AFAP1AS
+         ?s d2smodel:Lncrnadb ?Lncrnadb . # TODO: AFAP1AS
 
        } OPTIONAL {
-         ?s d2sgeneric:Enzyme_id ?Enzyme_id . # array TODO: 6.2.1.16
+         ?s d2smodel:Enzyme_id ?Enzyme_id . # array TODO: 6.2.1.16
          BIND( if( contains(?Enzyme_id, "|"),
               iri(concat("https://identifiers.org/ec-code/", strbefore(?Enzyme_id, "|") ) ) ,
               iri(concat("https://identifiers.org/ec-code/", ?Enzyme_id ) ) ) 
          AS ?EnzymeIdsUri )
 
        } OPTIONAL {
-         ?s d2sgeneric:Intermediate_filament_db ?Intermediate_filament_db . # TODO: HGNC:1040
+         ?s d2smodel:Intermediate_filament_db ?Intermediate_filament_db . # TODO: HGNC:1040
 
        } OPTIONAL {
-         ?s d2sgeneric:Rna_central_ids ?Rna_central_ids . # TODO: URS00007E4F6E
+         ?s d2smodel:Rna_central_ids ?Rna_central_ids . # TODO: URS00007E4F6E
          BIND( iri(concat("https://rnacentral.org/rna/", ?Rna_central_ids) ) AS ?RnaCentralIdsUri )
        }
 
