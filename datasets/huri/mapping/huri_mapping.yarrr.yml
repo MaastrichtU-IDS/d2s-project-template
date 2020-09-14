@@ -1,0 +1,23 @@
+### Using Split function with YARRRML: https://rml.io/yarrrml/matey/
+prefixes:
+  grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
+  rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+  bl: "https://w3id.org/biolink/vocab/"
+  d2s: "https://w3id.org/d2s/"
+
+mappings:
+  interactions:
+    sources:
+      - ['huri.csv~csv']
+      # - ['/mnt/workspace/input/huri/huri.csv~csv']
+    s: https://w3id.org/d2s/data/protein/interaction/$(geneA):$(geneB)
+    po:
+      - [a, bl:PairwiseGeneToGeneInteraction]
+      - p: bl:subject
+        o: https://identifiers.org/ensembl:$(geneB)~iri
+      - p: bl:object
+        o: https://identifiers.org/ensembl:$(geneA)~iri
+      - p: bl:relation
+        o: bl:interacts_with~iri
+      - p: bl:provided_by
+        o: d2s:graph/huri~iri

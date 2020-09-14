@@ -1,0 +1,76 @@
+PREFIX ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX cito: <http://purl.org/spar/cito/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dctypes: <http://purl.org/dc/dcmitype/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX freq: <http://purl.org/cld/freq/>
+PREFIX idot: <http://identifiers.org/idot/>
+PREFIX lexvo: <http://lexvo.org/ontology#>
+PREFIX pav: <http://purl.org/pav/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schemaorg: <http://schema.org/>
+PREFIX sd: <http://www.w3.org/ns/sparql-service-description#>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX void: <http://rdfs.org/ns/void#>
+PREFIX void-ext: <http://ldf.fi/void-ext#>
+
+INSERT {
+	GRAPH <?_output> {
+
+    # Agent publishing the dataset
+    ?publisherUri a dct:Agent ;
+      foaf:name ?publisherName ;
+      foaf:page <https://ccsb.dana-farber.org/> .     
+
+    # Summary
+    <https://w3id.org/d2s/dataset/huri>      
+      rdf:type dctypes:Dataset;
+      dct:title "Human Reference Interactome" ;
+      idot:preferredPrefix "huri" ;                     
+      dct:description "HuRI: The Human Reference Protein Interactome Mapping Project. The Center for Cancer Systems Biology at Dana-Farber Cancer Institute is generating the first complete reference map of the human protein-protein interactome network. All pairwise combinations of human protein-coding genes are systematically being interrogated to identify which are involved in binary protein-protein interactions."@en;   
+      dct:publisher ?publisherUri ;      
+      
+      dct:license <http://creativecommons.org/licenses/by-nc/4.0/legalcode> ;   
+      # Human readable licenses terms
+      # dct:rights """Rights."""@en ;
+
+      # The homepage of the dataset
+      foaf:page <http://interactome.baderlab.org> ;                 
+      # schemaorg:logo <http://d2s.semanticscience.org/img/d2s-logo.png> ;   
+      
+      dcat:accessURL <http://interactome.baderlab.org/data/HuRI.tsv> ;    
+      # Specify the directory containing the file(s) of interest (not the direct file URL)
+
+      dct:references <https://www.biorxiv.org/content/10.1101/605451v2> ; 
+      dcat:keyword "protein" ;     
+      dcat:theme <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17021> ;                     
+      # ncit:C48807 Chemical, ncit:C54708 drug interaction
+
+      # dct:accrualPeriodicity freq:annual ; 
+      # frequency of update: annual baseline is released in December of each year
+
+      void:sparqlEndpoint "https://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements" .
+
+      ## MAY
+      # dct:references <IRI> ; # Supporting material as web pages and documents (use cito for publications)
+      # cito:citesAsAuthority <IRI> ; # publications about the dataset
+      # rdfs:seeAlso <http://compbio.charite.de/jenkins/job/hpo.annotations.monthly/> ;
+
+      # dct:hasPart <IRI> ; # if the dataset has multiple different parts (e.g. one for Drugs, one for Phenotypes)
+      # dct:alternative "Alternative label for dataset" ;
+      # idot:alternatePrefix "alternative_prefix";
+
+
+      ## Needs to be updated at new submission
+      #pav:hasCurrentVersion <https://w3id.org/d2s/dataset/drugbank/version/1> ;
+  }
+} WHERE {
+    BIND(NOW() AS ?now)
+    BIND ( "Center for Cancer Systems Biology at Dana-Farber Cancer Institute" as ?publisherName)
+    BIND ( iri(concat("https://w3id.org/d2s/agent/", md5(?publisherName))) AS ?publisherUri )
+}
