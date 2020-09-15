@@ -1,12 +1,12 @@
-name: Generate PrePPI BioLink RDF using RML
-# TODO: use workflow variables for graph URI and SPARQL endpoint URL?
+name: Generate HuRI BioLink RDF using RML
+# TODO: use workflow variables for graph URI and SPARQL endpoint URL
 on:
   workflow_dispatch:
   push:
     branches: [ master ]
     paths:
-    - 'datasets/preppi/**'
-    - '.github/workflows/rdf-generate-preppi.yml'
+    - 'datasets/huri/**'
+    - '.github/workflows/rdf-map-huri.yml'
 
 jobs:
   generate-rdf:
@@ -18,19 +18,19 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Download CSV
-      run: datasets/preppi/download/download.sh
+      run: datasets/huri/download/download.sh
 
     - uses: vemonet/rmlmapper-java@4.8
       with:
-        mapping: datasets/preppi/mapping/map-preppi.rml.ttl
-        output: rdf-preppi.nt
+        mapping: datasets/huri/mapping/huri_mapping.rml.ttl
+        output: rdf-huri.nt
 
     - name: Upload RDF output artifact
       id: stepupload
       uses: actions/upload-artifact@v1
       with:
         name: rdf-output
-        path: rdf-preppi.nt
+        path: rdf-huri.nt
 
   upload-rdf:
     runs-on: ubuntu-latest
@@ -45,11 +45,11 @@ jobs:
 
     - name: Upload file to GraphDB server
       run: |
-        curl -Ffile=@rdf-output/rdf-preppi.nt 'http://upload.137.120.31.102.nip.io/upload?token=${{ secrets.GRAPHDB_UPLOAD_TOKEN }}'
+        curl -Ffile=@rdf-output/rdf-huri.nt 'http://upload.137.120.31.102.nip.io/upload?token=${{ secrets.GRAPHDB_UPLOAD_TOKEN }}'
 
     - name: Start GraphDB import
       run: |
-        curl -X POST -u ${{ secrets.GRAPHDB_USER }}:${{ secrets.GRAPHDB_PASSWORD }} --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"fileNames": ["upload/rdf-preppi.nt"], "importSettings": {"context": "https://w3id.org/d2s/graph/preppi"}}' 'https://graphdb.dumontierlab.com/rest/data/import/server/test-vincent'
+        curl -X POST -u ${{ secrets.GRAPHDB_USER }}:${{ secrets.GRAPHDB_PASSWORD }} --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"fileNames": ["upload/rdf-huri.nt"], "importSettings": {"context": "https://w3id.org/d2s/graph/huri"}}' 'https://graphdb.dumontierlab.com/rest/data/import/server/test-vincent'
 
     # TODO: Add step to manage versioning (delete previous graph, load new graph, generate metadata)
     # TODO: Add step to wait for GraphDB import to end
@@ -61,18 +61,18 @@ jobs:
         endpoint: https://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements
         user: ${{ secrets.GRAPHDB_USER }}
         password: ${{ secrets.GRAPHDB_PASSWORD }}
-        inputvar: https://w3id.org/d2s/graph/preppi
+        inputvar: https://w3id.org/d2s/graph/huri
         outputvar: https://w3id.org/d2s/metadata
         servicevar: http://localhost:7200/repositories/ncats-red-kg
 
     - name: Run RDF to HDT
       uses: vemonet/rdfhdt-action@master
       with:
-        input: rdf-output/rdf-preppi.nt
-        output: hdt-preppi.hdt
+        input: rdf-output/rdf-huri.nt
+        output: hdt-huri.hdt
 
     - name: Upload HDT output artifact
       uses: actions/upload-artifact@v1
       with:
         name: hdt-output
-        path: hdt-preppi.hdt
+        path: hdt-huri.hdt
