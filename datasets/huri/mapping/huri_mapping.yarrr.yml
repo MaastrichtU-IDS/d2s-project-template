@@ -1,4 +1,3 @@
-### Using Split function with YARRRML: https://rml.io/yarrrml/matey/
 prefixes:
   grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
   rdfs: "http://www.w3.org/2000/01/rdf-schema#"
@@ -10,7 +9,7 @@ mappings:
     sources:
       - ['huri.csv~csv']
       # - ['/mnt/workspace/input/huri/huri.csv~csv']
-    s: https://w3id.org/d2s/data/protein/interaction/$(geneA):$(geneB)
+    s: https://w3id.org/d2s/data/huri/interaction/$(geneA):$(geneB)
     po:
       - [a, bl:PairwiseGeneToGeneInteraction]
       - p: bl:subject

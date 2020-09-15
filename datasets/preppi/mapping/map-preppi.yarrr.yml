@@ -1,0 +1,234 @@
+prefixes:
+  grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
+  xsd: "http://www.w3.org/2001/XMLSchema#"
+  rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+  bl: "https://w3id.org/biolink/vocab/"
+  d2s: "https://w3id.org/d2s/"
+  pubmed: "https://identifiers.org/pubmed:"
+
+mappings:
+  interactions:
+    sources:
+      - ['preppi.csv~csv']
+      ## TSV not working
+      # access: preppi.tsv
+      # referenceFormulation: csv
+      # delimiter: \t
+      # "prot1","prot2","str_score","protpep_score","str_max_score","red_score","ort_score","phy_score","coexp_score","go_score","total_score","dbs","pubs","exp_score","final_score"
+      # "Q13131","P14625","18.59","6.44772","18.59","4.2492","0.6153","2.416","9.4687","10.8","12008.4","","","","12008.4"
+      # "Q9Y2X7","Q9NPJ6","0","2.59","2.59","1.0145","0","2.416","1.5818","0","10.0415","BGDB|","pubmed:25281560|pubmed:25281575","957.82","9617.95"
+      # "Q9Y2X7","Q9NPJ6","0","2.59","2.59","1.0145","0","2.416","1.5818","0","10.0415","BGDB|","pubmed:25281560","957.82","9617.95"
+    s: https://w3id.org/d2s/data/preppi/interaction/$(prot1):$(prot2)
+    po:
+      - [a, bl:PairwiseGeneToGeneInteraction]
+      - p: bl:subject
+        o: https://identifiers.org/uniprot:$(prot1)~iri
+      - p: bl:object
+        o: https://identifiers.org/uniprot:$(prot2)~iri
+      - p: bl:relation
+        o: bl:interacts_with~iri
+      - p: bl:provided_by
+        o: d2s:graph/preppi~iri
+      - p: bl:has_confidence_level
+        o: d2s:data/preppi/interaction/$(prot1)_$(prot2)/str_score~iri
+      - p: bl:publications
+        o:
+            function: grel:string_split
+            parameters:
+                - [grel:p_string_sep, "\|"]
+                - [grel:valueParameter, $(pubs)]
+            type: iri
+      # - p: bl:provided_by
+      #   o:
+      #       function: grel:string_split
+      #       parameters:
+      #           - [grel:p_string_sep, "\|"]
+      #           - [grel:valueParameter, $(dbs)]
+      #       language: en
+
+  str_score:
+    sources:
+      - ['preppi.csv~csv']
+    s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/str_score
+    po:
+      - [a, bl:ConfidenceLevel]
+      - p: bl:name
+        o: PrePPI str_score for association $(prot1)-$(prot2)
+      - p: bl:has_numeric_value
+        o:
+          value: $(str_score)
+          datatype: xsd:double
+      - p: bl:category
+        o: d2s:model/preppi/str_score~iri
+      - p: bl:provided_by
+        o: d2s:graph/preppi~iri
+
+  protpep_score:
+    sources:
+      - ['preppi.csv~csv']
+    s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/protpep_score
+    po:
+      - [a, bl:ConfidenceLevel]
+      - p: bl:name
+        o: PrePPI protpep_score for association $(prot1)-$(prot2)
+      - p: bl:has_numeric_value
+        o:
+          value: $(protpep_score)
+          datatype: xsd:double
+      - p: bl:category
+        o: d2s:model/preppi/protpep_score~iri
+      - p: bl:provided_by
+        o: d2s:graph/preppi~iri
+
+  str_max_score:
+    sources:
+      - ['preppi.csv~csv']
+    s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/str_max_score
+    po:
+      - [a, bl:ConfidenceLevel]
+      - p: bl:name
+        o: PrePPI str_max_score for association $(prot1)-$(prot2)
+      - p: bl:has_numeric_value
+        o:
+          value: $(str_max_score)
+          datatype: xsd:double
+      - p: bl:category
+        o: d2s:model/preppi/str_max_score~iri
+      - p: bl:provided_by
+        o: d2s:graph/preppi~iri
+
+  red_score:
+    sources:
+      - ['preppi.csv~csv']
+    s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/red_score
+    po:
+      - [a, bl:ConfidenceLevel]
+      - p: bl:name
+        o: PrePPI red_score for association $(prot1)-$(prot2)
+      - p: bl:has_numeric_value
+        o:
+          value: $(red_score)
+          datatype: xsd:double
+      - p: bl:category
+        o: d2s:model/preppi/red_score~iri
+      - p: bl:provided_by
+        o: d2s:graph/preppi~iri
+
+  ort_score:
+    sources:
+      - ['preppi.csv~csv']
+    s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/ort_score
+    po:
+      - [a, bl:ConfidenceLevel]
+      - p: bl:name
+        o: PrePPI ort_score for association $(prot1)-$(prot2)
+      - p: bl:has_numeric_value
+        o:
+          value: $(ort_score)
+          datatype: xsd:double
+      - p: bl:category
+        o: d2s:model/preppi/ort_score~iri
+      - p: bl:provided_by
+        o: d2s:graph/preppi~iri
+
+  phy_score:
+    sources:
+      - ['preppi.csv~csv']
+    s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/phy_score
+    po:
+      - [a, bl:ConfidenceLevel]
+      - p: bl:name
+        o: PrePPI phy_score for association $(prot1)-$(prot2)
+      - p: bl:has_numeric_value
+        o:
+          value: $(phy_score)
+          datatype: xsd:double
+      - p: bl:category
+        o: d2s:model/preppi/phy_score~iri
+      - p: bl:provided_by
+        o: d2s:graph/preppi~iri
+
+  coexp_score:
+    sources:
+      - ['preppi.csv~csv']
+    s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/coexp_score
+    po:
+      - [a, bl:ConfidenceLevel]
+      - p: bl:name
+        o: PrePPI coexp_score for association $(prot1)-$(prot2)
+      - p: bl:has_numeric_value
+        o:
+          value: $(coexp_score)
+          datatype: xsd:double
+      - p: bl:category
+        o: d2s:model/preppi/coexp_score~iri
+      - p: bl:provided_by
+        o: d2s:graph/preppi~iri
+
+  go_score:
+    sources:
+      - ['preppi.csv~csv']
+    s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/go_score
+    po:
+      - [a, bl:ConfidenceLevel]
+      - p: bl:name
+        o: PrePPI go_score for association $(prot1)-$(prot2)
+      - p: bl:has_numeric_value
+        o:
+          value: $(go_score)
+          datatype: xsd:double
+      - p: bl:category
+        o: d2s:model/preppi/go_score~iri
+      - p: bl:provided_by
+        o: d2s:graph/preppi~iri
+
+  total_score:
+    sources:
+      - ['preppi.csv~csv']
+    s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/total_score
+    po:
+      - [a, bl:ConfidenceLevel]
+      - p: bl:name
+        o: PrePPI total_score for association $(prot1)-$(prot2)
+      - p: bl:has_numeric_value
+        o:
+          value: $(total_score)
+          datatype: xsd:double
+      - p: bl:category
+        o: d2s:model/preppi/total_score~iri
+      - p: bl:provided_by
+        o: d2s:graph/preppi~iri
+
+  exp_score:
+    sources:
+      - ['preppi.csv~csv']
+    s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/exp_score
+    po:
+      - [a, bl:ConfidenceLevel]
+      - p: bl:name
+        o: PrePPI exp_score for association $(prot1)-$(prot2)
+      - p: bl:has_numeric_value
+        o:
+          value: $(exp_score)
+          datatype: xsd:double
+      - p: bl:category
+        o: d2s:model/preppi/exp_score~iri
+      - p: bl:provided_by
+        o: d2s:graph/preppi~iri
+
+  final_score:
+    sources:
+      - ['preppi.csv~csv']
+    s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/final_score
+    po:
+      - [a, bl:ConfidenceLevel]
+      - p: bl:name
+        o: PrePPI final_score for association $(prot1)-$(prot2)
+      - p: bl:has_numeric_value
+        o:
+          value: $(final_score)
+          datatype: xsd:double
+      - p: bl:category
+        o: d2s:model/preppi/final_score~iri
+      - p: bl:provided_by
+        o: d2s:graph/preppi~iri
