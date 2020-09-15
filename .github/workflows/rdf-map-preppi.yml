@@ -24,7 +24,6 @@ jobs:
       with:
         mapping: datasets/preppi/mapping/map-preppi.rml.ttl
         output: rdf-preppi.nt
-        serialization: ntriples
 
     - name: Upload RDF output artifact
       id: stepupload
