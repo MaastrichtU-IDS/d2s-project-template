@@ -2,10 +2,11 @@ name: Generate GeoNames RDF using RML
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ master ]
-    paths:
-    - 'datasets/geonames/mapping/country_mapping.rml.ttl'
+  # push:
+  #   branches: [ master ]
+  #   paths:
+  #   - 'datasets/geonames/**'
+  #   - 'datasets/geonames/mapping/country_mapping.rml.ttl'
 
 # TODO: use workflow variables for graph URI and SPARQL endpoint URL
 

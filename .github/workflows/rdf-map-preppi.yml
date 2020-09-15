@@ -2,11 +2,11 @@ name: Generate PrePPI BioLink RDF using RML
 # TODO: use workflow variables for graph URI and SPARQL endpoint URL?
 on:
   workflow_dispatch:
-  push:
-    branches: [ master ]
-    paths:
-    - 'datasets/preppi/**'
-    - '.github/workflows/rdf-map-preppi.yml'
+  # push:
+  #   branches: [ master ]
+  #   paths:
+  #   - 'datasets/preppi/**'
+  #   - '.github/workflows/rdf-map-preppi.yml'
 
 jobs:
   generate-rdf:

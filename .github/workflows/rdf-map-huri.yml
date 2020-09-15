@@ -2,11 +2,11 @@ name: Generate HuRI BioLink RDF using RML
 # TODO: use workflow variables for graph URI and SPARQL endpoint URL
 on:
   workflow_dispatch:
-  push:
-    branches: [ master ]
-    paths:
-    - 'datasets/huri/**'
-    - '.github/workflows/rdf-map-huri.yml'
+  # push:
+  #   branches: [ master ]
+  #   paths:
+  #   - 'datasets/huri/**'
+  #   - '.github/workflows/rdf-map-huri.yml'
 
 jobs:
   generate-rdf:
