@@ -1,0 +1,78 @@
+name: Generate PrePPI BioLink RDF using RML
+# TODO: use workflow variables for graph URI and SPARQL endpoint URL?
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+    paths:
+    - 'datasets/preppi/**'
+    - '.github/workflows/rdf-generate-preppi.yml'
+
+jobs:
+  generate-rdf:
+    runs-on: ubuntu-latest
+    # runs-on: [self-hosted, linux, X64, node2]
+    outputs:
+      rdf-output: ${{ steps.stepupload.outputs.rdf_output }}
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Download CSV
+      run: datasets/preppi/download/download.sh
+
+    - uses: vemonet/rmlmapper-java@4.8
+      with:
+        mapping: datasets/preppi/mapping/map-preppi.rml.ttl
+        output: rdf-preppi.nt
+
+    - name: Upload RDF output artifact
+      id: stepupload
+      uses: actions/upload-artifact@v1
+      with:
+        name: rdf-output
+        path: rdf-preppi.nt
+
+  upload-rdf:
+    runs-on: ubuntu-latest
+    needs: generate-rdf
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Get RDF output artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: rdf-output
+
+    - name: Upload file to GraphDB server
+      run: |
+        curl -Ffile=@rdf-output/rdf-preppi.nt 'http://upload.137.120.31.102.nip.io/upload?token=${{ secrets.GRAPHDB_UPLOAD_TOKEN }}'
+
+    - name: Start GraphDB import
+      run: |
+        curl -X POST -u ${{ secrets.GRAPHDB_USER }}:${{ secrets.GRAPHDB_PASSWORD }} --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"fileNames": ["upload/rdf-preppi.nt"], "importSettings": {"context": "https://w3id.org/d2s/graph/preppi"}}' 'https://graphdb.dumontierlab.com/rest/data/import/server/test-vincent'
+
+    # TODO: Add step to manage versioning (delete previous graph, load new graph, generate metadata)
+    # TODO: Add step to wait for GraphDB import to end
+
+    - name: Compute and insert HCLS descriptive metadata
+      uses: MaastrichtU-IDS/sparql-operations-action@v1
+      with:
+        file: https://github.com/MaastrichtU-IDS/d2s-scripts-repository/tree/master/sparql/compute-hcls-stats
+        endpoint: https://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements
+        user: ${{ secrets.GRAPHDB_USER }}
+        password: ${{ secrets.GRAPHDB_PASSWORD }}
+        inputvar: https://w3id.org/d2s/graph/preppi
+        outputvar: https://w3id.org/d2s/metadata
+        servicevar: http://localhost:7200/repositories/ncats-red-kg
+
+    - name: Run RDF to HDT
+      uses: vemonet/rdfhdt-action@master
+      with:
+        input: rdf-output/rdf-preppi.nt
+        output: hdt-preppi.hdt
+
+    - name: Upload HDT output artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: hdt-output
+        path: hdt-preppi.hdt
