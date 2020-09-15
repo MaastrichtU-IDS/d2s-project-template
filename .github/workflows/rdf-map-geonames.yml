@@ -75,7 +75,7 @@ jobs:
     # TODO: Add step to wait for GraphDB import to end
 
     - name: Compute and insert HCLS descriptive metadata
-      uses: MaastrichtU-IDS/sparql-operations-action@v1
+      uses: vemonet/sparql-operations-action@v1
       with:
         file: https://github.com/MaastrichtU-IDS/d2s-scripts-repository/tree/master/sparql/compute-hcls-stats
         endpoint: https://graphdb.dumontierlab.com/repositories/test-vincent/statements
