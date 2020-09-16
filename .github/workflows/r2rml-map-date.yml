@@ -51,7 +51,7 @@ jobs:
     #     path: preppi.csv
 
     - name: Run AutoR2RML
-      uses: vemonet/rmlmapper-java@4.9.0
+      uses: vemonet/rmlmapper-java@v4.9.0
       with:
         mapping: datasets/preppi/mapping/map-preppi.rml.ttl
         output: rdf-preppi.nt
@@ -60,7 +60,7 @@ jobs:
         JAVA_TOOL_OPTIONS: "-XX:MaxRAMPercentage=80"
 
     - name: Run R2RML
-      uses: vemonet/rmlmapper-java@4.9.0
+      uses: vemonet/rmlmapper-java@v4.9.0
       with:
         mapping: datasets/preppi/mapping/map-preppi.rml.ttl
         output: rdf-preppi.nt

@@ -24,7 +24,7 @@ jobs:
       run: datasets/eggnog/download/download.sh
 
     - name: Run RML mapper
-      uses: vemonet/rmlmapper-java@4.9.0
+      uses: vemonet/rmlmapper-java@v4.9.0
       with:
         mapping: datasets/eggnog/mapping/map-eggnog.rml.ttl
         output: rdf-eggnog.nt

@@ -31,7 +31,7 @@ jobs:
     #     path: preppi.csv
 
     - name: Run RML mapper
-      uses: vemonet/rmlmapper-java@4.9.0
+      uses: vemonet/rmlmapper-java@v4.9.0
       with:
         mapping: datasets/preppi/mapping/map-preppi.rml.ttl
         output: rdf-preppi.nt

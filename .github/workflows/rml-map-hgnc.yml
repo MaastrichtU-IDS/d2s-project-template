@@ -31,7 +31,7 @@ jobs:
     #     path: hgnc.csv
 
     - name: Run RML mapper
-      uses: vemonet/rmlmapper-java@4.9.0
+      uses: vemonet/rmlmapper-java@v4.9.0
       with:
         mapping: datasets/hgnc/mapping/map-hgnc.rml.ttl
         output: rdf-hgnc.nt
