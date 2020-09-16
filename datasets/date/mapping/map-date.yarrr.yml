@@ -17,24 +17,36 @@ mappings:
 
     s: https://w3id.org/d2s/data/date/interaction/$(Drug_ID_Stitch)_$(Target(uniprot\))
     po:
-      - [a, bl:PairwiseGeneToGeneInteraction]
+      - [a, bl:ChemicalToGeneAssociation]
       - p: bl:subject
         o: https://identifiers.org/pubchem.compound/$(Drug_ID_Stitch)~iri
+        # TODO: remove CID from the ID for proper URI
       - p: bl:object
         o: https://identifiers.org/uniprot:$(Target(uniprot\))~iri
       - p: bl:relation
         o: bl:interacts_with~iri
       - p: bl:provided_by
         o: d2s:dataset/date/$(Dataset)~iri
-      - p: bl:part_of
+      - p: bl:participates_in
         o: $(Pathway)
       - p: bl:part_of
-        o:
-            function: idlab:toUpperCaseURL
-            parameters:
-                - [idlab:str, "https://w3id.org/d2s/data/date/pathway/$(Pathway)"]
-            type: iri
+        o: $(Tissue)
+      # - p: bl:part_of
+      #   o:
+      #       function: idlab:toUpperCaseURL
+      #       parameters:
+      #           - [idlab:str, "https://w3id.org/d2s/data/date/pathway/$(Pathway)"]
+      #       type: iri
 
-        # Also pathway part_of tissue
-
+      # Also pathway part_of tissue
+      # TODO: generate a URI for Pathway (do it through preprocessing?)
+      # We could have a python script which iterates over Pathway row to resolve the URI
   
+  drugs:
+    sources:
+      - ['date.csv~csv']
+    s: https://identifiers.org/pubchem.compound/$(Drug_ID_Stitch)~iri
+    po:
+      - [a, bl:ChemicalSubstance]
+      - p: bl:name
+        o: $(Drug_name)

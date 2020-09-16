@@ -1,0 +1,36 @@
+prefixes:
+  grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
+  xsd: "http://www.w3.org/2001/XMLSchema#"
+  rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+  bl: "https://w3id.org/biolink/vocab/"
+  d2s: "https://w3id.org/d2s/"
+  pubmed: "https://identifiers.org/pubmed:"
+
+mappings:
+  members:
+    sources:
+      - ['NOG.members.csv~csv']
+      # TaxonomicLevel\tGroupName\tProteinCount\tSpeciesCount\tCOGFunctionalCategory\tProteinIDs
+    s: https://w3id.org/d2s/data/eggnog/group/$(GroupName)
+    po:
+      - [a, bl:GeneGrouping]
+      - p: bl:provided_by
+        o: d2s:graph/eggnog~iri
+      - p: bl:in_taxon
+        o: d2s:model/taxon/$(TaxonomicLevel)
+      - p: bl:has_participant
+        o:
+            function: grel:string_split
+            parameters:
+                - [grel:p_string_sep, "\|"]
+                - [grel:valueParameter, $(ProteinIDs)]
+            # type: iri
+
+  annotations:
+    sources:
+      - ['NOG.annotations.csv~csv']
+      # TaxonomicLevel\tGroupName\tProteinCount\tSpeciesCount\tCOGFunctionalCategory\tConsensusFunctionalDescription
+    s: https://w3id.org/d2s/data/eggnog/group/$(GroupName)
+    po:
+      - p: bl:name
+        o: $(ConsensusFunctionalDescription)
