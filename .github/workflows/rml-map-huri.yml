@@ -31,7 +31,7 @@ jobs:
       run: datasets/huri/download/download.sh
 
     - name: Run RML mapper
-      uses: vemonet/rmlmapper-java@4.8
+      uses: vemonet/rmlmapper-java@4.9.0
       with:
         mapping: datasets/huri/mapping/huri_mapping.rml.ttl
         output: rdf-huri.nt

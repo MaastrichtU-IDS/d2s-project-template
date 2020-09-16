@@ -1,4 +1,4 @@
-name: PrePPI to BioLink RDF
+name: DATE to BioLink RDF
 # TODO: Add step to manage versioning (delete previous graph, load new graph, generate metadata)
 on:
   workflow_dispatch:
@@ -10,18 +10,38 @@ on:
       graph:
         description: 'In the Graph'
         required: true
-        default: 'https://w3id.org/d2s/graph/preppi'
+        default: 'https://w3id.org/d2s/graph/date'
 jobs:
   generate-rdf:
     runs-on: ubuntu-latest
     # runs-on: [self-hosted, linux, X64, node2]
+    services:
+      virtuoso:
+        image: umids/d2s-virtuoso:latest
+        ports:
+          - 8890:8890
+        env:
+          DBA_PASSWORD: dba
+          SPARQL_UPDATE: true
+          VIRT_Parameters_DirsAllowed: ., /, /usr/local/virtuoso-opensource/share/virtuoso/vad, /usr/local/virtuoso-opensource/var/lib/virtuoso/db
+          VIRT_SPARQL_ResultSetMaxRows: 999999999999999999
+          VIRT_SPARQL_MaxQueryCostEstimationTime: 0
+          VIRT_SPARQL_MaxQueryExecutionTime: 14400
+          VIRT_VDB_VDBDisconnectTimeout: 7200000
+          VIRT_Client_SQL_QUERY_TIMEOUT: 14400000
+          VIRT_CLient_SQL_TXN_TIMEOUT: 14400000
+          VIRT_Database_ErrorLogLevel: 0 # default: 7 is maximum logs
+          VIRT_Parameters_Timeout: 7200
+          VIRT_Parameters_TransactionAfterImageLimit: 5000000000 # default is 50M
+          VIRT_Parameters_NumberOfBuffers: 493674
+
     outputs:
       rdf-output: ${{ steps.stepupload.outputs.rdf_output }}
     steps:
     - uses: actions/checkout@v2
 
     - name: Download CSV
-      run: datasets/preppi/download/download.sh
+      run: datasets/date/download/download.sh
 
     # - name: Upload CSV input artifact
     #   id: uploadcsv
@@ -30,14 +50,43 @@ jobs:
     #     name: preppi-csv
     #     path: preppi.csv
 
-    - name: Run RML mapper
+    - name: Run AutoR2RML
       uses: vemonet/rmlmapper-java@4.9.0
       with:
         mapping: datasets/preppi/mapping/map-preppi.rml.ttl
         output: rdf-preppi.nt
       env:
-        JAVA_OPTS: "-Xmx6g"
-        # JAVA_TOOL_OPTIONS: "-XX:MaxRAMPercentage=80"
+        JAVA_OPTS: "-Xmx5g"
+        JAVA_TOOL_OPTIONS: "-XX:MaxRAMPercentage=80"
+
+    - name: Run R2RML
+      uses: vemonet/rmlmapper-java@4.9.0
+      with:
+        mapping: datasets/preppi/mapping/map-preppi.rml.ttl
+        output: rdf-preppi.nt
+      env:
+        JAVA_OPTS: "-Xmx5g"
+        JAVA_TOOL_OPTIONS: "-XX:MaxRAMPercentage=80"
+
+    - name: Upload AutoR2RML RDF
+      uses: MaastrichtU-IDS/RdfUpload@master
+      with:
+        file: rdf-output/rdf-preppi.nt
+        endpoint: http://virtuoso:8890/sparql
+        user: dba
+        password: dba
+        graph: https://w3id.org/d2s/graph/autor2rml
+
+    - name: Run SPARQL queries to convert DATE
+      uses: vemonet/sparql-operations-action@v1
+      with:
+        file: datasets/date/mapping
+        endpoint: ${{ github.event.inputs.endpoint }}
+        user: ${{ secrets.GRAPHDB_USER }}
+        password: ${{ secrets.GRAPHDB_PASSWORD }}
+        inputvar: https://sparql.uniprot.org
+        outputvar: ${{ github.event.inputs.graph }}
+        servicevar: https://sparql.uniprot.org
 
     - name: Upload RDF output artifact
       id: stepupload

@@ -46,8 +46,8 @@ WHERE {
     GRAPH <?_input> {
       # To filter out Drug_target_reactome_pathway_filtered.tsv file
       # TODO: Be careful the file path in the type can change:
-      ?s a <http://data2services/data/ncats/date/Drug_target_reactome_pathway.tsv> ;
-        d2smodel:Drug_idStitch ?drugId ; # eg: CID000004927
+      # ?s a <http://data2services/data/ncats/date/Drug_target_reactome_pathway.tsv> ;
+      ?s d2smodel:Drug_idStitch ?drugId ; # eg: CID000004927
         d2smodel:Drug_name ?drugName .
       BIND( iri(concat("https://identifiers.org/pubchem.compound/", replace(?drugId, "CID", "") ) ) AS ?drugUri )
 
