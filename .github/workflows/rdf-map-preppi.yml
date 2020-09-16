@@ -1,4 +1,4 @@
-name: Generate PrePPI BioLink RDF using RML
+name: Convert PrePPI to BioLink RDF
 # TODO: Add step to manage versioning (delete previous graph, load new graph, generate metadata)
 on:
   workflow_dispatch:

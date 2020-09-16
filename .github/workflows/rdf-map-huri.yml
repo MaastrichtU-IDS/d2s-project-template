@@ -1,5 +1,6 @@
-name: Generate HuRI BioLink RDF using RML
+name: Convert HuRI to BioLink RDF
 # TODO: Add step to manage versioning (delete previous graph, load new graph, generate metadata)
+# 7,336,115 before reload
 on:
   workflow_dispatch:
     inputs:
