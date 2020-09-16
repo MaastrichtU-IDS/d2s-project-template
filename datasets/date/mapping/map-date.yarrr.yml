@@ -1,0 +1,40 @@
+prefixes:
+  grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
+  idlab: "http://example.com/idlab/function/"
+  xsd: "http://www.w3.org/2001/XMLSchema#"
+  rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+  bl: "https://w3id.org/biolink/vocab/"
+  d2s: "https://w3id.org/d2s/"
+  pubmed: "https://identifiers.org/pubmed:"
+
+mappings:
+  interactions:
+    sources:
+      - ['date.csv~csv']
+      # Dataset Drug_name Drug_ID(Stitch) Tissue  Cell_line_ID  Target(uniprot) Target(symbol)  Target_class  Pathway Pathway_size
+      # U133A leuprolide acetate  CID000003911  Pituitary NA  P30968  GNRHR gpcr   Eukaryotic Translation Elongation  89
+      # U133A leuprolide acetate  CID000003911  Pituitary NA  P30968  GNRHR gpcr   Growth hormone receptor signaling  41
+
+    s: https://w3id.org/d2s/data/date/interaction/$(prot1):$(prot2)
+    po:
+      - [a, bl:PairwiseGeneToGeneInteraction]
+      - p: bl:subject
+        o: https://identifiers.org/pubchem.compound/$(Drug_ID(Stitch))~iri
+      - p: bl:object
+        o: https://identifiers.org/uniprot:$(Target(uniprot))~iri
+      - p: bl:relation
+        o: bl:interacts_with~iri
+      - p: bl:provided_by
+        o: d2s:dataset/date/$(Dataset)~iri
+      - p: bl:part_of
+        o: $(Pathway)
+      - p: bl:part_of
+        o:
+            function: idlab:toUpperCaseURL
+            parameters:
+                - [idlab:str, "https://w3id.org/d2s/data/date/pathway/$(Pathway)"]
+            type: iri
+
+        # Also pathway part_of tissue
+
+  
