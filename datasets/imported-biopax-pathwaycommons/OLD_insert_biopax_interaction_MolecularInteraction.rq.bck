@@ -1,0 +1,97 @@
+PREFIX d2sgeneric: <http://data2services/data/hgnc/hgnc_complete_set.tsv/>
+PREFIX d2smodel: <http://data2services/model/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX bl: <https://w3id.org/biolink/vocab/>
+PREFIX w3idvocab: <https://w3id.org/data2services/vocab/>
+PREFIX oban: <http://purl.org/oban/>
+PREFIX wp: <http://vocabularies.wikipathways.org/wp#>
+PREFIX bp: <http://www.biopax.org/release/biopax-level3.owl#>
+
+INSERT
+{
+  GRAPH <?_output> {  
+
+    # A physical entity consisting of a sequence of amino acids; a protein monomer; a single polypeptide chain. 
+    # Example: The epidermal growth factor receptor (EGFR) protein.
+
+        # https://graphdb.dumontierlab.com/resource?uri=http:%2F%2Fidentifiers.org%2Freactome%2FR-HSA-109704
+    # bp:pathwayComponent, bp:organism, bp:xref (for pubmed and shitty pc)
+    
+    ?interactionUri a bl:Interaction ;
+          #<http://purl.obolibrary.org/obo/NCBITaxon_9606> link using https://biolink.github.io/biolink-model/docs/AnatomicalEntityToAnatomicalEntityPartOfAssociation.html ?
+          bl:name ?displayName ;
+          bl:description ?comment ;
+          bl:subject ?participantId ;
+          bl:object ?participantId ; # TODO
+          bl:in_taxon ?pathwayOrganism ; # or part_of?
+          bl:has_evidence ?xrefPublication ;
+          bl:has_evidence ?evidenceUri .
+          #bl:publications ?pathwayReferences .
+
+    ?pathwayComponent bl:part_of ?pathwayUri . # TODO: should we really use part_of? What about the pathwayOrder?
+    ?pathwayOrganism a bl:OrganismTaxon .
+ }
+}
+WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+      ?interactionUri a bp:MolecularInteraction .
+        #bp:pathwayOrder ?pathwayOrder . # order of the components in the pathway (bad uri)
+        
+      OPTIONAL {
+        ?pathwayUri bp:participant [ bp:entityReference ?participantId ] . # other pathways
+      } OPTIONAL {
+        ?pathwayUri bp:organism ?pathwayOrganism ;
+      } OPTIONAL {
+        ?pathwayUri bp:comment ?comment .
+      } OPTIONAL {
+        ?pathwayUri bp:displayName ?displayName .
+      } OPTIONAL {
+        ?pathwayUri bp:evidence [ bp:xref ?evidenceUri ] .
+        ?evidenceUri a bp:PublicationXref . # only Pubmed identifiers.org
+      } OPTIONAL {
+        ?pathwayUri bp:xref ?xrefPublication .
+        ?xrefPublication a bp:PublicationXref . # only Pubmed identifiers.org
+      }
+    }
+  }
+}
+
+
+
+
+
+    # https://graphdb.dumontierlab.com/resource?uri=http:%2F%2Fpathwaycommons.org%2Fpc2%2F%23MolecularInteraction_00f013c9-ad89-45d7-abac-470dae2c7f94__IM-17442-7_2579392_
+    # It has bp:participant, bp:evidence
+
+    ?directedInteraction a bl:ChemicalToThingAssociation ; # Chemical causing molecular modification (conversion) to another Chemical 
+          bl:chemical_to_thing_association_subject ?source ;
+          bl:relation bl:disrupts ;
+          bl:chemical_to_thing_association_object ?target ;
+          bl:publications ?citation ;
+          bl:part_of ?isPartOf . # Interaction in this pathway
+ }
+}
+WHERE {
+  SERVICE <?_service>  {
+    GRAPH <?_input> {
+
+      # Binding: A binding interaction between two physical entities resulting in the formation of an explicit complex that is reversible without an external factor (e.g. protein complexes).
+      # ComplexBinding: A binding interaction that specifically leads to the formation of a complex.
+      # Multiple wp:participants. So we don't take at the moment
+      
+      # Conversion: A process in which a biological entity gets converted into another entity. This could be a metabolic conversion where compound gets chemical modified.
+
+      ?directedInteraction a ?interactionType ;
+          wp:source ?source ;
+          wp:target ?target ; # Interacts_with http://purl.obolibrary.org/obo/RO_0002434
+          dct:bibliographicCitation ?citation ;
+          dct:isPartOf ?isPartOf .
+      
+      #FILTER(?interactionType IN (wp:Conversion , wp:ComplexBinding , wp:Binding ))
+}
+}
+}
