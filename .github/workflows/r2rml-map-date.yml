@@ -1,5 +1,5 @@
 name: DATE to BioLink RDF
-# TODO: Add step to manage versioning (delete previous graph, load new graph, generate metadata)
+# TODO: Use graphdb as tmp triplestore?
 on:
   workflow_dispatch:
     inputs:

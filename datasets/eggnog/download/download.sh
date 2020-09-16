@@ -7,9 +7,9 @@
 wget -N http://eggnogdb.embl.de/download/latest/data/NOG/NOG.members.tsv.gz
 wget -N http://eggnogdb.embl.de/download/latest/data/NOG/NOG.annotations.tsv.gz
 
-find . -name "*.gz" -exec gzip -d  {} +
-
+gzip -d "*.gz"
 # Add columns name
+
 sed -i '1s/^/TaxonomicLevel\tGroupName\tProteinCount\tSpeciesCount\tCOGFunctionalCategory\tProteinIDs\n/' NOG.members.tsv
 sed -i '1s/^/TaxonomicLevel\tGroupName\tProteinCount\tSpeciesCount\tCOGFunctionalCategory\tConsensusFunctionalDescription\n/' NOG.annotations.tsv
 
