@@ -1,4 +1,4 @@
-name: Convert HuRI to BioLink RDF
+name: Convert WikiPathways to BioLink RDF
 # TODO: Add step to manage versioning (delete previous graph, load new graph, generate metadata)
 on:
   workflow_dispatch:
