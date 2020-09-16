@@ -43,8 +43,8 @@ INSERT
     # https://biolink.github.io/biolink-model/docs/TranscriptToGeneRelationship.html
     ?refseqAssociationUri a bl:TranscriptToGeneRelationship ;
       bl:id ?refseqAssociationUriId ;
-      bl:transcript_to_gene_relationship_subject ?RefseqAccessionUri ;
-      bl:transcript_to_gene_relationship_object ?hgncUri ;
+      bl:subject ?RefseqAccessionUri ;
+      bl:object ?hgncUri ;
       bl:relation bl:expresses .
 
     ?RefseqAccessionUri a bl:Transcript ;
