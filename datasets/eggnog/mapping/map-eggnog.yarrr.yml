@@ -17,7 +17,7 @@ mappings:
       - p: bl:provided_by
         o: d2s:graph/eggnog~iri
       - p: bl:in_taxon
-        o: d2s:model/taxon/$(TaxonomicLevel)
+        o: d2s:model/taxon/$(TaxonomicLevel)~iri
       - p: bl:has_participant
         o:
             function: grel:string_split
