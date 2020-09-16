@@ -7,16 +7,11 @@ wget -N https://honiglab.c2b2.columbia.edu/PrePPI/ref/preppi_final600.txt.tar.gz
 tar -xzvf *.tar.gz
 
 # Rename .txt to .tsv
-# rename s/\.txt/.tsv/ *.txt
-mv preppi_final600.txt preppi_final600.tsv
+# Convert commas to | for ddbs column and PubMed publications CURIEs to URIs
+sed -e 's/,/|/g' -e 's/pubmed:/https:\/\/identifiers.org\/pubmed:/g' preppi_final600.txt > preppi.tsv
 
-# Convert commas to | for ddbs column
-sed -e 's/,/|/g' preppi_final600.tsv > preppi_final600.tsv
-# Convert PubMed publications CURIEs to URIs
-sed -e 's/pubmed:/https:\/\/identifiers.org\/pubmed:/g' preppi_final600.tsv > preppi_final600.tsv
 # Convert TSV to CSV for RMLStreamer
-sed -e 's/"/\\"/g' -e 's/\t/","/g' -e 's/^/"/' -e 's/$/"/'  -e 's/\r//' preppi_final600.tsv > preppi.csv
-
+sed -e 's/"/\\"/g' -e 's/\t/","/g' -e 's/^/"/' -e 's/$/"/'  -e 's/\r//' preppi.tsv > preppi.csv
 
 # prot1	prot2	str_score	protpep_score	str_max_score	red_score	ort_score	phy_score	coexp_score	go_score	total_score	dbs	pubs	exp_score	final_score
 # Q13131	P14625	18.59	6.44772	18.59	4.2492	0.6153	2.416	9.4687	10.8	12008.4				12008.4
