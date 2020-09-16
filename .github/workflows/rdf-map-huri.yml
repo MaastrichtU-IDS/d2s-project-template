@@ -8,7 +8,7 @@ on:
         required: true
         default: 'https://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements'
       graph:
-        description: 'Upload to Graph'
+        description: 'In the Graph'
         required: true
         default: 'https://w3id.org/d2s/graph/huri'
   # push:
