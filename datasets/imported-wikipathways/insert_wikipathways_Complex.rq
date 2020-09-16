@@ -8,7 +8,7 @@ PREFIX bl: <https://w3id.org/biolink/vocab/>
 PREFIX w3idvocab: <https://w3id.org/d2s/vocab/>
 PREFIX oban: <http://purl.org/oban/>
 PREFIX wp: <http://vocabularies.wikipathways.org/wp#>
-
+# http://sparql.wikipathways.org/sparql
 # Don't stop processing. But if used as select * it resolves in seconds. So the insert should work
 INSERT
 {
@@ -23,7 +23,7 @@ INSERT
           #bl:same_as ?xrefNcbigene ;
           #bl:same_as ?xrefChebi ;
           #bl:same_as ?xrefPubchem ;
-          bl:same_as ?xrefWikidata ;
+          bl:same_as ?xrefWikidata .
           #bl:same_as ?xrefHmdb ;
           #bl:same_as ?xrefChemspider 
           .
@@ -34,11 +34,11 @@ INSERT
 WHERE {
   SERVICE <?_service>  {
     GRAPH <?_input> {
-      ?dataNode a wp:Complex ;
+      ?dataNode a wp:Complex .
       BIND (str(?dataNode) AS ?dataNodeId)
 
       OPTIONAL {
-          ?dataNode dc:identifier ?id ;
+          ?dataNode dc:identifier ?id .
       } OPTIONAL {
           ?dataNode rdfs:label ?label .
       } OPTIONAL {

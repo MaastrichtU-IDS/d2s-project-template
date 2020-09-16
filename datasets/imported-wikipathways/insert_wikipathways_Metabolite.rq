@@ -25,7 +25,7 @@ INSERT
           #bl:same_as ?xrefPubchem ;
           bl:same_as ?xrefWikidata ;
           #bl:same_as ?xrefHmdb ;
-          bl:same_as ?xrefChemspider 
+          bl:same_as ?xrefChemspider . 
           .
  }
 }

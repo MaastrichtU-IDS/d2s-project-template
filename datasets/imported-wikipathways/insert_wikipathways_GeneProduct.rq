@@ -24,7 +24,7 @@ INSERT
           #bl:same_as ?xrefNcbigene ;
           #bl:same_as ?xrefChebi ;
           #bl:same_as ?xrefPubchem ;
-          bl:same_as ?xrefWikidata ;
+          bl:same_as ?xrefWikidata .
           #bl:same_as ?xrefHmdb ;
           #bl:same_as ?xrefChemspider 
           .
