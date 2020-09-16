@@ -1,51 +1,60 @@
-name: Convert HuRI to BioLink RDF
-# TODO: Add step to manage versioning (delete previous graph, load new graph, generate metadata)
-# 7,336,115 before reload
+name: GeoNames to RDF
 on:
   workflow_dispatch:
     inputs:
       endpoint:
         description: 'Upload to SPARQL endpoint'
         required: true
-        default: 'https://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements'
+        default: 'https://graphdb.dumontierlab.com/repositories/test/statements'
       graph:
         description: 'In the Graph'
         required: true
-        default: 'https://w3id.org/d2s/graph/huri'
-  # push:
-  #   branches: [ master ]
-  #   paths:
-  #   - 'datasets/huri/**'
-  #   - '.github/workflows/rdf-map-huri.yml'
+        default: 'https://w3id.org/d2s/graph/geonames'
 
 jobs:
+  download-input:
+    runs-on: ubuntu-latest
+    steps: 
+    - name: Download CSV
+      run: |
+        wget https://raw.githubusercontent.com/MaastrichtU-IDS/UM_KEN4256_KnowledgeGraphs/master/dataset-geonames-countryInfo.csv
+    - name: Upload CSV input artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: input
+        path: dataset-geonames-countryInfo.csv
+
   generate-rdf:
     runs-on: ubuntu-latest
-    # runs-on: [self-hosted, linux, X64, node2]
+    needs: download-input
     outputs:
       rdf-output: ${{ steps.stepupload.outputs.rdf_output }}
+
     steps:
     - uses: actions/checkout@v2
 
-    - name: Download CSV
-      run: datasets/huri/download/download.sh
+    - name: Get CSV input artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: input
 
     - name: Run RML mapper
       uses: vemonet/rmlmapper-java@4.8
       with:
-        mapping: datasets/huri/mapping/huri_mapping.rml.ttl
-        output: rdf-huri.nt
+        mapping: datasets/geonames/mapping/country_mapping.rml.ttl
+        output: rdf-geonames.nt
 
     - name: Upload RDF output artifact
       id: stepupload
       uses: actions/upload-artifact@v1
       with:
         name: rdf-output
-        path: rdf-huri.nt
+        path: rdf-geonames.nt
 
   upload-rdf:
     runs-on: ubuntu-latest
     needs: generate-rdf
+    
     steps:
     - uses: actions/checkout@v2
 
@@ -57,20 +66,12 @@ jobs:
     - name: Upload RDF
       uses: MaastrichtU-IDS/RdfUpload@master
       with:
-        file: rdf-output/rdf-huri.nt
+        file: rdf-output/rdf-geonames.nt
         endpoint: ${{ github.event.inputs.endpoint }}
         user: ${{ secrets.GRAPHDB_USER }}
         password: ${{ secrets.GRAPHDB_PASSWORD }}
         graph: ${{ github.event.inputs.graph }}
 
-    # - name: Upload file to GraphDB server
-    #   run: |
-    #     curl -Ffile=@rdf-output/rdf-preppi.nt 'http://upload.137.120.31.102.nip.io/upload?token=${{ secrets.GRAPHDB_UPLOAD_TOKEN }}'
-
-    # - name: Start GraphDB import
-    #   run: |
-    #     curl -X POST -u ${{ secrets.GRAPHDB_USER }}:${{ secrets.GRAPHDB_PASSWORD }} --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"fileNames": ["upload/rdf-preppi.nt"], "importSettings": {"context": "${{ github.event.inputs.graph }}"}}' '${{ github.event.inputs.graphdb_url }}/rest/data/import/server/${{ github.event.inputs.graphdb_repo }}'
-    # TODO: Add step to wait for GraphDB import to end
 
     - name: Compute and insert HCLS descriptive metadata
       uses: vemonet/sparql-operations-action@v1
@@ -82,16 +83,33 @@ jobs:
         inputvar: ${{ github.event.inputs.graph }}
         outputvar: https://w3id.org/d2s/metadata
         servicevar: ${{ github.event.inputs.endpoint }}
-        # servicevar: http://localhost:7200/repositories/ncats-red-kg
 
     - name: Run RDF to HDT
       uses: vemonet/rdfhdt-action@master
       with:
-        input: rdf-output/rdf-huri.nt
-        output: hdt-huri.hdt
+        input: rdf-output/rdf-geonames.nt
+        output: hdt-geonames.hdt
 
     - name: Upload HDT output artifact
       uses: actions/upload-artifact@v1
       with:
         name: hdt-output
-        path: hdt-huri.hdt
+        path: hdt-geonames.hdt
+
+    # - name: Connect to VPN
+    #   run: |
+    #     sudo apt-get install -y openconnect network-manager-openconnect
+    #     echo '${{ secrets.VPN_PASSWORD }}' | sudo openconnect --passwd-on-stdin --no-xmlpost --non-inter --background --authgroup ${{ secrets.VPN_GROUP }} --user ${{ secrets.VPN_USER }} ${{ secrets.VPN_URL }}
+    #     sleep 10
+
+    # - name: Copy file via SCP
+    #   uses: appleboy/scp-action@master
+    #   with:
+    #     host: ${{ secrets.SERVER_URL }}
+    #     username: ${{ secrets.SERVER_USER }}
+    #     port: 22
+    #     key: ${{ secrets.SERVER_KEY }}
+    #     source: "rdf-output/rdf_output.nq"
+    #     target: "/data/graphdb-import"
+      # ${{needs.generate-rdf.outputs.rdf_output}}
+    
