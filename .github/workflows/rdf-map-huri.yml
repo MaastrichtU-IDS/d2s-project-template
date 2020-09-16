@@ -46,6 +46,7 @@ jobs:
     - name: Upload RDF
       uses: MaastrichtU-IDS/RdfUpload@master
       with:
+        file: rdf-output/rdf-huri.nt
         endpoint: https://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements
         user: ${{ secrets.GRAPHDB_USER }}
         password: ${{ secrets.GRAPHDB_PASSWORD }}
