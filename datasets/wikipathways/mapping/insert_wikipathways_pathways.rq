@@ -16,7 +16,7 @@ INSERT
     ?pathwayUri a bl:Pathway ;
           #<http://purl.obolibrary.org/obo/NCBITaxon_9606> link using https://biolink.github.io/biolink-model/docs/AnatomicalEntityToAnatomicalEntityPartOfAssociation.html ?
           bl:name ?pathwayName ;
-          bl:id ?pathwayUriId
+          bl:id ?pathwayUriId ;
           dc:identifier ?pathwayId ;
           bl:description ?pathwayDescription ;
           bl:in_taxon ?pathwayOrganism . # or part_of?
