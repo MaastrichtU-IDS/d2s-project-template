@@ -17,9 +17,9 @@ INSERT
 
     # https://biolink.github.io/biolink-model/docs/GeneToGeneHomologyAssociation.html
     ?associationUri a bl:PairwiseGeneToGeneInteraction ;
-      bl:pairwise_gene_to_gene_interaction_relation ?relationUri ; # activate etc
-      bl:gene_to_gene_association_subject ?uriProtSource ;
-      bl:gene_to_gene_association_object ?uriProtTarget ;
+      bl:relation ?relationUri ; # activate etc
+      bl:subject ?uriProtSource ;
+      bl:object ?uriProtTarget ;
       bl:has_confidence_level ?ConfidenceLevelUri .
     # Also use? https://biolink.github.io/biolink-model/docs/interacting_molecules_category.html
 

@@ -10,7 +10,7 @@ on:
       graph:
         description: 'In the Graph'
         required: true
-        default: 'https://w3id.org/d2s/graph/huri'
+        default: 'https://w3id.org/d2s/graph/preppi'
 jobs:
   generate-rdf:
     runs-on: ubuntu-latest
@@ -37,6 +37,7 @@ jobs:
         output: rdf-preppi.nt
       env:
         JAVA_OPTS: "-Xmx5g"
+        JAVA_TOOL_OPTIONS: "-XX:MaxRAMPercentage=80"
 
     - name: Upload RDF output artifact
       id: stepupload

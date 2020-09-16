@@ -22,9 +22,9 @@ INSERT
 
     ?interactionUri a bl:MacromolecularMachineToBiologicalProcessAssociation ;
       bl:relation bl:expressed_in ;
-      bl:macromolecular_machine_to_biological_process_association_subject ?protUri ;
-      bl:macromolecular_machine_to_biological_process_association_object ?pathwayUri ;
-      bl:has_confidence_level ?pathwayPvalueUri ;
+      bl:subject ?protUri ;
+      bl:object ?pathwayUri ;
+      bl:p_value ?pathwayPvalue ;
       bl:quantifier_qualifier ?highScoreUri ;
       bl:quantifier_qualifier ?specificScoreUri .
 
@@ -39,11 +39,6 @@ INSERT
       bl:name "Specific GPCR z-score" ;
       bl:description "z-score of GPCR represents how specific the GPCR is expressed in the tissue" ;
       bl:node_property ?zScoreSpecificExpression .
-
-    ?pathwayPvalueUri a bl:ConfidenceLevel ;
-      bl:id "pathwayPvalue" ;
-      bl:name "p-value of the pathway" ;
-      bl:node_property ?pathwayPvalue .
 
  }
 }

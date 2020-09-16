@@ -1,5 +1,4 @@
 name: Convert GeoNames to RDF
-
 on:
   workflow_dispatch:
     inputs:
@@ -11,11 +10,7 @@ on:
         description: 'In the Graph'
         required: true
         default: 'https://w3id.org/d2s/graph/geonames'
-  # push:
-  #   branches: [ master ]
-  #   paths:
-  #   - 'datasets/geonames/**'
-  #   - 'datasets/geonames/mapping/country_mapping.rml.ttl'
+
 jobs:
   download-input:
     runs-on: ubuntu-latest
