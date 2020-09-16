@@ -15,13 +15,13 @@ mappings:
       # U133A leuprolide acetate  CID000003911  Pituitary NA  P30968  GNRHR gpcr   Eukaryotic Translation Elongation  89
       # U133A leuprolide acetate  CID000003911  Pituitary NA  P30968  GNRHR gpcr   Growth hormone receptor signaling  41
 
-    s: https://w3id.org/d2s/data/date/interaction/$(prot1):$(prot2)
+    s: https://w3id.org/d2s/data/date/interaction/$(Drug_ID_Stitch)_$(Target(uniprot\))
     po:
       - [a, bl:PairwiseGeneToGeneInteraction]
       - p: bl:subject
-        o: https://identifiers.org/pubchem.compound/$(Drug_ID(Stitch))~iri
+        o: https://identifiers.org/pubchem.compound/$(Drug_ID_Stitch)~iri
       - p: bl:object
-        o: https://identifiers.org/uniprot:$(Target(uniprot))~iri
+        o: https://identifiers.org/uniprot:$(Target(uniprot\))~iri
       - p: bl:relation
         o: bl:interacts_with~iri
       - p: bl:provided_by
