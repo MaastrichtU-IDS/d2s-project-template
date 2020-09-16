@@ -3,11 +3,14 @@ name: Generate PrePPI BioLink RDF using RML
 on:
   workflow_dispatch:
     inputs:
-      sparql:
-        description: 'SPARQL endpoint to store the generated RDF'
+      endpoint:
+        description: 'Upload to SPARQL endpoint'
         required: true
         default: 'https://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements'
-        # ${{ github.event.inputs.name }}
+      graph:
+        description: 'Upload to Graph'
+        required: true
+        default: 'https://w3id.org/d2s/graph/huri'
   # push:
   #   branches: [ master ]
   #   paths:

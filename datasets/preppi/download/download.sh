@@ -7,7 +7,8 @@ wget -N https://honiglab.c2b2.columbia.edu/PrePPI/ref/preppi_final600.txt.tar.gz
 tar -xzvf *.tar.gz
 
 # Rename .txt to .tsv
-rename s/\.txt/.tsv/ *.txt
+# rename s/\.txt/.tsv/ *.txt
+mv preppi_final600.txt preppi_final600.tsv
 
 # Convert commas to | for ddbs column
 sed -e 's/,/|/g' preppi_final600.tsv > preppi_final600.tsv

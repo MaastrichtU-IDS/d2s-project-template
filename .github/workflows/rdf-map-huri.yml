@@ -2,6 +2,15 @@ name: Generate HuRI BioLink RDF using RML
 # TODO: use workflow dispatch variables for graph URI and SPARQL endpoint URL
 on:
   workflow_dispatch:
+    inputs:
+      endpoint:
+        description: 'Upload to SPARQL endpoint'
+        required: true
+        default: 'https://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements'
+      graph:
+        description: 'Upload to Graph'
+        required: true
+        default: 'https://w3id.org/d2s/graph/huri'
   # push:
   #   branches: [ master ]
   #   paths:
@@ -47,10 +56,10 @@ jobs:
       uses: MaastrichtU-IDS/RdfUpload@master
       with:
         file: rdf-output/rdf-huri.nt
-        endpoint: https://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements
+        endpoint: ${{ github.event.inputs.endpoint }}
         user: ${{ secrets.GRAPHDB_USER }}
         password: ${{ secrets.GRAPHDB_PASSWORD }}
-        graph: https://w3id.org/d2s/graph/huri
+        graph: ${{ github.event.inputs.graph }}
 
     # - name: Upload file to GraphDB server
     #   run: |
@@ -67,12 +76,13 @@ jobs:
       uses: vemonet/sparql-operations-action@v1
       with:
         file: https://github.com/MaastrichtU-IDS/d2s-scripts-repository/tree/master/sparql/compute-hcls-stats
-        endpoint: https://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements
+        endpoint: ${{ github.event.inputs.endpoint }}
         user: ${{ secrets.GRAPHDB_USER }}
         password: ${{ secrets.GRAPHDB_PASSWORD }}
-        inputvar: https://w3id.org/d2s/graph/huri
+        inputvar: ${{ github.event.inputs.graph }}
         outputvar: https://w3id.org/d2s/metadata
-        servicevar: http://localhost:7200/repositories/ncats-red-kg
+        servicevar: ${{ github.event.inputs.endpoint }}
+        # servicevar: http://localhost:7200/repositories/ncats-red-kg
 
     - name: Run RDF to HDT
       uses: vemonet/rdfhdt-action@master
