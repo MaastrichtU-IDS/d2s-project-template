@@ -28,18 +28,18 @@ INSERT
 
     ?directedInteraction a bl:TranscriptToGeneRelationship ; # GeneProduct to Interaction association
           bl:id ?directedInteractionId ;
-          bl:transcript_to_gene_relationship_subject ?dataNode ; # GeneProduct
+          bl:subject ?dataNode ; # GeneProduct
           bl:relation bl:produces ; # TODO: Right relation?
-          bl:transcript_to_gene_relationship_object ?xrefHgnc .
+          bl:object ?xrefHgnc .
 
     ?xrefHgnc a bl:Gene ;
         bl:id ?xrefHgncString .
 
     #?directedInteraction a bl:GeneToGeneProductRelationship ; # TODO: How to link RNA and gene product?
     #      bl:id ?directedInteractionId ;
-    #      bl:gene_to_gene_product_relationship_subject ?dataNode ;
-    #      bl:gene_to_gene_product_relationship_relation bl:has_gene_product ;
-    #      bl:gene_to_gene_product_relationship_object ?xrefUniprot .
+    #      bl:subject ?dataNode ;
+    #      bl:relation bl:has_gene_product ;
+    #      bl:object ?xrefUniprot .
     #?xrefUniprotId a bl:Protein .
  }
 }

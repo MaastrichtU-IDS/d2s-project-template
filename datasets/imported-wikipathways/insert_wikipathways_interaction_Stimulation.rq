@@ -15,9 +15,9 @@ INSERT
 
     ?directedInteraction a bl:GeneToThingAssociation ; # Gene to Interaction (process) association
           bl:id ?directedInteractionId ;
-          bl:gene_to_gene_association_subject ?source ; # GeneProduct
-          bl:pairwise_gene_to_gene_interaction_relation bl:increases_activity_of ;
-          bl:gene_to_gene_association_object ?target ; # Interaction
+          bl:subject ?source ; # GeneProduct
+          bl:relation bl:increases_activity_of ;
+          bl:object ?target ; # Interaction
           bl:publications ?citation ;
           bl:part_of ?isPartOf . # Interaction in this pathway
 
