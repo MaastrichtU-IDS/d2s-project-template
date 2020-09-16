@@ -35,6 +35,8 @@ jobs:
       with:
         mapping: datasets/preppi/mapping/map-preppi.rml.ttl
         output: rdf-preppi.nt
+      env:
+        JAVA_OPTS: "-Xmx5g"
 
     - name: Upload RDF output artifact
       id: stepupload
