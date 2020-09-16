@@ -25,7 +25,6 @@ INSERT
           bl:same_as ?xrefWikidata .
           #bl:same_as ?xrefHmdb ;
           #bl:same_as ?xrefChemspider 
-          .
  }
 }
 WHERE {
