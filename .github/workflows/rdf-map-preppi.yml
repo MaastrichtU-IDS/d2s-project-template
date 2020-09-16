@@ -26,6 +26,13 @@ jobs:
     - name: Download CSV
       run: datasets/preppi/download/download.sh
 
+    - name: Upload CSV input artifact
+      id: uploadcsv
+      uses: actions/upload-artifact@v1
+      with:
+        name: preppi-csv
+        path: preppi.csv
+
     - uses: vemonet/rmlmapper-java@4.8
       with:
         mapping: datasets/preppi/mapping/map-preppi.rml.ttl
