@@ -1,0 +1,101 @@
+name: HGNC to BioLink RDF
+# TODO: Add step to manage versioning (delete previous graph, load new graph, generate metadata)
+on:
+  workflow_dispatch:
+    inputs:
+      endpoint:
+        description: 'Upload to SPARQL endpoint'
+        required: true
+        default: 'https://graphdb.dumontierlab.com/repositories/ncats-red-kg/statements'
+      graph:
+        description: 'In the Graph'
+        required: true
+        default: 'https://w3id.org/d2s/graph/hgnc'
+jobs:
+  generate-rdf:
+    runs-on: ubuntu-latest
+    # runs-on: [self-hosted, linux, X64, node2]
+    outputs:
+      rdf-output: ${{ steps.stepupload.outputs.rdf_output }}
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Download CSV
+      run: datasets/hgnc/download/download.sh
+
+    # - name: Upload CSV input artifact
+    #   id: uploadcsv
+    #   uses: actions/upload-artifact@v1
+    #   with:
+    #     name: hgnc-csv
+    #     path: hgnc.csv
+
+    - name: Run RML mapper
+      uses: vemonet/rmlmapper-java@4.9.0
+      with:
+        mapping: datasets/hgnc/mapping/map-hgnc.rml.ttl
+        output: rdf-hgnc.nt
+      env:
+        JAVA_OPTS: "-Xmx6g"
+        # JAVA_TOOL_OPTIONS: "-XX:MaxRAMPercentage=80"
+
+    - name: Upload RDF output artifact
+      id: stepupload
+      uses: actions/upload-artifact@v1
+      with:
+        name: rdf-output
+        path: rdf-hgnc.nt
+
+  upload-rdf:
+    runs-on: ubuntu-latest
+    needs: generate-rdf
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Get RDF output artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: rdf-output
+
+    - name: Upload RDF
+      uses: MaastrichtU-IDS/RdfUpload@master
+      with:
+        file: rdf-output/rdf-hgnc.nt
+        endpoint: ${{ github.event.inputs.endpoint }}
+        user: ${{ secrets.GRAPHDB_USER }}
+        password: ${{ secrets.GRAPHDB_PASSWORD }}
+        graph: ${{ github.event.inputs.graph }}
+
+    - name: Run SPARQL queries to upload dataset metadata
+      uses: vemonet/sparql-operations-action@v1
+      with:
+        file: datasets/hgnc/metadata
+        endpoint: ${{ github.event.inputs.endpoint }}
+        user: ${{ secrets.GRAPHDB_USER }}
+        password: ${{ secrets.GRAPHDB_PASSWORD }}
+        inputvar: ${{ github.event.inputs.graph }}
+        outputvar: https://w3id.org/d2s/metadata
+        servicevar: ${{ github.event.inputs.endpoint }}
+
+    - name: Compute and insert HCLS descriptive metadata
+      uses: vemonet/sparql-operations-action@v1
+      with:
+        file: https://github.com/MaastrichtU-IDS/d2s-scripts-repository/tree/master/sparql/compute-hcls-stats
+        endpoint: ${{ github.event.inputs.endpoint }}
+        user: ${{ secrets.GRAPHDB_USER }}
+        password: ${{ secrets.GRAPHDB_PASSWORD }}
+        inputvar: ${{ github.event.inputs.graph }}
+        outputvar: https://w3id.org/d2s/metadata
+        servicevar: ${{ github.event.inputs.endpoint }}
+
+    - name: Run RDF to HDT
+      uses: vemonet/rdfhdt-action@master
+      with:
+        input: rdf-output/rdf-hgnc.nt
+        output: hdt-hgnc.hdt
+
+    - name: Upload HDT output artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: hdt-output
+        path: hdt-hgnc.hdt

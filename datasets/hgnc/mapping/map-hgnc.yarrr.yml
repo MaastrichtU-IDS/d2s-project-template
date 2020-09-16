@@ -7,7 +7,7 @@ prefixes:
   pubmed: "https://identifiers.org/pubmed:"
 
 mappings:
-  interactions:
+  genes:
     sources:
       - ['hgnc.csv~csv']
       # https://www.genenames.org/help/statistics-and-downloads/
