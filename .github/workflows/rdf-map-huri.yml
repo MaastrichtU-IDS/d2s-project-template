@@ -1,5 +1,5 @@
 name: Generate HuRI BioLink RDF using RML
-# TODO: use workflow dispatch variables for graph URI and SPARQL endpoint URL
+# TODO: Add step to manage versioning (delete previous graph, load new graph, generate metadata)
 on:
   workflow_dispatch:
     inputs:
@@ -29,7 +29,8 @@ jobs:
     - name: Download CSV
       run: datasets/huri/download/download.sh
 
-    - uses: vemonet/rmlmapper-java@4.8
+    - name: Run RML mapper
+      uses: vemonet/rmlmapper-java@4.8
       with:
         mapping: datasets/huri/mapping/huri_mapping.rml.ttl
         output: rdf-huri.nt
@@ -63,13 +64,11 @@ jobs:
 
     # - name: Upload file to GraphDB server
     #   run: |
-    #     curl -Ffile=@rdf-output/rdf-huri.nt 'http://upload.137.120.31.102.nip.io/upload?token=${{ secrets.GRAPHDB_UPLOAD_TOKEN }}'
+    #     curl -Ffile=@rdf-output/rdf-preppi.nt 'http://upload.137.120.31.102.nip.io/upload?token=${{ secrets.GRAPHDB_UPLOAD_TOKEN }}'
 
     # - name: Start GraphDB import
     #   run: |
-    #     curl -X POST -u ${{ secrets.GRAPHDB_USER }}:${{ secrets.GRAPHDB_PASSWORD }} --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"fileNames": ["upload/rdf-huri.nt"], "importSettings": {"context": "https://w3id.org/d2s/graph/huri"}}' 'https://graphdb.dumontierlab.com/rest/data/import/server/test-vincent'
-
-    # TODO: Add step to manage versioning (delete previous graph, load new graph, generate metadata)
+    #     curl -X POST -u ${{ secrets.GRAPHDB_USER }}:${{ secrets.GRAPHDB_PASSWORD }} --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"fileNames": ["upload/rdf-preppi.nt"], "importSettings": {"context": "${{ github.event.inputs.graph }}"}}' '${{ github.event.inputs.graphdb_url }}/rest/data/import/server/${{ github.event.inputs.graphdb_repo }}'
     # TODO: Add step to wait for GraphDB import to end
 
     - name: Compute and insert HCLS descriptive metadata

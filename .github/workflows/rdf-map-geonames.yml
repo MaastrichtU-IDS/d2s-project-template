@@ -39,7 +39,8 @@ jobs:
       with:
         name: input
 
-    - uses: vemonet/rmlmapper-java@4.8
+    - name: Run RML mapper
+      uses: vemonet/rmlmapper-java@4.8
       with:
         mapping: datasets/geonames/mapping/country_mapping.rml.ttl
         output: rdf-geonames.nt
