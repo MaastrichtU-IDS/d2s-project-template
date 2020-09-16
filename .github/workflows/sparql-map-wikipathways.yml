@@ -21,7 +21,7 @@ jobs:
     - name: Run SPARQL queries to convert Wikipathways
       uses: vemonet/sparql-operations-action@v1
       with:
-        file: datasets/wikipathways/mapping/*.rq
+        file: datasets/wikipathways/mapping
         endpoint: ${{ github.event.inputs.endpoint }}
         user: ${{ secrets.GRAPHDB_USER }}
         password: ${{ secrets.GRAPHDB_PASSWORD }}
