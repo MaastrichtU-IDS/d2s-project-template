@@ -31,7 +31,7 @@ oc rsh flink-jobmanager-7459cc58f7-5hqjb
 cd /mnt
 ```
 
-Download the mapping file:
+### Download required files
 
 ```bash
 wget -O cohd-associations.rml.ttl https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-project-template/master/datasets/cohd/mapping/cohd-associations.rml.ttl
@@ -60,13 +60,15 @@ Download `RMLStreamer.jar`:
 wget -O RMLStreamer.jar https://github.com/RMLio/RMLStreamer/releases/download/v2.0.0/RMLStreamer-2.0.0.jar
 ```
 
-Re-run with parallelism:
+### Run the RMLStreamer
+
+Re-run with parallelism (using 128 threads):
 
 ```
 nohup /opt/flink/bin/flink run -p 128 -c io.rml.framework.Main /mnt/RMLStreamer.jar toFile -m /mnt/cohd-associations.rml.ttl -o /mnt/openshift-rmlstreamer-cohd-associations.nt --job-name "[d2s] RMLStreamer cohd-associations.rml.ttl" &
 ```
 
-Check if conversion running well:
+Check if the conversion is running well:
 
 ```
 oc rsh flink-jobmanager-7459cc58f7-5hqjb
@@ -74,7 +76,9 @@ tail /mnt/openshift-rmlstreamer-cohd-associations.nt
 ls -alh /mnt/openshift-rmlstreamer-cohd-associations.nt
 ```
 
-Merge and compress:
+### Merge and compress
+
+The ntriples files produced by RMLStreamer in parallel:
 
 ```bash
 cd /mnt/openshift-rmlstreamer-cohd-associations.nt
