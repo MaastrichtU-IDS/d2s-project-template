@@ -18,7 +18,7 @@ mappings:
       - ['/mnt/workspace/input/cohd/paired_concept_counts_associations.csv~csv']
     s: cohd:association/$(concept_id_1)_$(concept_id_2)
     # s: cohd:association/$(dataset_id)_$(concept_id_1)_$(concept_id_2)
-    g: https://w3id.org/d2s/graph/cohd
+    # g: https://w3id.org/d2s/graph/cohd
     po:
       - [a, bl:Association]
       - p: bl:id
@@ -42,7 +42,7 @@ mappings:
       # - ['cohd.csv~csv']
       - ['/mnt/workspace/input/cohd/paired_concept_counts_associations.csv~csv']
     s: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/chi_square
-    g: https://w3id.org/d2s/graph/cohd
+    # g: https://w3id.org/d2s/graph/cohd
     po:
       - [a, bl:EvidenceType]
       - p: bl:id
@@ -65,7 +65,7 @@ mappings:
       # - ['cohd.csv~csv']
       - ['/mnt/workspace/input/cohd/paired_concept_counts_associations.csv~csv']
     s: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency
-    g: https://w3id.org/d2s/graph/cohd
+    # g: https://w3id.org/d2s/graph/cohd
     po:
       - [a, bl:EvidenceType]
       - p: bl:id
@@ -88,7 +88,7 @@ mappings:
       # - ['cohd.csv~csv']
       - ['/mnt/workspace/input/cohd/paired_concept_counts_associations.csv~csv']
     s: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency/$(concept_id_1)
-    g: https://w3id.org/d2s/graph/cohd
+    # g: https://w3id.org/d2s/graph/cohd
     po:
       - [a, bl:FrequencyValue]
       - p: bl:id
@@ -109,7 +109,7 @@ mappings:
       # - ['cohd.csv~csv']
       - ['/mnt/workspace/input/cohd/paired_concept_counts_associations.csv~csv']
     s: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency/$(concept_id_2)
-    g: https://w3id.org/d2s/graph/cohd
+    # g: https://w3id.org/d2s/graph/cohd
     po:
       - [a, bl:FrequencyValue]
       - p: bl:id
@@ -130,7 +130,7 @@ mappings:
       # - ['cohd.csv~csv']
       - ['/mnt/workspace/input/cohd/paired_concept_counts_associations.csv~csv']
     s: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/obs_exp_ratio
-    g: https://w3id.org/d2s/graph/cohd
+    # g: https://w3id.org/d2s/graph/cohd
     po:
       - [a, bl:EvidenceType]
       - p: bl:id

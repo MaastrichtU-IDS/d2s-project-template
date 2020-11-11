@@ -1,0 +1,132 @@
+### Using Split function with YARRRML: https://rml.io/yarrrml/matey/
+prefixes:
+  grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
+  xsd: "http://www.w3.org/2001/XMLSchema#"
+  rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+  bl: "https://w3id.org/biolink/vocab/"
+  cohd: "https://w3id.org/cohd/"
+  omop: "http://api.ohdsi.org/WebAPI/vocabulary/concept/"
+
+# "concept_id","concept_name","domain_id","vocabulary_id","concept_class_id","concept_code"
+# "197339","Congenital abnormality of uterus, affecting pregnancy","Condition","SNOMED","Clinical Finding","41215002"
+# "444258","Abrasion and/or friction burn of neck with infection","Condition","SNOMED","Clinical Finding","84278006"
+
+mappings:
+  concepts:
+    sources:
+      - ['concepts_curated.csv~csv']
+    s: http://api.ohdsi.org/WebAPI/vocabulary/concept/$(concept_id)
+    # g: https://w3id.org/d2s/graph/cohd
+    po:
+      - [a, bl:$(domain_id)]
+      - p: bl:id
+        o: http://api.ohdsi.org/WebAPI/vocabulary/concept/$(concept_id)~iri
+      - p: bl:name
+        o: $(concept_name)
+      - p: bl:systematic_synonym
+        o: $(concept_code)
+      - p: bl:category
+        o: $(concept_class_id)
+
+      - p: bl:provided_by
+        o: cohd:provider/vocab/$(vocabulary_id)~iri
+      # - p: bl:has_evidence
+      #   o: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/concept_count~iri
+
+  providers:
+    sources:
+      - ['concepts_curated.csv~csv']
+    s: cohd:provider/vocab/$(vocabulary_id)
+    # s: cohd:association/$(dataset_id)_$(concept_id_1)_$(concept_id_2)
+    # g: https://w3id.org/d2s/graph/cohd
+    po:
+      - [a, bl:Provider]
+      - p: bl:id
+        o: cohd:provider/vocab/$(vocabulary_id)~iri
+      - p: bl:name
+        o: $(vocabulary_id)
+
+  
+
+  datasets:
+    sources:
+      - ['datasets.csv~csv']
+    s: cohd:provider/dataset/$(dataset_id)
+    po:
+      - [a, bl:Provider]
+      - p: bl:id
+        o: cohd:provider/dataset/$(dataset_id)~iri
+      - p: bl:name
+        o: $(dataset_name)
+      - p: bl:description
+        o: $(dataset_description)
+      # TODO: add creation_date and update_date? (something like 2013 - 2017)
+     
+  patient_count:
+    sources:
+      - ['patient_count.csv~csv']
+    s: cohd:provider/dataset/$(dataset_id)
+    po:
+      - p: bl:has_total
+        o: $(count)
+
+  single_concept_counts_relations:
+    sources:
+      - ['single_concept_counts.csv~csv']
+    s: http://api.ohdsi.org/WebAPI/vocabulary/concept/$(concept_id)
+    po:
+      - p: bl:has_evidence
+        o: cohd:concept/occurences/$(dataset_id)_$(concept_id)~iri
+      - p: bl:name
+        o: $(concept_name)
+
+  single_concept_counts_evidences:
+    sources:
+      - ['single_concept_counts.csv~csv']
+    s: cohd:concept/occurences/$(dataset_id)_$(concept_id)
+    po:
+      - [a, bl:EvidenceType]
+      - p: bl:id
+        o: cohd:concept/occurences/$(dataset_id)_$(concept_id)~iri
+      - p: bl:name
+        o: Count of occurences of the concept $(concept_id) in COHD Clinical Dataset $(dataset_id)
+      - p: bl:has_count
+        o: $(concept_count)
+      - p: bl:has_quotient
+        o: $(concept_prevalence)
+
+  # TODO: domain_pair_concept_counts.csv
+  # TODO: domain_concept_counts.csv
+
+
+
+
+
+
+        # function: grel:string_split
+        #     parameters:
+        #         - [grel:p_string_sep, "\|"]
+        #         - [grel:valueParameter, $(neighbours)]
+        #     language: en
+
+### Using to lower case (working)
+
+# prefixes:
+#   grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
+#   rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+#   gn: "http://www.geonames.org/ontology#"
+
+# mappings:
+#   lowerneighbours:
+#     sources:
+#       - ['source_1.csv~csv']
+#     s: http://www.geonames.org/ontology#$(ISO)
+#     po:
+#       - [a, gn:Country]
+#       - [rdfs:label, $(neighbours)]
+#       - p: gn:neighbours
+#         o:
+#             function: grel:toLowerCase
+#             parameters:
+#                 - [grel:valueParameter, $(neighbours)]
+#             language: en

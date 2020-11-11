@@ -5,18 +5,6 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#>.
 @prefix map: <http://mapping.example.com/>.
 
-map:gm_0 a rr:GraphMap;
-    rr:constant "https://w3id.org/d2s/graph/cohd".
-map:gm_1 a rr:GraphMap;
-    rr:constant "https://w3id.org/d2s/graph/cohd".
-map:gm_2 a rr:GraphMap;
-    rr:constant "https://w3id.org/d2s/graph/cohd".
-map:gm_3 a rr:GraphMap;
-    rr:constant "https://w3id.org/d2s/graph/cohd".
-map:gm_4 a rr:GraphMap;
-    rr:constant "https://w3id.org/d2s/graph/cohd".
-map:gm_5 a rr:GraphMap;
-    rr:constant "https://w3id.org/d2s/graph/cohd".
 map:map_associations_0 rml:logicalSource map:source_0;
     a rr:TriplesMap;
     rdfs:label "associations";
@@ -141,8 +129,7 @@ map:om_34 a rr:ObjectMap;
     rr:datatype <http://www.w3.org/2001/XMLSchema#double>.
 map:om_35 a rr:ObjectMap;
     rml:reference "ln_ratio";
-    rr:termType rr:Literal;
-    rr:datatype <http://www.w3.org/2001/XMLSchema#double>.
+    rr:termType rr:Literal.
 map:om_36 a rr:ObjectMap;
     rml:reference "concept_count";
     rr:termType rr:Literal;
@@ -369,23 +356,17 @@ map:pom_9 a rr:PredicateObjectMap;
     rr:predicateMap map:pm_9;
     rr:objectMap map:om_9.
 map:s_0 a rr:SubjectMap;
-    rr:template "https://w3id.org/cohd/association/{concept_id_1}_{concept_id_2}";
-    rr:graphMap map:gm_0.
+    rr:template "https://w3id.org/cohd/association/{concept_id_1}_{concept_id_2}".
 map:s_1 a rr:SubjectMap;
-    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/chi_square";
-    rr:graphMap map:gm_1.
+    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/chi_square".
 map:s_2 a rr:SubjectMap;
-    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/relative_frequency";
-    rr:graphMap map:gm_2.
+    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/relative_frequency".
 map:s_3 a rr:SubjectMap;
-    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/relative_frequency/{concept_id_1}";
-    rr:graphMap map:gm_3.
+    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/relative_frequency/{concept_id_1}".
 map:s_4 a rr:SubjectMap;
-    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/relative_frequency/{concept_id_2}";
-    rr:graphMap map:gm_4.
+    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/relative_frequency/{concept_id_2}".
 map:s_5 a rr:SubjectMap;
-    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/obs_exp_ratio";
-    rr:graphMap map:gm_5.
+    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/obs_exp_ratio".
 map:source_0 a rml:LogicalSource;
     rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV.
