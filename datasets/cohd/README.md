@@ -1,5 +1,17 @@
 ## Convert COHD concepts and datasets
 
+We run the workflow using GitHub Actions:
+
+* See the workflow file: https://github.com/MaastrichtU-IDS/d2s-project-template/blob/master/.github/workflows/rml-map-cohd-concepts.yml
+
+* And the workflow runs: https://github.com/MaastrichtU-IDS/d2s-project-template/actions?query=workflow%3A%22COHD+Concepts+to+RDF%22
+
+This produces a 200M RDF file that can be downloaded from GitHub Actions web UI.
+
+We then unzip this file and load itto https://graphdb.dumontierlab.com in `cohd-dev` repository, in the graph `https://w3id.org/d2s/graph/cohd`
+
+### Rerun the preprocessing
+
 Run preprocessing to convert Concepts types to BioLink types in the CSV before running RML:
 
 ```bash
@@ -7,12 +19,6 @@ python3 preprocessing-cohd.py
 ```
 
 > This will generate a `concepts_curated.csv` file (already committed on GitHub, only rerun if changes made)
-
-We run the workflow using GitHub Actions: https://github.com/MaastrichtU-IDS/d2s-project-template/actions?query=workflow%3A%22COHD+Concepts+to+RDF%22
-
-This produces a 200M RDF file that can be downloaded from GitHub Actions web UI.
-
-We then unzip this file and load itto https://graphdb.dumontierlab.com in `cohd-dev` repository, in the graph `https://w3id.org/d2s/graph/cohd`
 
 ## Convert COHD associations
 
