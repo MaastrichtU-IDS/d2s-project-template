@@ -51,11 +51,11 @@ mappings:
   datasets:
     sources:
       - ['dataset.csv~csv']
-    s: cohd:provider/dataset/$(dataset_id)
+    s: cohd:dataset/$(dataset_id)
     po:
-      - [a, bl:Provider]
+      - [a, bl:PopulationOfIndividualOrganisms]
       - p: bl:id
-        o: cohd:provider/dataset/$(dataset_id)~iri
+        o: cohd:dataset/$(dataset_id)~iri
       - p: bl:name
         o: $(dataset_name)
       - p: bl:description
@@ -65,7 +65,7 @@ mappings:
   patient_count:
     sources:
       - ['patient_count.csv~csv']
-    s: cohd:provider/dataset/$(dataset_id)
+    s: cohd:dataset/$(dataset_id)
     po:
       - p: bl:has_total
         o: $(count)
@@ -92,6 +92,46 @@ mappings:
         o: $(concept_count)
       - p: bl:has_quotient
         o: $(concept_prevalence)
+
+  domain_concept_counts:
+    sources:
+      - ['domain_concept_counts_curated.csv~csv']
+    s: cohd:domain/occurences/$(dataset_id)_$(domain_id)
+    po:
+      - [a, bl:VariantToPopulationAssociation]
+      - p: bl:id
+        o: cohd:concept/occurences/$(dataset_id)_$(concept_id)~iri
+      - p: bl:name
+        o: Count of occurences of the domain $(domain_id) in COHD Clinical Dataset $(dataset_id)
+      - p: bl:subject
+        o: bl:$(domain_id)~iri
+      - p: bl:relation
+        o: bl:correlated_with~iri
+      - p: bl:object
+        o: cohd:dataset/$(dataset_id)~iri
+      - p: bl:has_count
+        o: $(count)
+
+  domain_pair_concept_counts:
+    sources:
+      - ['domain_pair_concept_counts_curated.csv~csv']
+    s: cohd:domain/pair/$(dataset_id)_$(domain_id_1)_$(domain_id_2)
+    po:
+      - [a, bl:VariantToThingAssociation]
+      - p: bl:id
+        o: cohd:domain/pair/$(dataset_id)_$(domain_id_1)_$(domain_id_2)
+      - p: bl:name
+        o: Count of occurences of the domain $(domain_id_1) and $(domain_id_2) in COHD Clinical Dataset $(dataset_id)
+      - p: bl:subject
+        o: bl:$(domain_id_1)~iri
+      - p: bl:relation
+        o: bl:correlated_with~iri
+      - p: bl:object
+        o: cohd:$(domain_id_2)~iri
+      - p: bl:qualifiers
+        o: cohd:dataset/$(dataset_id)~iri
+      - p: bl:has_count
+        o: $(count)
 
   omop_to_drugbank:
     sources:
