@@ -23,7 +23,7 @@ jobs:
 
     - name: Get CSV files in working directory
       run: |-
-        cp d2s-project-template/datasets/cohd/download/*.csv .
+        cp datasets/cohd/download/*.csv .
         ls
 
     - name: Run RML mapper
