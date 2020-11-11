@@ -11,11 +11,11 @@
 # wget -N https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-scripts-repository/master/resources/cohd-sample/single_concept_counts.tsv
 
 ## Download full COHD data (about 7G compressed)
-# wget -N https://filedn.com/ll1efYfBhLaV67ONaCyMlKh/cohd-v2.tar.gz
+wget -N https://filedn.com/ll1efYfBhLaV67ONaCyMlKh/cohd-v2.tar.gz
 
 
 # UNTAR recursively all files in current dir
-# tar -xzvf *.tar.gz
+tar -xzvf *.tar.gz
 
 ## RENAME EXTENSION (e.g.: txt in tsv)
 # rename s/\.txt/.tsv/ *.txt
@@ -31,4 +31,4 @@ sed -e 's/"/\\"/g' -e 's/\t/","/g' -e 's/^/"/' -e 's/$/"/'  -e 's/\r//' single_c
 # rm paired_concept_counts_associations.tsv
 
 # Make sure right permissions are set properly
-chmod 777 *
+# chmod 777 *
