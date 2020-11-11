@@ -93,8 +93,8 @@ map:om_20 a rr:ObjectMap;
     rr:constant "https://w3id.org/biolink/vocab/VariantToPopulationAssociation";
     rr:termType rr:IRI.
 map:om_21 a rr:ObjectMap;
-    rr:template "https://w3id.org/cohd/concept/occurences/{dataset_id}_{concept_id}";
-    rr:termType rr:IRI.
+    rr:template "https://w3id.org/cohd/domain/occurences/{dataset_id}_{domain_id}";
+    rr:termType rr:Literal.
 map:om_22 a rr:ObjectMap;
     rr:template "Count of occurences of the domain {domain_id} in COHD Clinical Dataset {dataset_id}";
     rr:termType rr:Literal.

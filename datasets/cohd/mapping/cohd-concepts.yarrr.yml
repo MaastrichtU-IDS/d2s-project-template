@@ -100,7 +100,7 @@ mappings:
     po:
       - [a, bl:VariantToPopulationAssociation]
       - p: bl:id
-        o: cohd:concept/occurences/$(dataset_id)_$(concept_id)~iri
+        o: cohd:domain/occurences/$(dataset_id)_$(domain_id)
       - p: bl:name
         o: Count of occurences of the domain $(domain_id) in COHD Clinical Dataset $(dataset_id)
       - p: bl:subject
