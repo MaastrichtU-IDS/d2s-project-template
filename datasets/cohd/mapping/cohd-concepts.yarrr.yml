@@ -93,6 +93,16 @@ mappings:
       - p: bl:has_quotient
         o: $(concept_prevalence)
 
+  omop_to_drugbank:
+    sources:
+      - ['rxnorm-drugbank-omop-mapping-CLEANED.csv~csv']
+    s: http://api.ohdsi.org/WebAPI/vocabulary/concept/$(conceptId)
+    po:
+      - p: bl:same_as
+        o: https://identifiers.org/drugbank:$(drugBank)~iri
+      - p: bl:same_as
+        o: http://purl.bioontology.org/ontology/RXNORM/$(rxcui)~iri
+
   # TODO: domain_pair_concept_counts.csv
   # TODO: domain_concept_counts.csv
 

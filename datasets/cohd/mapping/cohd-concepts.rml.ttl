@@ -15,6 +15,11 @@ map:map_datasets_0 rml:logicalSource map:source_2;
     rdfs:label "datasets";
     rr:subjectMap map:s_2;
     rr:predicateObjectMap map:pom_9, map:pom_10, map:pom_11, map:pom_12.
+map:map_omop_to_drugbank_0 rml:logicalSource map:source_6;
+    a rr:TriplesMap;
+    rdfs:label "omop_to_drugbank";
+    rr:subjectMap map:s_6;
+    rr:predicateObjectMap map:pom_20, map:pom_21.
 map:map_patient_count_0 rml:logicalSource map:source_3;
     a rr:TriplesMap;
     rdfs:label "patient_count";
@@ -74,6 +79,12 @@ map:om_19 a rr:ObjectMap;
 map:om_2 a rr:ObjectMap;
     rml:reference "concept_name";
     rr:termType rr:Literal.
+map:om_20 a rr:ObjectMap;
+    rr:template "https://identifiers.org/drugbank:{drugBank}";
+    rr:termType rr:IRI.
+map:om_21 a rr:ObjectMap;
+    rr:template "http://purl.bioontology.org/ontology/RXNORM/{rxcui}";
+    rr:termType rr:IRI.
 map:om_3 a rr:ObjectMap;
     rml:reference "concept_code";
     rr:termType rr:Literal.
@@ -121,6 +132,10 @@ map:pm_19 a rr:PredicateMap;
     rr:constant <https://w3id.org/biolink/vocab/has_quotient>.
 map:pm_2 a rr:PredicateMap;
     rr:constant <https://w3id.org/biolink/vocab/name>.
+map:pm_20 a rr:PredicateMap;
+    rr:constant <https://w3id.org/biolink/vocab/same_as>.
+map:pm_21 a rr:PredicateMap;
+    rr:constant <https://w3id.org/biolink/vocab/same_as>.
 map:pm_3 a rr:PredicateMap;
     rr:constant <https://w3id.org/biolink/vocab/systematic_synonym>.
 map:pm_4 a rr:PredicateMap;
@@ -174,6 +189,12 @@ map:pom_19 a rr:PredicateObjectMap;
 map:pom_2 a rr:PredicateObjectMap;
     rr:predicateMap map:pm_2;
     rr:objectMap map:om_2.
+map:pom_20 a rr:PredicateObjectMap;
+    rr:predicateMap map:pm_20;
+    rr:objectMap map:om_20.
+map:pom_21 a rr:PredicateObjectMap;
+    rr:predicateMap map:pm_21;
+    rr:objectMap map:om_21.
 map:pom_3 a rr:PredicateObjectMap;
     rr:predicateMap map:pm_3;
     rr:objectMap map:om_3.
@@ -207,6 +228,8 @@ map:s_4 a rr:SubjectMap;
     rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{concept_id}".
 map:s_5 a rr:SubjectMap;
     rr:template "https://w3id.org/cohd/concept/occurences/{dataset_id}_{concept_id}".
+map:s_6 a rr:SubjectMap;
+    rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{conceptId}".
 map:source_0 a rml:LogicalSource;
     rml:source "concepts_curated.csv";
     rml:referenceFormulation ql:CSV.
@@ -224,4 +247,7 @@ map:source_4 a rml:LogicalSource;
     rml:referenceFormulation ql:CSV.
 map:source_5 a rml:LogicalSource;
     rml:source "single_concept_counts.csv";
+    rml:referenceFormulation ql:CSV.
+map:source_6 a rml:LogicalSource;
+    rml:source "rxnorm-drugbank-omop-mapping-CLEANED.csv";
     rml:referenceFormulation ql:CSV.

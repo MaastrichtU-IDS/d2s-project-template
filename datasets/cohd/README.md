@@ -44,8 +44,8 @@ chmod +x download.sh
 > Or copy them from local:
 >
 > ```bash
-> oc cp download/download.sh flink-jobmanager-7459cc58f7-5hqjb:/mnt
-> oc cp mapping/associations-mapping.rml.ttl flink-jobmanager-7459cc58f7-5hqjb:/mnt 
+> oc cp download/download.sh flink-jobmanager-7459cc58f7-5hqjb:/mnt/cohd
+> oc cp mapping/cohd-associations.rml.ttl flink-jobmanager-7459cc58f7-5hqjb:/mnt/cohd
 > ```
 
 Download the COHD file (take some time, a few GB to download):
@@ -54,7 +54,11 @@ Download the COHD file (take some time, a few GB to download):
 nohup ./download.sh &
 ```
 
-> 61039
+> Wait for the download to finish, check for `paired_concept_counts_associations` size with 
+>
+> ```bash
+> ls -al /mnt/cohd/paired_concept_counts_associations*
+> ```
 
 Download `RMLStreamer.jar`:
 

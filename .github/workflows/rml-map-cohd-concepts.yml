@@ -24,8 +24,8 @@ jobs:
     - name: Get CSV files in working directory
       run: |-
         cp datasets/cohd/download/*.csv .
-        ls
-        pwd
+        wget -O rxnorm-drugbank-omop-mapping-CLEANED.tsv https://raw.githubusercontent.com/OHDSI/KnowledgeBase/master/LAERTES/terminology-mappings/RxNORM-to-UNII-PreferredName-To-DrugBank/rxnorm-drugbank-omop-mapping-CLEANED.tsv
+        sed -e 's/"/\\"/g' -e 's/\t/","/g' -e 's/^/"/' -e 's/$/"/'  -e 's/\r//' rxnorm-drugbank-omop-mapping-CLEANED.tsv > rxnorm-drugbank-omop-mapping-CLEANED.csv
 
     - name: Run RML mapper
       uses: vemonet/rmlmapper-java@v4.9.0
