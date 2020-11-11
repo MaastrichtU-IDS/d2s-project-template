@@ -32,8 +32,7 @@ jobs:
       with:
         mapping: datasets/cohd/mapping/cohd-concepts.rml.ttl
         output: cohd-concepts-rdf.nt
-        serialization: ntriples
-
+        
     - name: Upload RDF output artifact
       id: stepupload
       uses: actions/upload-artifact@v1
