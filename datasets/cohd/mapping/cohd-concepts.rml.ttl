@@ -222,7 +222,7 @@ map:source_1 a rml:LogicalSource;
     rml:source "concepts_curated.csv";
     rml:referenceFormulation ql:CSV.
 map:source_2 a rml:LogicalSource;
-    rml:source "datasets.csv";
+    rml:source "dataset.csv";
     rml:referenceFormulation ql:CSV.
 map:source_3 a rml:LogicalSource;
     rml:source "patient_count.csv";
