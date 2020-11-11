@@ -15,7 +15,7 @@ mappings:
   associations:
     sources:
       # - ['cohd.csv~csv']
-      - ['/mnt/paired_concept_counts_associations.csv~csv']
+      - ['/mnt/cohd/paired_concept_counts_associations.csv~csv']
     s: cohd:association/$(concept_id_1)_$(concept_id_2)
     # s: cohd:association/$(dataset_id)_$(concept_id_1)_$(concept_id_2)
     # g: https://w3id.org/d2s/graph/cohd
@@ -40,7 +40,7 @@ mappings:
   chi_square_evidence:
     sources:
       # - ['cohd.csv~csv']
-      - ['/mnt/paired_concept_counts_associations.csv~csv']
+      - ['/mnt/cohd/paired_concept_counts_associations.csv~csv']
     s: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/chi_square
     # g: https://w3id.org/d2s/graph/cohd
     po:
@@ -63,7 +63,7 @@ mappings:
   relative_frequency_evidence:
     sources:
       # - ['cohd.csv~csv']
-      - ['/mnt/paired_concept_counts_associations.csv~csv']
+      - ['/mnt/cohd/paired_concept_counts_associations.csv~csv']
     s: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency
     # g: https://w3id.org/d2s/graph/cohd
     po:
@@ -86,7 +86,7 @@ mappings:
   relative_frequency_1:
     sources:
       # - ['cohd.csv~csv']
-      - ['/mnt/paired_concept_counts_associations.csv~csv']
+      - ['/mnt/cohd/paired_concept_counts_associations.csv~csv']
     s: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency/$(concept_id_1)
     # g: https://w3id.org/d2s/graph/cohd
     po:
@@ -107,7 +107,7 @@ mappings:
   relative_frequency_2:
     sources:
       # - ['cohd.csv~csv']
-      - ['/mnt/paired_concept_counts_associations.csv~csv']
+      - ['/mnt/cohd/paired_concept_counts_associations.csv~csv']
     s: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency/$(concept_id_2)
     # g: https://w3id.org/d2s/graph/cohd
     po:
@@ -128,7 +128,7 @@ mappings:
   obs_exp_ratio_evidence:
     sources:
       # - ['cohd.csv~csv']
-      - ['/mnt/paired_concept_counts_associations.csv~csv']
+      - ['/mnt/cohd/paired_concept_counts_associations.csv~csv']
     s: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/obs_exp_ratio
     # g: https://w3id.org/d2s/graph/cohd
     po:

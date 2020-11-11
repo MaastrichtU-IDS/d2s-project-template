@@ -1,387 +1,183 @@
-@prefix rr: <http://www.w3.org/ns/r2rml#>.
-@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
-@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
-@prefix map: <http://mapping.example.com/>.
+### Using Split function with YARRRML: https://rml.io/yarrrml/matey/
+prefixes:
+  grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
+  xsd: "http://www.w3.org/2001/XMLSchema#"
+  rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+  bl: "https://w3id.org/biolink/vocab/"
+  cohd: "https://w3id.org/cohd/"
+  omop: "http://api.ohdsi.org/WebAPI/vocabulary/concept/"
 
-map:map_associations_0 rml:logicalSource map:source_0;
-    a rr:TriplesMap;
-    rdfs:label "associations";
-    rr:subjectMap map:s_0;
-    rr:predicateObjectMap map:pom_0, map:pom_1, map:pom_2, map:pom_3, map:pom_4, map:pom_5.
-map:map_chi_square_evidence_0 rml:logicalSource map:source_1;
-    a rr:TriplesMap;
-    rdfs:label "chi_square_evidence";
-    rr:subjectMap map:s_1;
-    rr:predicateObjectMap map:pom_6, map:pom_7, map:pom_8, map:pom_9, map:pom_10, map:pom_11.
-map:map_obs_exp_ratio_evidence_0 rml:logicalSource map:source_5;
-    a rr:TriplesMap;
-    rdfs:label "obs_exp_ratio_evidence";
-    rr:subjectMap map:s_5;
-    rr:predicateObjectMap map:pom_31, map:pom_32, map:pom_33, map:pom_34, map:pom_35, map:pom_36, map:pom_37, map:pom_38.
-map:map_relative_frequency_1_0 rml:logicalSource map:source_3;
-    a rr:TriplesMap;
-    rdfs:label "relative_frequency_1";
-    rr:subjectMap map:s_3;
-    rr:predicateObjectMap map:pom_19, map:pom_20, map:pom_21, map:pom_22, map:pom_23, map:pom_24.
-map:map_relative_frequency_2_0 rml:logicalSource map:source_4;
-    a rr:TriplesMap;
-    rdfs:label "relative_frequency_2";
-    rr:subjectMap map:s_4;
-    rr:predicateObjectMap map:pom_25, map:pom_26, map:pom_27, map:pom_28, map:pom_29, map:pom_30.
-map:map_relative_frequency_evidence_0 rml:logicalSource map:source_2;
-    a rr:TriplesMap;
-    rdfs:label "relative_frequency_evidence";
-    rr:subjectMap map:s_2;
-    rr:predicateObjectMap map:pom_12, map:pom_13, map:pom_14, map:pom_15, map:pom_16, map:pom_17, map:pom_18.
-map:om_0 a rr:ObjectMap;
-    rr:constant "https://w3id.org/biolink/vocab/Association";
-    rr:termType rr:IRI.
-map:om_1 a rr:ObjectMap;
-    rr:template "https://w3id.org/cohd/association/{concept_id_1}_{concept_id_2}";
-    rr:termType rr:IRI.
-map:om_10 a rr:ObjectMap;
-    rml:reference "chi_square_p";
-    rr:termType rr:Literal;
-    rr:datatype <http://www.w3.org/2001/XMLSchema#double>.
-map:om_11 a rr:ObjectMap;
-    rr:template "https://w3id.org/cohd/provider/dataset/{dataset_id}";
-    rr:termType rr:IRI.
-map:om_12 a rr:ObjectMap;
-    rr:constant "https://w3id.org/biolink/vocab/EvidenceType";
-    rr:termType rr:IRI.
-map:om_13 a rr:ObjectMap;
-    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/relative_frequency";
-    rr:termType rr:IRI.
-map:om_14 a rr:ObjectMap;
-    rr:template "Relative frequency for concepts {concept_id_1} and {concept_id_2} in COHD dataset {dataset_id}";
-    rr:termType rr:Literal.
-map:om_15 a rr:ObjectMap;
-    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/relative_frequency/{concept_id_1}";
-    rr:termType rr:IRI.
-map:om_16 a rr:ObjectMap;
-    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/relative_frequency/{concept_id_2}";
-    rr:termType rr:IRI.
-map:om_17 a rr:ObjectMap;
-    rml:reference "chi_square_p";
-    rr:termType rr:Literal;
-    rr:datatype <http://www.w3.org/2001/XMLSchema#double>.
-map:om_18 a rr:ObjectMap;
-    rr:template "https://w3id.org/cohd/provider/dataset/{dataset_id}";
-    rr:termType rr:IRI.
-map:om_19 a rr:ObjectMap;
-    rr:constant "https://w3id.org/biolink/vocab/FrequencyValue";
-    rr:termType rr:IRI.
-map:om_2 a rr:ObjectMap;
-    rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{concept_id_1}";
-    rr:termType rr:IRI.
-map:om_20 a rr:ObjectMap;
-    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/relative_frequency/{concept_id_1}";
-    rr:termType rr:IRI.
-map:om_21 a rr:ObjectMap;
-    rr:template "Relative frequency for concepts {concept_id_1} in COHD dataset {dataset_id}";
-    rr:termType rr:Literal.
-map:om_22 a rr:ObjectMap;
-    rml:reference "rel_freq_1";
-    rr:termType rr:Literal;
-    rr:datatype <http://www.w3.org/2001/XMLSchema#double>.
-map:om_23 a rr:ObjectMap;
-    rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{concept_id_1}";
-    rr:termType rr:IRI.
-map:om_24 a rr:ObjectMap;
-    rr:template "https://w3id.org/cohd/provider/dataset/{dataset_id}";
-    rr:termType rr:IRI.
-map:om_25 a rr:ObjectMap;
-    rr:constant "https://w3id.org/biolink/vocab/FrequencyValue";
-    rr:termType rr:IRI.
-map:om_26 a rr:ObjectMap;
-    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/relative_frequency/{concept_id_2}";
-    rr:termType rr:IRI.
-map:om_27 a rr:ObjectMap;
-    rr:template "Relative frequency for concepts {concept_id_2} in COHD dataset {dataset_id}";
-    rr:termType rr:Literal.
-map:om_28 a rr:ObjectMap;
-    rml:reference "rel_freq_2";
-    rr:termType rr:Literal;
-    rr:datatype <http://www.w3.org/2001/XMLSchema#double>.
-map:om_29 a rr:ObjectMap;
-    rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{concept_id_2}";
-    rr:termType rr:IRI.
-map:om_3 a rr:ObjectMap;
-    rr:constant "https://w3id.org/biolink/vocab/correlated_with";
-    rr:termType rr:IRI.
-map:om_30 a rr:ObjectMap;
-    rr:template "https://w3id.org/cohd/provider/dataset/{dataset_id}";
-    rr:termType rr:IRI.
-map:om_31 a rr:ObjectMap;
-    rr:constant "https://w3id.org/biolink/vocab/EvidenceType";
-    rr:termType rr:IRI.
-map:om_32 a rr:ObjectMap;
-    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/obs_exp_ratio";
-    rr:termType rr:IRI.
-map:om_33 a rr:ObjectMap;
-    rr:template "Observed and expected count with ln ratio for concepts {concept_id_1} and {concept_id_2} in COHD dataset {dataset_id}";
-    rr:termType rr:Literal.
-map:om_34 a rr:ObjectMap;
-    rml:reference "expected_count";
-    rr:termType rr:Literal;
-    rr:datatype <http://www.w3.org/2001/XMLSchema#double>.
-map:om_35 a rr:ObjectMap;
-    rml:reference "ln_ratio";
-    rr:termType rr:Literal.
-map:om_36 a rr:ObjectMap;
-    rml:reference "concept_count";
-    rr:termType rr:Literal;
-    rr:datatype <http://www.w3.org/2001/XMLSchema#integer>.
-map:om_37 a rr:ObjectMap;
-    rml:reference "concept_prevalence";
-    rr:termType rr:Literal;
-    rr:datatype <http://www.w3.org/2001/XMLSchema#double>.
-map:om_38 a rr:ObjectMap;
-    rr:template "https://w3id.org/cohd/provider/dataset/{dataset_id}";
-    rr:termType rr:IRI.
-map:om_4 a rr:ObjectMap;
-    rr:template "http://api.ohdsi.org/WebAPI/vocabulary/concept/{concept_id_2}";
-    rr:termType rr:IRI.
-map:om_5 a rr:ObjectMap;
-    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/chi_square";
-    rr:termType rr:IRI.
-map:om_6 a rr:ObjectMap;
-    rr:constant "https://w3id.org/biolink/vocab/EvidenceType";
-    rr:termType rr:IRI.
-map:om_7 a rr:ObjectMap;
-    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/chi_square";
-    rr:termType rr:IRI.
-map:om_8 a rr:ObjectMap;
-    rr:template "Chi squared statistic for concepts {concept_id_1} and {concept_id_2} in COHD dataset {dataset_id}";
-    rr:termType rr:Literal.
-map:om_9 a rr:ObjectMap;
-    rml:reference "chi_square_t";
-    rr:termType rr:Literal;
-    rr:datatype <http://www.w3.org/2001/XMLSchema#double>.
-map:pm_0 a rr:PredicateMap;
-    rr:constant rdf:type.
-map:pm_1 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/id>.
-map:pm_10 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/p_value>.
-map:pm_11 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/provided_by>.
-map:pm_12 a rr:PredicateMap;
-    rr:constant rdf:type.
-map:pm_13 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/id>.
-map:pm_14 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/name>.
-map:pm_15 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/frequency_qualifier>.
-map:pm_16 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/frequency_qualifier>.
-map:pm_17 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/p_value>.
-map:pm_18 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/provided_by>.
-map:pm_19 a rr:PredicateMap;
-    rr:constant rdf:type.
-map:pm_2 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/subject>.
-map:pm_20 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/id>.
-map:pm_21 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/name>.
-map:pm_22 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/has_quantitative_value>.
-map:pm_23 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/subject>.
-map:pm_24 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/provided_by>.
-map:pm_25 a rr:PredicateMap;
-    rr:constant rdf:type.
-map:pm_26 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/id>.
-map:pm_27 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/name>.
-map:pm_28 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/has_quantitative_value>.
-map:pm_29 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/subject>.
-map:pm_3 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/relation>.
-map:pm_30 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/provided_by>.
-map:pm_31 a rr:PredicateMap;
-    rr:constant rdf:type.
-map:pm_32 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/id>.
-map:pm_33 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/name>.
-map:pm_34 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/has_numeric_value>.
-map:pm_35 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/has_quotient>.
-map:pm_36 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/has_count>.
-map:pm_37 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/has_percentage>.
-map:pm_38 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/provided_by>.
-map:pm_4 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/object>.
-map:pm_5 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/has_evidence>.
-map:pm_6 a rr:PredicateMap;
-    rr:constant rdf:type.
-map:pm_7 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/id>.
-map:pm_8 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/name>.
-map:pm_9 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/chi_squared_statistic>.
-map:pom_0 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_0;
-    rr:objectMap map:om_0.
-map:pom_1 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_1;
-    rr:objectMap map:om_1.
-map:pom_10 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_10;
-    rr:objectMap map:om_10.
-map:pom_11 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_11;
-    rr:objectMap map:om_11.
-map:pom_12 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_12;
-    rr:objectMap map:om_12.
-map:pom_13 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_13;
-    rr:objectMap map:om_13.
-map:pom_14 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_14;
-    rr:objectMap map:om_14.
-map:pom_15 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_15;
-    rr:objectMap map:om_15.
-map:pom_16 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_16;
-    rr:objectMap map:om_16.
-map:pom_17 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_17;
-    rr:objectMap map:om_17.
-map:pom_18 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_18;
-    rr:objectMap map:om_18.
-map:pom_19 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_19;
-    rr:objectMap map:om_19.
-map:pom_2 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_2;
-    rr:objectMap map:om_2.
-map:pom_20 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_20;
-    rr:objectMap map:om_20.
-map:pom_21 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_21;
-    rr:objectMap map:om_21.
-map:pom_22 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_22;
-    rr:objectMap map:om_22.
-map:pom_23 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_23;
-    rr:objectMap map:om_23.
-map:pom_24 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_24;
-    rr:objectMap map:om_24.
-map:pom_25 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_25;
-    rr:objectMap map:om_25.
-map:pom_26 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_26;
-    rr:objectMap map:om_26.
-map:pom_27 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_27;
-    rr:objectMap map:om_27.
-map:pom_28 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_28;
-    rr:objectMap map:om_28.
-map:pom_29 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_29;
-    rr:objectMap map:om_29.
-map:pom_3 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_3;
-    rr:objectMap map:om_3.
-map:pom_30 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_30;
-    rr:objectMap map:om_30.
-map:pom_31 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_31;
-    rr:objectMap map:om_31.
-map:pom_32 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_32;
-    rr:objectMap map:om_32.
-map:pom_33 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_33;
-    rr:objectMap map:om_33.
-map:pom_34 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_34;
-    rr:objectMap map:om_34.
-map:pom_35 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_35;
-    rr:objectMap map:om_35.
-map:pom_36 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_36;
-    rr:objectMap map:om_36.
-map:pom_37 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_37;
-    rr:objectMap map:om_37.
-map:pom_38 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_38;
-    rr:objectMap map:om_38.
-map:pom_4 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_4;
-    rr:objectMap map:om_4.
-map:pom_5 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_5;
-    rr:objectMap map:om_5.
-map:pom_6 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_6;
-    rr:objectMap map:om_6.
-map:pom_7 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_7;
-    rr:objectMap map:om_7.
-map:pom_8 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_8;
-    rr:objectMap map:om_8.
-map:pom_9 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_9;
-    rr:objectMap map:om_9.
-map:s_0 a rr:SubjectMap;
-    rr:template "https://w3id.org/cohd/association/{concept_id_1}_{concept_id_2}".
-map:s_1 a rr:SubjectMap;
-    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/chi_square".
-map:s_2 a rr:SubjectMap;
-    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/relative_frequency".
-map:s_3 a rr:SubjectMap;
-    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/relative_frequency/{concept_id_1}".
-map:s_4 a rr:SubjectMap;
-    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/relative_frequency/{concept_id_2}".
-map:s_5 a rr:SubjectMap;
-    rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/obs_exp_ratio".
-map:source_0 a rml:LogicalSource;
-    rml:source "/mnt/paired_concept_counts_associations.csv";
-    rml:referenceFormulation ql:CSV.
-map:source_1 a rml:LogicalSource;
-    rml:source "/mnt/paired_concept_counts_associations.csv";
-    rml:referenceFormulation ql:CSV.
-map:source_2 a rml:LogicalSource;
-    rml:source "/mnt/paired_concept_counts_associations.csv";
-    rml:referenceFormulation ql:CSV.
-map:source_3 a rml:LogicalSource;
-    rml:source "/mnt/paired_concept_counts_associations.csv";
-    rml:referenceFormulation ql:CSV.
-map:source_4 a rml:LogicalSource;
-    rml:source "/mnt/paired_concept_counts_associations.csv";
-    rml:referenceFormulation ql:CSV.
-map:source_5 a rml:LogicalSource;
-    rml:source "/mnt/paired_concept_counts_associations.csv";
-    rml:referenceFormulation ql:CSV.
+# dataset_id,concept_id_1,concept_id_2,concept_count,concept_prevalence,chi_square_t,chi_square_p,expected_count,ln_ratio,rel_freq_1,rel_freq_2
+# 1,8507,955372,6,3.351148e-06,6.983689e-01,4.033323e-01,4.631562e+00,2.588652e-01,7.959006e-06,5.454545e-01
+# 1,8507,985786,7,3.909673e-06,4.141921e-01,5.198494e-01,8.421023e+00,-1.848211e-01,9.285507e-06,3.500000e-01
+
+mappings:
+  associations:
+    sources:
+      # - ['cohd.csv~csv']
+      - ['/mnt/cohd/paired_concept_counts_associations.csv~csv']
+    s: cohd:association/$(concept_id_1)_$(concept_id_2)
+    # s: cohd:association/$(dataset_id)_$(concept_id_1)_$(concept_id_2)
+    # g: https://w3id.org/d2s/graph/cohd
+    po:
+      - [a, bl:Association]
+      - p: bl:id
+        o: cohd:association/$(concept_id_1)_$(concept_id_2)~iri
+        # o: cohd:association/$(dataset_id)_$(concept_id_1)_$(concept_id_2)~iri
+      - p: bl:subject
+        o: omop:$(concept_id_1)~iri
+      - p: bl:relation
+        o: bl:correlated_with~iri
+      - p: bl:object
+        o: omop:$(concept_id_2)~iri
+      # - p: bl:provided_by
+      #   o: cohd:provider/dataset/$(dataset_id)~iri
+      - p: bl:has_evidence
+        o: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/chi_square~iri
+      # - p: bl:has_evidence
+      #   o: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/concept_count~iri
+
+  chi_square_evidence:
+    sources:
+      # - ['cohd.csv~csv']
+      - ['/mnt/cohd/paired_concept_counts_associations.csv~csv']
+    s: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/chi_square
+    # g: https://w3id.org/d2s/graph/cohd
+    po:
+      - [a, bl:EvidenceType]
+      - p: bl:id
+        o: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/chi_square~iri
+      - p: bl:name
+        o: Chi squared statistic for concepts $(concept_id_1) and $(concept_id_2) in COHD dataset $(dataset_id)
+      - p: bl:chi_squared_statistic
+        o: 
+          value: $(chi_square_t)
+          datatype: xsd:double
+      - p: bl:p_value
+        o: 
+          value: $(chi_square_p)
+          datatype: xsd:double
+      - p: bl:provided_by
+        o: cohd:provider/dataset/$(dataset_id)~iri
+        
+  relative_frequency_evidence:
+    sources:
+      # - ['cohd.csv~csv']
+      - ['/mnt/cohd/paired_concept_counts_associations.csv~csv']
+    s: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency
+    # g: https://w3id.org/d2s/graph/cohd
+    po:
+      - [a, bl:EvidenceType]
+      - p: bl:id
+        o: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency~iri
+      - p: bl:name
+        o: Relative frequency for concepts $(concept_id_1) and $(concept_id_2) in COHD dataset $(dataset_id)
+      - p: bl:frequency_qualifier
+        o: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency/$(concept_id_1)~iri
+      - p: bl:frequency_qualifier
+        o: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency/$(concept_id_2)~iri
+      - p: bl:p_value
+        o: 
+          value: $(chi_square_p)
+          datatype: xsd:double
+      - p: bl:provided_by
+        o: cohd:provider/dataset/$(dataset_id)~iri
+        
+  relative_frequency_1:
+    sources:
+      # - ['cohd.csv~csv']
+      - ['/mnt/cohd/paired_concept_counts_associations.csv~csv']
+    s: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency/$(concept_id_1)
+    # g: https://w3id.org/d2s/graph/cohd
+    po:
+      - [a, bl:FrequencyValue]
+      - p: bl:id
+        o: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency/$(concept_id_1)~iri
+      - p: bl:name
+        o: Relative frequency for concepts $(concept_id_1) in COHD dataset $(dataset_id)
+      - p: bl:has_quantitative_value
+        o: 
+          value: $(rel_freq_1)
+          datatype: xsd:double
+      - p: bl:subject
+        o: omop:$(concept_id_1)~iri
+      - p: bl:provided_by
+        o: cohd:provider/dataset/$(dataset_id)~iri
+  
+  relative_frequency_2:
+    sources:
+      # - ['cohd.csv~csv']
+      - ['/mnt/cohd/paired_concept_counts_associations.csv~csv']
+    s: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency/$(concept_id_2)
+    # g: https://w3id.org/d2s/graph/cohd
+    po:
+      - [a, bl:FrequencyValue]
+      - p: bl:id
+        o: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency/$(concept_id_2)~iri
+      - p: bl:name
+        o: Relative frequency for concepts $(concept_id_2) in COHD dataset $(dataset_id)
+      - p: bl:has_quantitative_value
+        o: 
+          value: $(rel_freq_2)
+          datatype: xsd:double
+      - p: bl:subject
+        o: omop:$(concept_id_2)~iri
+      - p: bl:provided_by
+        o: cohd:provider/dataset/$(dataset_id)~iri
+        
+  obs_exp_ratio_evidence:
+    sources:
+      # - ['cohd.csv~csv']
+      - ['/mnt/cohd/paired_concept_counts_associations.csv~csv']
+    s: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/obs_exp_ratio
+    # g: https://w3id.org/d2s/graph/cohd
+    po:
+      - [a, bl:EvidenceType]
+      - p: bl:id
+        o: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/obs_exp_ratio~iri
+      - p: bl:name
+        o: Observed and expected count with ln ratio for concepts $(concept_id_1) and $(concept_id_2) in COHD dataset $(dataset_id)
+      - p: bl:has_numeric_value
+        o: 
+          value: $(expected_count)
+          datatype: xsd:double
+      - p: bl:has_quotient
+        o: $(ln_ratio)
+      - p: bl:has_count
+        o: 
+          value: $(concept_count)
+          datatype: xsd:integer
+      - p: bl:has_percentage
+        o: 
+          value: $(concept_prevalence)
+          datatype: xsd:double
+      - p: bl:provided_by
+        o: cohd:provider/dataset/$(dataset_id)~iri
+
+        # function: grel:string_split
+        #     parameters:
+        #         - [grel:p_string_sep, "\|"]
+        #         - [grel:valueParameter, $(neighbours)]
+        #     language: en
+
+### Using to lower case (working)
+
+# prefixes:
+#   grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
+#   rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+#   gn: "http://www.geonames.org/ontology#"
+
+# mappings:
+#   lowerneighbours:
+#     sources:
+#       - ['source_1.csv~csv']
+#     s: http://www.geonames.org/ontology#$(ISO)
+#     po:
+#       - [a, gn:Country]
+#       - [rdfs:label, $(neighbours)]
+#       - p: gn:neighbours
+#         o:
+#             function: grel:toLowerCase
+#             parameters:
+#                 - [grel:valueParameter, $(neighbours)]
+#             language: en

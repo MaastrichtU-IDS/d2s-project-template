@@ -29,7 +29,8 @@ Go to the Flink manager pod and the persistent volume:
 ```bash
 oc login
 oc rsh flink-jobmanager-7459cc58f7-5hqjb
-cd /mnt
+mkdir /mnt/cohd
+cd /mnt/cohd
 ```
 
 ### Download required files
@@ -58,7 +59,7 @@ nohup ./download.sh &
 Download `RMLStreamer.jar`:
 
 ```
-wget -O RMLStreamer.jar https://github.com/RMLio/RMLStreamer/releases/download/v2.0.0/RMLStreamer-2.0.0.jar
+wget -O /mnt/RMLStreamer.jar https://github.com/RMLio/RMLStreamer/releases/download/v2.0.0/RMLStreamer-2.0.0.jar
 ```
 
 ### Run the RMLStreamer
@@ -66,15 +67,15 @@ wget -O RMLStreamer.jar https://github.com/RMLio/RMLStreamer/releases/download/v
 Re-run with parallelism (using 128 threads):
 
 ```
-nohup /opt/flink/bin/flink run -p 128 -c io.rml.framework.Main /mnt/RMLStreamer.jar toFile -m /mnt/cohd-associations.rml.ttl -o /mnt/openshift-rmlstreamer-cohd-associations.nt --job-name "[d2s] RMLStreamer cohd-associations.rml.ttl" &
+nohup /opt/flink/bin/flink run -p 128 -c io.rml.framework.Main /mnt/RMLStreamer.jar toFile -m /mnt/cohd/cohd-associations.rml.ttl -o /mnt/cohd/openshift-rmlstreamer-cohd-associations.nt --job-name "[d2s] RMLStreamer cohd-associations.rml.ttl" &
 ```
 
 Check if the conversion is running well:
 
 ```
 oc rsh flink-jobmanager-7459cc58f7-5hqjb
-tail /mnt/openshift-rmlstreamer-cohd-associations.nt
-ls -alh /mnt/openshift-rmlstreamer-cohd-associations.nt
+tail /mnt/cohd/openshift-rmlstreamer-cohd-associations.nt
+ls -alh /mnt/cohd/openshift-rmlstreamer-cohd-associations.nt
 ```
 
 ### Merge and compress
@@ -82,10 +83,10 @@ ls -alh /mnt/openshift-rmlstreamer-cohd-associations.nt
 The ntriples files produced by RMLStreamer in parallel:
 
 ```bash
-cd /mnt/openshift-rmlstreamer-cohd-associations.nt
+cd /mnt/cohd/openshift-rmlstreamer-cohd-associations.nt
 nohup cat * >> openshift-rmlstreamer-cohd-associations.nt &
 
-ls -alh /mnt/openshift-rmlstreamer-cohd-associations.nt/openshift-rmlstreamer-cohd-associations.nt
+ls -alh /mnt/cohd/openshift-rmlstreamer-cohd-associations.nt/openshift-rmlstreamer-cohd-associations.nt
 
 # Zip the merged output file:
 nohup gzip openshift-rmlstreamer-cohd-associations.nt &
@@ -101,7 +102,7 @@ export https_proxy=""
 
 # Copy with oc tool:
 oc login
-oc cp flink-jobmanager-7459cc58f7-cjcqf:/mnt/workspace/import/openshift-rmlstreamer-cohd-associations.nt/openshift-rmlstreamer-cohd-associations.nt.gz /data/graphdb/import/umids-download &!
+oc cp flink-jobmanager-7459cc58f7-cjcqf:/mnt/cohd/openshift-rmlstreamer-cohd-associations.nt/openshift-rmlstreamer-cohd-associations.nt.gz /data/graphdb/import/umids-download &!
 
 # Check (19G total):
 ls -alh /data/graphdb/import/umids-download
