@@ -29,12 +29,12 @@ map:map_single_concept_counts_evidences_0 rml:logicalSource map:source_5;
     a rr:TriplesMap;
     rdfs:label "single_concept_counts_evidences";
     rr:subjectMap map:s_5;
-    rr:predicateObjectMap map:pom_16, map:pom_17, map:pom_18, map:pom_19, map:pom_20.
+    rr:predicateObjectMap map:pom_15, map:pom_16, map:pom_17, map:pom_18, map:pom_19.
 map:map_single_concept_counts_relations_0 rml:logicalSource map:source_4;
     a rr:TriplesMap;
     rdfs:label "single_concept_counts_relations";
     rr:subjectMap map:s_4;
-    rr:predicateObjectMap map:pom_14, map:pom_15.
+    rr:predicateObjectMap map:pom_14.
 map:om_0 a rr:ObjectMap;
     rr:template "https://w3id.org/biolink/vocab/{domain_id}";
     rr:termType rr:IRI.
@@ -57,25 +57,22 @@ map:om_14 a rr:ObjectMap;
     rr:template "https://w3id.org/cohd/concept/occurences/{dataset_id}_{concept_id}";
     rr:termType rr:IRI.
 map:om_15 a rr:ObjectMap;
-    rml:reference "concept_name";
-    rr:termType rr:Literal.
-map:om_16 a rr:ObjectMap;
     rr:constant "https://w3id.org/biolink/vocab/EvidenceType";
     rr:termType rr:IRI.
-map:om_17 a rr:ObjectMap;
+map:om_16 a rr:ObjectMap;
     rr:template "https://w3id.org/cohd/concept/occurences/{dataset_id}_{concept_id}";
     rr:termType rr:IRI.
-map:om_18 a rr:ObjectMap;
+map:om_17 a rr:ObjectMap;
     rr:template "Count of occurences of the concept {concept_id} in COHD Clinical Dataset {dataset_id}";
     rr:termType rr:Literal.
-map:om_19 a rr:ObjectMap;
+map:om_18 a rr:ObjectMap;
     rml:reference "concept_count";
+    rr:termType rr:Literal.
+map:om_19 a rr:ObjectMap;
+    rml:reference "concept_prevalence";
     rr:termType rr:Literal.
 map:om_2 a rr:ObjectMap;
     rml:reference "concept_name";
-    rr:termType rr:Literal.
-map:om_20 a rr:ObjectMap;
-    rml:reference "concept_prevalence";
     rr:termType rr:Literal.
 map:om_3 a rr:ObjectMap;
     rml:reference "concept_code";
@@ -113,19 +110,17 @@ map:pm_13 a rr:PredicateMap;
 map:pm_14 a rr:PredicateMap;
     rr:constant <https://w3id.org/biolink/vocab/has_evidence>.
 map:pm_15 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/name>.
-map:pm_16 a rr:PredicateMap;
     rr:constant rdf:type.
-map:pm_17 a rr:PredicateMap;
+map:pm_16 a rr:PredicateMap;
     rr:constant <https://w3id.org/biolink/vocab/id>.
-map:pm_18 a rr:PredicateMap;
+map:pm_17 a rr:PredicateMap;
     rr:constant <https://w3id.org/biolink/vocab/name>.
-map:pm_19 a rr:PredicateMap;
+map:pm_18 a rr:PredicateMap;
     rr:constant <https://w3id.org/biolink/vocab/has_count>.
+map:pm_19 a rr:PredicateMap;
+    rr:constant <https://w3id.org/biolink/vocab/has_quotient>.
 map:pm_2 a rr:PredicateMap;
     rr:constant <https://w3id.org/biolink/vocab/name>.
-map:pm_20 a rr:PredicateMap;
-    rr:constant <https://w3id.org/biolink/vocab/has_quotient>.
 map:pm_3 a rr:PredicateMap;
     rr:constant <https://w3id.org/biolink/vocab/systematic_synonym>.
 map:pm_4 a rr:PredicateMap;
@@ -179,9 +174,6 @@ map:pom_19 a rr:PredicateObjectMap;
 map:pom_2 a rr:PredicateObjectMap;
     rr:predicateMap map:pm_2;
     rr:objectMap map:om_2.
-map:pom_20 a rr:PredicateObjectMap;
-    rr:predicateMap map:pm_20;
-    rr:objectMap map:om_20.
 map:pom_3 a rr:PredicateObjectMap;
     rr:predicateMap map:pm_3;
     rr:objectMap map:om_3.

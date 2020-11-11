@@ -77,8 +77,6 @@ mappings:
     po:
       - p: bl:has_evidence
         o: cohd:concept/occurences/$(dataset_id)_$(concept_id)~iri
-      - p: bl:name
-        o: $(concept_name)
 
   single_concept_counts_evidences:
     sources:
