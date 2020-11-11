@@ -22,11 +22,12 @@ python3 preprocessing-cohd.py
 
 ## Convert COHD associations
 
-Large file, require to use the RMLStreamer on the DSRI, checkout the jupyter notebook for more details
+Large file, require to use the RMLStreamer on the DSRI Apache Flink cluster.
 
 Go to the Flink manager pod and the persistent volume: 
 
 ```bash
+oc login
 oc rsh flink-jobmanager-7459cc58f7-5hqjb
 cd /mnt
 ```
