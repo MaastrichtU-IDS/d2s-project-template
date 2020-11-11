@@ -31,14 +31,14 @@ jobs:
       uses: vemonet/rmlmapper-java@v4.9.0
       with:
         mapping: datasets/cohd/mapping/cohd-concepts.rml.ttl
-        output: rdf-cohd.nt
+        output: cohd-concepts-rdf.nt
 
     - name: Upload RDF output artifact
       id: stepupload
       uses: actions/upload-artifact@v1
       with:
         name: rdf-output
-        path: rdf-cohd.nt
+        path: cohd-concepts-rdf.nt
 
   # upload-rdf:
   #   runs-on: ubuntu-latest
