@@ -368,20 +368,20 @@ map:s_4 a rr:SubjectMap;
 map:s_5 a rr:SubjectMap;
     rr:template "https://w3id.org/cohd/evidence/{dataset_id}_{concept_id_1}_{concept_id_2}/obs_exp_ratio".
 map:source_0 a rml:LogicalSource;
-    rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
+    rml:source "/mnt/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV.
 map:source_1 a rml:LogicalSource;
-    rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
+    rml:source "/mnt/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV.
 map:source_2 a rml:LogicalSource;
-    rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
+    rml:source "/mnt/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV.
 map:source_3 a rml:LogicalSource;
-    rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
+    rml:source "/mnt/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV.
 map:source_4 a rml:LogicalSource;
-    rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
+    rml:source "/mnt/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV.
 map:source_5 a rml:LogicalSource;
-    rml:source "/mnt/workspace/input/cohd/paired_concept_counts_associations.csv";
+    rml:source "/mnt/paired_concept_counts_associations.csv";
     rml:referenceFormulation ql:CSV.
