@@ -50,7 +50,7 @@ mappings:
 
   datasets:
     sources:
-      - ['datasets.csv~csv']
+      - ['dataset.csv~csv']
     s: cohd:provider/dataset/$(dataset_id)
     po:
       - [a, bl:Provider]
