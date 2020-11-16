@@ -1,6 +1,6 @@
 ## Convert COHD concepts and datasets
 
-We run the workflow using GitHub Actions:
+We run the workflow to generate BioLink RDF for concepts and datasets using GitHub Actions:
 
 * See the workflow file: https://github.com/MaastrichtU-IDS/d2s-project-template/blob/master/.github/workflows/rml-map-cohd-concepts.yml
 
@@ -8,7 +8,7 @@ We run the workflow using GitHub Actions:
 
 This produces a 200M RDF file that can be downloaded from GitHub Actions web UI.
 
-We then unzip this file and load itto https://graphdb.dumontierlab.com in `cohd-dev` repository, in the graph `https://w3id.org/d2s/graph/cohd`
+We then unzip this file and load it to https://graphdb.dumontierlab.com in `cohd-dev` repository, in the graph `https://w3id.org/d2s/graph/cohd`
 
 ### Rerun the preprocessing
 

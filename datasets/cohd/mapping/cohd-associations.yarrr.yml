@@ -2,6 +2,7 @@
 prefixes:
   grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
   xsd: "http://www.w3.org/2001/XMLSchema#"
+  rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   rdfs: "http://www.w3.org/2000/01/rdf-schema#"
   bl: "https://w3id.org/biolink/vocab/"
   cohd: "https://w3id.org/cohd/"
@@ -14,40 +15,42 @@ prefixes:
 mappings:
   associations:
     sources:
-      # - ['cohd.csv~csv']
       - ['/mnt/cohd/paired_concept_counts_associations.csv~csv']
-    s: cohd:association/$(concept_id_1)_$(concept_id_2)
-    # s: cohd:association/$(dataset_id)_$(concept_id_1)_$(concept_id_2)
+    s: cohd:association/$(dataset_id)_$(concept_id_1)_$(concept_id_2)
     # g: https://w3id.org/d2s/graph/cohd
     po:
-      - [a, bl:Association]
-      - p: bl:id
-        o: cohd:association/$(concept_id_1)_$(concept_id_2)~iri
-        # o: cohd:association/$(dataset_id)_$(concept_id_1)_$(concept_id_2)~iri
-      - p: bl:subject
-        o: omop:$(concept_id_1)~iri
-      - p: bl:relation
+      - p: bl:association_type
+        o: bl:Association~iri
+      - p: rdf:predicate
         o: bl:correlated_with~iri
-      - p: bl:object
+      - p: bl:relation
+        o: http://purl.obolibrary.org/obo/RO_0002610~iri
+      - p: rdf:subject
+        o: omop:$(concept_id_1)~iri
+      - p: rdf:object
         o: omop:$(concept_id_2)~iri
-      # - p: bl:provided_by
-      #   o: cohd:provider/dataset/$(dataset_id)~iri
+      - p: bl:provided_by
+        # o: COHD
+        o: cohd:provider/dataset/$(dataset_id)~iri
+
       - p: bl:has_evidence
         o: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/chi_square~iri
-      # - p: bl:has_evidence
-      #   o: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/concept_count~iri
+      - p: bl:has_evidence
+        o: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency~iri
+      - p: bl:has_evidence
+        o: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/obs_exp_ratio~iri
+
 
   chi_square_evidence:
     sources:
-      # - ['cohd.csv~csv']
       - ['/mnt/cohd/paired_concept_counts_associations.csv~csv']
     s: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/chi_square
     # g: https://w3id.org/d2s/graph/cohd
     po:
       - [a, bl:EvidenceType]
-      - p: bl:id
-        o: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/chi_square~iri
-      - p: bl:name
+      - p: bl:category
+        o: bl:EvidenceType~iri
+      - p: rdfs:label
         o: Chi squared statistic for concepts $(concept_id_1) and $(concept_id_2) in COHD dataset $(dataset_id)
       - p: bl:chi_squared_statistic
         o: 
@@ -60,17 +63,16 @@ mappings:
       - p: bl:provided_by
         o: cohd:provider/dataset/$(dataset_id)~iri
         
-  relative_frequency_evidence:
+  relative_frequencies_evidence:
     sources:
-      # - ['cohd.csv~csv']
       - ['/mnt/cohd/paired_concept_counts_associations.csv~csv']
     s: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency
     # g: https://w3id.org/d2s/graph/cohd
     po:
       - [a, bl:EvidenceType]
-      - p: bl:id
-        o: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency~iri
-      - p: bl:name
+      - p: bl:category
+        o: bl:EvidenceType~iri
+      - p: rdfs:label
         o: Relative frequency for concepts $(concept_id_1) and $(concept_id_2) in COHD dataset $(dataset_id)
       - p: bl:frequency_qualifier
         o: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency/$(concept_id_1)~iri
@@ -85,57 +87,54 @@ mappings:
         
   relative_frequency_1:
     sources:
-      # - ['cohd.csv~csv']
       - ['/mnt/cohd/paired_concept_counts_associations.csv~csv']
     s: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency/$(concept_id_1)
     # g: https://w3id.org/d2s/graph/cohd
     po:
       - [a, bl:FrequencyValue]
-      - p: bl:id
-        o: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency/$(concept_id_1)~iri
-      - p: bl:name
+      - p: bl:category
+        o: bl:FrequencyValue~iri
+      - p: rdfs:label
         o: Relative frequency for concepts $(concept_id_1) in COHD dataset $(dataset_id)
       - p: bl:has_quantitative_value
         o: 
           value: $(rel_freq_1)
           datatype: xsd:double
-      - p: bl:subject
+      - p: bl:has_qualitative_value
         o: omop:$(concept_id_1)~iri
       - p: bl:provided_by
         o: cohd:provider/dataset/$(dataset_id)~iri
   
   relative_frequency_2:
     sources:
-      # - ['cohd.csv~csv']
       - ['/mnt/cohd/paired_concept_counts_associations.csv~csv']
     s: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency/$(concept_id_2)
     # g: https://w3id.org/d2s/graph/cohd
     po:
       - [a, bl:FrequencyValue]
-      - p: bl:id
-        o: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/relative_frequency/$(concept_id_2)~iri
-      - p: bl:name
+      - p: bl:category
+        o: bl:FrequencyValue~iri
+      - p: rdfs:label
         o: Relative frequency for concepts $(concept_id_2) in COHD dataset $(dataset_id)
       - p: bl:has_quantitative_value
         o: 
           value: $(rel_freq_2)
           datatype: xsd:double
-      - p: bl:subject
+      - p: bl:has_qualitative_value
         o: omop:$(concept_id_2)~iri
       - p: bl:provided_by
         o: cohd:provider/dataset/$(dataset_id)~iri
         
   obs_exp_ratio_evidence:
     sources:
-      # - ['cohd.csv~csv']
       - ['/mnt/cohd/paired_concept_counts_associations.csv~csv']
     s: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/obs_exp_ratio
     # g: https://w3id.org/d2s/graph/cohd
     po:
       - [a, bl:EvidenceType]
-      - p: bl:id
-        o: cohd:evidence/$(dataset_id)_$(concept_id_1)_$(concept_id_2)/obs_exp_ratio~iri
-      - p: bl:name
+      - p: bl:category
+        o: bl:EvidenceType~iri
+      - p: rdfs:label
         o: Observed and expected count with ln ratio for concepts $(concept_id_1) and $(concept_id_2) in COHD dataset $(dataset_id)
       - p: bl:has_numeric_value
         o: 

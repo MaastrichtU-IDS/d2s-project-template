@@ -2,6 +2,7 @@
 prefixes:
   grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
   xsd: "http://www.w3.org/2001/XMLSchema#"
+  rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   rdfs: "http://www.w3.org/2000/01/rdf-schema#"
   bl: "https://w3id.org/biolink/vocab/"
   cohd: "https://w3id.org/cohd/"
@@ -19,13 +20,13 @@ mappings:
     # g: https://w3id.org/d2s/graph/cohd
     po:
       - [a, bl:$(domain_id)]
-      - p: bl:id
-        o: http://api.ohdsi.org/WebAPI/vocabulary/concept/$(concept_id)~iri
-      - p: bl:name
+      - p: bl:category
+        o: bl:$(domain_id)~iri
+      - p: rdfs:label
         o: $(concept_name)
       - p: bl:systematic_synonym
         o: $(concept_code)
-      - p: bl:category
+      - p: bl:description
         o: $(concept_class_id)
 
       - p: bl:provided_by
@@ -41,9 +42,9 @@ mappings:
     # g: https://w3id.org/d2s/graph/cohd
     po:
       - [a, bl:Provider]
-      - p: bl:id
-        o: cohd:provider/vocab/$(vocabulary_id)~iri
-      - p: bl:name
+      - p: bl:category
+        o: bl:Provider~iri
+      - p: rdfs:label
         o: $(vocabulary_id)
 
   
@@ -54,9 +55,9 @@ mappings:
     s: cohd:dataset/$(dataset_id)
     po:
       - [a, bl:PopulationOfIndividualOrganisms]
-      - p: bl:id
-        o: cohd:dataset/$(dataset_id)~iri
-      - p: bl:name
+      - p: bl:category
+        o: bl:PopulationOfIndividualOrganisms~iri
+      - p: rdfs:label
         o: $(dataset_name)
       - p: bl:description
         o: $(dataset_description)
@@ -84,9 +85,9 @@ mappings:
     s: cohd:concept/occurences/$(dataset_id)_$(concept_id)
     po:
       - [a, bl:EvidenceType]
-      - p: bl:id
-        o: cohd:concept/occurences/$(dataset_id)_$(concept_id)~iri
-      - p: bl:name
+      - p: bl:category
+        o: bl:EvidenceType~iri
+      - p: rdfs:label
         o: Count of occurences of the concept $(concept_id) in COHD Clinical Dataset $(dataset_id)
       - p: bl:has_count
         o: $(concept_count)
@@ -99,15 +100,13 @@ mappings:
     s: cohd:domain/occurences/$(dataset_id)_$(domain_id)
     po:
       - [a, bl:VariantToPopulationAssociation]
-      - p: bl:id
-        o: cohd:domain/occurences/$(dataset_id)_$(domain_id)
-      - p: bl:name
+      - p: rdfs:label
         o: Count of occurences of the domain $(domain_id) in COHD Clinical Dataset $(dataset_id)
-      - p: bl:subject
+      - p: rdf:subject
         o: bl:$(domain_id)~iri
-      - p: bl:relation
+      - p: rdf:predicate
         o: bl:correlated_with~iri
-      - p: bl:object
+      - p: rdf:object
         o: cohd:dataset/$(dataset_id)~iri
       - p: bl:has_count
         o: $(count)
@@ -117,17 +116,18 @@ mappings:
       - ['domain_pair_concept_counts_curated.csv~csv']
     s: cohd:domain/pair/$(dataset_id)_$(domain_id_1)_$(domain_id_2)
     po:
-      - [a, bl:VariantToThingAssociation]
-      - p: bl:id
-        o: cohd:domain/pair/$(dataset_id)_$(domain_id_1)_$(domain_id_2)
-      - p: bl:name
-        o: Count of occurences of the domain $(domain_id_1) and $(domain_id_2) in COHD Clinical Dataset $(dataset_id)
-      - p: bl:subject
-        o: bl:$(domain_id_1)~iri
+      - p: bl:association_type
+        o: bl:VariantToThingAssociation
       - p: bl:relation
+        o: http://purl.obolibrary.org/obo/RO_0002610~iri
+      - p: rdf:predicate
         o: bl:correlated_with~iri
-      - p: bl:object
+      - p: rdf:subject
+        o: bl:$(domain_id_1)~iri
+      - p: rdf:object
         o: cohd:$(domain_id_2)~iri
+      - p: rdfs:label
+        o: Count of occurences of the domain $(domain_id_1) and $(domain_id_2) in COHD Clinical Dataset $(dataset_id)
       - p: bl:qualifiers
         o: cohd:dataset/$(dataset_id)~iri
       - p: bl:has_count
@@ -143,19 +143,14 @@ mappings:
       - p: bl:same_as
         o: http://purl.bioontology.org/ontology/RXNORM/$(rxcui)~iri
 
-  # TODO: domain_pair_concept_counts.csv
-  # TODO: domain_concept_counts.csv
 
 
 
-
-
-
-        # function: grel:string_split
-        #     parameters:
-        #         - [grel:p_string_sep, "\|"]
-        #         - [grel:valueParameter, $(neighbours)]
-        #     language: en
+# function: grel:string_split
+#     parameters:
+#         - [grel:p_string_sep, "\|"]
+#         - [grel:valueParameter, $(neighbours)]
+#     language: en
 
 ### Using to lower case (working)
 
