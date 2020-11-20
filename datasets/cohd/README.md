@@ -62,21 +62,21 @@ nohup ./download.sh &
 
 Download `RMLStreamer.jar`:
 
-```
+```bash
 wget -O /mnt/RMLStreamer.jar https://github.com/RMLio/RMLStreamer/releases/download/v2.0.0/RMLStreamer-2.0.0.jar
 ```
 
 ### Run the RMLStreamer
 
-Re-run with parallelism (using 128 threads):
+Re-run with parallelism (using 164 threads):
 
-```
-nohup /opt/flink/bin/flink run -p 128 -c io.rml.framework.Main /mnt/RMLStreamer.jar toFile -m /mnt/cohd/cohd-associations.rml.ttl -o /mnt/cohd/openshift-rmlstreamer-cohd-associations.nt --job-name "[d2s] RMLStreamer cohd-associations.rml.ttl" &
+```bash
+nohup /opt/flink/bin/flink run -p 164 -c io.rml.framework.Main /mnt/RMLStreamer.jar toFile -m /mnt/cohd/cohd-associations.rml.ttl -o /mnt/cohd/openshift-rmlstreamer-cohd-associations.nt --job-name "[d2s] RMLStreamer cohd-associations.rml.ttl" &
 ```
 
 Check if the conversion is running well:
 
-```
+```bash
 oc rsh flink-jobmanager-7459cc58f7-5hqjb
 tail /mnt/cohd/openshift-rmlstreamer-cohd-associations.nt
 ls -alh /mnt/cohd/openshift-rmlstreamer-cohd-associations.nt

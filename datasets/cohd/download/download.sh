@@ -21,13 +21,13 @@ tar -xzvf *.tar.gz
 # rename s/\.txt/.tsv/ *.txt
 
 # Convert 27G file from TSV to CSV for RML Streamer
-sed -e 's/"/\\"/g' -e 's/\t/","/g' -e 's/^/"/' -e 's/$/"/'  -e 's/\r//' paired_concept_counts_associations.tsv > paired_concept_counts_associations.csv
-sed -e 's/"/\\"/g' -e 's/\t/","/g' -e 's/^/"/' -e 's/$/"/'  -e 's/\r//' concepts.tsv > concepts.csv
-sed -e 's/"/\\"/g' -e 's/\t/","/g' -e 's/^/"/' -e 's/$/"/'  -e 's/\r//' dataset.tsv > dataset.csv
-sed -e 's/"/\\"/g' -e 's/\t/","/g' -e 's/^/"/' -e 's/$/"/'  -e 's/\r//' domain_concept_counts.tsv > domain_concept_counts.csv
-sed -e 's/"/\\"/g' -e 's/\t/","/g' -e 's/^/"/' -e 's/$/"/'  -e 's/\r//' domain_pair_concept_counts.tsv > domain_pair_concept_counts.csv
-sed -e 's/"/\\"/g' -e 's/\t/","/g' -e 's/^/"/' -e 's/$/"/'  -e 's/\r//' patient_count.tsv > patient_count.csv
-sed -e 's/"/\\"/g' -e 's/\t/","/g' -e 's/^/"/' -e 's/$/"/'  -e 's/\r//' single_concept_counts.tsv > single_concept_counts.csv
+sed -e 's/"/\\"/g' -e 's/\t/","/g' -e 's/^/"/' -e 's/$/"/'  -e 's/\r//' paired_concept_counts_associations.txt > paired_concept_counts_associations.csv
+# sed -e 's/"/\\"/g' -e 's/\t/","/g' -e 's/^/"/' -e 's/$/"/'  -e 's/\r//' concepts.txt > concepts.csv
+# sed -e 's/"/\\"/g' -e 's/\t/","/g' -e 's/^/"/' -e 's/$/"/'  -e 's/\r//' dataset.txt > dataset.csv
+# sed -e 's/"/\\"/g' -e 's/\t/","/g' -e 's/^/"/' -e 's/$/"/'  -e 's/\r//' domain_concept_counts.txt > domain_concept_counts.csv
+# sed -e 's/"/\\"/g' -e 's/\t/","/g' -e 's/^/"/' -e 's/$/"/'  -e 's/\r//' domain_pair_concept_counts.txt > domain_pair_concept_counts.csv
+# sed -e 's/"/\\"/g' -e 's/\t/","/g' -e 's/^/"/' -e 's/$/"/'  -e 's/\r//' patient_count.txt > patient_count.csv
+# sed -e 's/"/\\"/g' -e 's/\t/","/g' -e 's/^/"/' -e 's/$/"/'  -e 's/\r//' single_concept_counts.txt > single_concept_counts.csv
 # rm paired_concept_counts_associations.tsv
 
 # Make sure right permissions are set properly
