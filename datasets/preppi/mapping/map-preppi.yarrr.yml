@@ -1,6 +1,7 @@
 prefixes:
   grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
   xsd: "http://www.w3.org/2001/XMLSchema#"
+  rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   rdfs: "http://www.w3.org/2000/01/rdf-schema#"
   bl: "https://w3id.org/biolink/vocab/"
   d2s: "https://w3id.org/d2s/"
@@ -20,14 +21,20 @@ mappings:
       # "Q9Y2X7","Q9NPJ6","0","2.59","2.59","1.0145","0","2.416","1.5818","0","10.0415","BGDB|","pubmed:25281560","957.82","9617.95"
     s: https://w3id.org/d2s/data/preppi/interaction/$(prot1):$(prot2)
     po:
-      - [a, bl:PairwiseGeneToGeneInteraction]
-      - p: bl:subject
-        o: https://identifiers.org/uniprot:$(prot1)~iri
-      - p: bl:object
-        o: https://identifiers.org/uniprot:$(prot2)~iri
-      - p: bl:relation
+      - [a, rdf:Statement]
+      - p: bl:association_type
+        o: bl:PairwiseGeneToGeneInteraction~iri
+      - p: rdf:predicate
         o: bl:interacts_with~iri
+      - p: bl:relation
+        o: http://purl.obolibrary.org/obo/RO_0002434~iri
+        # RO interacts with
+      - p: rdf:subject
+        o: https://identifiers.org/uniprot:$(prot1)~iri
+      - p: rdf:object
+        o: https://identifiers.org/uniprot:$(prot2)~iri
       - p: bl:provided_by
+        # o: PrePPI
         o: d2s:graph/preppi~iri
       - p: bl:has_confidence_level
         o: d2s:data/preppi/interaction/$(prot1)_$(prot2)/str_score~iri
@@ -52,7 +59,7 @@ mappings:
     s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/str_score
     po:
       - [a, bl:ConfidenceLevel]
-      - p: bl:name
+      - p: rdfs:label
         o: PrePPI str_score for association $(prot1)-$(prot2)
       - p: bl:has_numeric_value
         o:
@@ -69,7 +76,7 @@ mappings:
     s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/protpep_score
     po:
       - [a, bl:ConfidenceLevel]
-      - p: bl:name
+      - p: rdfs:label
         o: PrePPI protpep_score for association $(prot1)-$(prot2)
       - p: bl:has_numeric_value
         o:
@@ -86,7 +93,7 @@ mappings:
     s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/str_max_score
     po:
       - [a, bl:ConfidenceLevel]
-      - p: bl:name
+      - p: rdfs:label
         o: PrePPI str_max_score for association $(prot1)-$(prot2)
       - p: bl:has_numeric_value
         o:
@@ -103,7 +110,7 @@ mappings:
     s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/red_score
     po:
       - [a, bl:ConfidenceLevel]
-      - p: bl:name
+      - p: rdfs:label
         o: PrePPI red_score for association $(prot1)-$(prot2)
       - p: bl:has_numeric_value
         o:
@@ -120,7 +127,7 @@ mappings:
     s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/ort_score
     po:
       - [a, bl:ConfidenceLevel]
-      - p: bl:name
+      - p: rdfs:label
         o: PrePPI ort_score for association $(prot1)-$(prot2)
       - p: bl:has_numeric_value
         o:
@@ -137,7 +144,7 @@ mappings:
     s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/phy_score
     po:
       - [a, bl:ConfidenceLevel]
-      - p: bl:name
+      - p: rdfs:label
         o: PrePPI phy_score for association $(prot1)-$(prot2)
       - p: bl:has_numeric_value
         o:
@@ -154,7 +161,7 @@ mappings:
     s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/coexp_score
     po:
       - [a, bl:ConfidenceLevel]
-      - p: bl:name
+      - p: rdfs:label
         o: PrePPI coexp_score for association $(prot1)-$(prot2)
       - p: bl:has_numeric_value
         o:
@@ -171,7 +178,7 @@ mappings:
     s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/go_score
     po:
       - [a, bl:ConfidenceLevel]
-      - p: bl:name
+      - p: rdfs:label
         o: PrePPI go_score for association $(prot1)-$(prot2)
       - p: bl:has_numeric_value
         o:
@@ -188,7 +195,7 @@ mappings:
     s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/total_score
     po:
       - [a, bl:ConfidenceLevel]
-      - p: bl:name
+      - p: rdfs:label
         o: PrePPI total_score for association $(prot1)-$(prot2)
       - p: bl:has_numeric_value
         o:
@@ -205,7 +212,7 @@ mappings:
     s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/exp_score
     po:
       - [a, bl:ConfidenceLevel]
-      - p: bl:name
+      - p: rdfs:label
         o: PrePPI exp_score for association $(prot1)-$(prot2)
       - p: bl:has_numeric_value
         o:
@@ -222,7 +229,7 @@ mappings:
     s: d2s:data/preppi/interaction/$(prot1)_$(prot2)/final_score
     po:
       - [a, bl:ConfidenceLevel]
-      - p: bl:name
+      - p: rdfs:label
         o: PrePPI final_score for association $(prot1)-$(prot2)
       - p: bl:has_numeric_value
         o:

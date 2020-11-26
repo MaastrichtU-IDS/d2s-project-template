@@ -68,10 +68,16 @@ wget -O /mnt/RMLStreamer.jar https://github.com/RMLio/RMLStreamer/releases/downl
 
 ### Run the RMLStreamer
 
+Clean the files:
+
+```bash
+rm -rf /mnt/cohd/openshift-rmlstreamer-cohd-associations.nt
+```
+
 Re-run with parallelism (using 164 threads):
 
 ```bash
-nohup /opt/flink/bin/flink run -p 164 -c io.rml.framework.Main /mnt/RMLStreamer.jar toFile -m /mnt/cohd/cohd-associations.rml.ttl -o /mnt/cohd/openshift-rmlstreamer-cohd-associations.nt --job-name "[d2s] RMLStreamer cohd-associations.rml.ttl" &
+nohup /opt/flink/bin/flink run -p 128 -c io.rml.framework.Main /mnt/RMLStreamer.jar toFile -m /mnt/cohd/cohd-associations.rml.ttl -o /mnt/cohd/openshift-rmlstreamer-cohd-associations.nt --job-name "[d2s] RMLStreamer cohd-associations.rml.ttl" &
 ```
 
 Check if the conversion is running well:
@@ -120,25 +126,25 @@ Reactivate the proxy (`EXPORT http_proxy`)
 
 Check the generated COHD file on node2 at:
 
-```
+```bash
 cd /data/d2s-project-trek/workspace/dumps/rdf/cohd
 ```
 
 Replace wrong triples:
 
-```
+```bash
 sed -i 's/"-inf"^^<http:\/\/www.w3.org\/2001\/XMLSchema#double>/"-inf"/g' openshift-rmlstreamer-cohd-associations.nt
 ```
 
 Start preload:
 
-```
+```bash
 cd /data/deploy-ids-services/graphdb/preload-cohd
 docker-compose up -d
 ```
 
 The COHD repository will be created in `/data/graphdb-preload/data`, copy it to the main GraphDB:
 
-```
+```bash
 mv /data/graphdb-preload/data/repositories/cohd /data/graphdb/data/repositories
 ```
