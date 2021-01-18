@@ -1,26 +1,72 @@
 ## Convert preppi with the RML mapper
 
+Check the DSRI:
+
+* VSCode: https://vscode-d2s-rmlmapper-test-vincent.app.dsri.unimaas.nl/
+* JupyterLab: https://jupyterlab-d2s-rmlmapper-test-vincent.app.dsri.unimaas.nl/
+
+```bash
+cd d2s-project-template/datasets/preppi
+```
+
 ### Use RMLmapper locally
 
-Download the preppi file and convert it to CSV (take some time, a 36MB to download):
+Download required files:
+
+```bash
+wget -O map-preppi.rml.ttl https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-project-template/master/datasets/preppi/mapping/map-preppi.rml.ttl
+wget -O download.sh https://raw.githubusercontent.com/MaastrichtU-IDS/d2s-project-template/master/datasets/preppi/download/download.sh
+chmod +x download.sh
+wget https://github.com/RMLio/rmlmapper-java/releases/download/v4.9.0/rmlmapper.jar
+```
+
+Download the preppi file and convert it to CSV (36MB to download):
 
 ```bash
 ./download.sh
 ```
 
-Download the `rmlmapper.jar` file:
-
-```bash
-wget https://github.com/RMLio/rmlmapper-java/releases/download/v4.9.0/rmlmapper.jar
-```
-
 Run the RMLmapper:
 
 ```bash
-java -jar rmlmapper.jar -m mapping/map-preppi.rml.ttl -o preppi.nt
+nohup java -Xmx20g -jar rmlmapper.jar -m mapping/map-preppi.rml.ttl -o preppi.nt &
 ```
 
+> Took about 2h30min on the DSRI and produces a 16G `.nt` file
 
+Check the RMLmapper running:
+
+```bash
+ps aux | grep rmlmapper
+```
+
+### Import RDF data to node2
+
+Compress the data:
+
+```bash
+nohup gzip -k preppi.nt &
+```
+
+SSH connect to node2, http_proxy var need to be changed temporary to access DSRI
+
+```bash
+export http_proxy=""
+export https_proxy=""
+
+# Copy with oc tool:
+oc login
+oc cp flink-jobmanager-7459cc58f7-cjcqf:/notebooks/d2s-project-template/datasets/preppi/preppi.nt.gz /data/graphdb/import/umids-download &!
+
+# Check (16G total):
+ls -alh /data/graphdb/import/umids-download
+cp /data/graphdb/import/umids-download/openshift-rmlstreamer-preppi-associations.nt.gz /data/d2s-project-trek/workspace/dumps/rdf/preppi/
+gzip -d preppi.nt.gz
+```
+
+Reactivate the proxy (`EXPORT http_proxy`)
+
+> You can now import the file in GraphDB!
 
 ### GitHub Actions workflow
 
@@ -138,7 +184,7 @@ export https_proxy=""
 oc login
 oc cp flink-jobmanager-7459cc58f7-cjcqf:/mnt/preppi/openshift-rmlstreamer-preppi-associations.nt/openshift-rmlstreamer-preppi-associations.nt.gz /data/graphdb/import/umids-download &!
 
-# Check (19G total):
+# Check (16G total):
 ls -alh /data/graphdb/import/umids-download
 cp /data/graphdb/import/umids-download/openshift-rmlstreamer-preppi-associations.nt.gz /data/d2s-project-trek/workspace/dumps/rdf/preppi/
 gzip -d openshift-rmlstreamer-preppi-associations.nt.gz
