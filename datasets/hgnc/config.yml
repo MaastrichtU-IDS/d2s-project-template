@@ -1,5 +1,6 @@
 
 dataset_to_process: "hgnc"
+# THIS FILE IS NOT USED BY GITHUB ACTIONS
 
 ## For XML workflows
 # dir_to_process:
